@@ -8,11 +8,12 @@ import {
 import React from "react";
 
 import Home from "./Components/Home";
+import RootLayout from "./Components/Layout/RootLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<RootLayout />} />
     </Route>
   )
 );
