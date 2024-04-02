@@ -3,6 +3,7 @@ import { Box, Flex } from "@chakra-ui/react";
 
 import Navbar from "../Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import DashboardOutlet from "../../DashboardOutlet";
 
 function RootLayout() {
   return (

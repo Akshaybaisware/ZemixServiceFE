@@ -64,6 +64,7 @@ function Dashboard() {
   };
   return (
     <>
+      <h5>Dashboard</h5>
       <Flex textAlign="center" flexBasis={{ base: "20%", md: "auto" }}>
         {/* Total Assingment */}
         <Box textAlign="center" flexBasis={{ base: "100%", md: "auto" }}>
