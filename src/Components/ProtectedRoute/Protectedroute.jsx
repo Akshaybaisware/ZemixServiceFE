@@ -1,22 +1,25 @@
-import React from "react";
-import { Route, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-const Protectedroute = ({ component: Component, ...rest }) => {
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
+
+const ProtectedRoute = (props) => {
+  const { Component } = props;
+
   const navigate = useNavigate();
-  return (
-    <>
-      <Route
-        {...rest}
-        render={(props) =>
-          localStorage.getItem("token") ? (
-            <Component {...props} />
-          ) : (
-            navigate("/login")
-          )
-        }
-      />
-    </>
-  );
+  const isAuthorized = localStorage?.getItem("token") ? true : false;
+
+  useEffect(() => {
+    const token = localStorage?.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  });
+
+  if (!isAuthorized) {
+    return <Navigate to="/login" />;
+  }
+
+  return <Component />;
 };
 
-export default Protectedroute;
+export default ProtectedRoute;
