@@ -14,6 +14,8 @@ import ForgetPassword from "./Components/Login/ForgetPassword";
 import QcCheck from "./Components/QcCheck/QcCheck";
 import BlockedUser from "./Components/BlockedUser/BlockedUser";
 
+import ProtectedRoute from "./Components/ProtectedRoute/Protectedroute";
+
 const isAuthenticated = localStorage.getItem("token");
 
 const router = createBrowserRouter(
@@ -24,7 +26,10 @@ const router = createBrowserRouter(
         element={isAuthenticated ? <RootLayout /> : <Navigate to="/login" />}
       />
       <Route path="/login" element={<Login />} />
-      <Route path="/forgetpassword" element={<ForgetPassword />} />
+      <Route
+        path="/forgetpassword"
+        element={<ProtectedRoute component={<ForgetPassword />} />}
+      />
       <Route path="/qccheck" element={<QcCheck />} />
       <Route path="/blockuser" element={<BlockedUser />} />
     </Route>
