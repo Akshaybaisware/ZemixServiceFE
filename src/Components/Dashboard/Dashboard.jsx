@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Flex, Center } from "@chakra-ui/layout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -64,372 +63,67 @@ function Dashboard() {
   };
   return (
     <>
-      <h5>Dashboard</h5>
-      <Flex textAlign="center" flexBasis={{ base: "20%", md: "auto" }}>
-        {/* Total Assingment */}
-        <Box textAlign="center" flexBasis={{ base: "100%", md: "auto" }}>
-          <Box
-            marginLeft={{ md: "10rem" }}
-            backgroundColor="#ffe6ff"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
+      <Flex direction={{ base: "column", md: "row" }} gap="25px">
+        <Flex
+          direction={{ md: "column" }}
+          gap="25px"
+          justifyContent="center"
+          marginTop="30px"
+          align="center"
+        >
+          {/* Chnage Link */}
+          <Link
+            to={{
+              pathname: "/f",
+              // state: { users },
+            }}
           >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
+            <Card
+              as="flex"
+              width="auto"
+              textAlign="center"
+              height={{ base: "100%", md: "150px" }}
+              minW="150px"
+              maxH="150px"
+              bg="red"
+              borderLeft="4px solid #FF0000"
+              borderRadius="12px"
+              boxShadow="md" // Add a shadow for a card-like appearance
+              p="2" // Adjust padding as needed
+              display="flex"
+              // flexDirection={{ base: "column", md: "column", lg: "column" }}
+              direction={{ base: "column", md: "row", lg: "row" }}
+              justifyContent={{ base: "center", md: "space-around" }}
+              alignItems="center"
+              gap="20px"
             >
-              {data?.totalUsers}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Total User
-            </p>
-          </Box>
-        </Box>
+              {/* <div style={{ flex: 1 }}> */}
+              <img
+                src={
+                  ""
+                  // TotalCumstmer
+                }
+                alt="Total Customers"
+              />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Add Employees
+              </Text>
+              {/* <Heading size="lg" color="black" textAlign="center">
+                  {EmployeeCount}
+                </Heading> */}
+              {/* {users && (
+                  <Heading size="lg" color="black" textAlign="center">
+                    {users.length}
+                    {console.log("users length", users.length)}
+                  </Heading> */}
 
-        {/* Submitted Assingment */}
-        <Box
-          gap="15%"
-          textAlign="center"
-          flexBasis={{ base: "100%", md: "auto" }}
-        >
-          <Box
-            marginLeft={{ md: "20rem" }}
-            backgroundColor="#EBE9EB"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
-            >
-              {registerUsers}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Total Registration
-            </p>
-          </Box>
-        </Box>
-      </Flex>
-
-      <Flex>
-        {/* Pending Assingment */}
-        <Box textAlign="center" flexBasis={{ base: "100%", md: "auto" }}>
-          <Box
-            marginLeft={{ md: "10rem" }}
-            backgroundColor="#e6ffe6"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
-            >
-              {activeUsers}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Active User
-            </p>
-          </Box>
-        </Box>
-        <Box
-          gap="15%"
-          textAlign="center"
-          flexBasis={{ base: "100%", md: "auto" }}
-        >
-          <Box
-            marginLeft={{ md: "20rem" }}
-            backgroundColor="#e6ffe6"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
-            >
-              {FrezzUsers}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Inactive User
-            </p>
-          </Box>
-        </Box>
-      </Flex>
-
-      <Flex>
-        {/* Total Assingment */}
-        <Box
-          gap="15%"
-          textAlign="center"
-          flexBasis={{ base: "100%", md: "auto" }}
-        >
-          <Box
-            marginLeft={{ md: "10rem" }}
-            backgroundColor="#ffe6ff"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
-            >
-              {pendingUsers}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Pending Registration
-            </p>
-          </Box>
-        </Box>
-
-        {/* Submitted Assingment */}
-        <Box
-          gap="15%"
-          textAlign="center"
-          flexBasis={{ base: "100%", md: "auto" }}
-        >
-          <Box
-            marginLeft={{ md: "20rem" }}
-            backgroundColor="#EBE9EB"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
-            >
-              {data?.submitted}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Cancel User's
-            </p>
-          </Box>
-        </Box>
-      </Flex>
-      {/* Pending Assingment */}
-      <Flex flexBasis={{ base: "20%", md: "auto" }} textAlign="center">
-        <Box textAlign="center" flexBasis={{ base: "100%", md: "auto" }}>
-          <Box
-            marginLeft={{ md: "10rem" }}
-            backgroundColor="#e6ffe6"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
-            >
-              {data?.pending}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Today's Recovery
-            </p>
-          </Box>
-        </Box>
-        <Box
-          gap="15%"
-          textAlign="center"
-          flexBasis={{ base: "100%", md: "auto" }}
-        >
-          <Box
-            marginLeft={{ md: "20rem" }}
-            backgroundColor="#e6ffe6"
-            border="#ebe9eb"
-            margin="20px"
-            padding="40px"
-            fontWeight="800"
-            borderRadius="10px"
-            width={{ base: "100px", md: "150px" }}
-            height={{ base: "100px", md: "150px" }}
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <span
-              style={{
-                marginTop: "5px",
-                marginBottom: "5px",
-                height: "10px",
-                fontSize: "20px",
-                marginRight: "0%",
-              }}
-            >
-              {data?.pending}
-            </span>
-            <p
-              style={{
-                color: "gray",
-                fontWeight: "600",
-                flexDirection: "row",
-                marginLeft: "0px",
-                textAlign: "center",
-                marginTop: "10px",
-              }}
-            >
-              Total Recovery
-            </p>
-          </Box>
-        </Box>
+              {/* </div> */}
+            </Card>
+          </Link>
+        </Flex>
       </Flex>
     </>
   );

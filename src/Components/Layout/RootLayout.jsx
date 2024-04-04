@@ -4,6 +4,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 import DashboardOutlet from "../../DashboardOutlet";
+import Dashboard from "../Dashboard/Dashboard";
 
 function RootLayout() {
   return (
@@ -14,7 +15,7 @@ function RootLayout() {
 
       <Flex flexGrow={1}>
         <Box bg={"#f5f5f5"} flexBasis={{ base: "4770%", md: "80%" }}>
-          <Outlet />
+          <Dashboard />
         </Box>
       </Flex>
     </Flex>
