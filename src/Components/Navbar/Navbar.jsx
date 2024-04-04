@@ -62,95 +62,18 @@ function Navbar() {
 
   return (
     <Flex
-      direction={{ base: "row", md: "row" }} // Stack vertically on small screens and horizontally on medium and larger screens
+      direction={{ base: "row", md: "row" }}
       justifyContent="space-between"
-      // alignItems="center"
-      paddingX={{ base: "3", md: "8" }} // Add padding on small screens and larger screens
+      paddingX="20px"
       paddingY="4"
     >
-      <Box
-        display="flex"
-        alignItems="center"
-        marginBottom={{ base: "4", md: "0" }}
-      >
-        <Image
-          marginLeft={{ base: "0", md: "0rem" }}
-          boxSize={{ base: "70px", md: "120px" }}
-          src={Dataentry}
-          width="3rem"
-          height="3rem"
-        />
-
-        <Heading
-          fontSize={{ base: "2xl", md: "5xl" }}
-          marginLeft={{ base: "1rem", md: "10rem" }}
-          style={{
-            boxShadow:
-              "0 8px 16px rgba(128, 0, 128, 0.1), 0 10px 3px rgba(128, 0, 128, 0.08)",
-          }}
-        >
-          Zemix Services
-        </Heading>
-      </Box>
-
-      <Box onClick={handleOpenModal} cursor="pointer">
-        <Avatar
-          marginTop={"1rem"}
-          borderRadius="50%"
-          width="3rem"
-          height="3rem"
-          bg={"gray"}
-          border={"6px solid lightgray"}
-          marginRight="1.5"
-        />
-      </Box>
-
-      <Modal isOpen={isOpen} onClose={handleCloseModal}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Change Password</ModalHeader>
-          <ModalCloseButton />
-
-          <ModalBody>
-            <form onSubmit={handleSubmit}>
-              <FormControl marginBottom="1rem">
-                <FormLabel>Password:</FormLabel>
-                <Input
-                  type="password"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  border="1px solid #ccc"
-                  borderRadius="4px"
-                />
-                {console.log(newPassword, "newpassword")}
-              </FormControl>
-              <FormControl marginTop="1rem" marginBottom="1rem">
-                <FormLabel>Confirm Password:</FormLabel>
-                <Input
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  border="1px solid #ccc"
-                  borderRadius="4px"
-                />
-              </FormControl>
-            </form>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleCloseModal}>
-              Close
-            </Button>
-
-            {successMessage && (
-              <p style={{ color: "green" }}>{successMessage}</p>
-            )}
-            <Button type="submit" onClick={handleSubmit} colorScheme="blue">
-              Change Password
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <Box>Dashboard</Box>
+      <Box>User Registration</Box>
+      <Box>Deactive User</Box>
+      <Box>QC Report</Box>
+      <Box>Recovery</Box>
+      <Box>Employee</Box>
+      <Box>System Users</Box>
     </Flex>
   );
 }

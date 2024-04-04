@@ -2,7 +2,7 @@ import React from "react";
 
 import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
-import { Box, Button, Image } from "@chakra-ui/react";
+import { Box, Button, Center, Image, Input } from "@chakra-ui/react";
 
 function Login() {
   return (
@@ -14,10 +14,7 @@ function Login() {
         justifyContent="center"
         height="100vh" // Center content vertically on the page
       >
-        <Box p={4} borderRadius="md">
-          {/* Adjusted the Image component */}
-          <Image width={"15rem"} height="auto" src={logo} alt="Logo Image" />
-        </Box>
+        <Center>ADMIN</Center>
 
         <Box
           display="flex"
@@ -26,23 +23,29 @@ function Login() {
           maxWidth="400px" // Set a maximum width for responsiveness
           width="100%" // Take up full width on smaller screens
         >
+          <Box height={"3rem"} width="80%" borderRadius="6px">
+            <Input placeholder="UserName" />
+          </Box>
+          <Box height={"3rem"} width="80%" borderRadius="6px">
+            <Input placeholder="Password" />
+          </Box>
           <NavLink
             to="/admin"
             style={{ textDecoration: "none", width: "100%" }}
           >
             <Button
               height={"3rem"}
-              width="100%"
-              borderRadius="25px"
-              border="2px solid black"
+              width="80%"
+              borderRadius="6px"
+              // border="2px solid black"
               color="#fff"
-              background="black"
+              background="teal"
               fontWeight={700}
               fontFamily='"Poppins", sans-serif'
               mt="20px"
               _hover={{ background: "FloralWhite", color: "black" }}
             >
-              Login as Admin
+              Log In
             </Button>
           </NavLink>
           <NavLink
@@ -51,17 +54,17 @@ function Login() {
           >
             <Button
               height={"3rem"}
-              width="100%"
-              borderRadius="25px"
+              width="80%"
+              borderRadius="6px"
               border="2px solid black"
               color="#fff"
-              background="black"
+              background="teal"
               fontWeight={700}
               fontFamily='"Poppins", sans-serif'
               mt="20px"
               _hover={{ background: "FloralWhite", color: "black" }}
             >
-              Login as User
+              System Users Login From Hear
             </Button>
           </NavLink>
         </Box>
@@ -83,9 +86,7 @@ function Login() {
               borderRadius={"1rem"}
               _hover={{ background: "FloralWhite", color: "black" }}
               w={"200px"}
-            >
-              Create an Account
-            </Button>
+            ></Button>
           </NavLink>
         </Box>
       </Box>

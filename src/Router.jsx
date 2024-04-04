@@ -30,6 +30,7 @@ const router = createBrowserRouter(
         path="/forgetpassword"
         element={<ProtectedRoute component={<ForgetPassword />} />}
       />
+
       <Route path="/qccheck" element={<QcCheck />} />
       <Route path="/blockuser" element={<BlockedUser />} />
     </Route>
