@@ -21,6 +21,7 @@ import PendingRegisteration from "./Components/Registeration/PendingRegisteratio
 import CancelRegisteration from "./Components/Registeration/CancelRegisteration";
 import Package from "./Components/Registeration/Package";
 import AddPackage from "./Components/Registeration/AddPackage";
+import BlockedUserTable from "./Components/User/BlockedUserTable";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -45,7 +46,7 @@ const router = createBrowserRouter(
       <Route path="/cancelregisteration" element={<CancelRegisteration />} />
       <Route path="/path" element={<Package />} />
       <Route path="/addpackage" element={<AddPackage />} />
-      <Route path="/blockuser" element={<BlockedUser />} />
+      <Route path="/blockusersss" element={<BlockedUserTable />} />
     </Route>
   )
 );
