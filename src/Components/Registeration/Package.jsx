@@ -1,95 +1,69 @@
 import React, { useState, useEffect } from "react";
+import DataTable from "react-data-table-component";
 import { Box, Center, Text } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 import { Link } from "react-router-dom";
 import { Flex } from "@chakra-ui/layout";
-import DataTable from "react-data-table-component";
 
-function CancelRegisteration() {
+function Package() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(false);
+
   const columns = [
     {
-      name: "Name",
-      selector: (row) => row.name,
+      name: "Plan Name",
+      selector: (row) => row.planName,
       sortable: true,
     },
     {
-      name: "Mobile No",
-      selector: (row) => row.mobileNo,
+      name: "No. of Forms",
+      selector: (row) => row.numberOfForms,
       sortable: true,
     },
     {
-      name: "Email",
-      selector: (row) => row.email,
-      sortable: true,
-    },
-    {
-      name: "Registration Date",
-      selector: (row) => row.registrationDate,
-      sortable: true,
-    },
-    {
-      name: "Start Date",
-      selector: (row) => row.startDate,
-      sortable: true,
-    },
-    {
-      name: "Caller",
-      selector: (row) => row.caller,
-      sortable: true,
-    },
-    {
-      name: "Status",
-      selector: (row) => row.status,
-      sortable: true,
-    },
-    {
-      name: "Registration Status",
-      selector: (row) => row.registrationStatus,
+      name: "Plan Duration",
+      selector: (row) => row.planDuration,
       sortable: true,
     },
   ];
-  const data = [
+
+  const dummyData = [
     {
       id: 1,
-      name: "John Doe",
-      mobileNo: "123-456-7890",
-      email: "john.doe@example.com",
-      registrationDate: "2024-04-01",
-      startDate: "2024-04-10",
-      caller: "Jane Smith",
-      loginStatus: "Logged In",
-      status: "Active",
-      controllers: "Controller 1, Controller 2",
+      planName: "Basic Plan",
+      numberOfForms: 10,
+      planDuration: "1 month",
     },
     {
       id: 2,
-      name: "Alice Johnson",
-      mobileNo: "987-654-3210",
-      email: "alice.johnson@example.com",
-      registrationDate: "2024-04-02",
-      startDate: "2024-04-11",
-      caller: "Bob Brown",
-      loginStatus: "Logged Out",
-      status: "Inactive",
-      controllers: "Controller 3",
+      planName: "Premium Plan",
+      numberOfForms: 20,
+      planDuration: "3 months",
     },
-    // Add more dummy data objects as needed
+    {
+      id: 3,
+      planName: "Enterprise Plan",
+      numberOfForms: 50,
+      planDuration: "6 months",
+    },
   ];
 
   return (
     <>
       <Flex alignItems="center" justify="space-between">
-        <Text fontSize="md"> Cancel Registeration</Text>
+        <Text fontSize="md">Packages</Text>
+
+        <Link to="/add-package">
+          <Button colorScheme="blue">Add Package</Button>
+        </Link>
       </Flex>
       <Center>
         <Box width={{ base: "90vw", md: "70vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
             <Text fontSize="2xl" fontWeight="bold">
-              Cancel Registeration
+              Registrations
             </Text>
           </Center>
           {loading ? (
@@ -103,7 +77,7 @@ function CancelRegisteration() {
           ) : (
             <DataTable
               columns={columns}
-              data={data}
+              data={dummyData}
               pagination
               highlightOnHover
               responsive
@@ -131,4 +105,4 @@ function CancelRegisteration() {
   );
 }
 
-export default CancelRegisteration;
+export default Package;

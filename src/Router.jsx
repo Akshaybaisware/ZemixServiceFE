@@ -19,6 +19,8 @@ import Registeraion from "./Components/Registeration/Registeraion";
 import AddClient from "./Components/Registeration/AddClient";
 import PendingRegisteration from "./Components/Registeration/PendingRegisteration";
 import CancelRegisteration from "./Components/Registeration/CancelRegisteration";
+import Package from "./Components/Registeration/Package";
+import AddPackage from "./Components/Registeration/AddPackage";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -40,7 +42,10 @@ const router = createBrowserRouter(
       <Route path="/registeration" element={<Registeraion />} />
       <Route path="/addclient" element={<AddClient />} />
       <Route path="/pendingregisteration" element={<PendingRegisteration />} />
-      <Route path="/cancelregisteration " element={<CancelRegisteration />} />
+      <Route path="/cancelregisteration" element={<CancelRegisteration />} />
+      <Route path="/path" element={<Package />} />
+      <Route path="/addpackage" element={<AddPackage />} />
+      <Route path="/blockuser" element={<BlockedUser />} />
     </Route>
   )
 );
