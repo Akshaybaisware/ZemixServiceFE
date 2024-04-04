@@ -84,45 +84,30 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
               bg="white"
-              // borderLeft="4px solid #FF0000"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
-                Total Registeration
+                Total Registration
               </Text>
             </Card>
           </Link>
@@ -134,45 +119,30 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
-              bg="white"
-              // borderLeft="4px solid #FF0000"
+              bg="#65D088"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
-                Pending Registeration
+                Pending Registration
               </Text>
             </Card>
           </Link>
@@ -187,56 +157,31 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
-              bg="white"
-              // borderLeft="4px solid #FF0000"
+              bg="#FFBB44"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
                 Cancel User
               </Text>
-              {/* <Heading size="lg" color="black" textAlign="center">
-                  {EmployeeCount}
-                </Heading> */}
-              {/* {users && (
-                  <Heading size="lg" color="black" textAlign="center">
-                    {users.length}
-                    {console.log("users length", users.length)}
-                  </Heading> */}
-
-              {/* </div> */}
             </Card>
           </Link>
         </Flex>
@@ -247,40 +192,25 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
-              bg="white"
-              // borderLeft="4px solid #FF0000"
+              bg="#F32F53"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -291,6 +221,7 @@ function Dashboard() {
           </Link>
         </Flex>
       </Flex>
+
       <Flex direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
           direction={{ md: "column" }}
@@ -299,56 +230,31 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
-              bg="white"
-              // borderLeft="4px solid #FF0000"
+              bg="#65D088"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
                 Inactive User
               </Text>
-              {/* <Heading size="lg" color="black" textAlign="center">
-                  {EmployeeCount}
-                </Heading> */}
-              {/* {users && (
-                  <Heading size="lg" color="black" textAlign="center">
-                    {users.length}
-                    {console.log("users length", users.length)}
-                  </Heading> */}
-
-              {/* </div> */}
             </Card>
           </Link>
         </Flex>
@@ -359,60 +265,36 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
               bg="white"
-              // borderLeft="4px solid #FF0000"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
                 Today's Recovery
               </Text>
-              {/* <Heading size="lg" color="black" textAlign="center">
-                  {EmployeeCount}
-                </Heading> */}
-              {/* {users && (
-                  <Heading size="lg" color="black" textAlign="center">
-                    {users.length}
-                    {console.log("users length", users.length)}
-                  </Heading> */}
-
-              {/* </div> */}
             </Card>
           </Link>
         </Flex>
       </Flex>
+
       <Flex direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
           direction={{ md: "column" }}
@@ -421,56 +303,31 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
-              bg="white"
-              // borderLeft="4px solid #FF0000"
+              bg="#0097A7"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
                 Total Recovery
               </Text>
-              {/* <Heading size="lg" color="black" textAlign="center">
-                  {EmployeeCount}
-                </Heading> */}
-              {/* {users && (
-                  <Heading size="lg" color="black" textAlign="center">
-                    {users.length}
-                    {console.log("users length", users.length)}
-                  </Heading> */}
-
-              {/* </div> */}
             </Card>
           </Link>
         </Flex>
@@ -481,56 +338,31 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          {/* Chnage Link */}
-          <Link
-            to={{
-              pathname: "/f",
-              // state: { users },
-            }}
-          >
+          <Link to={{ pathname: "/f" }}>
             <Card
               as="flex"
-              width="auto"
+              minWidth="10rem"
+              maxWidth="15rem"
+              minHeight="10rem"
+              maxHeight="10rem"
               textAlign="center"
-              height={{ base: "100%", md: "150px" }}
-              minW="150px"
-              maxH="150px"
-              bg="white"
-              // borderLeft="4px solid #FF0000"
+              bg="#0097A7"
               borderRadius="12px"
-              boxShadow="md" // Add a shadow for a card-like appearance
-              p="2" // Adjust padding as needed
+              boxShadow="md"
+              p="2"
               display="flex"
-              // flexDirection={{ base: "column", md: "column", lg: "column" }}
               direction={{ base: "column", md: "row", lg: "row" }}
               justifyContent={{ base: "center", md: "space-around" }}
               alignItems="center"
               gap="20px"
             >
-              {/* <div style={{ flex: 1 }}> */}
-              <img
-                src={
-                  // ""
-                  TotalCumstmer
-                }
-                alt="Total Customers"
-              />
+              <img src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
                 Add Employees
               </Text>
-              {/* <Heading size="lg" color="black" textAlign="center">
-                  {EmployeeCount}
-                </Heading> */}
-              {/* {users && (
-                  <Heading size="lg" color="black" textAlign="center">
-                    {users.length}
-                    {console.log("users length", users.length)}
-                  </Heading> */}
-
-              {/* </div> */}
             </Card>
           </Link>
         </Flex>
