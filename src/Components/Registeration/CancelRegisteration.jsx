@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Flex } from "@chakra-ui/layout";
 import DataTable from "react-data-table-component";
 
-function PendingRegisteration() {
+function CancelRegisteration() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -105,4 +105,4 @@ function PendingRegisteration() {
   );
 }
 
-export default PendingRegisteration;
+export default CancelRegisteration;

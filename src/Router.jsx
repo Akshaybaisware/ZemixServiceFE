@@ -18,6 +18,7 @@ import ProtectedRoute from "./Components/ProtectedRoute/Protectedroute";
 import Registeraion from "./Components/Registeration/Registeraion";
 import AddClient from "./Components/Registeration/AddClient";
 import PendingRegisteration from "./Components/Registeration/PendingRegisteration";
+import CancelRegisteration from "./Components/Registeration/CancelRegisteration";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
       <Route path="/registeration" element={<Registeraion />} />
       <Route path="/addclient" element={<AddClient />} />
       <Route path="/pendingregisteration" element={<PendingRegisteration />} />
+      <Route path="/cancelregisteration " element={<CancelRegisteration />} />
     </Route>
   )
 );
