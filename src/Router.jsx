@@ -17,6 +17,7 @@ import BlockedUser from "./Components/BlockedUser/BlockedUser";
 import ProtectedRoute from "./Components/ProtectedRoute/Protectedroute";
 import Registeraion from "./Components/Registeration/Registeraion";
 import AddClient from "./Components/Registeration/AddClient";
+import PendingRegisteration from "./Components/Registeration/PendingRegisteration";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       <Route path="/blockuser" element={<BlockedUser />} />
       <Route path="/registeration" element={<Registeraion />} />
       <Route path="/addclient" element={<AddClient />} />
+      <Route path="/pendingregisteration" element={<PendingRegisteration />} />
     </Route>
   )
 );
