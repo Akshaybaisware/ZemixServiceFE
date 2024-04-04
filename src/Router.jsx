@@ -16,6 +16,7 @@ import BlockedUser from "./Components/BlockedUser/BlockedUser";
 
 import ProtectedRoute from "./Components/ProtectedRoute/Protectedroute";
 import Registeraion from "./Components/Registeration/Registeraion";
+import AddClient from "./Components/Registeration/AddClient";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
       <Route path="/qccheck" element={<QcCheck />} />
       <Route path="/blockuser" element={<BlockedUser />} />
       <Route path="/registeration" element={<Registeraion />} />
+      <Route path="/addclient" element={<AddClient />} />
     </Route>
   )
 );
