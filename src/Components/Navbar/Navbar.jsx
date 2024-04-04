@@ -14,6 +14,7 @@ import Dataentry from "../../assets/ZEMEX LOGO.png";
 import { useState } from "react";
 import axios from "axios";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,13 +67,33 @@ function Navbar() {
       paddingX="20px"
       paddingY="4"
     >
-      <Box>Dashboard</Box>
-      <Box>User Registration</Box>
-      <Box>Deactive User</Box>
-      <Box>QC Report</Box>
-      <Box>Recovery</Box>
-      <Box>Employee</Box>
-      <Box>System Users</Box>
+      <Link to="/">
+        <Box>Dashboard</Box>
+      </Link>
+
+      <Link to="/">
+        <Box>User Registration</Box>
+      </Link>
+
+      <Link to="/">
+        <Box>Deactive User</Box>
+      </Link>
+
+      <Link to="/">
+        <Box>QC Report</Box>
+      </Link>
+
+      <Link to="/">
+        <Box>Recovery</Box>
+      </Link>
+
+      <Link to="/">
+        <Box>Employee</Box>
+      </Link>
+
+      <Link to="/">
+        <Box>System Users</Box>
+      </Link>
 
       <Box
         display="flex"
