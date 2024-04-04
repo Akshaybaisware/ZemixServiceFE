@@ -1,6 +1,19 @@
 import { Box, Flex, Center } from "@chakra-ui/layout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import { Card, Text } from "@chakra-ui/react";
+
+import TotalCumstmer from "../../../public/totalCust.svg";
+import TodaysFollowup from "../../../public/todays.svg";
+import AssignedLeads from "../../../public/assigned.svg";
+import Missed from "../../../public/missed.svg";
+import Transfer from "../../../public/transfer.svg";
+import nextDay from "../../../public/nextDay.svg";
+import filter from "../../../public/filter.svg";
+import upcomingImage from "../../../public/upcoming.svg";
+import lostLeadsIcon from "../../../public/lostLeads.svg";
 
 function Dashboard() {
   const apiUrl = import.meta.env.VITE_APP_API_URL;
@@ -85,8 +98,8 @@ function Dashboard() {
               height={{ base: "100%", md: "150px" }}
               minW="150px"
               maxH="150px"
-              bg="red"
-              borderLeft="4px solid #FF0000"
+              bg="white"
+              // borderLeft="4px solid #FF0000"
               borderRadius="12px"
               boxShadow="md" // Add a shadow for a card-like appearance
               p="2" // Adjust padding as needed
@@ -100,8 +113,8 @@ function Dashboard() {
               {/* <div style={{ flex: 1 }}> */}
               <img
                 src={
-                  ""
-                  // TotalCumstmer
+                  // ""
+                  TotalCumstmer
                 }
                 alt="Total Customers"
               />
