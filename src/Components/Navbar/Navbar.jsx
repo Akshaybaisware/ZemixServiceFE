@@ -15,6 +15,7 @@ import { useState } from "react";
 import axios from "axios";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,15 +72,31 @@ function Navbar() {
         <Box>Dashboard</Box>
       </Link>
 
-      <Link to="/">
-        <Box>User Registration</Box>
-      </Link>
+      <Menu>
+        <MenuButton as={Box} cursor="pointer">
+          User Actions
+        </MenuButton>
+        <MenuList>
+          <MenuItem as={RouterLink} to="/registeration">
+            Registration
+          </MenuItem>
+          <MenuItem as={RouterLink} to="/pendingregisteration">
+            Pending Registration
+          </MenuItem>
+          <MenuItem as={RouterLink} to="/cancelregisteration">
+            Cancel Registration
+          </MenuItem>
+          <MenuItem as={RouterLink} to="/path">
+            Package
+          </MenuItem>
+        </MenuList>
+      </Menu>
 
-      <Link to="/">
+      <Link to="/blockusersss">
         <Box>Deactive User</Box>
       </Link>
 
-      <Link to="/">
+      <Link to="/qccheck">
         <Box>QC Report</Box>
       </Link>
 
@@ -87,7 +104,7 @@ function Navbar() {
         <Box>Recovery</Box>
       </Link>
 
-      <Link to="/">
+      <Link to="/employees">
         <Box>Employee</Box>
       </Link>
 

@@ -30,11 +30,6 @@ const isAuthenticated = localStorage.getItem("token");
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      {/* <Route
-        path="/"
-        element={isAuthenticated ? <RootLayout /> : <Navigate to="/login" />}
-      /> */}
-
       <Route path="/" element={<ProtectedRoute Component={RootLayout} />} />
       <Route path="/login" element={<Login />} />
       <Route
