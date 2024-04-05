@@ -16,6 +16,7 @@ import axios from "axios";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,9 +25,11 @@ function Navbar() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("Logout");
+    localStorage.clear();
+    navigate("/login");
   };
 
   const handleSubmit = async (e) => {
