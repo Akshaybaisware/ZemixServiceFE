@@ -38,8 +38,8 @@ function AddPackage() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            packageName: packagename.current.value,
-            noOfForms: noOfForms.current.value,
+            packagename: packagename.current.value,
+            noofFroms: noOfForms.current.value,
             days: days.current.value,
           }),
         }
