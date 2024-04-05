@@ -30,27 +30,55 @@ const isAuthenticated = localStorage.getItem("token");
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route
+      {/* <Route
         path="/"
         element={isAuthenticated ? <RootLayout /> : <Navigate to="/login" />}
-      />
+      /> */}
+
+      <Route path="/" element={<ProtectedRoute Component={RootLayout} />} />
       <Route path="/login" element={<Login />} />
       <Route
         path="/forgetpassword"
-        element={<ProtectedRoute component={<ForgetPassword />} />}
+        element={<ProtectedRoute Component={ForgetPassword} />}
       />
-
-      <Route path="/qccheck" element={<QcCheck />} />
-      <Route path="/blockuser" element={<BlockedUser />} />
-      <Route path="/registeration" element={<Registeraion />} />
-      <Route path="/addclient" element={<AddClient />} />
-      <Route path="/pendingregisteration" element={<PendingRegisteration />} />
-      <Route path="/cancelregisteration" element={<CancelRegisteration />} />
-      <Route path="/path" element={<Package />} />
-      <Route path="/addpackage" element={<AddPackage />} />
-      <Route path="/blockusersss" element={<BlockedUserTable />} />
-      <Route path="/employees" element={<EmployeesTable />} />
-      <Route path="/addemployees" element={<AddEmployees />} />
+      <Route path="/qccheck" element={<ProtectedRoute Component={QcCheck} />} />
+      <Route
+        path="/blockuser"
+        element={<ProtectedRoute Component={BlockedUser} />}
+      />
+      <Route
+        path="/registeration"
+        element={<ProtectedRoute Component={Registeration} />}
+      />
+      <Route
+        path="/addclient"
+        element={<ProtectedRoute Component={AddClient} />}
+      />
+      <Route
+        path="/pendingregisteration"
+        element={<ProtectedRoute Component={PendingRegisteration} />}
+      />
+      <Route
+        path="/cancelregisteration"
+        element={<ProtectedRoute Component={CancelRegisteration} />}
+      />
+      <Route path="/path" element={<ProtectedRoute Component={Package} />} />
+      <Route
+        path="/addpackage"
+        element={<ProtectedRoute Component={AddPackage} />}
+      />
+      <Route
+        path="/blockusersss"
+        element={<ProtectedRoute Component={BlockedUserTable} />}
+      />
+      <Route
+        path="/employees"
+        element={<ProtectedRoute Component={EmployeesTable} />}
+      />
+      <Route
+        path="/addemployees"
+        element={<ProtectedRoute Component={AddEmployees} />}
+      />
     </Route>
   )
 );
