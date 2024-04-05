@@ -33,11 +33,31 @@ function BlockedUserTable() {
 
   // Columns configuration
   const columns = [
-    { name: "Name", selector: "name", sortable: true },
-    { name: "Mobile No", selector: "mobile", sortable: true },
-    { name: "Email", selector: "email", sortable: true },
-    { name: "Block Date", selector: "blockDate", sortable: true },
-    { name: "Status", selector: "status", sortable: true },
+    {
+      name: "Name",
+      selector: (row) => row.name,
+      sortable: true,
+    },
+    {
+      name: "Mobile No",
+      selector: (row) => row.mobile,
+      sortable: true,
+    },
+    {
+      name: "Email",
+      selector: (row) => row.email,
+      sortable: true,
+    },
+    {
+      name: "Block Date",
+      selector: (row) => row.blockDate,
+      sortable: true,
+    },
+    {
+      name: "Status",
+      selector: (row) => row.status,
+      sortable: true,
+    },
   ];
 
   // Function to handle search button click
@@ -69,6 +89,8 @@ function BlockedUserTable() {
         <Spacer />
         <Button onClick={handleSearch}>Search</Button>
       </Flex>
+
+      <Input placeholder="Search" />
       <DataTable
         columns={columns}
         data={data}
