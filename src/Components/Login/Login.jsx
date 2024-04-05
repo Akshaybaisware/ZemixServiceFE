@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import { Box, Button, Center, Image, Input } from "@chakra-ui/react";
+import axios from "axios";
 
 function Login() {
+  const username = useRef();
+  const password = useRef();
+
+  const handleLogin = async () => {
+    const user = {
+      email: username.current.value,
+      password: password.current.value,
+    };
+    console.log(user);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user/login",
+        user
+      );
+      console.log(response);
+      if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("token", response.data.token);
+        window.location.replace("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Box
@@ -24,10 +49,10 @@ function Login() {
           width="100%" // Take up full width on smaller screens
         >
           <Box height={"3rem"} width="80%" borderRadius="6px">
-            <Input placeholder="UserName" />
+            <Input ref={username} placeholder="UserName" />
           </Box>
           <Box height={"3rem"} width="80%" borderRadius="6px">
-            <Input placeholder="Password" />
+            <Input ref={password} placeholder="Password" />
           </Box>
           <NavLink
             to="/admin"
@@ -44,6 +69,7 @@ function Login() {
               fontFamily='"Poppins", sans-serif'
               mt="20px"
               _hover={{ background: "FloralWhite", color: "black" }}
+              onClick={handleLogin}
             >
               Log In
             </Button>
