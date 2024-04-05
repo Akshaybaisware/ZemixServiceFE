@@ -116,9 +116,10 @@ function Registeraion() {
         <Text fontSize="md">
           All Users 2024-04-04 10:14:54pm || Today Total 22 | Today Done 22
         </Text>
-        <Button>
-          <Link to="/registeration">Registration</Link>
-        </Button>
+
+        <Link to="/addclient">
+          <Button>Registration</Button>
+        </Link>
       </Flex>
       <Center>
         <Box width={{ base: "90vw", md: "70vw" }} overflowX="auto" p={4}>

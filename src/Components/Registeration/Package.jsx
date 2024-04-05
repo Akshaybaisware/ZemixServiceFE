@@ -55,7 +55,7 @@ function Package() {
       <Flex alignItems="center" justify="space-between">
         <Text fontSize="md">Packages</Text>
 
-        <Link to="/add-package">
+        <Link to="/addpackage">
           <Button colorScheme="blue">Add Package</Button>
         </Link>
       </Flex>

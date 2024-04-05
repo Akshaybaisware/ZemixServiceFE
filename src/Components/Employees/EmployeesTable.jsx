@@ -2,6 +2,7 @@ import React from "react";
 import DataTable from "react-data-table-component";
 import { Button, Input, Box } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function EmployeesTable() {
   const coloums = [
@@ -51,7 +52,9 @@ function EmployeesTable() {
     <>
       <Box>
         <Text>Employees</Text>
-        <Button>+ Add Employees</Button>
+        <Link to="/addemployees">
+          <Button>+ Add Employees</Button>
+        </Link>
       </Box>
       <Input placeholder="Search" />
       <DataTable columns={coloums} data={data} pagination />

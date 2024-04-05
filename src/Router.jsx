@@ -43,7 +43,7 @@ const router = createBrowserRouter(
       />
       <Route
         path="/registeration"
-        element={<ProtectedRoute Component={Registeration} />}
+        element={<ProtectedRoute Component={Registeraion} />}
       />
       <Route
         path="/addclient"
