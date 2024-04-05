@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import {
   Box,
@@ -9,6 +9,7 @@ import {
   FormErrorMessage,
   Flex,
   Spacer,
+  useToast,
   Center,
 } from "@chakra-ui/react";
 
@@ -19,10 +20,62 @@ function AddEmployees() {
     formState: { errors },
   } = useForm();
 
+  const toast = useToast();
+
   const onSubmit = (data) => {
     console.log(data); // You can handle form submission here
   };
+  const name = useRef();
+  const email = useRef();
+  const mobile = useRef();
+  const branch = useRef();
+  const address = useRef();
+  const designation = useRef();
 
+  const handleSubmitemployee = async (e) => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/employee/addemployee",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name.current.value,
+            email: email.current.value,
+            mobile: mobile.current.value,
+            branch: branch.current.value,
+            address: address.current.value,
+            designation: designation.current.value,
+          }),
+        }
+      );
+      const responseData = await response.json();
+      console.log(responseData);
+      if (responseData.isAdded) {
+        toast({
+          title: "Success",
+          description: "Employee added successfully",
+          status: "success",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Error adding employee",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
+
+      console.error("Error adding employee:", error);
+    }
+  };
   return (
     <>
       <Center mt={4} mb={4}>
@@ -40,7 +93,12 @@ function AddEmployees() {
                   defaultValue=""
                   rules={{ required: "Name is required" }}
                   render={({ field }) => (
-                    <Input {...field} id="name" placeholder="Enter your name" />
+                    <Input
+                      {...field}
+                      id="name"
+                      ref={name}
+                      placeholder="Enter your name"
+                    />
                   )}
                 />
                 <FormErrorMessage>
@@ -67,6 +125,7 @@ function AddEmployees() {
                     <Input
                       {...field}
                       id="mobile"
+                      ref={mobile}
                       placeholder="Enter your Mobile"
                     />
                   )}
@@ -91,6 +150,7 @@ function AddEmployees() {
                     <Input
                       {...field}
                       id="email"
+                      ref={email}
                       placeholder="Enter your email"
                     />
                   )}
@@ -112,6 +172,7 @@ function AddEmployees() {
                     <Input
                       {...field}
                       id="branch"
+                      ref={branch}
                       placeholder="Enter branch name"
                     />
                   )}
@@ -135,6 +196,7 @@ function AddEmployees() {
                     <Input
                       {...field}
                       id="desiganation"
+                      ref={designation}
                       placeholder="Enter desiganation name"
                     />
                   )}
@@ -156,6 +218,7 @@ function AddEmployees() {
                     <Input
                       {...field}
                       id="address"
+                      ref={address}
                       placeholder="Enter address name"
                     />
                   )}
@@ -169,7 +232,12 @@ function AddEmployees() {
 
           {/* Other fields similarly */}
 
-          <Button mt={4} colorScheme="teal" type="submit">
+          <Button
+            mt={4}
+            onClick={handleSubmitemployee}
+            colorScheme="teal"
+            type="submit"
+          >
             Submit
           </Button>
         </form>
