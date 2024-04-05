@@ -16,9 +16,10 @@ function AddPackage() {
     console.log(data); // You can handle form submission logic here
   };
   const toast = useToast();
-  const packagename = useRef(null);
-  const noOfForms = useRef(null);
-  const days = useRef(null);
+  const packagename = useRef();
+  const noOfForms = useRef();
+  const days = useRef();
+  console.log(packagename, "adfsaf");
 
   const handlesubmitpackage = async () => {
     try {
@@ -44,6 +45,7 @@ function AddPackage() {
         }
       );
       const responseData = await response.json();
+      console.log(responseData);
       // if (responseData.isAdded) {
       //   toast({
       //     title: "Success",
