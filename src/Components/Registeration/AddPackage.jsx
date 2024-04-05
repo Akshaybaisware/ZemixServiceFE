@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import {
   Button,
@@ -6,13 +6,74 @@ import {
   FormLabel,
   Input,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 
-function YourFormComponent() {
+function AddPackage() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data); // You can handle form submission logic here
+  };
+  const toast = useToast();
+  const packagename = useRef(null);
+  const noOfForms = useRef(null);
+  const days = useRef(null);
+
+  const handlesubmitpackage = async () => {
+    try {
+      console.log(
+        packagename.current.value,
+        noOfForms.current.value,
+        days.current.value
+      );
+
+      console.log("clicked");
+      const response = await fetch(
+        "http://localhost:5000/api/package/addpackage",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            packageName: packagename.current.value,
+            noOfForms: noOfForms.current.value,
+            days: days.current.value,
+          }),
+        }
+      );
+      const responseData = await response.json();
+      // if (responseData.isAdded) {
+      //   toast({
+      //     title: "Success",
+      //     description: "Client added successfully",
+      //     status: "success",
+      //     duration: 3000,
+      //     isClosable: true,
+      //     position: "top",
+      //   });
+      // } else {
+      //   toast({
+      //     title: "Error",
+      //     description: "Client not added",
+      //     status: "error",
+      //     duration: 3000,
+      //     isClosable: true,
+      //     position: "top",
+      //   });
+      // }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Client not added",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      console.log(error);
+    }
   };
 
   return (
@@ -20,20 +81,32 @@ function YourFormComponent() {
       <VStack spacing={4}>
         <FormControl>
           <FormLabel htmlFor="packageName">Package Name</FormLabel>
-          <Input type="text" id="packageName" {...register("packageName")} />
+          <Input
+            ref={packagename}
+            type="text"
+            id="packageName"
+            {...register("packageName")}
+          />
         </FormControl>
         <FormControl>
           <FormLabel htmlFor="noOfForms">No Of Forms</FormLabel>
-          <Input type="number" id="noOfForms" {...register("noOfForms")} />
+          <Input
+            ref={noOfForms}
+            type="number"
+            id="noOfForms"
+            {...register("noOfForms")}
+          />
         </FormControl>
         <FormControl>
           <FormLabel htmlFor="days">Days</FormLabel>
-          <Input type="number" id="days" {...register("days")} />
+          <Input ref={days} type="number" id="days" {...register("days")} />
         </FormControl>
-        <Button type="submit">Add Package</Button>
+        <Button onClick={handlesubmitpackage} type="submit">
+          Add Package
+        </Button>
       </VStack>
     </form>
   );
 }
 
-export default YourFormComponent;
+export default AddPackage;
