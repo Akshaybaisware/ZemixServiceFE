@@ -9,7 +9,7 @@ function Login() {
   const username = useRef();
   const password = useRef();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
     const user = {
       email: username.current.value,
       password: password.current.value,
@@ -54,10 +54,7 @@ function Login() {
           <Box height={"3rem"} width="80%" borderRadius="6px">
             <Input ref={password} placeholder="Password" />
           </Box>
-          <NavLink
-            to="/admin"
-            style={{ textDecoration: "none", width: "100%" }}
-          >
+          <NavLink to="/" style={{ textDecoration: "none", width: "100%" }}>
             <Button
               height={"3rem"}
               width="80%"
