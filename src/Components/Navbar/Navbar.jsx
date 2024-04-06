@@ -8,6 +8,7 @@ import {
   MenuList,
   Flex,
   MenuItem,
+  useToast,
   ModalOverlay,
 } from "@chakra-ui/react";
 import Dataentry from "../../assets/ZEMEX LOGO.png";
@@ -26,7 +27,7 @@ function Navbar() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
-
+  const toast = useToast();
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
@@ -64,6 +65,20 @@ function Navbar() {
     setIsOpen(false);
   };
 
+  const handleforgetpassword = () => {
+    try {
+      console.log("forgetpassword");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Error changing password",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  };
   return (
     <Flex
       direction={{ base: "row", md: "row" }}
@@ -155,8 +170,7 @@ function Navbar() {
             {/* MenuItem for Logout */}
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
             {/* Other menu items */}
-            <MenuItem>My Cart</MenuItem>
-            <MenuItem>WishList</MenuItem>
+            <MenuItem onClick={handleforgetpassword}>Forget Password</MenuItem>
           </MenuList>
           <Box
             display={"flex"}
