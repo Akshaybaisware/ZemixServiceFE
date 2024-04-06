@@ -24,56 +24,62 @@ function Dashboard() {
   const [FrezzUsers, setFrezzUsers] = useState(0);
 
   useEffect(() => {
-    fetchDetails();
+    totalragisterations();
     totlalActiveUser();
-    totlalRegistrationUser();
     totlalPendingUser();
     totlalFrezzUser();
   }, []);
 
-  const fetchDetails = async () => {
-    const apiUrl = import.meta.env.VITE_APP_API_URL;
-    const response = await axios.get(`${apiUrl}/user/get_all_user`);
-    const totalData = response.data;
-    console.log(totalData);
-    setData(totalData);
+  const totalragisterations = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/user/getallregistered`
+      );
+      console.log(response, "registerations");
+      setRegisterUsers(response.data.users.length);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const totlalActiveUser = async () => {
-    const response = await axios.get(
-      `${apiUrl}/user/user_pagination?status=Active`
-    );
-    const totalActiveUserData = response.data.totalUsers;
-    setActive(totalActiveUserData);
-    console.log(totalActiveUserData, "totalActive");
-  };
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/user/getallactive`
+      );
 
-  const totlalRegistrationUser = async () => {
-    const response = await axios.get(
-      `${apiUrl}/user/user_pagination?status=Registered`
-    );
-    const totalRigistraUserData = response.data.totalUsers;
-    setRegisterUsers(totalRigistraUserData);
-    console.log(totalRigistraUserData, "totalRegistration");
+      console.log(response, "active");
+      setActive(response.data.users.length);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const totlalPendingUser = async () => {
-    const response = await axios.get(
-      `${apiUrl}/user/user_pagination?status=Pending`
-    );
-    const totalPendingUser = response.data.totalUsers;
-    setPendingUsers(totalPendingUser);
-    console.log(totalPendingUser, "totalPending");
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/user/getallpending`
+      );
+      console.log(response, "pending");
+      setPendingUsers(response.data.users.length);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const totlalFrezzUser = async () => {
-    const response = await axios.get(
-      `${apiUrl}/user/user_pagination?status=Freeze`
-    );
-    const totalFrezzUser = response.data.totalUsers;
-    setFrezzUsers(totalFrezzUser);
-    console.log(totalFrezzUser, "totalFrezz");
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/user/getallfreez`
+      );
+
+      console.log(response, "frezz");
+      setFrezzUsers(response.data.users.length);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <>
       <Flex direction={{ base: "column", md: "row" }} gap="25px">
@@ -109,6 +115,12 @@ function Dashboard() {
               >
                 Total Registration
               </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {registerUsers}
+              </Text>
             </Card>
           </Link>
         </Flex>
@@ -143,6 +155,12 @@ function Dashboard() {
                 fontWeight="bold"
               >
                 Pending Registration
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {pendingUsers}
               </Text>
             </Card>
           </Link>
@@ -217,6 +235,12 @@ function Dashboard() {
               >
                 Active User
               </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {activeUsers}
+              </Text>
             </Card>
           </Link>
         </Flex>
@@ -254,6 +278,12 @@ function Dashboard() {
                 fontWeight="bold"
               >
                 Inactive User
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {FrezzUsers}
               </Text>
             </Card>
           </Link>
