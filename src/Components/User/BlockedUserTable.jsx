@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { Flex, Box } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
@@ -9,29 +9,58 @@ function BlockedUserTable() {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  // Example data
-  const data = [
-    {
-      id: 1,
-      name: "John Doe",
-      mobile: "123-456-7890",
-      email: "john@example.com",
-      blockDate: "2023-01-15",
-      status: "Active",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      mobile: "987-654-3210",
-      email: "jane@example.com",
-      blockDate: "2023-02-20",
-      status: "Inactive",
-    },
-    // Add more data as needed
-  ];
+  const getallfreezuser = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/user/getallfreez",
+        {
+          method: "GET",
+          headers: { token: localStorage.token },
+        }
+      );
+      const parseRes = await response.json();
+      console.log(parseRes.users);
+      setData(parseRes.users);
+      setFilteredData(parseRes.users); // Initialize filteredData with all data
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
-  // Columns configuration
+  useEffect(() => {
+    getallfreezuser();
+  }, []);
+
+  const handleSearch = () => {
+    const filteredResults = data.filter((item) =>
+      Object.values(item).some(
+        (value) =>
+          value &&
+          value.toString().toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+    setFilteredData(filteredResults);
+  };
+
+  const handleDateSearch = () => {
+    const filteredResults = data.filter((item) => {
+      const blockDate = new Date(item.blockDate);
+      const fromDateObj = new Date(fromDate);
+      const toDateObj = new Date(toDate);
+      return blockDate >= fromDateObj && blockDate <= toDateObj;
+    });
+    setFilteredData(filteredResults);
+  };
+
+  useEffect(() => {
+    if (!searchQuery && !fromDate && !toDate) {
+      setFilteredData(data); // Reset filteredData if no search or date filter applied
+    }
+  }, [searchQuery, fromDate, toDate, data]);
+
   const columns = [
     {
       name: "Name",
@@ -60,16 +89,6 @@ function BlockedUserTable() {
     },
   ];
 
-  // Function to handle search button click
-  const handleSearch = () => {
-    // Implement search logic here
-    // For simplicity, let's assume searching by name
-    // You can modify this according to your requirements
-    // Example:
-    // const filteredData = data.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
-    // Update state or perform any action with filteredData
-  };
-
   return (
     <Box>
       <Flex>
@@ -87,16 +106,16 @@ function BlockedUserTable() {
           onChange={(e) => setToDate(e.target.value)}
         />
         <Spacer />
-        <Button onClick={handleSearch}>Search</Button>
+        <Button onClick={handleDateSearch}>Search By Date</Button>
       </Flex>
 
-      <Input placeholder="Search" />
-      <DataTable
-        columns={columns}
-        data={data}
-        pagination
-        // paginationPerPage={5} // Adjust as needed
+      <Input
+        placeholder="Search"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
+      <Button onClick={handleSearch}>Search</Button>
+      <DataTable columns={columns} data={filteredData} pagination />
     </Box>
   );
 }

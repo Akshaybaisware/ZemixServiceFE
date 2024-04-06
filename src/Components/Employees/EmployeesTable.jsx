@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { Button, Input, Box } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 function EmployeesTable() {
+  const [data, setdata] = useState([]);
   const coloums = [
     {
       name: "Name",
@@ -18,7 +19,7 @@ function EmployeesTable() {
     },
     {
       name: "MobileNo",
-      selector: (row) => row.mobileNo,
+      selector: (row) => row.mobile,
       sortable: true,
     },
     {
@@ -32,22 +33,27 @@ function EmployeesTable() {
       sortable: true,
     },
   ];
-  const data = [
-    {
-      name: "John Doe",
-      designation: "Manager",
-      mobileNo: "123-456-7890",
-      branch: "Main Branch",
-      address: "123 Main Street, Cityville",
-    },
-    {
-      name: "Jane Smith",
-      designation: "Assistant Manager",
-      mobileNo: "987-654-3210",
-      branch: "Branch 1",
-      address: "456 Elm Street, Townsville",
-    },
-  ];
+  const getemployees = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/employee/getallemployee",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application",
+          },
+        }
+      );
+      const res = await response.json();
+      console.log(res);
+      setdata(res.allemployee);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getemployees();
+  }, []);
   return (
     <>
       <Box>
