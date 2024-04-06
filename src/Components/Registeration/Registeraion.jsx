@@ -5,64 +5,43 @@ import { Spinner } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 import { Link } from "react-router-dom";
 import { Flex } from "@chakra-ui/layout";
+import axios from "axios";
 
 function Registeraion() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  // Dummy data
-  const data = [
-    {
-      id: 1,
-      name: "John Doe",
-      mobileNo: "123-456-7890",
-      email: "john.doe@example.com",
-      registrationDate: "2024-04-01",
-      startDate: "2024-04-10",
-      caller: "Jane Smith",
-      loginStatus: "Logged In",
-      status: "Active",
-      controllers: "Controller 1, Controller 2",
-    },
-    {
-      id: 2,
-      name: "Alice Johnson",
-      mobileNo: "987-654-3210",
-      email: "alice.johnson@example.com",
-      registrationDate: "2024-04-02",
-      startDate: "2024-04-11",
-      caller: "Bob Brown",
-      loginStatus: "Logged Out",
-      status: "Inactive",
-      controllers: "Controller 3",
-    },
-    // Add more dummy data objects as needed
-  ];
+  const [loading, setLoading] = useState(true); // Initial loading state set to true
 
   useEffect(() => {
-    setLoading(true);
-    // Simulating asynchronous data fetching
-    setTimeout(() => {
-      // Filtering data based on search input
-      const filteredData = data.filter((row) =>
-        Object.values(row).some(
-          (value) =>
-            value &&
-            value.toString().toLowerCase().includes(search.toLowerCase())
-        )
-      );
-      setFilter(filteredData);
-      setLoading(false);
-    }, 1000); // Adjust the timeout as needed
-  }, [search]);
+    const getdata = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/user/getallclient"
+        );
+        console.log(response.data.data, "asdasd");
+        setFilter(response.data.data);
+        setLoading(false); // Set loading to false after data is fetched
+      } catch (error) {
+        console.log(error);
+        setLoading(false); // Set loading to false if there's an error
+      }
+    };
+
+    getdata();
+  }, []);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filteredData = filter.filter((row) =>
+    Object.values(row).some(
+      (value) =>
+        value && value.toString().toLowerCase().includes(search.toLowerCase())
+    )
+  );
 
   const columns = [
-    {
-      name: "Id",
-      selector: (row) => row.id,
-      sortable: true,
-    },
     {
       name: "Name",
       selector: (row) => row.name,
@@ -70,7 +49,7 @@ function Registeraion() {
     },
     {
       name: "Mobile No",
-      selector: (row) => row.mobileNo,
+      selector: (row) => row.mobile,
       sortable: true,
     },
     {
@@ -79,33 +58,13 @@ function Registeraion() {
       sortable: true,
     },
     {
-      name: "Registration Date",
-      selector: (row) => row.registrationDate,
+      name: "Address",
+      selector: (row) => row.address,
       sortable: true,
     },
     {
-      name: "Start Date",
-      selector: (row) => row.startDate,
-      sortable: true,
-    },
-    {
-      name: "Caller",
-      selector: (row) => row.caller,
-      sortable: true,
-    },
-    {
-      name: "Login Status",
-      selector: (row) => row.loginStatus,
-      sortable: true,
-    },
-    {
-      name: "Status",
-      selector: (row) => row.status,
-      sortable: true,
-    },
-    {
-      name: "Controllers",
-      selector: (row) => row.controllers,
+      name: "Plan",
+      selector: (row) => row.plan,
       sortable: true,
     },
   ];
@@ -128,7 +87,7 @@ function Registeraion() {
               Registrations
             </Text>
           </Center>
-          {loading ? (
+          {loading ? ( // Display spinner if loading
             <Spinner
               thickness="4px"
               speed="0.65s"
@@ -139,8 +98,7 @@ function Registeraion() {
           ) : (
             <DataTable
               columns={columns}
-              data={filter}
-              selectableRows
+              data={filteredData} // Use filteredData instead of filter
               pagination
               highlightOnHover
               responsive
@@ -150,7 +108,7 @@ function Registeraion() {
                   type="text"
                   placeholder="Search..."
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={handleSearch}
                   style={{
                     border: "1px solid gray",
                     borderRadius: "15px",
