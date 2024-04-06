@@ -22,13 +22,27 @@ function Dashboard() {
   const [registerUsers, setRegisterUsers] = useState(0);
   const [pendingUsers, setPendingUsers] = useState(0);
   const [FrezzUsers, setFrezzUsers] = useState(0);
-
+  const [cancelUsers, setCancelUsers] = useState(0);
+  const [todaysRecovery, setTodaysRecovery] = useState(0);
   useEffect(() => {
     totalragisterations();
     totlalActiveUser();
     totlalPendingUser();
     totlalFrezzUser();
+    getallcancel();
   }, []);
+
+  const getallcancel = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/user/getallcancel`
+      );
+      console.log(response, "cancel");
+      setCancelUsers(response.data.users.length);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const totalragisterations = async () => {
     try {
@@ -62,6 +76,17 @@ function Dashboard() {
       );
       console.log(response, "pending");
       setPendingUsers(response.data.users.length);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const gettodaysregisterations = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/user/gettodaysregisterations`
+      );
+      console.log(response, "todays");
     } catch (error) {
       console.error(error);
     }
@@ -199,6 +224,12 @@ function Dashboard() {
                 fontWeight="bold"
               >
                 Cancel User
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {cancelUsers}
               </Text>
             </Card>
           </Link>
