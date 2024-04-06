@@ -8,47 +8,65 @@ import { Flex } from "@chakra-ui/layout";
 
 function Package() {
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const columns = [
     {
-      name: "Plan Name",
-      selector: (row) => row.planName,
+      name: "Package Name",
+      selector: (row) => row.packagename,
       sortable: true,
     },
     {
       name: "No. of Forms",
-      selector: (row) => row.numberOfForms,
+      selector: (row) => row.noofFroms,
       sortable: true,
     },
     {
       name: "Plan Duration",
-      selector: (row) => row.planDuration,
+      selector: (row) => row.days + " days",
       sortable: true,
     },
   ];
 
-  const dummyData = [
-    {
-      id: 1,
-      planName: "Basic Plan",
-      numberOfForms: 10,
-      planDuration: "1 month",
-    },
-    {
-      id: 2,
-      planName: "Premium Plan",
-      numberOfForms: 20,
-      planDuration: "3 months",
-    },
-    {
-      id: 3,
-      planName: "Enterprise Plan",
-      numberOfForms: 50,
-      planDuration: "6 months",
-    },
-  ];
+  const getallpackages = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/package/getallpackages",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application",
+          },
+        }
+      );
+      const res = await response.json();
+      setData(res.allpackages);
+      setFilteredData(res.allpackages); // Initialize filteredData with all packages
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getallpackages();
+  }, []);
+
+  useEffect(() => {
+    if (!search) {
+      // If search query is empty, show all data
+      setFilteredData(data);
+    } else {
+      // Filter data based on search query
+      const filteredResults = data.filter((item) =>
+        Object.values(item).some((value) =>
+          value.toString().toLowerCase().includes(search.toLowerCase())
+        )
+      );
+      setFilteredData(filteredResults);
+    }
+  }, [search, data]);
 
   return (
     <>
@@ -63,7 +81,7 @@ function Package() {
         <Box width={{ base: "90vw", md: "70vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
             <Text fontSize="2xl" fontWeight="bold">
-              Registrations
+              Packages
             </Text>
           </Center>
           {loading ? (
@@ -77,7 +95,7 @@ function Package() {
           ) : (
             <DataTable
               columns={columns}
-              data={dummyData}
+              data={filteredData} // Display filtered data
               pagination
               highlightOnHover
               responsive
