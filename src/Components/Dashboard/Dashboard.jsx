@@ -115,7 +115,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
@@ -156,7 +156,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
@@ -200,7 +200,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
@@ -241,7 +241,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
@@ -285,7 +285,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
@@ -326,7 +326,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
@@ -364,7 +364,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
@@ -399,7 +399,7 @@ function Dashboard() {
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/f" }}>
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="10rem"
