@@ -16,7 +16,6 @@ import upcomingImage from "../../../public/upcoming.svg";
 import lostLeadsIcon from "../../../public/lostLeads.svg";
 
 function Dashboard() {
-  const apiUrl = import.meta.env.VITE_APP_API_URL;
   const [data, setData] = useState(0);
   const [activeUsers, setActive] = useState(0);
   const [registerUsers, setRegisterUsers] = useState(0);
