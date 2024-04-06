@@ -11,25 +11,21 @@ import {
 
 function AddPackage() {
   const { register, handleSubmit } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data); // You can handle form submission logic here
-  };
   const toast = useToast();
-  const packagename = useRef();
-  const noOfForms = useRef();
-  const days = useRef();
-  console.log(packagename, "adfsaf");
+
+  const packagename = useRef(null); // Initialize with null
+  const noOfForms = useRef(null); // Initialize with null
+  const days = useRef(null); // Initialize with null
 
   const handlesubmitpackage = async () => {
     try {
+      console.log("inside functions");
       console.log(
+        "values",
         packagename.current.value,
         noOfForms.current.value,
         days.current.value
       );
-
-      console.log("clicked");
       const response = await fetch(
         "http://localhost:5000/api/package/addpackage",
         {
@@ -46,68 +42,77 @@ function AddPackage() {
       );
       const responseData = await response.json();
       console.log(responseData);
-      // if (responseData.isAdded) {
-      //   toast({
-      //     title: "Success",
-      //     description: "Client added successfully",
-      //     status: "success",
-      //     duration: 3000,
-      //     isClosable: true,
-      //     position: "top",
-      //   });
-      // } else {
-      //   toast({
-      //     title: "Error",
-      //     description: "Client not added",
-      //     status: "error",
-      //     duration: 3000,
-      //     isClosable: true,
-      //     position: "top",
-      //   });
-      // }
+      if (responseData.isAdded) {
+        toast({
+          title: "Success",
+          description: "Package added successfully",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Package not added",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Client not added",
+        description: "Package not added",
         status: "error",
         duration: 3000,
         isClosable: true,
         position: "top",
       });
-      console.log(error);
+      console.log(error.message);
     }
   };
 
+  const onSubmit = (data) => {
+    console.log(data); // You can handle form submission logic here
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <VStack spacing={4}>
-        <FormControl>
-          <FormLabel htmlFor="packageName">Package Name</FormLabel>
-          <Input
-            ref={packagename}
-            type="text"
-            id="packageName"
-            {...register("packageName")}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="noOfForms">No Of Forms</FormLabel>
-          <Input
-            ref={noOfForms}
-            type="number"
-            id="noOfForms"
-            {...register("noOfForms")}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="days">Days</FormLabel>
-          <Input ref={days} type="number" id="days" {...register("days")} />
-        </FormControl>
-        <Button onClick={handlesubmitpackage} type="submit">
-          Add Package
-        </Button>
-      </VStack>
-    </form>
+    // <form onSubmit={handleSubmit(onSubmit)}>
+    <VStack spacing={4}>
+      <FormControl>
+        <FormLabel htmlFor="packageName">Package Name</FormLabel>
+        <Input
+          ref={packagename}
+          type="text"
+          // id="packageName"
+          // {...register("packageName")}
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel htmlFor="noOfForms">No Of Forms</FormLabel>
+        <Input
+          ref={noOfForms}
+          type="text"
+          // id="noOfForms"
+          // {...register("noOfForms")}
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel htmlFor="days">Days</FormLabel>
+        <Input
+          ref={days}
+          type="text"
+          // id="days"
+          // {...register("days")}
+        />
+      </FormControl>
+      <Button type="button" onClick={handlesubmitpackage}>
+        Add Package
+      </Button>
+    </VStack>
+    // </form>
   );
 }
 
