@@ -155,7 +155,7 @@ function Login() {
     <>
       <Box
         bg={"whitesmoke"}
-        boxShadow="30px 30px 30px green"
+        
         display="flex"
         flexDirection="column"
         alignItems="center"
