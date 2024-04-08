@@ -65,7 +65,7 @@ function AddEmployees() {
           position: "top",
           isClosable: true,
         });
-        navigate("/");
+        navigate("/employees");
       }
     } catch (error) {
       toast({
