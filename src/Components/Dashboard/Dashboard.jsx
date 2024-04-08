@@ -106,19 +106,24 @@ function Dashboard() {
 
   return (
     <>
-      <Flex direction={{ base: "column", md: "row" }} gap="25px">
+      <Flex 
+       ml={["2rem"]}
+      //  justifyContent={"center"}
+      width={"100%"} direction={{ base: "column", md: "row" }}>
         <Flex
+        justifyContent={["flex-startr","space-around"]}
+          width={["100%", "50%"]}
           direction={{ md: "column" }}
-          gap="25px"
-          justifyContent="center"
+       
+          // justifyContent="center"
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["400%","170%"]}
+              maxWidth="170%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"
@@ -151,15 +156,17 @@ function Dashboard() {
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent="center"
+          justifyContent={["flex-start","center"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
+            ml={["-1rem" , ""]}
+            
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["400%","170%"]}
+              maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"
@@ -191,19 +198,24 @@ function Dashboard() {
         </Flex>
       </Flex>
 
-      <Flex direction={{ base: "column", md: "row" }} gap="25px">
+      <Flex 
+       // justifyContent={"space-around"}
+    
+       width={"100%"} 
+      direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent="center"
+          width={["100%", "50%"]} 
+          justifyContent={["flex-start","space-around"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["600%","220%"]}
+              maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"
@@ -236,15 +248,15 @@ function Dashboard() {
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent="center"
+          justifyContent={["flex-start","center"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["600%","235%"]}
+              maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"
@@ -276,19 +288,22 @@ function Dashboard() {
         </Flex>
       </Flex>
 
-      <Flex direction={{ base: "column", md: "row" }} gap="25px">
+      <Flex
+         width={"100%"} 
+      direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent="center"
+          width={["100%", "50%"]} 
+          justifyContent={["flex-startr","space-around"]}
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/" }}>
+          <Link to={{ pathname: "/" }}> 
             <Card
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["520%","210%"]}
+              maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"
@@ -321,15 +336,15 @@ function Dashboard() {
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent="center"
+          justifyContent={["flex-start","center"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["400%","210%"]}
+              maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"
@@ -355,19 +370,22 @@ function Dashboard() {
         </Flex>
       </Flex>
 
-      <Flex direction={{ base: "column", md: "row" }} gap="25px">
+      <Flex
+         width={"100%"} 
+      direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
+            width={["100%", "50%"]} 
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent="center"
+          justifyContent={["flex-start","center"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["450%","225%"]}
+              maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"
@@ -394,15 +412,15 @@ function Dashboard() {
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent="center"
+          justifyContent={["flex-start","center"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth="10rem"
-              maxWidth="15rem"
+              minWidth={["450%","230%"]}
+              maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
               textAlign="center"

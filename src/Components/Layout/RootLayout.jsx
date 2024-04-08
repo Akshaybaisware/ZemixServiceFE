@@ -14,7 +14,11 @@ function RootLayout() {
       </Box>
 
       <Flex flexGrow={1}>
-        <Box bg={"#f5f5f5"} flexBasis={{ base: "4770%", md: "80%" }}>
+        <Box
+
+        // ml={["0rem" , "2rem"]}
+        mt={["13%" , "10rem"]}
+        bg={"white"} flexBasis={{ base: "100%", md: "100%" }}>
           <Dashboard />
         </Box>
       </Flex>
