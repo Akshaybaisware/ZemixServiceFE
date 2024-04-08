@@ -6,6 +6,7 @@ import { Button } from "@chakra-ui/button";
 import { Link } from "react-router-dom";
 import { Flex } from "@chakra-ui/layout";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import { FaPencilAlt } from "react-icons/fa";
@@ -21,6 +22,8 @@ function Registeraion() {
 
   const icons = [FaPencilAlt, TfiReload, FaDownload, FaFile, RiDeleteBin5Fill];
   const navigate = useNavigate();
+
+  const toast = useToast();
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -50,14 +53,69 @@ function Registeraion() {
     )
   );
 
+  const deleteclientinfo = async (id) => {
+    try {
+      const response = await axios.delete(
+        "http://localhost:5000/api/user/deleteclient",
+        {
+          data: {
+            id: id,
+          },
+        }
+      );
+      console.log(response, "deleted response");
+      setFilter(filter.filter((item) => item._id !== id));
+      if (response.status) {
+        toast({
+          title: "Deleted",
+          description: "Client Deleted Successfully",
+          status: "success",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Client Not Deleted",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
+      console.log(error);
+    }
+  };
+
   const handleIconClick = (rowData, iconIndex) => {
     // Perform actions based on rowData and iconIndex
     console.log("Clicked on icon:", iconIndex);
     console.log("Row data:", rowData);
 
-    navigate("/editclient", {
-      state: { data: rowData },
-    });
+    if (iconIndex === 0) {
+      navigate("/editclient", {
+        state: { data: rowData },
+      });
+    }
+    if (iconIndex === 1) {
+      navigate("/", {
+        state: { data: rowData },
+      });
+    }
+    if (iconIndex === 2) {
+      navigate("/", {
+        state: { data: rowData },
+      });
+    }
+    if (iconIndex === 3) {
+      navigate("/", {
+        state: { data: rowData },
+      });
+    }
+    if (iconIndex === 4) {
+      deleteclientinfo(rowData._id);
+    }
   };
 
   const columns = [
@@ -79,6 +137,11 @@ function Registeraion() {
     {
       name: "Address",
       selector: (row) => row.address,
+      sortable: true,
+    },
+    {
+      name: "Registeration Date",
+      selector: (row) => row.registeratonDate?.slice(0, 10),
       sortable: true,
     },
     {
