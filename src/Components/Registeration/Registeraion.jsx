@@ -122,6 +122,33 @@ function Registeraion() {
     }
   };
 
+  const handledownload = async (id) => {
+    try {
+      // const response = await axios.get(
+      //   `http://localhost:5000/api/user/downloadfile/${id}`,
+      //   { responseType: "blob" }
+      // );
+      // console.log(response, "download response");
+      // const url = window.URL.createObjectURL(new Blob([response.data]));
+      // const link = document.createElement("a");
+      // link.href = url;
+      // link.setAttribute("download", "file.pdf");
+      // document.body.appendChild(link);
+      // link.click();
+
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "Error",
+        description: "File Not Downloaded",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
+    }
+  };
+
   const handleIconClick = (rowData, iconIndex) => {
     // Perform actions based on rowData and iconIndex
     console.log("Clicked on icon:", iconIndex);
@@ -136,9 +163,7 @@ function Registeraion() {
       emailsending(rowData.email);
     }
     if (iconIndex === 2) {
-      navigate("/", {
-        state: { data: rowData },
-      });
+      handledownload(rowData._id);
     }
     if (iconIndex === 3) {
       navigate("/", {
