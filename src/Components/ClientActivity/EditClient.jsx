@@ -58,7 +58,7 @@ const EditClientComponent = () => {
             <Input
               type="text"
               name="userName"
-              value={userData.name}
+              value={userData.userName}
               onChange={handleChange}
               placeholder="User Name"
             />

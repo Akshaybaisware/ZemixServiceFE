@@ -61,7 +61,7 @@ function AddClient() {
       } else {
         toast({
           title: "Error",
-          description: "Client not added",
+          description: "Client Alredy Exists",
           status: "error",
           duration: 3000,
           isClosable: true,
