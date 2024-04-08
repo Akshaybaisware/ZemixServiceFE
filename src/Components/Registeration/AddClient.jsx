@@ -7,6 +7,7 @@ import { Select } from "@chakra-ui/select";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
 // import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 function useCustomHistory() {
   // const history = useHistory();
@@ -29,6 +30,7 @@ function AddClient() {
 
   const toast = useToast();
   const { redirectTo } = useCustomHistory();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
@@ -52,8 +54,10 @@ function AddClient() {
 
           isClosable: true,
         });
+
         // Redirect to "/"
-        redirectTo("/");
+        navigate("/registeration");
+        // redirectTo("/registeration");
       } else {
         toast({
           title: "Error",

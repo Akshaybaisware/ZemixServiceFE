@@ -612,7 +612,7 @@ function Navbar() {
               <Box fontSize={["1.5rem"]}>QC Report</Box>
             </Link>
 
-            <Link to="/recovery">
+            <Link to="/">
               <Box fontSize={["1.5rem"]}>Recovery</Box>
             </Link>
 
@@ -620,7 +620,7 @@ function Navbar() {
               <Box fontSize={["1.5rem"]}>Employee</Box>
             </Link>
 
-            <Link to="/systemusers">
+            <Link to="/">
               <Box fontSize={["1.5rem"]}>System Users</Box>
             </Link>
           </Flex>

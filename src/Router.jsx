@@ -26,6 +26,7 @@ import UserNavbar from "./Components/UserPage/UserNavbar";
 import UserDashboard from "./Components/UserPage/UserDashboard";
 import EditClientComponent from "./Components/ClientActivity/EditClient";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import UserLogin from "./Components/Login/UserLogin";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/login" element={<Login />} />
+      <Route path="/userlogin" element={<UserLogin />} />
 
       <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
         <Route index element={<ProtectedRoute Component={Dashboard} />} />
