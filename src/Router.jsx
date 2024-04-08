@@ -26,6 +26,7 @@ import EmployeesTable from "./Components/Employees/EmployeesTable";
 import AddEmployees from "./Components/Employees/AddEmployees";
 import UserNavbar from "./Components/UserPage/UserNavbar";
 import UserDashboard from "./Components/UserPage/UserDashboard";
+import EditClientComponent from "./Components/ClientActivity/EditClient";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -87,7 +88,7 @@ const router = createBrowserRouter(
       />
       <Route
         path="/editclient"
-        element={<ProtectedRoute Component={EditClient} />}
+        element={<ProtectedRoute Component={EditClientComponent} />}
       />
     </Route>
   )
