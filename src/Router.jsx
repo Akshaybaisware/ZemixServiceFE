@@ -24,6 +24,7 @@ import AddPackage from "./Components/Registeration/AddPackage";
 import BlockedUserTable from "./Components/User/BlockedUserTable";
 import EmployeesTable from "./Components/Employees/EmployeesTable";
 import AddEmployees from "./Components/Employees/AddEmployees";
+import UserNavbar from "./Components/UserPage/UserNavbar";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter(
       <Route
         path="/forgetpassword"
         element={<ProtectedRoute Component={ForgetPassword} />}
+      />
+       <Route
+        path="/usernavbar"
+        element={<ProtectedRoute Component={UserNavbar} />}
       />
       <Route path="/qccheck" element={<ProtectedRoute Component={QcCheck} />} />
       <Route

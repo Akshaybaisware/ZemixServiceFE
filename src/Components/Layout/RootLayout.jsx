@@ -9,7 +9,7 @@ import Dashboard from "../Dashboard/Dashboard";
 function RootLayout() {
   return (
     <Flex direction="column" height="100vh">
-      <Box>
+      <Box position={"fixed"} width={"100%"} zIndex={"1"}>
         <Navbar />
       </Box>
 
