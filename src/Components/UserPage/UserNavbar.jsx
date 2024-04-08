@@ -145,8 +145,8 @@ function UserNavbar() {
           <Box>
             <Menu>
               <MenuButton
-                as={Button}
-                bg="#E19898"
+                // as={Button}
+                bg="#183D3D"
                 size="sm"
                 cursor="pointer"
                 paddingRight="2rem"
@@ -162,55 +162,32 @@ function UserNavbar() {
               </MenuButton>
               <MenuList>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                <MenuItem onClick={handleForgetPassword}>
+                {/* <MenuItem onClick={handleForgetPassword}>
                   Forget Password
-                </MenuItem>
+                </MenuItem> */}
               </MenuList>
             </Menu>
           </Box>
           <Box height={"100%"}>
-            <Menu bg={"red"}>
+            <Menu >
               <MenuButton
                 as={Button}
-                bg="#E19898"
+                bg="white"
                 size="sm"
                 cursor="pointer"
                 borderRadius={"30%"}
               >
                 <HamburgerIcon height={6} width={6} />
               </MenuButton>
-              <MenuList height={"300%"} bg={"red"}>
+              <MenuList height={"300%"}>
                 ``
                 <MenuItem as={RouterLink} to="/">
                   Dashboard
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/registeration">
-                  Registration
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/pendingregisteration">
-                  Pending Registration
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/cancelregisteration">
-                  Cancel Registration
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/package">
-                  Package
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/blockusersss">
-                  Deactivate User
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/qccheck">
-                  QC Report
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/recovery">
-                  Recovery
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/employees">
-                  Employee
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/systemusers">
-                  System Users
-                </MenuItem>
+                <MenuItem>Current Work Load</MenuItem>
+                <MenuItem>All Forms</MenuItem>
+                <MenuItem>Saved Form</MenuItem>
+                <MenuItem>Submit Form</MenuItem>
               </MenuList>
             </Menu>
           </Box>
@@ -227,7 +204,7 @@ function UserNavbar() {
             height="100%"
           >
             <Box
-                paddingX="30px"
+              paddingX="30px"
               display={"flex"}
               justifyContent={"flex-start"}
               fontSize={["3rem"]}
@@ -254,9 +231,9 @@ function UserNavbar() {
                 </MenuButton>
                 <MenuList>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                  <MenuItem onClick={handleForgetPassword}>
+                  {/* <MenuItem onClick={handleForgetPassword}>
                     Forget Password
-                  </MenuItem>
+                  </MenuItem> */}
                 </MenuList>
               </Menu>
             </Box>
@@ -265,23 +242,19 @@ function UserNavbar() {
       )}
 
       {!isMobileView && (
-        <Box
-          p="0.5rem"
-          bg="#5C8374"
-         
-        >
+        <Box p="0.5rem" bg="#5C8374">
           <Flex
             direction={{ base: "row", md: "row" }}
-            
             paddingX="30px"
             paddingY="10px"
           >
-         
-              <Box  paddingX="30px"fontSize={["1.5rem"]}>Dashboard</Box>
+            <Box paddingX="30px" fontSize={["1.5rem"]}>
+              Dashboard
+            </Box>
 
-            <Menu  paddingX="30px">
+            <Menu paddingX="30px">
               <MenuButton
-               paddingX="30px"
+                paddingX="30px"
                 as={Box}
                 cursor="pointer"
                 onMouseOver={handleMenuHover}
@@ -292,27 +265,15 @@ function UserNavbar() {
               </MenuButton>
               {isOpen && (
                 <MenuList>
-                  <MenuItem >
-                    Current Work Load
-                  </MenuItem>
-                  <MenuItem >
-                    All Forms
-                  </MenuItem>
-                  <MenuItem >
-                    Saved Forms
-                  </MenuItem>
-                  <MenuItem >
-                    Submit Forms
-                  </MenuItem>
+                  <MenuItem>Current Work Load</MenuItem>
+                  <MenuItem>All Forms</MenuItem>
+                  <MenuItem>Saved Forms</MenuItem>
+                  <MenuItem>Submit Forms</MenuItem>
                 </MenuList>
               )}
             </Menu>
 
-        
-              <Box fontSize={["1.5rem"]}>Report</Box>
-        
-
-          
+            <Box fontSize={["1.5rem"]}>Report</Box>
           </Flex>
 
           <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
