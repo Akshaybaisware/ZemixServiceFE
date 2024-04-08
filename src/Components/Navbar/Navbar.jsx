@@ -143,7 +143,7 @@ function Navbar() {
             <MenuItem as={RouterLink} to="/cancelregisteration">
               Cancel Registration
             </MenuItem>
-            <MenuItem as={RouterLink} to="/package">
+            <MenuItem as={RouterLink} to="/addpackage">
               Package
             </MenuItem>
           </MenuList>
