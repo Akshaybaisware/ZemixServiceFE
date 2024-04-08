@@ -12,6 +12,7 @@ import {
   useToast,
   Center,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function AddEmployees() {
   const {
@@ -19,6 +20,8 @@ function AddEmployees() {
     control,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
 
   const toast = useToast();
 
@@ -62,6 +65,7 @@ function AddEmployees() {
           position: "top",
           isClosable: true,
         });
+        navigate("/");
       }
     } catch (error) {
       toast({
