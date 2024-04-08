@@ -91,7 +91,7 @@ function AddEmployees() {
                   name="name"
                   control={control}
                   defaultValue=""
-                  rules={{ required: "Name is required" }}
+                  // rules={{ required: "Name is required" }}
                   render={({ field }) => (
                     <Input
                       {...field}
@@ -114,13 +114,13 @@ function AddEmployees() {
                   name="text"
                   control={control}
                   defaultValue=""
-                  rules={{
-                    required: "Mobile is required",
-                    pattern: {
-                      value: /^\S+@\S+$/i,
-                      message: "Invalid Mobile address",
-                    },
-                  }}
+                  // rules={{
+                  //   required: "Mobile is required",
+                  //   pattern: {
+                  //     value: /^\S+@\S+$/i,
+                  //     message: "Invalid Mobile address",
+                  //   },
+                  // }}
                   render={({ field }) => (
                     <Input
                       {...field}
@@ -145,7 +145,7 @@ function AddEmployees() {
                   name="email"
                   control={control}
                   defaultValue=""
-                  rules={{ required: "email is required" }}
+                  // rules={{ required: "email is required" }}
                   render={({ field }) => (
                     <Input
                       {...field}
