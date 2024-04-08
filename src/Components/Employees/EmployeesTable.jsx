@@ -46,7 +46,7 @@ function EmployeesTable() {
       );
       const res = await response.json();
       console.log(res);
-      setdata(res.allemployee);
+      setdata(res.employee);
     } catch (error) {
       console.log(error);
     }

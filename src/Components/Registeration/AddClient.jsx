@@ -6,6 +6,19 @@ import { Input } from "@chakra-ui/input";
 import { Select } from "@chakra-ui/select";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
+// import { useHistory } from "react-router";
+
+function useCustomHistory() {
+  // const history = useHistory();
+
+  function redirectTo(path) {
+    history.push(path);
+  }
+
+  return {
+    redirectTo,
+  };
+}
 
 function AddClient() {
   const {
@@ -15,6 +28,7 @@ function AddClient() {
   } = useForm();
 
   const toast = useToast();
+  const { redirectTo } = useCustomHistory();
 
   const onSubmit = async (data) => {
     try {
@@ -38,6 +52,8 @@ function AddClient() {
 
           isClosable: true,
         });
+        // Redirect to "/"
+        redirectTo("/");
       } else {
         toast({
           title: "Error",
@@ -54,10 +70,10 @@ function AddClient() {
   };
 
   return (
-    <>
+    <VStack spacing={4} align="stretch">
       <h1>Add Client</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <VStack spacing={4}>
+        <VStack spacing={4} align="stretch">
           <FormControl>
             <FormLabel htmlFor="name">Name</FormLabel>
             <Input type="text" id="name" {...register("name")} />
@@ -96,7 +112,7 @@ function AddClient() {
           <Button type="submit">Submit</Button>
         </VStack>
       </form>
-    </>
+    </VStack>
   );
 }
 

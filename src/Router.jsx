@@ -38,7 +38,7 @@ const router = createBrowserRouter(
         path="/forgetpassword"
         element={<ProtectedRoute Component={ForgetPassword} />}
       />
-       <Route
+      <Route
         path="/usernavbar"
         element={<ProtectedRoute Component={UserNavbar} />}
       />
@@ -84,6 +84,10 @@ const router = createBrowserRouter(
       <Route
         path="/addemployees"
         element={<ProtectedRoute Component={AddEmployees} />}
+      />
+      <Route
+        path="/editclient"
+        element={<ProtectedRoute Component={EditClient} />}
       />
     </Route>
   )
