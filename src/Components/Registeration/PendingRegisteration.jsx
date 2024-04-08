@@ -62,7 +62,7 @@ function PendingRegisteration() {
         <Box width={{ base: "90vw", md: "70vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
             <Text fontSize="2xl" fontWeight="bold">
-              Registrations
+              Pending Registrations
             </Text>
           </Center>
           {loading ? (
