@@ -88,6 +88,40 @@ function Registeraion() {
     }
   };
 
+  const emailsending = async (email) => {
+    try {
+      console.log("email function");
+      const response = await axios.post(
+        "http://localhost:5000/api/user/sendconfirmmail",
+        {
+          email: email,
+        }
+      );
+      console.log(response, "email response");
+
+      if (response.status === 200) {
+        toast({
+          title: "Email Sent",
+          description: "Email Sent Successfully",
+          status: "success",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "Error",
+        description: "Email Not Sent",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
+    }
+  };
+
   const handleIconClick = (rowData, iconIndex) => {
     // Perform actions based on rowData and iconIndex
     console.log("Clicked on icon:", iconIndex);
@@ -99,9 +133,7 @@ function Registeraion() {
       });
     }
     if (iconIndex === 1) {
-      navigate("/", {
-        state: { data: rowData },
-      });
+      emailsending(rowData.email);
     }
     if (iconIndex === 2) {
       navigate("/", {
