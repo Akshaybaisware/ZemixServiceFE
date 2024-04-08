@@ -6,12 +6,21 @@ import { Button } from "@chakra-ui/button";
 import { Link } from "react-router-dom";
 import { Flex } from "@chakra-ui/layout";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import { FaPencilAlt } from "react-icons/fa";
+import { TfiReload } from "react-icons/tfi";
+import { FaDownload } from "react-icons/fa6";
+import { FaFile } from "react-icons/fa";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 function Registeraion() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(true); // Initial loading state set to true
 
+  const icons = [FaPencilAlt, TfiReload, FaDownload, FaFile, RiDeleteBin5Fill];
+  const navigate = useNavigate();
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -41,6 +50,16 @@ function Registeraion() {
     )
   );
 
+  const handleIconClick = (rowData, iconIndex) => {
+    // Perform actions based on rowData and iconIndex
+    console.log("Clicked on icon:", iconIndex);
+    console.log("Row data:", rowData);
+
+    navigate("/editclient", {
+      state: { data: rowData },
+    });
+  };
+
   const columns = [
     {
       name: "Name",
@@ -66,6 +85,30 @@ function Registeraion() {
       name: "Plan",
       selector: (row) => row.plan,
       sortable: true,
+    },
+    {
+      name: "Status",
+      selector: (row) => row.status,
+      sortable: true,
+    },
+    {
+      name: "Action",
+      cell: (row) => (
+        <Flex>
+          {icons.map((Icon, index) => (
+            <Icon
+              key={index}
+              style={{
+                fontSize: "20px",
+                color: "blue",
+                cursor: "pointer",
+                margin: "0 5px",
+              }}
+              onClick={() => handleIconClick(row, index)} // Pass row data and icon index to handleIconClick function
+            />
+          ))}
+        </Flex>
+      ),
     },
   ];
 
