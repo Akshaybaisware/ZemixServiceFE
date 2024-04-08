@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 import {
   Input,
   Center,
@@ -12,6 +13,7 @@ import {
 
 const EditClientComponent = () => {
   const location = useLocation();
+  const toast = useToast();
   const [userData, setUserData] = useState({
     userName: "",
     password: "",
@@ -43,9 +45,50 @@ const EditClientComponent = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Your submit logic here
+
+    // Extract user ID from the URL parameter
+    // console.log(rawData, "asdasds");
+    console.log(userData, "asdas");
+    const userId = userData._id;
+
+    // Send PUT request to update user details
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/user/edituser/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
+      if (response.ok) {
+        // Handle success
+        toast({
+          title: "User details updated successfully!",
+          status: "success",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+        console.log("User details updated successfully!");
+      } else {
+        // Handle error
+        toast({
+          title: "Failed to update user details",
+          status: "error",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+        console.error("Failed to update user details");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
