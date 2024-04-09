@@ -14,6 +14,7 @@ import { TfiReload } from "react-icons/tfi";
 import { FaDownload } from "react-icons/fa6";
 import { FaFile } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { BiLinkExternal } from "react-icons/bi";
 
 function Registeraion() {
   const [search, setSearch] = useState("");
@@ -21,6 +22,12 @@ function Registeraion() {
   const [loading, setLoading] = useState(true); // Initial loading state set to true
 
   const icons = [FaPencilAlt, TfiReload, FaDownload, FaFile, RiDeleteBin5Fill];
+  const iconspending = [
+    FaPencilAlt,
+    TfiReload,
+    BiLinkExternal,
+    RiDeleteBin5Fill,
+  ];
   const navigate = useNavigate();
 
   const toast = useToast();
@@ -135,7 +142,6 @@ function Registeraion() {
       // link.setAttribute("download", "file.pdf");
       // document.body.appendChild(link);
       // link.click();
-
     } catch (error) {
       console.log(error);
       toast({
@@ -153,25 +159,58 @@ function Registeraion() {
     // Perform actions based on rowData and iconIndex
     console.log("Clicked on icon:", iconIndex);
     console.log("Row data:", rowData);
+    console.log(rowData, "filteredData");
 
-    if (iconIndex === 0) {
-      navigate("/editclient", {
-        state: { data: rowData },
-      });
-    }
-    if (iconIndex === 1) {
-      emailsending(rowData.email);
-    }
-    if (iconIndex === 2) {
-      handledownload(rowData._id);
-    }
-    if (iconIndex === 3) {
-      navigate("/", {
-        state: { data: rowData },
-      });
-    }
-    if (iconIndex === 4) {
-      deleteclientinfo(rowData._id);
+    if (rowData.status === "Active") {
+      switch (iconIndex) {
+        case 0:
+          navigate("/editclient", {
+            state: { data: rowData },
+          });
+          break;
+        case 1:
+          emailsending(rowData.email);
+          break;
+        case 2:
+          handledownload(rowData._id);
+          break;
+        case 3:
+          navigate("/", {
+            state: { data: rowData },
+          });
+          break;
+        case 4:
+          deleteclientinfo(rowData._id);
+          break;
+        default:
+          // Handle default case
+          break;
+      }
+    } else if (rowData.status === "Pending") {
+      switch (iconIndex) {
+        // Add your pending logic here
+        case 0:
+          navigate("/editclient", {
+            state: { data: rowData },
+          });
+          // Perform action for the first icon
+          break;
+        case 1:
+          emailsending(rowData.email);
+          break;
+        // Perform action for the second icon
+
+        // Add cases for other icons as needed
+        case 2:
+          navigate("/");
+          break;
+        case 3:
+          deleteclientinfo(rowData._id);
+          break;
+        default:
+          // Handle default case
+          break;
+      }
     }
   };
 
@@ -215,18 +254,31 @@ function Registeraion() {
       name: "Action",
       cell: (row) => (
         <Flex>
-          {icons.map((Icon, index) => (
-            <Icon
-              key={index}
-              style={{
-                fontSize: "20px",
-                color: "blue",
-                cursor: "pointer",
-                margin: "0 5px",
-              }}
-              onClick={() => handleIconClick(row, index)} // Pass row data and icon index to handleIconClick function
-            />
-          ))}
+          {row.status === "Active"
+            ? icons.map((Icon, index) => (
+                <Icon
+                  key={index}
+                  style={{
+                    fontSize: "20px",
+                    color: "blue",
+                    cursor: "pointer",
+                    margin: "0 5px",
+                  }}
+                  onClick={() => handleIconClick(row, index)} // Pass row data and icon index to handleIconClick function
+                />
+              ))
+            : iconspending.map((Icon, index) => (
+                <Icon
+                  key={index}
+                  style={{
+                    fontSize: "20px",
+                    color: "blue",
+                    cursor: "pointer",
+                    margin: "0 5px",
+                  }}
+                  onClick={() => handleIconClick(row, index)} // Pass row data and icon index to handleIconClick function
+                />
+              ))}
         </Flex>
       ),
     },
