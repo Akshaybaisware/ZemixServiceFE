@@ -22,6 +22,7 @@ import sign from "../../assets/SIGN 6.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { usePDF } from "react-to-pdf";
+import frontpage from "../../assets/frontpage.jpg";
 
 const StampPaperView = () => {
   const { toPDF, targetRef } = usePDF({ filename: "agreement.pdf" });
@@ -202,65 +203,11 @@ const StampPaperView = () => {
             mb={{ base: "2", lg: "0" }}
             maxWidth="100%" // Added maxWidth property
           >
-            <Image src={image} alt="Description of the image" />
-          </Box>
-        </Box>
-
-        <Box display="flex" justifyContent="space-evenly">
-          <Box mb={{ base: "2", lg: "0" }}>
-            <Image
-              h={{ base: "auto", lg: "350px" }}
-              src={notri}
-              alt="Dan Abramov"
-            />
-          </Box>
-          <Box textAlign="center">
-            <Heading
-              fontSize={{ base: "1rem", md: "2rem" }}
-              mb={{ base: "2", lg: "4" }}
-            >
-              Legal Employment Contract 2023
-            </Heading>
-
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              THIS DIGITAL EMPLOYMENT CONTRACT (this "Agreement") Valid Till
-              Eleven Months From 2023-11-30 BETWEEN:
-            </Text>
-
-            <Text>
-              <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-                Zemix Services
-              </Heading>
-            </Text>
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR, RAJASTHAN
-              (RJ), INDIA(IN), 302031 of
-            </Text>
-
-            <Text>
-              <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-                The "Employer"
-              </Heading>
-            </Text>
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              OF THE FIRST PARTY{" "}
-            </Text>
-
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>-AND-</Text>
-            <Text>
-              S/O &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;...
-              <strong>(The "Employee")</strong>
-            </Text>
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              OF THE SECOND PARTY
-            </Text>
+            <Image src={frontpage} alt="Description of the image" />
           </Box>
         </Box>
 
         <Box>
-          <Heading as="h3" mb={4}>
-            Background
-          </Heading>
           <Text>
             Presently we are providing the business for form filling more
             meaningfully described in the column Scope of Work, through their
