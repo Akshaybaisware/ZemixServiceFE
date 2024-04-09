@@ -10,6 +10,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  Stack,
 } from "@chakra-ui/react";
 // import image from "./SVG STAM.svg";
 import image from "../../assets/SVG STAM.svg";
@@ -506,12 +507,18 @@ const StampPaperView = () => {
             </Table>
           </Box>
         </Box>
-        <Box boxSize="sm">
-          <Image src={LeaseAgreement} alt="Stamp" />
-        </Box>
-        <Box mt={"-10rem"} boxSize="sm">
-          <Image src={sign} alt="Stamp" />
-        </Box>
+        <Stack spacing={4} direction={["column", "row"]} mt={4}>
+          <Box boxSize="sm">
+            <Image src={LeaseAgreement} alt="Stamp" />
+
+            <Image src={sign} alt="Stamp" />
+          </Box>
+          <Box boxSize="sm" padding={"2rem"}>
+            <Input type="date" />
+            <Input type="file" />
+            <Input type="file" />
+          </Box>
+        </Stack>
       </Box>
       <Box>
         <Button
