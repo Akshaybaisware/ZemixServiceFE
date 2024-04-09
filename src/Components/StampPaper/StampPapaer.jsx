@@ -12,13 +12,13 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 // import image from "./SVG STAM.svg";
-import image from "../../Images/SVG STAM.svg";
+import image from "../../assets/SVG STAM.svg";
 import { useEffect, useState } from "react";
-import notri from "../../Images/notriimage.svg";
+import notri from "../../assets/notriimage.svg";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import LeaseAgreement from "../../Images/notri.svg";
-import sign from "../../Images/SIGN 6.svg";
+import LeaseAgreement from "../../assets/notri.svg";
+import sign from "../../assets/SIGN 6.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { usePDF } from "react-to-pdf";

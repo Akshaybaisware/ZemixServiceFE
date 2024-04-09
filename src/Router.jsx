@@ -27,6 +27,7 @@ import UserDashboard from "./Components/UserPage/UserDashboard";
 import EditClientComponent from "./Components/ClientActivity/EditClient";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserLogin from "./Components/Login/UserLogin";
+import StampPapaer from "./Components/StampPaper/StampPapaer";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -94,6 +95,11 @@ const router = createBrowserRouter(
         <Route
           path="/editclient"
           element={<ProtectedRoute Component={EditClientComponent} />}
+        />
+
+        <Route
+          path="/stamppaper"
+          element={<ProtectedRoute Component={StampPapaer} />}
         />
       </Route>
     </Route>
