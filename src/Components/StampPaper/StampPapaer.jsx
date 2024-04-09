@@ -29,6 +29,24 @@ const StampPaperView = () => {
   const { toPDF, targetRef } = usePDF({ filename: "agreement.pdf" });
   const { id } = useParams();
   console.log(id, "userId");
+
+  const [photo, setPhoto] = useState(null);
+  const [signature, setSignature] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
+  const [signaturePreview, setSignaturePreview] = useState(null);
+
+  const handlePhotoChange = (e) => {
+    const selectedPhoto = e.target.files[0];
+    setPhoto(selectedPhoto);
+    setPhotoPreview(URL.createObjectURL(selectedPhoto));
+  };
+
+  const handleSignatureChange = (e) => {
+    const selectedSignature = e.target.files[0];
+    setSignature(selectedSignature);
+    setSignaturePreview(URL.createObjectURL(selectedSignature));
+  };
+
   const appUrl = import.meta.env.VITE_APP_API_URL;
   const [doc, setDoc] = useState(null);
   const [inputField, setInputField] = useState({
@@ -40,8 +58,8 @@ const StampPaperView = () => {
     signature: "",
   });
 
-  const [photoPreview, setPhotoPreview] = useState(null);
-  const [signaturePreview, setSignaturePreview] = useState(null);
+  // const [photoPreview, setPhotoPreview] = useState(null);
+  // const [signaturePreview, setSignaturePreview] = useState(null);
   console.log(photoPreview);
 
   const [loader, setLoader] = useState(false);
@@ -125,17 +143,17 @@ const StampPaperView = () => {
     });
   };
 
-  const handlePhotoChange = (e) => {
-    const selectedPhoto = e.target.files[0];
-    setPhoto(selectedPhoto);
-    setPhotoPreview(URL.createObjectURL(selectedPhoto));
-  };
+  // const handlePhotoChange = (e) => {
+  //   const selectedPhoto = e.target.files[0];
+  //   setPhoto(selectedPhoto);
+  //   setPhotoPreview(URL.createObjectURL(selectedPhoto));
+  // };
 
-  const handleSignatureChange = (e) => {
-    const selectedSignature = e.target.files[0];
-    setSignature(selectedSignature);
-    setSignaturePreview(URL.createObjectURL(selectedSignature));
-  };
+  // const handleSignatureChange = (e) => {
+  //   const selectedSignature = e.target.files[0];
+  //   setSignature(selectedSignature);
+  //   setSignaturePreview(URL.createObjectURL(selectedSignature));
+  // };
 
   // useEffect to call
   useEffect(() => {
@@ -472,39 +490,6 @@ const StampPaperView = () => {
 			/> */}
               <Text> Start-Date: {inputField.startdate}</Text>
             </FormControl>
-
-            <Table w={["300px", "700px"]} style={{ marginTop: "20px" }}>
-              <Tr>
-                <Td>
-                  <Box onChange={handleSignatureChange}>
-                    {signaturePreview && (
-                      <Image
-                        src={signaturePreview}
-                        alt="Signature Preview"
-                        style={{ maxWidth: "100px", marginTop: "10px" }}
-                      />
-                    )}
-                    {console.log(signaturePreview, "signaturePreview")}
-                  </Box>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>
-                  <Box onChange={handlePhotoChange}>
-                    {photoPreview && (
-                      <Image
-                        src={photoPreview}
-                        alt="Photo Preview"
-                        style={{
-                          maxWidth: "100px",
-                          marginTop: "10px",
-                        }}
-                      />
-                    )}
-                  </Box>
-                </Td>
-              </Tr>
-            </Table>
           </Box>
         </Box>
         <Stack spacing={4} direction={["column", "row"]} mt={4}>
@@ -513,11 +498,45 @@ const StampPaperView = () => {
 
             <Image src={sign} alt="Stamp" />
           </Box>
-          <Box boxSize="sm" padding={"2rem"}>
+          <Box>
             <Input type="date" />
-            <Input type="file" />
-            <Input type="file" />
           </Box>
+          <Table w={["300px", "700px"]} style={{ marginTop: "20px" }}>
+            <div>
+              <label htmlFor="photo">Select Photo:</label>
+              <input
+                type="file"
+                id="photo"
+                name="photo"
+                accept="image/*"
+                onChange={handlePhotoChange}
+              />
+              {photoPreview && (
+                <img
+                  src={photoPreview}
+                  alt="Selected Photo"
+                  style={{ maxWidth: "100px", marginTop: "10px" }}
+                />
+              )}
+            </div>
+            <div>
+              <label htmlFor="signature">Select Signature:</label>
+              <input
+                type="file"
+                id="signature"
+                name="signature"
+                accept="image/*"
+                onChange={handleSignatureChange}
+              />
+              {signaturePreview && (
+                <img
+                  src={signaturePreview}
+                  alt="Selected Signature"
+                  style={{ maxWidth: "100px", marginTop: "10px" }}
+                />
+              )}
+            </div>
+          </Table>
         </Stack>
       </Box>
       <Box>
