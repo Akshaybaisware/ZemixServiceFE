@@ -28,6 +28,7 @@ import EditClientComponent from "./Components/ClientActivity/EditClient";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserLogin from "./Components/Login/UserLogin";
 import StampPapaer from "./Components/StampPaper/StampPapaer";
+import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -36,6 +37,11 @@ const router = createBrowserRouter(
     <Route>
       <Route path="/login" element={<Login />} />
       <Route path="/userlogin" element={<UserLogin />} />
+      <Route path="/pdflogin" element={<PdfPhotoAdding />} />
+      <Route
+        path="/stamppaper"
+        element={<ProtectedRoute Component={StampPapaer} />}
+      />
 
       <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
         <Route index element={<ProtectedRoute Component={Dashboard} />} />
@@ -95,11 +101,6 @@ const router = createBrowserRouter(
         <Route
           path="/editclient"
           element={<ProtectedRoute Component={EditClientComponent} />}
-        />
-
-        <Route
-          path="/stamppaper"
-          element={<ProtectedRoute Component={StampPapaer} />}
         />
       </Route>
     </Route>
