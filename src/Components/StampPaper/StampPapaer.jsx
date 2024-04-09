@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 // import image from "./SVG STAM.svg";
 import image from "../../assets/SVG STAM.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import notri from "../../assets/notriimage.svg";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -34,6 +34,9 @@ const StampPaperView = () => {
   const [signature, setSignature] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [signaturePreview, setSignaturePreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const inputdate = useRef(null);
 
   const handlePhotoChange = (e) => {
     const selectedPhoto = e.target.files[0];
@@ -58,6 +61,43 @@ const StampPaperView = () => {
     signature: "",
   });
 
+  const handleSubmitpdfdata = async () => {
+    setLoading(true);
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("email", "kaustubhra135@gmail.com");
+      formDataToSend.append("startdate", inputdate.current.value);
+      formDataToSend.append("photo", photo);
+      formDataToSend.append("signature", signature);
+
+      const response = await axios.post(
+        "http://localhost:5000/api/user/add_terms",
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response);
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Error submitting form. Please try again.");
+    }
+    setLoading(false);
+  };
+
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  const calculateMaxDate = () => {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    return tomorrow.toISOString().split("T")[0];
+  };
   // const [photoPreview, setPhotoPreview] = useState(null);
   // const [signaturePreview, setSignaturePreview] = useState(null);
   console.log(photoPreview);
@@ -499,7 +539,12 @@ const StampPaperView = () => {
             <Image src={sign} alt="Stamp" />
           </Box>
           <Box>
-            <Input type="date" />
+            <Input
+              ref={inputdate}
+              type="date"
+              min={today.toISOString().split("T")[0]} // Set today as min
+              max={tomorrow.toISOString().split("T")[0]}
+            />
           </Box>
           <Table w={["300px", "700px"]} style={{ marginTop: "20px" }}>
             <div>
@@ -545,9 +590,11 @@ const StampPaperView = () => {
           mt={"-35rem"}
           bg={"lightgreen"}
           _hover={{ background: "gray", color: "white" }}
-          onClick={() => toPDF()}
+          // onClick={() => toPDF()}
+          onClick={handleSubmitpdfdata}
         >
-          Download PDFe
+          {/* Download PDFe */}
+          Submit
         </Button>
       </Box>
     </>
