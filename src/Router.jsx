@@ -30,6 +30,7 @@ import UserLogin from "./Components/Login/UserLogin";
 import StampPapaer from "./Components/StampPaper/StampPapaer";
 import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
+import ContentValidationfrom from "./Components/ContentValid/ContentValidationfrom";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -116,6 +117,7 @@ const router = createBrowserRouter(
             path="/editclient"
             element={<ProtectedRoute Component={EditClientComponent} />}
           />
+          <Route path="/writecontent" Component={ContentValidationfrom} />
         </Route>
       </Route>
     </>
