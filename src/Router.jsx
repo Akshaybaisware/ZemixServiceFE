@@ -29,6 +29,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import UserLogin from "./Components/Login/UserLogin";
 import StampPapaer from "./Components/StampPaper/StampPapaer";
 import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
+import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
         path="/stamppaper"
         element={<ProtectedRoute Component={StampPapaer} />}
       />
+      <Route path="/stamppaperdonwload" element={<DownloadStampPaper />} />
 
       <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
         <Route index element={<ProtectedRoute Component={Dashboard} />} />
