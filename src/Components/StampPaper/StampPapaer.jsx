@@ -534,7 +534,7 @@ const StampPaperView = () => {
         </Box>
         <Stack spacing={4} direction={["column", "row"]} mt={4}>
           <Box boxSize="sm">
-            <Image src={LeaseAgreement} alt="Stamp" />
+            {/* <Image src={LeaseAgreement} alt="Stamp" /> */}
 
             <Image src={sign} alt="Stamp" />
           </Box>
