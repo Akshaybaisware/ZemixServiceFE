@@ -35,81 +35,90 @@ const isAuthenticated = localStorage.getItem("token");
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/userlogin" element={<UserLogin />} />
-      <Route path="/pdflogin" element={<PdfPhotoAdding />} />
-      <Route
-        path="/stamppaper"
-        element={<ProtectedRoute Component={StampPapaer} />}
-      />
-      <Route path="/stamppaperdonwload" element={<DownloadStampPaper />} />
+    <>
+      <Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/userlogin" element={<UserLogin />} />
 
-      <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
-        <Route index element={<ProtectedRoute Component={Dashboard} />} />
+        <Route path="/pdflogin" element={<PdfPhotoAdding />} />
         <Route
-          path="/forgetpassword"
-          element={<ProtectedRoute Component={ForgetPassword} />}
+          path="/stamppaper"
+          element={<ProtectedRoute Component={StampPapaer} />}
         />
-        <Route
-          path="/usernavbar"
-          element={<ProtectedRoute Component={UserNavbar} />}
-        />
-        <Route
-          path="/userdashboard"
-          element={<ProtectedRoute Component={UserDashboard} />}
-        />
-        <Route
-          path="/qccheck"
-          element={<ProtectedRoute Component={QcCheck} />}
-        />
-        <Route
-          path="/blockuser"
-          element={<ProtectedRoute Component={BlockedUser} />}
-        />
-        <Route
-          path="/registeration"
-          element={<ProtectedRoute Component={Registeration} />}
-        />
-        <Route
-          path="/addclient"
-          element={<ProtectedRoute Component={AddClient} />}
-        />
-        <Route
-          path="/pendingregisteration"
-          element={<ProtectedRoute Component={PendingRegisteration} />}
-        />
-        <Route
-          path="/cancelregisteration"
-          element={<ProtectedRoute Component={CancelRegisteration} />}
-        />
-        <Route path="/path" element={<ProtectedRoute Component={Package} />} />
-        <Route
-          path="/addpackage"
-          element={<ProtectedRoute Component={AddPackage} />}
-        />
-        <Route
-          path="/blockusersss"
-          element={<ProtectedRoute Component={BlockedUserTable} />}
-        />
-        <Route
-          path="/employees"
-          element={<ProtectedRoute Component={EmployeesTable} />}
-        />
-        <Route
-          path="/addemployees"
-          element={<ProtectedRoute Component={AddEmployees} />}
-        />
-        <Route
-          path="/editclient"
-          element={<ProtectedRoute Component={EditClientComponent} />}
-        />
+        <Route path="/stamppaperdonwload" element={<DownloadStampPaper />} />
+
+        <Route path="/usrnavbar" element={<UserNavbar />} />
+
         <Route
           path="/userdashboard"
           element={<ProtectedRoute Component={UserDashboard} />}
         />
+
+        <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
+          <Route index element={<ProtectedRoute Component={Dashboard} />} />
+          <Route
+            path="/forgetpassword"
+            element={<ProtectedRoute Component={ForgetPassword} />}
+          />
+          <Route
+            path="/usernavbar"
+            element={<ProtectedRoute Component={UserNavbar} />}
+          />
+          <Route
+            path="/userdashboard"
+            element={<ProtectedRoute Component={UserDashboard} />}
+          />
+          <Route
+            path="/qccheck"
+            element={<ProtectedRoute Component={QcCheck} />}
+          />
+          <Route
+            path="/blockuser"
+            element={<ProtectedRoute Component={BlockedUser} />}
+          />
+          <Route
+            path="/registeration"
+            element={<ProtectedRoute Component={Registeration} />}
+          />
+          <Route
+            path="/addclient"
+            element={<ProtectedRoute Component={AddClient} />}
+          />
+          <Route
+            path="/pendingregisteration"
+            element={<ProtectedRoute Component={PendingRegisteration} />}
+          />
+          <Route
+            path="/cancelregisteration"
+            element={<ProtectedRoute Component={CancelRegisteration} />}
+          />
+          <Route
+            path="/path"
+            element={<ProtectedRoute Component={Package} />}
+          />
+          <Route
+            path="/addpackage"
+            element={<ProtectedRoute Component={AddPackage} />}
+          />
+          <Route
+            path="/blockusersss"
+            element={<ProtectedRoute Component={BlockedUserTable} />}
+          />
+          <Route
+            path="/employees"
+            element={<ProtectedRoute Component={EmployeesTable} />}
+          />
+          <Route
+            path="/addemployees"
+            element={<ProtectedRoute Component={AddEmployees} />}
+          />
+          <Route
+            path="/editclient"
+            element={<ProtectedRoute Component={EditClientComponent} />}
+          />
+        </Route>
       </Route>
-    </Route>
+    </>
   )
 );
 
