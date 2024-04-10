@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useToast, Box, Flex, Text, Input, Button } from "@chakra-ui/react";
 import axios from "axios";
 
 function ContentValidationfrom() {
   const toast = useToast();
 
+  const userId = localStorage.getItem("userId");
+
   const [apidata, setapidata] = useState();
   const [randomIndex, setRandomIndex] = useState(null); // State to store the random index
+
+  const name = useRef();
+  const mobile = useRef();
+  const address = useRef();
+  const annualRevenue = useRef();
+  const jobFunctional = useRef();
+  const pinCode = useRef();
 
   const getdatafrom = async () => {
     try {
@@ -24,12 +33,25 @@ function ContentValidationfrom() {
         position: "top",
         isClosable: true,
       });
+      console.log(error.message);
     }
   };
 
   const submitForm = async () => {
     try {
-      // Implement your form submission logic here
+      const response = await axios.post(
+        "http://localhost:5000/api/assignment/addassignment",
+        {
+          name: name.current.value,
+          phone: mobile.current.value,
+          address: address.current.value,
+          annualRevenue: annualRevenue.current.value,
+          jobFunctional: jobFunctional.current.value,
+          pinCode: pinCode.current.value,
+          userId: userId,
+        }
+      );
+      console.log(response, "mkninmiopn");
     } catch (error) {
       toast({
         title: "Error",
@@ -61,7 +83,7 @@ function ContentValidationfrom() {
       <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
         <Flex direction="column">
           <Text>Name: {apidata?.[randomIndex]?.name}</Text>
-          <Text>Mobile: {apidata?.[randomIndex]?.mobile}</Text>
+          <Text>Mobile: {apidata?.[randomIndex]?.phone}</Text>
           <Text>Address: {apidata?.[randomIndex]?.address}</Text>
           <Text>Annual Revenue: {apidata?.[randomIndex]?.annualRevenue}</Text>
           <Text>Job Functional: {apidata?.[randomIndex]?.jobFunctional}</Text>
@@ -72,17 +94,17 @@ function ContentValidationfrom() {
       <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
         <Flex direction="column">
           <Text>Name:</Text>
-          <Input />
+          <Input ref={name} />
           <Text>Mobile:</Text>
-          <Input />
+          <Input ref={mobile} />
           <Text>Address:</Text>
-          <Input />
+          <Input ref={address} />
           <Text>Annual Revenue:</Text>
-          <Input />
+          <Input ref={annualRevenue} />
           <Text>Job Functional:</Text>
-          <Input />
+          <Input ref={jobFunctional} />
           <Text>Pin Code:</Text>
-          <Input />
+          <Input ref={pinCode} />
 
           <Button onClick={submitForm}>Submit</Button>
         </Flex>
