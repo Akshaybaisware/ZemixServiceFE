@@ -60,6 +60,7 @@ function Registeraion() {
     )
   );
 
+
   const deleteclientinfo = async (id) => {
     try {
       const response = await axios.delete(

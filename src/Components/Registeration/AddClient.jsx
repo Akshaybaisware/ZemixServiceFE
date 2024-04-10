@@ -32,6 +32,29 @@ function AddClient() {
   const { redirectTo } = useCustomHistory();
   const navigate = useNavigate();
 
+  const emailafterregisteration = async (id) => {
+    try {
+      console.log(email);
+      const response = await axios.post(
+        "http://localhost:5000/api/user/senduserinfo",
+        {
+          email: email,
+          userId: id,
+        }
+      );
+      console.log(response, "dassdwedaewd");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
+    }
+  };
+
   const onSubmit = async (data) => {
     try {
       console.log(data);
@@ -43,7 +66,7 @@ function AddClient() {
         body: JSON.stringify(data),
       });
       const responseData = await response.json();
-      console.log(responseData);
+      console.log(responseData, "after egitser");
       if (responseData.isAdded) {
         toast({
           title: "Success",
@@ -54,7 +77,7 @@ function AddClient() {
 
           isClosable: true,
         });
-
+        emailafterregisteration(responseData._id);
         // Redirect to "/"
         navigate("/registeration");
         // redirectTo("/registeration");

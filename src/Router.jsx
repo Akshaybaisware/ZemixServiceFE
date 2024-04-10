@@ -104,6 +104,10 @@ const router = createBrowserRouter(
           path="/editclient"
           element={<ProtectedRoute Component={EditClientComponent} />}
         />
+        <Route
+          path="/userdashboard"
+          element={<ProtectedRoute Component={UserDashboard} />}
+        />
       </Route>
     </Route>
   )
