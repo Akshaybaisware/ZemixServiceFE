@@ -65,7 +65,7 @@ const StampPaperView = () => {
     setLoading(true);
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("email", "kaustubhra135@gmail.com");
+      formDataToSend.append("email", "kaustubhraut135@gmail.com");
       formDataToSend.append("startdate", inputdate.current.value);
       formDataToSend.append("photo", photo);
       formDataToSend.append("signature", signature);
