@@ -31,6 +31,7 @@ import StampPapaer from "./Components/StampPaper/StampPapaer";
 import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
 import ContentValidationfrom from "./Components/ContentValid/ContentValidationfrom";
+import GetReportofUser from "./Components/Report/GetReportofUser";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -118,6 +119,7 @@ const router = createBrowserRouter(
             element={<ProtectedRoute Component={EditClientComponent} />}
           />
           <Route path="/writecontent" Component={ContentValidationfrom} />
+          <Route path="/userreport" Component={GetReportofUser} />
         </Route>
       </Route>
     </>
