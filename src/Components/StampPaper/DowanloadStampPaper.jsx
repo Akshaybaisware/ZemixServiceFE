@@ -76,18 +76,6 @@ const StampPaperView = () => {
 
       doc.addImage(imgData, "PNG", imgX, imgY, imgWidth, imgHeight);
 
-      // const photoX = marginLeft + 420;
-      // const photoY = doc.internal.pageSize.getHeight() - 480;
-      // if (photoPreview) {
-      //     doc.addImage(photoPreview, "JPEG", photoX, photoY, 35, 75);
-      // }
-
-      // const signatureX = marginLeft + 480;
-      // const signatureY = doc.internal.pageSize.getHeight() - 480;
-      // if (signaturePreview) {
-      //     doc.addImage(signaturePreview, "PNG", signatureX, signatureY, 35, 75);
-      // }
-
       const photoWidth = 0.05 * contentWidth;
       const photoHeight = photoWidth / aspectRatio / 3;
       const photoX = marginLeft + 0.2 * contentWidth;
@@ -130,14 +118,8 @@ const StampPaperView = () => {
         );
       }
 
-      // Save the PDF and open it in a new tab
       doc.save("Agreement.pdf");
       setLoader(false);
-
-      // Open the PDF in a new tab
-      // const pdfBlob = doc.output('blob');
-      // const pdfUrl = URL.createObjectURL(pdfBlob);
-      // window.open(pdfUrl, '_blank');
     });
   };
 
@@ -224,47 +206,6 @@ const StampPaperView = () => {
           </Box>
         </Box>
 
-        {/* <Box display="flex" justifyContent="space-evenly">
-			<Box mb={{ base: "2", lg: "0" }}>
-			  <Image
-				w={{ base: "100%", lg: "150px" }}
-				h={{ base: "auto", lg: "350px" }}
-				src={notri}
-				alt="Dan Abramov"
-			  />
-			</Box>
-			<Box textAlign="center">
-			  <Heading as="h2" mb={{ base: "2", lg: "4" }}>
-				Legal Employment Contract 2023
-			  </Heading>
-
-			  <Text>
-				THIS DIGITAL EMPLOYMENT CONTRACT (this "Agreement") Valid Till
-				Eleven Months From 2023-11-30 BETWEEN:
-			  </Text>
-
-			  <Text fontSize={"1.5rem"}>
-				<strong>Zemex Service of </strong>
-			  </Text>
-			  <Text>
-				KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR, RAJASTHAN
-				(RJ), INDIA(IN), 302031 of
-			  </Text>
-
-			  <Text fontSize={"1.5rem"}>
-				<strong>(The "Employer")</strong>
-			  </Text>
-
-			  <Text ml={{ base: "0", lg: "10%" }}>OF THE FIRST PARTY </Text>
-
-			  <Text>-AND-</Text>
-			  <Text>
-				S/O &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;...
-				<strong>(The "Employee")</strong>
-			  </Text>
-			  <Text ml={{ base: "0", lg: "10%" }}>OF THE SECOND PARTY</Text>
-			</Box>
-		  </Box> */}
         <Box display="flex" justifyContent="space-evenly">
           <Box mb={{ base: "2", lg: "0" }}>
             <Image
@@ -296,9 +237,6 @@ const StampPaperView = () => {
               (RJ), INDIA(IN), 302031 of
             </Text>
 
-            {/* <Text fontSize={"1.5rem"}>
-				<strong>(The "Employer")</strong>
-			  </Text> */}
             <Text>
               <Heading fontSize={{ base: "1rem", md: "2rem" }}>
                 The "Employer"
@@ -711,21 +649,10 @@ const StampPaperView = () => {
         </Box>
         <Box display="flex" justifyContent="space-between">
           <Box>
-            {/* <FormControl w={["350px", "400px"]}>
-				<Text>Name : {inputField.name}</Text>
-
-			  </FormControl> */}
             <FormControl w={["350px", "400px"]}>
               <Text> Email: {inputField.email}</Text>
             </FormControl>
             <FormControl w={["350px", "400px"]}>
-              {/* <Input
-			  value={date}
-			  onChange={(e) =>setDate(e.target.value)}
-			  type="date"
-			  placeholder="Enter the Date"
-			  _hover={{ borderColor: "teal.500" }}
-			/> */}
               <Text> Start-Date: {inputField.startdate}</Text>
             </FormControl>
 
@@ -764,13 +691,6 @@ const StampPaperView = () => {
             <Button
               marginBottom={"1rem"}
               onClick={() => downlodePDF(photoPreview, signaturePreview)}
-              // onClick={() => {
-              //   console.log("clicked");
-              //   window.open(
-              //     // useData?.employee?.bankDetailPhoto,
-              //     "_blank"
-              //   );
-              // }}
               disabled={!(loader === false)}
               mt={"1rem"}
               ml={"1.6rem"}
