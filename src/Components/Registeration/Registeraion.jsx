@@ -20,6 +20,9 @@ function Registeraion() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(true); // Initial loading state set to true
+  const [todaysassignmentcount, settodaysassignmentcount] = useState(0);
+
+  const [todaysassignment, settodaysassignment] = useState(0);
 
   const icons = [FaPencilAlt, TfiReload, FaDownload, FaFile, RiDeleteBin5Fill];
   const iconspending = [
@@ -286,12 +289,40 @@ function Registeraion() {
       ),
     },
   ];
+  const gettodaysassignmentcount = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/assignment/gettodaysassignmnet"
+      );
+      console.log(response.data);
+      settodaysassignmentcount(response.data.response.length);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
+  const gettodaysdoneassignment = async () => {
+    try {
+      const reposne = await axios.get(
+        "http://localhost:5000/api/assignment/todaysdoneassignment"
+      );
+      //console.log(response);
+      settodaysassignment(response.data.response.length);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    gettodaysassignmentcount();
+    gettodaysdoneassignment();
+    console.log(todaysassignmentcount, "todaysassignmentcount");
+  }, []);
   return (
     <>
       <Flex alignItems="center" justify="space-between">
         <Text fontSize="md">
-          All Users 2024-04-04 10:14:54pm || Today Total 22 | Today Done 22
+          All Users 2024-04-04 10:14:54pm || Today Total{" "}
+          {`${todaysassignmentcount}`} | Today Done {`${todaysassignment}`}
         </Text>
 
         <Link to="/addclient">
