@@ -32,6 +32,7 @@ import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
 import ContentValidationfrom from "./Components/ContentValid/ContentValidationfrom";
 import GetReportofUser from "./Components/Report/GetReportofUser";
+import QcReport from "./Components/QcCheck/QcReport";
 
 const isAuthenticated = localStorage.getItem("token");
 
@@ -121,6 +122,10 @@ const router = createBrowserRouter(
           <Route path="/writecontent" Component={ContentValidationfrom} />
           <Route path="/userreport" Component={GetReportofUser} />
           <Route path="/downloadreport" Component={DownloadStampPaper} />
+          <Route
+            path="/qcreport"
+            element={<ProtectedRoute Component={QcReport} />}
+          />
         </Route>
       </Route>
     </>
