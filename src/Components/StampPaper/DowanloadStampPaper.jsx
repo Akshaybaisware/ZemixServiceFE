@@ -498,50 +498,6 @@ const StampPaperView = () => {
 
             <Image src={sign} alt="Stamp" />
           </Box>
-          {/* <Box>
-            <Input
-              ref={inputdate}
-              type="date"
-              min={today.toISOString().split("T")[0]} // Set today as min
-              max={tomorrow.toISOString().split("T")[0]}
-            />
-          </Box> */}
-          {/* <Table w={["300px", "700px"]} style={{ marginTop: "20px" }}>
-            <div>
-              <label htmlFor="photo">Select Photo:</label>
-              <input
-                type="file"
-                id="photo"
-                name="photo"
-                accept="image/*"
-                onChange={handlePhotoChange}
-              />
-              {photoPreview && (
-                <img
-                  src={photoPreview}
-                  alt="Selected Photo"
-                  style={{ maxWidth: "100px", marginTop: "10px" }}
-                />
-              )}
-            </div>
-            <div>
-              <label htmlFor="signature">Select Signature:</label>
-              <input
-                type="file"
-                id="signature"
-                name="signature"
-                accept="image/*"
-                onChange={handleSignatureChange}
-              />
-              {signaturePreview && (
-                <img
-                  src={signaturePreview}
-                  alt="Selected Signature"
-                  style={{ maxWidth: "100px", marginTop: "10px" }}
-                />
-              )}
-            </div>
-          </Table> */}
         </Stack>
       </Box>
       <Box mt={"-10rem"} boxSize="sm">
