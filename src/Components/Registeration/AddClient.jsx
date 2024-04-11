@@ -6,6 +6,7 @@ import { Input } from "@chakra-ui/input";
 import { Select } from "@chakra-ui/select";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
+import axios from "axios";
 // import { useHistory } from "react-router";
 import { useNavigate } from "react-router-dom";
 
@@ -32,18 +33,19 @@ function AddClient() {
   const { redirectTo } = useCustomHistory();
   const navigate = useNavigate();
 
-  const emailafterregisteration = async (id) => {
+  const emailafterregisteration = async (email, id) => {
     try {
-      console.log(email);
+      console.log(email, id);
       const response = await axios.post(
-        "http://localhost:5000/api/user/senduserinfo",
+        "http://localhost:5000/api/user/sendconfirmmail",
         {
           email: email,
-          userId: id,
+          //userID: id,
         }
       );
       console.log(response, "dassdwedaewd");
     } catch (error) {
+      console.log(error.message, "error message");
       toast({
         title: "Error",
         description: "Something went wrong",
@@ -77,7 +79,7 @@ function AddClient() {
 
           isClosable: true,
         });
-        emailafterregisteration(responseData._id);
+        emailafterregisteration(responseData.client.email);
         // Redirect to "/"
         navigate("/registeration");
         // redirectTo("/registeration");
@@ -101,33 +103,38 @@ function AddClient() {
       <h1>Add Client</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <VStack spacing={4} align="stretch">
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel htmlFor="name">Name</FormLabel>
-            <Input type="text" id="name" {...register("name")} />
+            <Input isRequired type="text" id="name" {...register("name")} />
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel htmlFor="address">Address</FormLabel>
-            <Input type="text" id="address" {...register("address")} />
+            <Input
+              isRequired
+              type="text"
+              id="address"
+              {...register("address")}
+            />
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Input type="email" id="email" {...register("email")} />
+            <Input isRequired type="email" id="email" {...register("email")} />
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel htmlFor="mobile">Mobile No</FormLabel>
-            <Input type="tel" id="mobile" {...register("mobile")} />
+            <Input isRequired type="tel" id="mobile" {...register("mobile")} />
           </FormControl>
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel htmlFor="plan">Plan</FormLabel>
             <Select id="plan" {...register("plan")}>
               <option value="-">Plan</option>
-              <option value="540">540</option>
+              <option value="480">480</option>
             </Select>
           </FormControl>
-          <FormControl>
-            <FormLabel htmlFor="selectPlan">Select Plan</FormLabel>
+          <FormControl isRequired>
+            <FormLabel htmlFor="selectPlan">Caller</FormLabel>
             <Select id="selectPlan" {...register("selectPlan")}>
-              <option value="-">Select Plan</option>
+              <option value="-">Caller</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

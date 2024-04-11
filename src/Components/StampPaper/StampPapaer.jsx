@@ -24,9 +24,11 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { usePDF } from "react-to-pdf";
 import frontpage from "../../assets/frontpage.jpg";
+import { useNavigate } from "react-router-dom";
 // import cloudinary from "cloudinary";
 
 const StampPaperView = () => {
+  const navigate = useNavigate();
   const { toPDF, targetRef } = usePDF({ filename: "agreement.pdf" });
   const { id } = useParams();
   console.log(id, "userId");
@@ -103,7 +105,7 @@ const StampPaperView = () => {
     setLoading(true);
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("email", "kaustubhr2001@gmail.com");
+      formDataToSend.append("email", "kaustubhra135@gmail.com");
       formDataToSend.append("startdate", inputdate.current.value);
       formDataToSend.append("photo", photo);
       formDataToSend.append("signature", signature);
@@ -119,6 +121,7 @@ const StampPaperView = () => {
       );
       console.log(response);
       alert("Form submitted successfully!");
+      navigate("/userlogin");
       // storePDFToCloudinary();
     } catch (error) {
       console.error("Error submitting form:", error);

@@ -35,6 +35,7 @@ import GetReportofUser from "./Components/Report/GetReportofUser";
 import QcReport from "./Components/QcCheck/QcReport";
 
 const isAuthenticated = localStorage.getItem("token");
+const role = localStorage.getItem("role");
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -58,74 +59,83 @@ const router = createBrowserRouter(
         />
 
         <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
-          <Route index element={<ProtectedRoute Component={Dashboard} />} />
-          <Route
-            path="/forgetpassword"
-            element={<ProtectedRoute Component={ForgetPassword} />}
-          />
-          <Route
-            path="/usernavbar"
-            element={<ProtectedRoute Component={UserNavbar} />}
-          />
-          <Route
-            path="/userdashboard"
-            element={<ProtectedRoute Component={UserDashboard} />}
-          />
-          <Route
-            path="/qccheck"
-            element={<ProtectedRoute Component={QcCheck} />}
-          />
-          <Route
-            path="/blockuser"
-            element={<ProtectedRoute Component={BlockedUser} />}
-          />
-          <Route
-            path="/registeration"
-            element={<ProtectedRoute Component={Registeration} />}
-          />
-          <Route
-            path="/addclient"
-            element={<ProtectedRoute Component={AddClient} />}
-          />
-          <Route
-            path="/pendingregisteration"
-            element={<ProtectedRoute Component={PendingRegisteration} />}
-          />
-          <Route
-            path="/cancelregisteration"
-            element={<ProtectedRoute Component={CancelRegisteration} />}
-          />
-          <Route
-            path="/path"
-            element={<ProtectedRoute Component={Package} />}
-          />
-          <Route
-            path="/addpackage"
-            element={<ProtectedRoute Component={AddPackage} />}
-          />
-          <Route
-            path="/blockusersss"
-            element={<ProtectedRoute Component={BlockedUserTable} />}
-          />
-          <Route
-            path="/employees"
-            element={<ProtectedRoute Component={EmployeesTable} />}
-          />
-          <Route
-            path="/addemployees"
-            element={<ProtectedRoute Component={AddEmployees} />}
-          />
-          <Route
-            path="/editclient"
-            element={<ProtectedRoute Component={EditClientComponent} />}
-          />
-          <Route path="/writecontent" Component={ContentValidationfrom} />
-          <Route path="/userreport" Component={GetReportofUser} />
-          <Route path="/downloadreport" Component={DownloadStampPaper} />
-          <Route
-            path="/qcreport"
-            element={<ProtectedRoute Component={QcReport} />}
-          />
+          {role === "admin" ? (
+            <>
+              <Route index element={<ProtectedRoute Component={Dashboard} />} />
+              <Route
+                path="/forgetpassword"
+                element={<ProtectedRoute Component={ForgetPassword} />}
+              />
+              <Route
+                path="/usernavbar"
+                element={<ProtectedRoute Component={UserNavbar} />}
+              />
+              <Route
+                path="/userdashboard"
+                element={<ProtectedRoute Component={UserDashboard} />}
+              />
+              <Route
+                path="/qccheck"
+                element={<ProtectedRoute Component={QcCheck} />}
+              />
+              <Route
+                path="/blockuser"
+                element={<ProtectedRoute Component={BlockedUser} />}
+              />
+              <Route
+                path="/registeration"
+                element={<ProtectedRoute Component={Registeration} />}
+              />
+              <Route
+                path="/addclient"
+                element={<ProtectedRoute Component={AddClient} />}
+              />
+              <Route
+                path="/pendingregisteration"
+                element={<ProtectedRoute Component={PendingRegisteration} />}
+              />
+              <Route
+                path="/cancelregisteration"
+                element={<ProtectedRoute Component={CancelRegisteration} />}
+              />
+              <Route
+                path="/path"
+                element={<ProtectedRoute Component={Package} />}
+              />
+              <Route
+                path="/addpackage"
+                element={<ProtectedRoute Component={AddPackage} />}
+              />
+              <Route
+                path="/blockusersss"
+                element={<ProtectedRoute Component={BlockedUserTable} />}
+              />
+              <Route
+                path="/employees"
+                element={<ProtectedRoute Component={EmployeesTable} />}
+              />
+              <Route
+                path="/addemployees"
+                element={<ProtectedRoute Component={AddEmployees} />}
+              />
+              <Route
+                path="/editclient"
+                element={<ProtectedRoute Component={EditClientComponent} />}
+              />
+              <Route path="/writecontent" Component={ContentValidationfrom} />
+              <Route path="/userreport" Component={GetReportofUser} />
+              <Route path="/downloadreport" Component={DownloadStampPaper} />
+              <Route
+                path="/qcreport"
+                element={<ProtectedRoute Component={QcReport} />}
+              />
+            </>
+          ) : (
+            <Route
+              index
+              element={<ProtectedRoute Component={UserDashboard} />}
+            />
+          )}
         </Route>
       </Route>
     </>

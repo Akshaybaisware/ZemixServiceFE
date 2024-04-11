@@ -5,11 +5,91 @@ import { Button } from "@chakra-ui/button";
 import { Link } from "react-router-dom";
 import { Flex } from "@chakra-ui/layout";
 import DataTable from "react-data-table-component";
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
+
+import { BiSolidPhoneCall } from "react-icons/bi";
+import { TbReload } from "react-icons/tb";
+import { IoIosClose } from "react-icons/io";
 
 function PendingRegisteration() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
+
+  const iconsarray = [BiSolidPhoneCall, TbReload, IoIosClose];
+  const [pendinglist, setPendinglist] = useState();
+  const emailsendingpassword = async (id) => {
+    try {
+      console.log(id, "asdasdasd");
+      const reponse = await axios.post(
+        "http://localhost:5000/api/user/senduserinfo",
+        {
+          userID: id,
+        }
+      );
+      console.log(reponse, "email response");
+    } catch (error) {
+      console.log(error.messgae);
+    }
+  };
+  const deleteclientinfo = async (id) => {
+    try {
+      const response = await axios.delete(
+        "http://localhost:5000/api/user/deleteclient",
+        {
+          data: {
+            id: id,
+          },
+        }
+      );
+      console.log(response, "deleted response");
+      // setFilter(filter.filter((item) => item._id !== id));
+      if (response.status === 200) {
+        toast({
+          title: "Email Sent",
+          description: "Email  Successfully",
+          status: "success",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+        return response;
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Client Not Deleted",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
+      console.log(error);
+    }
+  };
+
+  const handleAction = async (row, index) => {
+    if (index === 0) {
+      console.log(row);
+      const id = row._id;
+      try {
+        const res = await deleteclientinfo(id);
+        console.log(res, "response after deletion");
+        if (res.status === 200) {
+          await emailsendingpassword(id);
+          console.log("email sucess");
+        }
+      } catch (error) {
+        console.error("Failed to delete the user or send email:", error);
+      }
+    } else if (index === 1) {
+      console.log("Reload");
+    } else if (index === 2) {
+      deleteclientinfo(row._id);
+    }
+  };
   const columns = [
     {
       name: "Name",
@@ -18,7 +98,7 @@ function PendingRegisteration() {
     },
     {
       name: "Mobile No",
-      selector: (row) => row.mobileNo,
+      selector: (row) => row.mobile,
       sortable: true,
     },
     {
@@ -28,7 +108,7 @@ function PendingRegisteration() {
     },
     {
       name: "Registration Date",
-      selector: (row) => row.registrationDate,
+      selector: (row) => row.startDate,
       sortable: true,
     },
     {
@@ -41,18 +121,60 @@ function PendingRegisteration() {
       selector: (row) => row.caller,
       sortable: true,
     },
+
     {
       name: "Status",
-      selector: (row) => row.status,
+      selector: (row) => row.submittedAssignmentCount,
+      sortable: true,
+    },
+
+    {
+      name: "Registration Status",
+      selector: (row) => row.submitdAssingment,
       sortable: true,
     },
     {
-      name: "Registration Status",
-      selector: (row) => row.registrationStatus,
-      sortable: true,
+      name: "Action",
+      cell: (row) => (
+        <Flex>
+          {iconsarray.map((Icon, index) => (
+            <Button
+              key={index}
+              colorScheme="green"
+              size="sm"
+              variant="outline"
+              onClick={() => handleAction(row, index)}
+              leftIcon={<Icon />}
+              mr={2}
+              mb={2}
+            />
+          ))}
+        </Flex>
+      ),
     },
   ];
 
+  const pendingdata = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/user/getallpending"
+      );
+      console.log(response.data.users);
+      setPendinglist(response.data.users);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  };
+  useEffect(() => {
+    pendingdata();
+  }, []);
   return (
     <>
       <Flex alignItems="center" justify="space-between">
@@ -76,10 +198,8 @@ function PendingRegisteration() {
           ) : (
             <DataTable
               columns={columns}
-              data={filter}
-              selectableRows
+              data={pendinglist}
               pagination
-              highlightOnHover
               responsive
               subHeader
               subHeaderComponent={

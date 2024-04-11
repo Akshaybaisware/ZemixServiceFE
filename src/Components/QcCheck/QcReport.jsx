@@ -1,9 +1,58 @@
 import React from "react";
-import { Text, Box, Input, Button } from "@chakra-ui/react";
+import { Text, Box, Input, Button, Flex } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
 import { useState, useEffect } from "react";
+import { FaPencilAlt } from "react-icons/fa";
+import { TfiReload } from "react-icons/tfi";
+import { FaDownload } from "react-icons/fa6";
+import { FaFile } from "react-icons/fa";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import { BiLinkExternal } from "react-icons/bi";
+import { FaEye } from "react-icons/fa";
+import { FaRupeeSign } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function QcReport() {
+  const icons = [FaPencilAlt, FaEye, FaRupeeSign];
+  const navigate = useNavigate();
+
+  const handleIconClick = (rowData, iconIndex) => {
+    // Perform actions based on rowData and iconIndex
+    console.log("Clicked on icon:", iconIndex);
+    console.log("Row data:", rowData);
+    console.log(rowData, "filteredData");
+
+    if (true) {
+      switch (iconIndex) {
+        case 0:
+          navigate("/editclient", {
+            state: { data: rowData },
+          });
+          break;
+        case 1:
+          navigate("/downloadreport", {
+            state: { data: rowData },
+          });
+
+          break;
+        case 2:
+          //handledownload(rowData._id);
+          emailsending(rowData.email);
+          break;
+        case 3:
+          navigate("/downloadreport", {
+            state: { data: rowData },
+          });
+          break;
+        case 4:
+          deleteclientinfo(rowData._id);
+          break;
+        default:
+          // Handle default case
+          break;
+      }
+    }
+  };
   const columns = [
     {
       name: "Name",
@@ -54,6 +103,25 @@ function QcReport() {
       name: "Right Forms",
       selector: (row) => row.rightForms,
       sortable: true,
+    },
+    {
+      name: "Action",
+      cell: (row) => (
+        <Flex>
+          {icons.map((Icon, index) => (
+            <Icon
+              key={index}
+              style={{
+                fontSize: "20px",
+                color: "blue",
+                cursor: "pointer",
+                margin: "0 5px",
+              }}
+              onClick={() => handleIconClick(row, index)}
+            />
+          ))}
+        </Flex>
+      ),
     },
   ];
 

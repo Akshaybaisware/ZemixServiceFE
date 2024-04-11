@@ -164,7 +164,11 @@ function Registeraion() {
     console.log("Row data:", rowData);
     console.log(rowData, "filteredData");
 
-    if (rowData.status === "Active" || rowData.status === "Registered") {
+    if (
+      rowData.status === "Active" ||
+      rowData.status === "Registered" ||
+      rowData.status === "Success"
+    ) {
       switch (iconIndex) {
         case 0:
           navigate("/editclient", {
@@ -260,7 +264,9 @@ function Registeraion() {
       name: "Action",
       cell: (row) => (
         <Flex>
-          {row.status === "Active" || row.status === "Registered"
+          {row.status === "Active" ||
+          row.status === "Registered" ||
+          row.status === "Success"
             ? icons.map((Icon, index) => (
                 <Icon
                   key={index}
