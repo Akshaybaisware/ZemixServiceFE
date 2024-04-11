@@ -24,8 +24,11 @@ import sign from "../../assets/SIGN 6.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { usePDF } from "react-to-pdf";
+import { useLocation } from "react-router-dom";
 
 const StampPaperView = () => {
+  const locationdata = useLocation();
+  console.log(locationdata.state.data, "locationdata");
   const { toPDF, targetRef } = usePDF({ filename: "agreement.pdf" });
   const { id } = useParams();
   console.log(id, "userId");
@@ -53,7 +56,7 @@ const StampPaperView = () => {
       const respose = await axios.post(
         "http://localhost:5000/api/aggriment/getaggrimentdetails",
         {
-          email: "kaustubhraut135@gmail.com",
+          email: locationdata.state.data.email || "kaustubhraut135@gmail.com",
         }
       );
       console.log(respose.data.data);

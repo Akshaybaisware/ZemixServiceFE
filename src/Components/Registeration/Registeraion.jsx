@@ -60,7 +60,6 @@ function Registeraion() {
     )
   );
 
-
   const deleteclientinfo = async (id) => {
     try {
       const response = await axios.delete(
@@ -162,7 +161,7 @@ function Registeraion() {
     console.log("Row data:", rowData);
     console.log(rowData, "filteredData");
 
-    if (rowData.status === "Active") {
+    if (rowData.status === "Active" || rowData.status === "Registered") {
       switch (iconIndex) {
         case 0:
           navigate("/editclient", {
@@ -173,10 +172,13 @@ function Registeraion() {
           emailsending(rowData.email);
           break;
         case 2:
-          handledownload(rowData._id);
+          //handledownload(rowData._id);
+          navigate("/downloadreport", {
+            state: { data: rowData },
+          });
           break;
         case 3:
-          navigate("/", {
+          navigate("/downloadreport", {
             state: { data: rowData },
           });
           break;
@@ -255,7 +257,7 @@ function Registeraion() {
       name: "Action",
       cell: (row) => (
         <Flex>
-          {row.status === "Active"
+          {row.status === "Active" || row.status === "Registered"
             ? icons.map((Icon, index) => (
                 <Icon
                   key={index}
