@@ -120,6 +120,7 @@ const router = createBrowserRouter(
           />
           <Route path="/writecontent" Component={ContentValidationfrom} />
           <Route path="/userreport" Component={GetReportofUser} />
+          <Route path="/downloadreport" Component={DownloadStampPaper} />
         </Route>
       </Route>
     </>
