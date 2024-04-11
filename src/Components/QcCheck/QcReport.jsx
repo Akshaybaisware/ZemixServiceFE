@@ -57,7 +57,7 @@ function QcReport() {
     },
   ];
 
-  const tableData = [
+  const initialData = [
     {
       name: "Alex Johnson",
       mobile: "9876543210",
@@ -120,23 +120,54 @@ function QcReport() {
     },
   ];
 
+  const [tableData, setTableData] = useState(initialData);
+  const [searchText, setSearchText] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  // Function to handle text and date filtering
   const handleSearch = () => {
-    // Implement search logic here
+    let filteredData = initialData;
+
+    if (searchText) {
+      filteredData = filteredData.filter((item) =>
+        Object.keys(item).some((key) =>
+          item[key].toString().toLowerCase().includes(searchText.toLowerCase())
+        )
+      );
+    }
+
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      filteredData = filteredData.filter((item) => {
+        const itemStartDate = new Date(item.startDate);
+        const itemEndDate = new Date(item.endDate);
+        return itemStartDate >= start && itemEndDate <= end;
+      });
+    }
+
+    setTableData(filteredData);
   };
 
   return (
     <>
       <Box>
-        <Text>Qc Report</Text>
+        <Text>QC Report</Text>
       </Box>
-      <Box>
-        <Input type="date" />
-        <Input type="date" />
-        <Button onClick={handleSearch}>Search</Button>
+      <Box display="flex" gap="2">
+        <Input type="date" onChange={(e) => setStartDate(e.target.value)} />
+        <Input type="date" onChange={(e) => setEndDate(e.target.value)} />
+        <Button onClick={handleSearch}>Search Dates</Button>
       </Box>
-      <Box>
-        <Input type="text" placeholder="Search" onChange={handleSearch} />
-        <Button onClick={handleSearch}>Search</Button>
+      <Box display="flex" gap="2">
+        <Input
+          type="text"
+          placeholder="Search"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <Button onClick={handleSearch}>Search Text</Button>
       </Box>
       <DataTable
         title="QC Reports"

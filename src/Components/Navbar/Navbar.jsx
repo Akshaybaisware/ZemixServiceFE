@@ -608,7 +608,7 @@ function Navbar() {
               <Box fontSize={["1.5rem"]}>Deactivate User</Box>
             </Link>
 
-            <Link to="/qccheck">
+            <Link to="/qcreport">
               <Box fontSize={["1.5rem"]}>QC Report</Box>
             </Link>
 
