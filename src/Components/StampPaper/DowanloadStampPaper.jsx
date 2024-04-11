@@ -71,25 +71,26 @@ const StampPaperView = () => {
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
-  const downlodePDF = async (photoPreview, signaturePreview) => {
+  const downlodePDF = async () => {
     const capture = document.querySelector(".downLodeBox");
     setLoader(true);
 
     html2canvas(capture).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const doc = new jsPDF({
+      const pdf = new jsPDF({
         orientation: "portrait",
         unit: "mm",
         format: [canvas.width, canvas.height],
       });
 
+      // Constants for the layout
       const marginLeft = 0;
       const marginTop = 0;
-      const contentWidth = doc.internal.pageSize.getWidth() - 2 * marginLeft;
-
-      const contentHeight = doc.internal.pageSize.getHeight() - 2 * marginTop;
-
+      const contentWidth = pdf.internal.pageSize.getWidth() - 2 * marginLeft;
+      const contentHeight = pdf.internal.pageSize.getHeight() - 2 * marginTop;
       const aspectRatio = canvas.width / canvas.height;
+
+      // Calculating dimensions to maintain aspect ratio
       let imgWidth = contentWidth;
       let imgHeight = contentWidth / aspectRatio;
 
@@ -101,52 +102,54 @@ const StampPaperView = () => {
       const imgX = marginLeft + (contentWidth - imgWidth) / 2;
       const imgY = marginTop + (contentHeight - imgHeight) / 2;
 
-      doc.addImage(imgData, "PNG", imgX, imgY, imgWidth, imgHeight);
+      // Adding the main content image
+      pdf.addImage(imgData, "PNG", imgX, imgY, imgWidth, imgHeight);
 
-      const photoWidth = 0.05 * contentWidth;
-      const photoHeight = photoWidth / aspectRatio / 3;
-      const photoX = marginLeft + 0.2 * contentWidth;
-      const photoTopMargin = 0.08 * contentHeight;
-      const photoY =
-        doc.internal.pageSize.getHeight() -
-        0.05 * contentHeight -
-        photoHeight -
-        photoTopMargin;
+      // Function to add images side by side at the bottom
+      const addImagesSideBySide = async () => {
+        const photo = await loadImage(photoPreview);
+        const signature = await loadImage(signaturePreview);
 
-      if (photoPreview) {
-        doc.addImage(
-          photoPreview,
+        const imageHeight = 20; // Fixed height for both images
+        const photoWidth = (photo.width / photo.height) * imageHeight;
+        const signatureWidth =
+          (signature.width / signature.height) * imageHeight;
+
+        const totalWidth = photoWidth + signatureWidth + 5; // 5 mm gap between images
+        const startX = (pdf.internal.pageSize.getWidth() - totalWidth) / 2; // Center align
+
+        pdf.addImage(
+          photo,
           "JPEG",
-          photoX,
-          photoY,
+          startX,
+          pdf.internal.pageSize.getHeight() - 30,
           photoWidth,
-          photoHeight
+          imageHeight
         );
-      }
-
-      const signatureWidth = 0.05 * contentWidth;
-      const signatureHeight = signatureWidth / aspectRatio / 3;
-      const signatureX = marginLeft + 0.2 * contentWidth;
-      const signatureTopMargin = -0.09 * contentHeight;
-      const signatureY =
-        doc.internal.pageSize.getHeight() -
-        0.25 * contentHeight -
-        signatureHeight -
-        signatureTopMargin;
-
-      if (signaturePreview) {
-        doc.addImage(
-          signaturePreview,
+        pdf.addImage(
+          signature,
           "PNG",
-          signatureX,
-          signatureY,
+          startX + photoWidth + 5,
+          pdf.internal.pageSize.getHeight() - 30,
           signatureWidth,
-          signatureHeight
+          imageHeight
         );
-      }
+      };
 
-      doc.save("Agreement.pdf");
-      setLoader(false);
+      addImagesSideBySide().then(() => {
+        pdf.save("Agreement.pdf");
+        setLoader(false);
+      });
+    });
+  };
+
+  // Helper function to load image
+  const loadImage = (src) => {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
     });
   };
 
