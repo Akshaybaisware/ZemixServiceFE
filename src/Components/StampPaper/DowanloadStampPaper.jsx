@@ -12,23 +12,22 @@ import {
   FormControl,
   FormLabel,
 } from "@chakra-ui/react";
-// import image from "./SVG STAM.svg";
 import frontpage from "../../assets/frontpage.jpg";
 import image from "../../assets/SVG STAM.svg";
-import { useEffect, useState, useRef } from "react";
 import notri from "../../assets/notriimage.svg";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 import LeaseAgreement from "../../assets/notri.svg";
 import sign from "../../assets/SIGN 6.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { usePDF } from "react-to-pdf";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 
 const StampPaperView = () => {
   const locationdata = useLocation();
-  console.log(locationdata.state.data, "locationdata");
+  console.log(locationdata?.state?.data, "locationdata");
   const { toPDF, targetRef } = usePDF({ filename: "agreement.pdf" });
   const { id } = useParams();
   console.log(id, "userId");
@@ -56,14 +55,16 @@ const StampPaperView = () => {
       const respose = await axios.post(
         "http://localhost:5000/api/aggriment/getaggrimentdetails",
         {
-          email: locationdata.state.data.email || "kaustubhraut135@gmail.com",
+          email:
+            locationdata?.state?.data?.email || "kaustubhraut135@gmail.com",
         }
       );
-      console.log(respose.data.data);
+      console.log(respose, "response from api");
+      console.log(respose.data.data, "dajsbjkasbdjkasbdjkasbdjdbfidfgnskldv");
       setphotoapi(respose.data.data.photo);
       setsignatureapi(respose.data.data.signature);
     } catch (error) {
-      console.log(error);
+      console.error(error.message);
     }
   };
   useEffect(() => {
@@ -74,6 +75,7 @@ const StampPaperView = () => {
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
+
   const downlodePDF = async () => {
     const capture = document.querySelector(".downLodeBox");
     setLoader(true);
@@ -110,8 +112,8 @@ const StampPaperView = () => {
 
       // Function to add images side by side at the bottom
       const addImagesSideBySide = async () => {
-        const photo = await loadImage(photoPreview);
-        const signature = await loadImage(signaturePreview);
+        const photo = await loadImage(photoapi);
+        const signature = await loadImage(signatureapi);
 
         const imageHeight = 20; // Fixed height for both images
         const photoWidth = (photo.width / photo.height) * imageHeight;
@@ -167,35 +169,6 @@ const StampPaperView = () => {
     setSignature(selectedSignature);
     setSignaturePreview(URL.createObjectURL(selectedSignature));
   };
-
-  // useEffect to call
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const response = await axios.get(
-          `${appUrl}/user/get_terms_by_id/${id}`
-        );
-        const data = response.data;
-        console.log(data, "data hai ye");
-        console.log(data?.User);
-        console.log(`${appUrl} / data?.signature`);
-        setInputField({
-          name: data?.name,
-          email: data?.email,
-          startdate: data?.startdate,
-          address: data?.address,
-          signature: data?.signature,
-          photo: data?.photo,
-        });
-        setPhotoPreview(data?.photo);
-        setSignaturePreview(data?.signature);
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-      }
-    };
-
-    fetchUserDetails();
-  }, [id]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
