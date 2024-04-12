@@ -33,6 +33,7 @@ import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
 import ContentValidationfrom from "./Components/ContentValid/ContentValidationfrom";
 import GetReportofUser from "./Components/Report/GetReportofUser";
 import QcReport from "./Components/QcCheck/QcReport";
+import ViewDetails from "./Components/QcCheck/ViewDetails";
 
 const isAuthenticated = localStorage.getItem("token");
 const role = localStorage.getItem("role");
@@ -128,6 +129,10 @@ const router = createBrowserRouter(
               <Route
                 path="/qcreport"
                 element={<ProtectedRoute Component={QcReport} />}
+              />
+              <Route
+                path="/viewdetails"
+                element={<ProtectedRoute Component={ViewDetails} />}
               />
             </>
           ) : (

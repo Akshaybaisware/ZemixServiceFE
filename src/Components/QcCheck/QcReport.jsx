@@ -53,6 +53,19 @@ function QcReport() {
       }
     }
   };
+
+  // const handleviewdetails = (rowdata) => {
+  //   console.log(rowdata, "rowdata");
+  //   navigate("/viewdetails", {});
+  // };
+  function handleViewDetails(rowData) {
+    return () => {
+      console.log(rowData, "rowData");
+      navigate("/viewdetails", {
+        state: { data: rowData },
+      });
+    };
+  }
   const columns = [
     {
       name: "Name",
@@ -107,20 +120,7 @@ function QcReport() {
     {
       name: "Action",
       cell: (row) => (
-        <Flex>
-          {icons.map((Icon, index) => (
-            <Icon
-              key={index}
-              style={{
-                fontSize: "20px",
-                color: "blue",
-                cursor: "pointer",
-                margin: "0 5px",
-              }}
-              onClick={() => handleIconClick(row, index)}
-            />
-          ))}
-        </Flex>
+        <Button onClick={handleViewDetails(row)}>View Details</Button>
       ),
     },
   ];
