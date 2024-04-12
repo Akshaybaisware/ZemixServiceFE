@@ -127,7 +127,7 @@ function QcReport() {
     },
   ];
 
-  const [tableData, setTableData] = useState(initialData);
+  const [tableData, setTableData] = useState(allusersdata);
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -148,7 +148,7 @@ function QcReport() {
   }, []);
   // Function to handle text and date filtering
   const handleSearch = () => {
-    let filteredData = initialData;
+    let filteredData = allusersdata;
 
     if (searchText) {
       filteredData = filteredData.filter((item) =>
