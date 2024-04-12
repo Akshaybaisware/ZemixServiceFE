@@ -298,10 +298,10 @@ function Registeraion() {
   const gettodaysassignmentcount = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/assignment/gettodaysassignmnet"
+        "http://localhost:5000/api/user/gettodaysregister"
       );
-      console.log(response.data);
-      settodaysassignmentcount(response.data.response.length);
+      console.log(response, "todats registertions");
+      settodaysassignmentcount(response.data.users.length);
     } catch (error) {
       console.log(error.message);
     }
@@ -310,10 +310,10 @@ function Registeraion() {
   const gettodaysdoneassignment = async () => {
     try {
       const reposne = await axios.get(
-        "http://localhost:5000/api/assignment/todaysdoneassignment"
+        "http://localhost:5000/api/user/gettodaysdone"
       );
-      //console.log(response);
-      settodaysassignment(response.data.response.length);
+      console.log(reposne.data.users, "todyas doen");
+      settodaysassignment(reposne.data.users.length);
     } catch (error) {
       console.log(error.message);
     }
