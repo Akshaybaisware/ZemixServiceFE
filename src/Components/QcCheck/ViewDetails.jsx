@@ -11,6 +11,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Center,
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import jsPDF from "jspdf";
@@ -21,50 +22,73 @@ function ViewDetails() {
   const data = datafromlocation.state.data;
 
   const downloadReport = () => {
-    const pdf = new jsPDF();
+    const pdf = new jsPDF({
+      orientation: "landscape",
+    });
 
     // Starting positions
     let startX = 20;
     let startY = 30;
     const rowHeight = 10;
-    const colWidth = 80; // Width of each column
+    const colWidth = 90; // Width of each column
 
-    // Add header
+    // Set up table header
     pdf.setFontSize(16);
-    pdf.text("User Details Report", 20, 20);
+    pdf.text("User Details Report", startX, 20);
 
-    // Helper function to add row
+    // Helper function to add row in a tabular format
     const addRow = (label, value, x, y) => {
       pdf.setFontSize(12);
-      pdf.text(label, x, y); // Label in column 1
-      pdf.text(String(value), x + 50, y); // Value in column 2
+      pdf.text(`${label}: ${value || "Not provided"}`, x, y); // Adding 'Not provided' for undefined or null values
     };
 
-    // Add data
-    addRow("Name:", data.name, startX, startY);
-    addRow("Mobile:", data.mobile, startX, startY + rowHeight);
-    addRow("Email:", data.email, startX, startY + 2 * rowHeight);
-    addRow("Start Date:", data.startDate, startX, startY + 3 * rowHeight);
-    addRow("End Date:", data.endDate, startX, startY + 4 * rowHeight);
-    addRow("Total Forms:", data.totalForms, startX, startY + 5 * rowHeight);
+    // Calculate column start positions (assuming two columns)
+    let column1X = startX;
+    let column2X = startX + colWidth + 40; // Second column starts after the first column plus some space
+
+    // Add data in two columns
+    addRow("Name", data.name, column1X, startY);
+    addRow("Mobile", data.mobile, column2X, startY);
+    addRow("Email", data.email, column1X, startY + rowHeight);
     addRow(
-      "Filled Forms:",
-      data.submittedForms,
-      startX,
-      startY + 6 * rowHeight
+      "Start Date",
+      data?.startDate?.slice(0, 10),
+      column2X,
+      startY + rowHeight
     );
-    addRow("Correct Forms:", data.rightForms, startX, startY + 7 * rowHeight);
     addRow(
-      "Incorrect Forms:",
+      "End Date",
+      data?.endDate?.slice(0, 10),
+      column1X,
+      startY + 2 * rowHeight
+    );
+    addRow(
+      "Total Forms",
+      data.totalAssignmentLimit,
+      column2X,
+      startY + 2 * rowHeight
+    );
+    addRow(
+      "Filled Forms",
+      data.submittedAssignmentCount,
+      column1X,
+      startY + 3 * rowHeight
+    );
+    addRow("Correct Forms", data.rightForms, column2X, startY + 3 * rowHeight);
+    addRow(
+      "Incorrect Forms",
       data.wrongForms || "0",
-      startX,
-      startY + 8 * rowHeight
+      column1X,
+      startY + 4 * rowHeight
     );
 
+    // Save PDF
     pdf.save(`Report_${data.name}.pdf`);
   };
+
   return (
     <Box p={5} shadow="md" borderWidth="1px">
+      <Center fontSize={20}>User Details</Center>
       <VStack spacing={4} align="stretch">
         <FormControl id="name">
           <FormLabel>Name</FormLabel>
@@ -91,17 +115,17 @@ function ViewDetails() {
 
         <FormControl id="startDate">
           <FormLabel>Caller Start Date</FormLabel>
-          <Input value={data.startDate} type="date" />
+          <Input value={data?.startDate?.slice(0, 10)} type="date" />
         </FormControl>
 
         <FormControl id="endDate">
           <FormLabel>End Date</FormLabel>
-          <Input value={data.endDate} type="date" />
+          <Input value={data?.endDate?.slice(0, 10)} type="date" />
         </FormControl>
 
         <FormControl id="totalForms">
           <FormLabel>Total Forms</FormLabel>
-          <NumberInput min={0} value={data.totalForms}>
+          <NumberInput min={0} value={data.totalAssignmentLimit}>
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -112,7 +136,7 @@ function ViewDetails() {
 
         <FormControl id="filledForm">
           <FormLabel>Filled Form</FormLabel>
-          <NumberInput min={0} value={data.submittedForms}>
+          <NumberInput min={0} value={data.submittedAssignmentCount}>
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
