@@ -134,19 +134,20 @@ function Login() {
   const [show, setShow] = useState(false);
   const handleLogin = async (e) => {
     const user = {
-      email: username.current.value,
+      username: username.current.value,
       password: password.current.value,
     };
     console.log(user);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/login",
+        "http://localhost:5000/api/auth/adminsignin",
         user
       );
       console.log(response);
-      if (response.data) {
+      if (response.status === 200) {
         localStorage.setItem("user", JSON.stringify(response.data));
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("role", response.data.role);
         window.location.replace("/");
         toast({
           title: "Login Success",
