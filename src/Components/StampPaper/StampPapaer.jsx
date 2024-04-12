@@ -39,6 +39,7 @@ const StampPaperView = () => {
   const [signaturePreview, setSignaturePreview] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const inputemail = useRef();
   const inputdate = useRef(null);
 
   const handlePhotoChange = (e) => {
@@ -105,7 +106,7 @@ const StampPaperView = () => {
     setLoading(true);
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("email", "kaustubhra135@gmail.com");
+      formDataToSend.append("email", inputemail.current.value);
       formDataToSend.append("startdate", inputdate.current.value);
       formDataToSend.append("photo", photo);
       formDataToSend.append("signature", signature);
@@ -578,6 +579,9 @@ const StampPaperView = () => {
               <Image src={sign} alt="Stamp" />
             </Box>
             <Box>
+              <Input ref={inputemail} type="text" placeholder="email" />
+            </Box>
+            <Box>
               <Input
                 ref={inputdate}
                 type="date"
@@ -640,6 +644,5 @@ const StampPaperView = () => {
     </>
   );
 };
-export const downlodePDF = async (photoPreview, signaturePreview) => {};
 
 export default StampPaperView;

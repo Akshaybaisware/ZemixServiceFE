@@ -16,6 +16,14 @@ function ContentValidationfrom() {
   const annualRevenue = useRef();
   const jobFunctional = useRef();
   const pinCode = useRef();
+  const refreshAssignment = async () => {
+    try {
+      await getdatafrom(); // Fetch new assignment data
+      setRandomIndex(Math.floor(Math.random() * 480)); // Set new random index
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getdatafrom = async () => {
     try {
@@ -52,6 +60,18 @@ function ContentValidationfrom() {
         }
       );
       console.log(response, "mkninmiopn");
+      if (response.status === 201) {
+        toast({
+          title: "Success",
+          description: "Form submitted successfully",
+          status: "success",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+
+        refreshAssignment(); // Refresh the assignment data after submission
+      }
     } catch (error) {
       toast({
         title: "Error",
@@ -61,16 +81,7 @@ function ContentValidationfrom() {
         position: "top",
         isClosable: true,
       });
-      console.log(error);
-    }
-  };
-
-  const refreshAssignment = async () => {
-    try {
-      await getdatafrom(); // Fetch new assignment data
-      setRandomIndex(Math.floor(Math.random() * 480)); // Set new random index
-    } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 

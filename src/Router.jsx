@@ -27,13 +27,16 @@ import UserDashboard from "./Components/UserPage/UserDashboard";
 import EditClientComponent from "./Components/ClientActivity/EditClient";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserLogin from "./Components/Login/UserLogin";
-import StampPapaer from "./Components/StampPaper/StampPapaer";
+
 import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
 import ContentValidationfrom from "./Components/ContentValid/ContentValidationfrom";
 import GetReportofUser from "./Components/Report/GetReportofUser";
 import QcReport from "./Components/QcCheck/QcReport";
 import ViewDetails from "./Components/QcCheck/ViewDetails";
+import StampPaperView from "./Components/StampPaper/StampPapaer";
+import StampPapaer from "./Components/StampPaper/StampPapaer";
+import UserRegisteration from "./Components/Froms/UserRegisteration";
 
 const isAuthenticated = localStorage.getItem("token");
 const role = localStorage.getItem("role");
@@ -44,21 +47,11 @@ const router = createBrowserRouter(
       <Route>
         <Route path="/login" element={<Login />} />
         <Route path="/userlogin" element={<UserLogin />} />
-
         <Route path="/pdflogin" element={<PdfPhotoAdding />} />
-        <Route
-          path="/stamppaper"
-          element={<ProtectedRoute Component={StampPapaer} />}
-        />
+        <Route path="/stamppaper" element={<StampPapaer />} />
         <Route path="/stamppaperdonwload" element={<DownloadStampPaper />} />
-
         <Route path="/usrnavbar" element={<UserNavbar />} />
-
-        <Route
-          path="/userdashboard"
-          element={<ProtectedRoute Component={UserDashboard} />}
-        />
-
+        {/* <Route path="/workload" element={<ContentValidationfrom />} /> */}
         <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
           {role === "admin" ? (
             <>
@@ -71,10 +64,7 @@ const router = createBrowserRouter(
                 path="/usernavbar"
                 element={<ProtectedRoute Component={UserNavbar} />}
               />
-              <Route
-                path="/userdashboard"
-                element={<ProtectedRoute Component={UserDashboard} />}
-              />
+
               <Route
                 path="/qccheck"
                 element={<ProtectedRoute Component={QcCheck} />}
@@ -123,7 +113,7 @@ const router = createBrowserRouter(
                 path="/editclient"
                 element={<ProtectedRoute Component={EditClientComponent} />}
               />
-              <Route path="/writecontent" Component={ContentValidationfrom} />
+              {/* <Route path="/writecontent" Component={ContentValidationfrom} /> */}
               <Route path="/userreport" Component={GetReportofUser} />
               <Route path="/downloadreport" Component={DownloadStampPaper} />
               <Route
@@ -136,10 +126,16 @@ const router = createBrowserRouter(
               />
             </>
           ) : (
-            <Route
-              index
-              element={<ProtectedRoute Component={UserDashboard} />}
-            />
+            <>
+              <Route
+                index
+                element={<ProtectedRoute Component={UserDashboard} />}
+              />
+              <Route
+                path="/workload"
+                element={<ProtectedRoute Component={ContentValidationfrom} />}
+              />
+            </>
           )}
         </Route>
       </Route>

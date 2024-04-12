@@ -169,7 +169,7 @@ function UserNavbar() {
             </Menu>
           </Box>
           <Box height={"100%"}>
-            <Menu >
+            <Menu>
               <MenuButton
                 as={Button}
                 bg="white"
@@ -184,10 +184,19 @@ function UserNavbar() {
                 <MenuItem as={RouterLink} to="/">
                   Dashboard
                 </MenuItem>
-                <MenuItem>Current Work Load</MenuItem>
-                <MenuItem>All Forms</MenuItem>
-                <MenuItem>Saved Form</MenuItem>
-                <MenuItem>Submit Form</MenuItem>
+                <MenuItem as={RouterLink} to="/workload">
+                  Current Work Load
+                </MenuItem>
+                <MenuItem as={RouterLink} to="/">
+                  All Forms
+                </MenuItem>
+                <MenuItem as={RouterLink} to="/">
+                  Saved Form
+                </MenuItem>
+                <MenuItem as={RouterLink} to="/">
+                  {" "}
+                  Submit Form
+                </MenuItem>
               </MenuList>
             </Menu>
           </Box>
