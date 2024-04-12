@@ -11,10 +11,12 @@ import { BiLinkExternal } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { FaRupeeSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function QcReport() {
   const icons = [FaPencilAlt, FaEye, FaRupeeSign];
   const navigate = useNavigate();
+  const [allusersdata, setAllusersData] = useState();
 
   const handleIconClick = (rowData, iconIndex) => {
     // Perform actions based on rowData and iconIndex
@@ -84,27 +86,27 @@ function QcReport() {
     },
     {
       name: "Start Date",
-      selector: (row) => row.startDate,
+      selector: (row) => row?.startDate?.slice(0, 10),
       sortable: true,
     },
     {
       name: "End Date",
-      selector: (row) => row.endDate,
+      selector: (row) => row?.endDate?.slice(0, 10),
       sortable: true,
     },
     {
       name: "Total Forms",
-      selector: (row) => row.totalForms,
+      selector: (row) => row.totalAssignmentLimit,
       sortable: true,
     },
     {
       name: "Saved Forms",
-      selector: (row) => row.savedForms,
+      selector: (row) => row.submittedAssignmentCount,
       sortable: true,
     },
     {
       name: "Submitted Forms",
-      selector: (row) => row.submittedForms,
+      selector: (row) => row.submittedAssignmentCount,
       sortable: true,
     },
     {
@@ -125,74 +127,25 @@ function QcReport() {
     },
   ];
 
-  const initialData = [
-    {
-      name: "Alex Johnson",
-      mobile: "9876543210",
-      email: "alex.johnson@example.com",
-      startDate: "2024-01-10",
-      endDate: "2024-03-10",
-      totalForms: 120,
-      savedForms: 100,
-      submittedForms: 95,
-      wrongForms: 5,
-      rightForms: 90,
-    },
-    {
-      name: "Maria Garcia",
-      mobile: "8765432190",
-      email: "maria.garcia@example.com",
-      startDate: "2024-02-01",
-      endDate: "2024-04-01",
-      totalForms: 150,
-      savedForms: 140,
-      submittedForms: 130,
-      wrongForms: 10,
-      rightForms: 120,
-    },
-    {
-      name: "David Smith",
-      mobile: "7654321980",
-      email: "david.smith@example.com",
-      startDate: "2024-01-15",
-      endDate: "2024-03-15",
-      totalForms: 200,
-      savedForms: 180,
-      submittedForms: 170,
-      wrongForms: 15,
-      rightForms: 155,
-    },
-    {
-      name: "Sarah Brown",
-      mobile: "6543219870",
-      email: "sarah.brown@example.com",
-      startDate: "2024-02-20",
-      endDate: "2024-04-20",
-      totalForms: 90,
-      savedForms: 85,
-      submittedForms: 80,
-      wrongForms: 2,
-      rightForms: 78,
-    },
-    {
-      name: "Christopher Davis",
-      mobile: "5432198760",
-      email: "chris.davis@example.com",
-      startDate: "2024-03-01",
-      endDate: "2024-05-01",
-      totalForms: 110,
-      savedForms: 105,
-      submittedForms: 100,
-      wrongForms: 3,
-      rightForms: 97,
-    },
-  ];
-
   const [tableData, setTableData] = useState(initialData);
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  const qcdata = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/user/getallclient"
+      );
+      console.log(response.data.data, "response");
+      setAllusersData(response.data.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    qcdata();
+  }, []);
   // Function to handle text and date filtering
   const handleSearch = () => {
     let filteredData = initialData;
@@ -240,7 +193,7 @@ function QcReport() {
       <DataTable
         title="QC Reports"
         columns={columns}
-        data={tableData}
+        data={allusersdata}
         pagination
         paginationPerPage={10}
       />
