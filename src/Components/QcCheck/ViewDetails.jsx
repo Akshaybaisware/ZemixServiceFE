@@ -86,6 +86,18 @@ function ViewDetails() {
     pdf.save(`Report_${data.name}.pdf`);
   };
 
+  const qcreportdata = async () => {
+    try {
+      const reposne = await axios.post(
+        "http://localhost:5000/api/assignment/getassignments",
+        { userId: userId }
+      );
+      console.log(reposne, "jasdbasjkdbaksjb");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Box p={5} shadow="md" borderWidth="1px">
       <Center fontSize={20}>User Details</Center>

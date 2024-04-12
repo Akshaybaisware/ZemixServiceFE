@@ -113,9 +113,6 @@ const router = createBrowserRouter(
                 path="/editclient"
                 element={<ProtectedRoute Component={EditClientComponent} />}
               />
-              {/* <Route path="/writecontent" Component={ContentValidationfrom} /> */}
-              <Route path="/userreport" Component={GetReportofUser} />
-              <Route path="/downloadreport" Component={DownloadStampPaper} />
               <Route
                 path="/qcreport"
                 element={<ProtectedRoute Component={QcReport} />}
@@ -124,6 +121,9 @@ const router = createBrowserRouter(
                 path="/viewdetails"
                 element={<ProtectedRoute Component={ViewDetails} />}
               />
+              {/* <Route path="/writecontent" Component={ContentValidationfrom} /> */}
+              <Route path="/userreport" Component={GetReportofUser} />
+              <Route path="/downloadreport" Component={DownloadStampPaper} />
             </>
           ) : (
             <>

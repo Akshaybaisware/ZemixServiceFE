@@ -181,16 +181,16 @@ function UserNavbar() {
               </MenuButton>
               <MenuList height={"300%"}>
                 ``
-                <MenuItem as={RouterLink} to="/">
+                <MenuItem as={Link} to="/">
                   Dashboard
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/workload">
+                <MenuItem as={Link} to="/workload">
                   Current Work Load
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/">
+                <MenuItem as={Link} to="/">
                   All Forms
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/">
+                <MenuItem as={Link} to="/">
                   Saved Form
                 </MenuItem>
                 <MenuItem as={RouterLink} to="/">
@@ -257,9 +257,11 @@ function UserNavbar() {
             paddingX="30px"
             paddingY="10px"
           >
-            <Box paddingX="30px" fontSize={["1.5rem"]}>
-              Dashboard
-            </Box>
+            <Link to="/">
+              <Box paddingX="30px" fontSize={["1.5rem"]}>
+                Dashboard
+              </Box>
+            </Link>
 
             <Menu paddingX="30px">
               <MenuButton
@@ -274,9 +276,15 @@ function UserNavbar() {
               </MenuButton>
               {isOpen && (
                 <MenuList>
-                  <MenuItem>Current Work Load</MenuItem>
-                  <MenuItem>All Forms</MenuItem>
-                  <MenuItem>Saved Forms</MenuItem>
+                  <MenuItem as={Link} to="/workload">
+                    Current Work Load
+                  </MenuItem>
+                  <MenuItem as={Link} to="/">
+                    All Forms
+                  </MenuItem>
+                  <MenuItem as={Link} to="/">
+                    Saved Forms
+                  </MenuItem>
                   <MenuItem>Submit Forms</MenuItem>
                 </MenuList>
               )}

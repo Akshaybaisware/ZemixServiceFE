@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useToast, Box, Flex, Text, Input, Button } from "@chakra-ui/react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ContentValidationfrom() {
   const toast = useToast();
+  const navigate = useNavigate();
 
   const userId = localStorage.getItem("userId");
 
@@ -69,7 +71,7 @@ function ContentValidationfrom() {
           position: "top",
           isClosable: true,
         });
-
+        navigate("/");
         refreshAssignment(); // Refresh the assignment data after submission
       }
     } catch (error) {
@@ -91,14 +93,26 @@ function ContentValidationfrom() {
 
   return (
     <>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Whisper&display=swap')
+      </style>
       <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
-        <Flex direction="column">
-          <Text>Name: {apidata?.[randomIndex]?.name}</Text>
-          <Text>Mobile: {apidata?.[randomIndex]?.phone}</Text>
-          <Text>Address: {apidata?.[randomIndex]?.address}</Text>
-          <Text>Annual Revenue: {apidata?.[randomIndex]?.annualRevenue}</Text>
-          <Text>Job Functional: {apidata?.[randomIndex]?.jobFunctional}</Text>
-          <Text>Pin Code: {apidata?.[randomIndex]?.pinCode}</Text>
+        <Flex direction="column" fontFamily="'Dancing Script', cursive">
+          <Text fontSize={"2rem"}>Name: {apidata?.[randomIndex]?.name}</Text>
+          <Text fontSize={"2rem"}>Mobile: {apidata?.[randomIndex]?.phone}</Text>
+          <Text fontSize={"2rem"}>
+            Address: {apidata?.[randomIndex]?.address}
+          </Text>
+          <Text fontSize={"2rem"}>
+            Annual Revenue: {apidata?.[randomIndex]?.annualRevenue}
+          </Text>
+          <Text fontSize={"2rem"}>
+            Job Functional: {apidata?.[randomIndex]?.jobFunctional}
+          </Text>
+          <Text fontSize={"2rem"}>
+            Pin Code: {apidata?.[randomIndex]?.pinCode}
+          </Text>
         </Flex>
       </Box>
 

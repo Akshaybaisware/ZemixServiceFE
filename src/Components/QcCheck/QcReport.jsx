@@ -12,6 +12,7 @@ import { FaEye } from "react-icons/fa";
 import { FaRupeeSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import jsPDF from "jspdf";
 
 function QcReport() {
   const icons = [FaPencilAlt, FaEye, FaRupeeSign];
@@ -39,7 +40,7 @@ function QcReport() {
           break;
         case 2:
           //handledownload(rowData._id);
-          emailsending(rowData.email);
+          emailsending(rowData?.email);
           break;
         case 3:
           navigate("/downloadreport", {
@@ -47,7 +48,7 @@ function QcReport() {
           });
           break;
         case 4:
-          deleteclientinfo(rowData._id);
+          deleteclientinfo(rowData?._id);
           break;
         default:
           // Handle default case
@@ -68,20 +69,86 @@ function QcReport() {
       });
     };
   }
+
+  const downloadReport = (data) => {
+    const pdf = new jsPDF({
+      orientation: "landscape",
+    });
+
+    // Starting positions
+    let startX = 20;
+    let startY = 30;
+    const rowHeight = 10;
+    const colWidth = 90; // Width of each column
+
+    // Set up table header
+    pdf.setFontSize(16);
+    pdf.text("User Details Report", startX, 20);
+
+    // Helper function to add row in a tabular format
+    const addRow = (label, value, x, y) => {
+      pdf.setFontSize(12);
+      pdf.text(`${label}: ${value || "Not provided"}`, x, y); // Adding 'Not provided' for undefined or null values
+    };
+
+    // Calculate column start positions (assuming two columns)
+    let column1X = startX;
+    let column2X = startX + colWidth + 40; // Second column starts after the first column plus some space
+
+    // Add data in two columns
+    addRow("Name", data?.name, column1X, startY);
+    addRow("Mobile", data?.mobile, column2X, startY);
+    addRow("Email", data?.email, column1X, startY + rowHeight);
+    addRow(
+      "Start Date",
+      data?.startDate?.slice(0, 10),
+      column2X,
+      startY + rowHeight
+    );
+    addRow(
+      "End Date",
+      data?.endDate?.slice(0, 10),
+      column1X,
+      startY + 2 * rowHeight
+    );
+    addRow(
+      "Total Forms",
+      data?.totalAssignmentLimit,
+      column2X,
+      startY + 2 * rowHeight
+    );
+    addRow(
+      "Filled Forms",
+      data?.submittedAssignmentCount,
+      column1X,
+      startY + 3 * rowHeight
+    );
+    addRow("Correct Forms", data?.rightForms, column2X, startY + 3 * rowHeight);
+    addRow(
+      "Incorrect Forms",
+      data?.wrongForms || "0",
+      column1X,
+      startY + 4 * rowHeight
+    );
+
+    // Save PDF
+    pdf.save(`Report_${data?.name}.pdf`);
+  };
+
   const columns = [
     {
       name: "Name",
-      selector: (row) => row.name,
+      selector: (row) => row?.name,
       sortable: true,
     },
     {
       name: "Mobile No",
-      selector: (row) => row.mobile,
+      selector: (row) => row?.mobile,
       sortable: true,
     },
     {
       name: "Email",
-      selector: (row) => row.email,
+      selector: (row) => row?.email,
       sortable: true,
     },
     {
@@ -96,33 +163,40 @@ function QcReport() {
     },
     {
       name: "Total Forms",
-      selector: (row) => row.totalAssignmentLimit,
+      selector: (row) => row?.totalAssignmentLimit,
       sortable: true,
     },
     {
       name: "Saved Forms",
-      selector: (row) => row.submittedAssignmentCount,
+      selector: (row) => row?.submittedAssignmentCount,
       sortable: true,
     },
     {
       name: "Submitted Forms",
-      selector: (row) => row.submittedAssignmentCount,
+      selector: (row) => row?.submittedAssignmentCount,
       sortable: true,
     },
     {
       name: "Wrong Forms",
-      selector: (row) => row.wrongForms,
+      selector: (row) => row?.wrongForms,
       sortable: true,
     },
     {
       name: "Right Forms",
-      selector: (row) => row.rightForms,
+      selector: (row) => row?.rightForms,
       sortable: true,
     },
     {
       name: "Action",
       cell: (row) => (
-        <Button onClick={handleViewDetails(row)}>View Details</Button>
+        <Button
+          onClick={
+            downloadReport(row)
+            // handleViewDetails(row)
+          }
+        >
+          Download Pdf{" "}
+        </Button>
       ),
     },
   ];
@@ -132,19 +206,34 @@ function QcReport() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  const userId = localStorage.getItem("userId");
+
   const qcdata = async () => {
     try {
       const response = await axios.get(
         "http://localhost:5000/api/user/getallclient"
       );
-      console.log(response.data.data, "response");
-      setAllusersData(response.data.data);
+      console.log(response?.data?.data, "response");
+      setAllusersData(response?.data?.data);
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  const qcreportdata = async () => {
+    try {
+      const reposne = await axios.post(
+        "http://localhost:5000/api/assignment/getassignments",
+        { userId: userId }
+      );
+      console.log(reposne, "jasdbasjkdbaksjb");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     qcdata();
+    qcreportdata();
   }, []);
   // Function to handle text and date filtering
   const handleSearch = () => {

@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Card, Text } from "@chakra-ui/react";
+import { Card, Text, useToast } from "@chakra-ui/react";
 
 import TotalCumstmer from "../../../public/totalCust.svg";
 import TodaysFollowup from "../../../public/todays.svg";
@@ -23,12 +23,19 @@ function UserDashboard() {
   const [FrezzUsers, setFrezzUsers] = useState(0);
   const [cancelUsers, setCancelUsers] = useState(0);
   const [todaysRecovery, setTodaysRecovery] = useState(0);
+  const [toatalasignment, setTotalAssignment] = useState(0);
+  const [submitedassignment, setsubmittedassignment] = useState();
+  const [dates, setdates] = useState();
+  const toast = useToast();
+
+  const userId = localStorage.getItem("userId");
   useEffect(() => {
     totalragisterations();
     totlalActiveUser();
     totlalPendingUser();
     totlalFrezzUser();
     getallcancel();
+    getuserdeeatilsbyid();
   }, []);
 
   const getallcancel = async () => {
@@ -52,6 +59,31 @@ function UserDashboard() {
       setRegisterUsers(response.data.users.length);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const getuserdeeatilsbyid = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user/getuserbyid",
+        {
+          userId: userId,
+        }
+      );
+      console.log(response, "user details");
+      setTotalAssignment(response.data.User.totalAssignmentLimit);
+      setsubmittedassignment(response.data.User.submittedAssignmentCount);
+      setdates(response?.data?.User?.endDate);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Error",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
+      console.log(error.message);
     }
   };
 
@@ -106,15 +138,16 @@ function UserDashboard() {
 
   return (
     <>
-      <Flex 
-       ml={["2rem"]}
-      //  justifyContent={"center"}
-      width={"100%"} direction={{ base: "column", md: "row" }}>
+      <Flex
+        ml={["2rem"]}
+        //  justifyContent={"center"}
+        width={"100%"}
+        direction={{ base: "column", md: "row" }}
+      >
         <Flex
-        justifyContent={["flex-startr","space-around"]}
+          justifyContent={["flex-startr", "space-around"]}
           width={["100%", "50%"]}
           direction={{ md: "column" }}
-       
           // justifyContent="center"
           marginTop="30px"
           align="center"
@@ -122,7 +155,7 @@ function UserDashboard() {
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth={["350%","170%"]}
+              minWidth={["350%", "170%"]}
               maxWidth="170%"
               minHeight="10rem"
               maxHeight="10rem"
@@ -148,7 +181,7 @@ function UserDashboard() {
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
-                {registerUsers}
+                {toatalasignment}
               </Text>
             </Card>
           </Link>
@@ -156,16 +189,15 @@ function UserDashboard() {
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent={["flex-start","center"]}
+          justifyContent={["flex-start", "center"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
-            ml={["-1rem" , ""]}
-            
+              ml={["-1rem", ""]}
               as="flex"
-              minWidth={["700%","230%"]}
+              minWidth={["700%", "230%"]}
               maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
@@ -191,30 +223,32 @@ function UserDashboard() {
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
-                {pendingUsers}
+                {submitedassignment}
               </Text>
             </Card>
           </Link>
         </Flex>
       </Flex>
 
-      <Flex 
-       // justifyContent={"space-around"}
-    
-       width={"100%"} 
-      direction={{ base: "column", md: "row" }} gap="25px">
+      <Flex
+        // justifyContent={"space-around"}
+
+        width={"100%"}
+        direction={{ base: "column", md: "row" }}
+        gap="25px"
+      >
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          width={["100%", "50%"]} 
-          justifyContent={["flex-start","space-around"]}
+          width={["100%", "50%"]}
+          justifyContent={["flex-start", "space-around"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth={["550%","220%"]}
+              minWidth={["550%", "220%"]}
               maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
@@ -240,7 +274,7 @@ function UserDashboard() {
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
-                {cancelUsers}
+                {submitedassignment}
               </Text>
             </Card>
           </Link>
@@ -248,14 +282,14 @@ function UserDashboard() {
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          justifyContent={["flex-start","center"]}
+          justifyContent={["flex-start", "center"]}
           marginTop="30px"
           align="center"
         >
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
-              minWidth={["700%","235%"]}
+              minWidth={["700%", "235%"]}
               maxWidth="150%"
               minHeight="10rem"
               maxHeight="10rem"
@@ -281,14 +315,12 @@ function UserDashboard() {
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
-                {activeUsers}
+                {dates}
               </Text>
             </Card>
           </Link>
         </Flex>
       </Flex>
-
-    
     </>
   );
 }
