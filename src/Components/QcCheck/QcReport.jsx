@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Text, Box, Input, Button, Flex } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
 import { useState, useEffect } from "react";
@@ -20,6 +20,7 @@ function QcReport() {
   const navigate = useNavigate();
   const [allusersdata, setAllusersData] = useState();
   const toast = useToast();
+  const [incorrectAssignments, setIncorrectAssignments] = useState({});
 
   const handleIconClick = (rowData, iconIndex) => {
     // Perform actions based on rowData and iconIndex
@@ -216,10 +217,42 @@ function QcReport() {
       console.log(error);
     }
   };
-  useEffect(() => {
+
+  const getincorrectassignments = async (userId) => {
+    try {
+      console.log(userId, "incorreet");
+      const response = await axios.post(
+        "http://localhost:5000/api/user/getreportbyid",
+        {
+          id: userId,
+        }
+      );
+      console.log(response);
+      //setIncorrectAssignments((prevState) => ({
+      //  ...prevState,
+      //  [userId]: response.data.incorrectAssignments,
+      //}));
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Please Submit All Forms ",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  };
+
+  useLayoutEffect(() => {
     qcdata();
     qcreportdata();
   }, []);
+
+  //useEffect(() => {
+  //getincorrectassignments();
+  //}, []);
+
   const columns = [
     {
       name: "Name",
@@ -263,12 +296,13 @@ function QcReport() {
     },
     {
       name: "Wrong Forms",
-      selector: (row) => row?.wrongForms,
-      sortable: true,
+      cell: (row) =>
+        row?.incorrectAssignmentCount ? row?.incorrectAssignmentCount : 0,
     },
     {
       name: "Right Forms",
-      selector: (row) => row?.rightForms,
+      selector: (row) =>
+        row?.correctAssignmentCount ? row?.correctAssignmentCount : 0,
       sortable: true,
     },
     {

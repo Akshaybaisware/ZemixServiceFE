@@ -38,6 +38,7 @@ import ViewDetails from "./Components/QcCheck/ViewDetails";
 import StampPaperView from "./Components/StampPaper/StampPapaer";
 import StampPapaer from "./Components/StampPaper/StampPapaer";
 import UserRegisteration from "./Components/Froms/UserRegisteration";
+import StampPaperSubmission from "./Components/StampPaper/StampPaperSucess";
 
 const isAuthenticated = localStorage.getItem("token");
 const role = localStorage.getItem("role");
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
         <Route path="/stamppaper" element={<StampPapaer />} />
         <Route path="/stamppaperdonwload" element={<DownloadStampPaper />} />
         <Route path="/usrnavbar" element={<UserNavbar />} />
+        <Route path="/stampapersucess" Component={StampPaperSubmission} />
         {/* <Route path="/workload" element={<ContentValidationfrom />} /> */}
         <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
           {role === "admin" ? (
