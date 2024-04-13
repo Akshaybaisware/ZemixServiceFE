@@ -134,41 +134,7 @@ function Recovery() {
       selector: (row) => row?.email,
       sortable: true,
     },
-    {
-      name: "Start Date",
-      selector: (row) => row?.startDate?.slice(0, 10),
-      sortable: true,
-    },
-    {
-      name: "End Date",
-      selector: (row) => row?.endDate?.slice(0, 10),
-      sortable: true,
-    },
-    {
-      name: "Total Forms",
-      selector: (row) => row?.totalAssignmentLimit,
-      sortable: true,
-    },
-    {
-      name: "Saved Forms",
-      selector: (row) => row?.submittedAssignmentCount,
-      sortable: true,
-    },
-    {
-      name: "Submitted Forms",
-      selector: (row) => row?.submittedAssignmentCount,
-      sortable: true,
-    },
-    {
-      name: "Wrong Forms",
-      selector: (row) => row?.wrongForms,
-      sortable: true,
-    },
-    {
-      name: "Right Forms",
-      selector: (row) => row?.rightForms,
-      sortable: true,
-    },
+
     {
       name: "Date",
       selector: (row) => <Input ref={dateforrecovery} type="date" />,
@@ -178,10 +144,8 @@ function Recovery() {
       name: "Action",
       cell: (row) => (
         <Button
-          onClick={
-            () =>
-              generatePDF(row.name, row?.address, dateforrecovery.current.value)
-            // handleViewDetails(row)
+          onClick={() =>
+            generatePDF(row.name, row?.address, dateforrecovery.current.value)
           }
         >
           Download Pdf{" "}
@@ -193,13 +157,9 @@ function Recovery() {
   return (
     <>
       <Box>
-        <Text>QC Report</Text>
+        <Text>Recovery</Text>
       </Box>
-      <Box display="flex" gap="2">
-        <Input type="date" onChange={(e) => setStartDate(e.target.value)} />
-        <Input type="date" onChange={(e) => setEndDate(e.target.value)} />
-        <Button onClick={handleSearch}>Search Dates</Button>
-      </Box>
+
       <Box display="flex" gap="2">
         <Input
           type="text"
@@ -210,7 +170,7 @@ function Recovery() {
         <Button onClick={handleSearch}>Search Text</Button>
       </Box>
       <DataTable
-        title="QC Reports"
+        title="Recovery"
         columns={columns}
         data={allusersdata}
         pagination
