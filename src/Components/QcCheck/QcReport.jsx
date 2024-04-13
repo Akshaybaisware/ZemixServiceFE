@@ -71,6 +71,7 @@ function QcReport() {
   }
 
   const downloadReport = async (data) => {
+    console.log(data, "data received for report");
     const pdf = new jsPDF({
       orientation: "landscape",
     });
@@ -78,112 +79,116 @@ function QcReport() {
     try {
       const response = await axios.post(
         "http://localhost:5000/api/assignment/getassignments",
-        { userId: data._id } // use data._id instead of userId
+        { userId: data._id }
       );
       console.log(response.data, "Assignments data");
 
-      // Starting positions
       let startX = 20;
       let startY = 30;
-      const rowHeight = 10;
-      const colWidth = 90; // Width of each column
+      const rowHeight = 20;
+      const colWidth = 90;
+      const pageHeight = pdf.internal.pageSize.height; // Get the page height
 
-      // Set up table header
       pdf.setFontSize(16);
       pdf.text("User Details Report", startX, 20);
 
-      // Helper function to add row in a tabular format
       const addRow = (label, value, x, y) => {
+        if (y > pageHeight - 30) {
+          // Check if y exceeds the page height minus some margin
+          pdf.addPage(); // Add a new page
+          y = 30; // Reset y position to the top of the new page
+        }
         pdf.setFontSize(12);
-        pdf.text(`${label}: ${value || "Not provided"}`, x, y); // Adding 'Not provided' for undefined or null values
+        pdf.text(`${label}: ${value || "Not provided"}`, x, y);
+        return y; // Return the updated y position
       };
 
-      // Calculate column start positions (assuming two columns)
       let column1X = startX;
-      let column2X = startX + colWidth + 40; // Second column starts after the first column plus some space
+      let column2X = startX + colWidth + 40;
 
-      // Add data in two columns
-      addRow("Name", data?.name, column1X, startY);
-      addRow("Mobile", data?.mobile, column2X, startY);
-      addRow("Email", data?.email, column1X, startY + rowHeight);
-      addRow(
+      startY = addRow("Name", data?.name, column1X, startY);
+      startY = addRow("Mobile", data?.mobile, column2X, startY);
+      startY = addRow("Email", data?.email, column1X, startY + rowHeight);
+      startY = addRow(
         "Start Date",
         data?.startDate?.slice(0, 10),
         column2X,
-        startY + rowHeight
+        startY
       );
-      addRow(
+      startY = addRow(
         "End Date",
         data?.endDate?.slice(0, 10),
         column1X,
-        startY + 2 * rowHeight
+        startY + rowHeight
       );
-      addRow(
+      startY = addRow(
         "Total Forms",
         data?.totalAssignmentLimit,
         column2X,
-        startY + 2 * rowHeight
+        startY
       );
-      addRow(
+      startY = addRow(
         "Filled Forms",
         data?.submittedAssignmentCount,
         column1X,
-        startY + 3 * rowHeight
+        startY + rowHeight
       );
-      addRow(
-        "Correct Forms",
-        data?.rightForms,
-        column2X,
-        startY + 3 * rowHeight
-      );
-      addRow(
+      startY = addRow("Correct Forms", data?.rightForms, column2X, startY);
+      startY = addRow(
         "Incorrect Forms",
         data?.wrongForms || "0",
         column1X,
-        startY + 4 * rowHeight
+        startY + rowHeight
       );
 
-      // Add assignments data
-      startY += 5 * rowHeight; // move to the next row
+      startY += rowHeight; // Move to the next block
+      if (startY > pageHeight - 30) {
+        pdf.addPage();
+        startY = 30;
+      }
       pdf.text("Assignments:", startX, startY);
-      startY += rowHeight; // move to the next row
+      startY += rowHeight;
 
       response.data.assignments.forEach((assignment, index) => {
-        const assignmentY = startY + index * rowHeight;
-
+        if (startY > pageHeight - 30) {
+          pdf.addPage();
+          startY = 30;
+        }
+        const baseY =
+          startY + ((index * rowHeight * 6) % (pageHeight - startY));
         pdf.text(
           `${index + 1}. Name: ${assignment.name || "Not provided"}`,
           startX,
-          assignmentY
+          baseY
         );
         pdf.text(
           `Address: ${assignment.address || "Not provided"}`,
           startX,
-          assignmentY + rowHeight
+          baseY + rowHeight
         );
         pdf.text(
           `Pin Code: ${assignment.pinCode || "Not provided"}`,
           startX,
-          assignmentY + 2 * rowHeight
+          baseY + 2 * rowHeight
         );
         pdf.text(
           `Job Functional: ${assignment.jobFunctional || "Not provided"}`,
           startX,
-          assignmentY + 3 * rowHeight
+          baseY + 3 * rowHeight
         );
         pdf.text(
           `Phone: ${assignment.phone || "Not provided"}`,
           startX,
-          assignmentY + 4 * rowHeight
+          baseY + 4 * rowHeight
         );
         pdf.text(
           `Annual Revenue: ${assignment.annualRevenue || "Not provided"}`,
           startX,
-          assignmentY + 5 * rowHeight
+          baseY + 5 * rowHeight
         );
+        startY = baseY + 6 * rowHeight;
       });
 
-      // Save PDF
       pdf.save(`Report_${data?.name}.pdf`);
     } catch (error) {
       console.log(error);
@@ -246,7 +251,7 @@ function QcReport() {
       cell: (row) => (
         <Button
           onClick={
-            downloadReport
+            () => downloadReport(row)
             // handleViewDetails(row)
           }
         >
