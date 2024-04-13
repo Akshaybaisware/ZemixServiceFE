@@ -183,6 +183,7 @@ function ViewDetails() {
           <VStack spacing={4} align="stretch">
             {/* Existing form controls */}
             {/* Button to trigger PDF download */}
+            {}
             <Button colorScheme="blue" onClick={downloadReport}>
               Download PDF
             </Button>

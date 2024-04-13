@@ -1,90 +1,72 @@
-import React, { useRef } from "react";
-import { Text, Box, Input, Button, Flex } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Text, Box, Input, Button } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
-import { useState, useEffect } from "react";
-import { FaPencilAlt } from "react-icons/fa";
-import { TfiReload } from "react-icons/tfi";
-import { FaDownload } from "react-icons/fa6";
-import { FaFile } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
-import { BiLinkExternal } from "react-icons/bi";
-import { FaEye } from "react-icons/fa";
-import { FaRupeeSign } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jsPDF from "jspdf";
 
 function Recovery() {
-  const [allusersdata, setAllusersData] = useState();
-  const [tableData, setTableData] = useState(allusersdata);
+  const [allUsersData, setAllUsersData] = useState([]);
+  const [tableData, setTableData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const userId = localStorage.getItem("userId");
-  const qcdata = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5000/api/user/getallclient"
-      );
-      console.log(response?.data?.data, "response");
-      setAllusersData(response?.data?.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const qcreportdata = async () => {
-    try {
-      const reposne = await axios.post(
-        "http://localhost:5000/api/assignment/getassignments",
-        { userId: userId }
-      );
-      console.log(reposne, "jasdbasjkdbaksjb");
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
-    qcdata();
-    qcreportdata();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/user/getallclient"
+        );
+        // Initialize each user data with a selectedDate property
+        const usersWithDate = response?.data?.data.map((user) => ({
+          ...user,
+          selectedDate: "",
+        }));
+        setAllUsersData(usersWithDate);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
   }, []);
 
+  useEffect(() => {
+    setTableData(allUsersData);
+  }, [allUsersData]);
+
   const handleSearch = () => {
-    let filteredData = allusersdata;
-
-    if (searchText) {
-      filteredData = filteredData.filter((item) =>
-        Object.keys(item).some((key) =>
-          item[key].toString().toLowerCase().includes(searchText.toLowerCase())
-        )
+    let filteredData = allUsersData.filter((item) => {
+      return (
+        (!searchText ||
+          Object.values(item).some(
+            (value) =>
+              typeof value === "string" &&
+              value.toLowerCase().includes(searchText.toLowerCase())
+          )) &&
+        (!startDate || new Date(item.selectedDate) >= new Date(startDate)) &&
+        (!endDate || new Date(item.selectedDate) <= new Date(endDate))
       );
-    }
-
-    if (startDate && endDate) {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      filteredData = filteredData.filter((item) => {
-        const itemStartDate = new Date(item.startDate);
-        const itemEndDate = new Date(item.endDate);
-        return itemStartDate >= start && itemEndDate <= end;
-      });
-    }
+    });
 
     setTableData(filteredData);
   };
 
-  const dateforrecovery = useRef();
+  const handleDateChange = (date, id) => {
+    const newData = allUsersData.map((item) =>
+      item.id === id ? { ...item, selectedDate: date } : item
+    );
+    setAllUsersData(newData);
+  };
+
   const generatePDF = (name, address, date) => {
-    // Create a new PDF document
     const doc = new jsPDF();
 
-    // Set the content of the PDF using template literals to insert dynamic data
-    const content = `
-  ${date}
+    const content = `Date: ${date}
+
   To,
   Name of the Borrower: ${name}
   Address of the Borrower: ${address}
+
   Ref.: Your Loan Agreement Number - 139224722
 
   Dear Customer,
@@ -112,43 +94,51 @@ function Recovery() {
   Registered Office: KRM Towers, 7th Floor, No. 1, Harrington Road, Chetpet, Chennai 600031.Tel.: +91 44 4571 6400,
   CIN: L65110TN2014PLC097792, bank.info@idfcfirstbank.com, www.idfcfirstbank.com`;
 
-    // Add text to PDF
-    doc.text(content, 10, 10);
-
-    // Save the PDF
+    // Use splitTextToSize to wrap text within the desired width
+    const lines = doc.splitTextToSize(content, 180); // Adjust width to fit your content as needed
+    doc.text(lines, 10, 10); // Adjust x, y positions as needed
     doc.save("LoanClosureConfirmation.pdf");
   };
+
   const columns = [
     {
       name: "Name",
-      selector: (row) => row?.name,
+      selector: (row) => row.name,
       sortable: true,
     },
     {
       name: "Mobile No",
-      selector: (row) => row?.mobile,
+      selector: (row) => row.mobile,
       sortable: true,
     },
     {
       name: "Email",
-      selector: (row) => row?.email,
+      selector: (row) => row.email,
       sortable: true,
     },
-
     {
       name: "Date",
-      selector: (row) => <Input ref={dateforrecovery} type="date" />,
-      sortable: true,
+      cell: (row) => (
+        <Input
+          type="date"
+          value={row.selectedDate}
+          onChange={(e) => handleDateChange(e.target.value, row.id)}
+        />
+      ),
     },
     {
       name: "Action",
       cell: (row) => (
         <Button
           onClick={() =>
-            generatePDF(row.name, row?.address, dateforrecovery.current.value)
+            generatePDF(
+              row.name,
+              row.address,
+              row.selectedDate || new Date().toLocaleDateString()
+            )
           }
         >
-          Download Pdf{" "}
+          Download PDF
         </Button>
       ),
     },
@@ -157,9 +147,8 @@ function Recovery() {
   return (
     <>
       <Box>
-        <Text>Recovery</Text>
+        <Text fontSize="2xl">Recovery</Text>
       </Box>
-
       <Box display="flex" gap="2">
         <Input
           type="text"
@@ -167,12 +156,13 @@ function Recovery() {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <Button onClick={handleSearch}>Search Text</Button>
+
+        <Button onClick={handleSearch}>Search</Button>
       </Box>
       <DataTable
-        title="Recovery"
+        title="Recovery Table"
         columns={columns}
-        data={allusersdata}
+        data={tableData}
         pagination
         paginationPerPage={10}
       />

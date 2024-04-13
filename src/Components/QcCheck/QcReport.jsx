@@ -11,6 +11,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { FaRupeeSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import jsPDF from "jspdf";
 
@@ -18,6 +19,7 @@ function QcReport() {
   const icons = [FaPencilAlt, FaEye, FaRupeeSign];
   const navigate = useNavigate();
   const [allusersdata, setAllusersData] = useState();
+  const toast = useToast();
 
   const handleIconClick = (rowData, iconIndex) => {
     // Perform actions based on rowData and iconIndex
@@ -184,6 +186,40 @@ function QcReport() {
     }
   };
 
+  const [tableData, setTableData] = useState(allusersdata);
+  const [searchText, setSearchText] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  const userId = localStorage.getItem("userId");
+
+  const qcdata = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/user/getallclient"
+      );
+      console.log(response?.data?.data, "response");
+      setAllusersData(response?.data?.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const qcreportdata = async () => {
+    try {
+      const reposne = await axios.post(
+        "http://localhost:5000/api/assignment/getassignments",
+        { userId: userId }
+      );
+      console.log(reposne, "jasdbasjkdbaksjb");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    qcdata();
+    qcreportdata();
+  }, []);
   const columns = [
     {
       name: "Name",
@@ -239,51 +275,35 @@ function QcReport() {
       name: "Action",
       cell: (row) => (
         <Button
-          onClick={
-            () => downloadReport(row)
-            // handleViewDetails(row)
-          }
+          onClick={() => {
+            if (row.submittedAssignmentCount === 480) {
+              downloadReport(row);
+              toast({
+                title: "Success",
+                description: "Pdf Downloading",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+                position: "top",
+              });
+            } else {
+              toast({
+                title: "Error",
+                description: "Please Submit All Forms ",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+                position: "top",
+              });
+            }
+          }}
         >
-          Download Pdf{" "}
+          Download Pdf
         </Button>
       ),
     },
   ];
 
-  const [tableData, setTableData] = useState(allusersdata);
-  const [searchText, setSearchText] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-
-  const userId = localStorage.getItem("userId");
-
-  const qcdata = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5000/api/user/getallclient"
-      );
-      console.log(response?.data?.data, "response");
-      setAllusersData(response?.data?.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const qcreportdata = async () => {
-    try {
-      const reposne = await axios.post(
-        "http://localhost:5000/api/assignment/getassignments",
-        { userId: userId }
-      );
-      console.log(reposne, "jasdbasjkdbaksjb");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    qcdata();
-    qcreportdata();
-  }, []);
   // Function to handle text and date filtering
   const handleSearch = () => {
     let filteredData = allusersdata;
