@@ -612,7 +612,7 @@ function Navbar() {
               <Box fontSize={["1.5rem"]}>QC Report</Box>
             </Link>
 
-            <Link to="/">
+            <Link to="/recovery">
               <Box fontSize={["1.5rem"]}>Recovery</Box>
             </Link>
 

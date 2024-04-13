@@ -27,6 +27,7 @@ import UserDashboard from "./Components/UserPage/UserDashboard";
 import EditClientComponent from "./Components/ClientActivity/EditClient";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserLogin from "./Components/Login/UserLogin";
+import Recovery from "./Components/Recovery/Recovery";
 
 import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
@@ -124,6 +125,10 @@ const router = createBrowserRouter(
               {/* <Route path="/writecontent" Component={ContentValidationfrom} /> */}
               <Route path="/userreport" Component={GetReportofUser} />
               <Route path="/downloadreport" Component={DownloadStampPaper} />
+              <Route
+                path="/recovery"
+                element={<ProtectedRoute Component={Recovery} />}
+              />
             </>
           ) : (
             <>
