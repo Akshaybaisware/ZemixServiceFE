@@ -92,101 +92,90 @@ function QcReport() {
       pdf.setFontSize(16);
       pdf.text("User Details Report", startX, 20);
 
+      // Function to add row with automatic new page handling
       const addRow = (label, value, x, y) => {
-        if (y > pageHeight - 30) {
+        if (y > pageHeight - 40) {
           // Check if y exceeds the page height minus some margin
           pdf.addPage(); // Add a new page
           y = 30; // Reset y position to the top of the new page
         }
         pdf.setFontSize(12);
         pdf.text(`${label}: ${value || "Not provided"}`, x, y);
-        return y; // Return the updated y position
+        return y + rowHeight; // Increment y for the next row
       };
 
       let column1X = startX;
       let column2X = startX + colWidth + 40;
 
       startY = addRow("Name", data?.name, column1X, startY);
-      startY = addRow("Mobile", data?.mobile, column2X, startY);
-      startY = addRow("Email", data?.email, column1X, startY + rowHeight);
+      startY = addRow("Mobile", data?.mobile, column2X, startY - rowHeight); // Adjust y for column continuity
+      startY = addRow("Email", data?.email, column1X, startY);
       startY = addRow(
         "Start Date",
         data?.startDate?.slice(0, 10),
         column2X,
-        startY
+        startY - rowHeight
       );
       startY = addRow(
         "End Date",
         data?.endDate?.slice(0, 10),
         column1X,
-        startY + rowHeight
+        startY
       );
       startY = addRow(
         "Total Forms",
         data?.totalAssignmentLimit,
         column2X,
-        startY
+        startY - rowHeight
       );
       startY = addRow(
         "Filled Forms",
         data?.submittedAssignmentCount,
         column1X,
-        startY + rowHeight
+        startY
       );
-      startY = addRow("Correct Forms", data?.rightForms, column2X, startY);
+      startY = addRow(
+        "Correct Forms",
+        data?.rightForms,
+        column2X,
+        startY - rowHeight
+      );
       startY = addRow(
         "Incorrect Forms",
         data?.wrongForms || "0",
         column1X,
-        startY + rowHeight
+        startY
       );
 
-      startY += rowHeight; // Move to the next block
-      if (startY > pageHeight - 30) {
+      if (startY > pageHeight - 40) {
         pdf.addPage();
         startY = 30;
       }
+      pdf.setFontSize(16);
       pdf.text("Assignments:", startX, startY);
       startY += rowHeight;
 
       response.data.assignments.forEach((assignment, index) => {
-        if (startY > pageHeight - 30) {
+        if (startY > pageHeight - 40) {
           pdf.addPage();
           startY = 30;
         }
-        const baseY =
-          startY + ((index * rowHeight * 6) % (pageHeight - startY));
-        pdf.text(
-          `${index + 1}. Name: ${assignment.name || "Not provided"}`,
+        startY = addRow(`Name`, assignment.name, startX, startY);
+        startY = addRow(`Address`, assignment.address, startX, startY);
+        startY = addRow(`Pin Code`, assignment.pinCode, startX, startY);
+        startY = addRow(
+          `Job Functional`,
+          assignment.jobFunctional,
           startX,
-          baseY
+          startY
         );
-        pdf.text(
-          `Address: ${assignment.address || "Not provided"}`,
+        startY = addRow(`Phone`, assignment.phone, startX, startY);
+        startY = addRow(
+          `Annual Revenue`,
+          assignment.annualRevenue,
           startX,
-          baseY + rowHeight
+          startY
         );
-        pdf.text(
-          `Pin Code: ${assignment.pinCode || "Not provided"}`,
-          startX,
-          baseY + 2 * rowHeight
-        );
-        pdf.text(
-          `Job Functional: ${assignment.jobFunctional || "Not provided"}`,
-          startX,
-          baseY + 3 * rowHeight
-        );
-        pdf.text(
-          `Phone: ${assignment.phone || "Not provided"}`,
-          startX,
-          baseY + 4 * rowHeight
-        );
-        pdf.text(
-          `Annual Revenue: ${assignment.annualRevenue || "Not provided"}`,
-          startX,
-          baseY + 5 * rowHeight
-        );
-        startY = baseY + 6 * rowHeight;
       });
 
       pdf.save(`Report_${data?.name}.pdf`);
