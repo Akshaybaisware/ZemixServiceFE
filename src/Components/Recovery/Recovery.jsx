@@ -50,6 +50,9 @@ function Recovery() {
 
     setTableData(filteredData);
   };
+  useEffect(() => {
+    handleSearch(); // Call this function every time searchText, startDate, or endDate changes
+  }, [searchText, startDate, endDate, allUsersData]);
 
   const handleDateChange = (date, id) => {
     const newData = allUsersData.map((item) =>
@@ -156,8 +159,6 @@ function Recovery() {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-
-        <Button onClick={handleSearch}>Search</Button>
       </Box>
       <DataTable
         title="Recovery Table"

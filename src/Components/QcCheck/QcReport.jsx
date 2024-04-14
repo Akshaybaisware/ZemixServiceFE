@@ -187,6 +187,8 @@ function QcReport() {
     }
   };
 
+  // Assuming you have startDate and endDate states as well
+
   const [tableData, setTableData] = useState(allusersdata);
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -340,7 +342,7 @@ function QcReport() {
 
   // Function to handle text and date filtering
   const handleSearch = () => {
-    let filteredData = allusersdata;
+    let filteredData = [...allusersdata];
 
     if (searchText) {
       filteredData = filteredData.filter((item) =>
@@ -363,6 +365,10 @@ function QcReport() {
     setTableData(filteredData);
   };
 
+  useEffect(() => {
+    handleSearch();
+  }, [searchText, startDate, endDate, allusersdata]);
+
   return (
     <>
       <Box>
@@ -380,7 +386,6 @@ function QcReport() {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <Button onClick={handleSearch}>Search Text</Button>
       </Box>
       <DataTable
         title="QC Reports"
