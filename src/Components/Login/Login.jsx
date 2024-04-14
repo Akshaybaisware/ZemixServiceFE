@@ -247,6 +247,25 @@ function Login() {
                 System Users Login From Hear
               </Button>
             </NavLink>
+            <NavLink
+              to="/forgetpassword"
+              style={{ textDecoration: "none", width: "100%" }}
+            >
+              <Button
+                height="3rem"
+                width="100%" // Take up 100% width
+                borderRadius="6px"
+                fontSize={["0.9rem", "1.3rem"]}
+                color="#fff"
+                background="teal"
+                fontWeight={700}
+                fontFamily='"Poppins", sans-serif'
+                mb="20px" // Add margin-bottom
+                _hover={{ background: "FloralWhite", color: "black" }}
+              >
+                Forget Password
+              </Button>
+            </NavLink>
           </Box>
         </Box>
       </Box>

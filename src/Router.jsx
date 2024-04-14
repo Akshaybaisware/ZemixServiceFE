@@ -54,6 +54,7 @@ const router = createBrowserRouter(
         <Route path="/stamppaperdonwload" element={<DownloadStampPaper />} />
         <Route path="/usrnavbar" element={<UserNavbar />} />
         <Route path="/stampapersucess" Component={StampPaperSubmission} />
+        <Route path="/forgetpassword" element={<ForgetPassword />} />
         {/* <Route path="/workload" element={<ContentValidationfrom />} /> */}
         <Route path="/" element={<ProtectedRoute Component={RootLayout} />}>
           {role === "admin" ? (
