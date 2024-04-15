@@ -18,7 +18,7 @@ import jsPDF from "jspdf";
 function QcReport() {
   const icons = [FaPencilAlt, FaEye, FaRupeeSign];
   const navigate = useNavigate();
-  const [allusersdata, setAllusersData] = useState();
+  const [allusersdata, setAllusersData] = useState([]);
   const toast = useToast();
   const [incorrectAssignments, setIncorrectAssignments] = useState({});
 
@@ -201,8 +201,20 @@ function QcReport() {
       const response = await axios.get(
         "http://localhost:5000/api/user/getallclient"
       );
-      console.log(response?.data?.data, "response");
+      console.log(response, "response");
+
+      if (response.isAvailable === false) {
+        toast({
+          title: "Error",
+          description: "No Data Available",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+      }
       setAllusersData(response?.data?.data);
+      console.log(response, response?.data?.data, "allusersdata");
     } catch (error) {
       console.log(error.message);
     }
@@ -342,19 +354,28 @@ function QcReport() {
 
   // Function to handle text and date filtering
   const handleSearch = () => {
-    let filteredData = [...allusersdata];
+    let filteredData = allusersdata;
 
+    // Filter by text
     if (searchText) {
       filteredData = filteredData.filter((item) =>
-        Object.keys(item).some((key) =>
-          item[key].toString().toLowerCase().includes(searchText.toLowerCase())
+        Object.keys(item).some(
+          (key) =>
+            item[key] &&
+            item[key]
+              .toString()
+              .toLowerCase()
+              .includes(searchText.toLowerCase())
         )
       );
     }
 
+    // Filter by date range
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
+      end.setHours(23, 59, 59, 999); // Include the entire end day
+
       filteredData = filteredData.filter((item) => {
         const itemStartDate = new Date(item.startDate);
         const itemEndDate = new Date(item.endDate);
@@ -366,7 +387,7 @@ function QcReport() {
   };
 
   useEffect(() => {
-    handleSearch();
+    handleSearch(); // Call handleSearch to apply initial filters on component mount
   }, [searchText, startDate, endDate, allusersdata]);
 
   return (
@@ -390,7 +411,7 @@ function QcReport() {
       <DataTable
         title="QC Reports"
         columns={columns}
-        data={allusersdata}
+        data={tableData}
         pagination
         paginationPerPage={10}
       />
