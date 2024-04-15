@@ -231,7 +231,7 @@ const StampPaperView = () => {
             mb={{ base: "2", lg: "0" }}
             maxWidth="100%" // Added maxWidth property
           >
-            <Image src={frontpage} alt="Description of the image" />
+            <Image src={""} alt="Description of the image" />
           </Box>
         </Box>
 

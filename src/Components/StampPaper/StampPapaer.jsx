@@ -13,6 +13,7 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
+import sign from "../../assets/cropto stamp.svg";
 // import image from "./SVG STAM.svg";
 
 import { useState } from "react";
@@ -578,6 +579,10 @@ const StampPaper = () => {
           <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
             B. Employee : -
           </Text>
+        </Box>
+
+        <Box mt={"-10rem"} boxSize="sm">
+          <Image src={sign} alt="Stamp" />
         </Box>
         {/* <FormControl w={["350px", "400px"]}>
           <FormLabel>Name</FormLabel>
