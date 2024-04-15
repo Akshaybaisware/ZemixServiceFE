@@ -394,7 +394,7 @@ function Navbar() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/forgetpassword",
+        "http://localhost:5000/api/auth/adminforgetpassword",
         {
           newPassword: newPasswordValue,
           confirmPassword: confirmPasswordValue,
