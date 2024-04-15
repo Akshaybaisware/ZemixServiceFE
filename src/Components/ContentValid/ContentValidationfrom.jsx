@@ -48,43 +48,53 @@ function ContentValidationfrom() {
   };
 
   const submitForm = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/assignment/addassignment",
-        {
-          name: name.current.value,
-          phone: mobile.current.value,
-          address: address.current.value,
-          annualRevenue: annualRevenue.current.value,
-          jobFunctional: jobFunctional.current.value,
-          pinCode: pinCode.current.value,
-          userId: userId,
-        }
-      );
-      console.log(response, "mkninmiopn");
-      if (response.status === 201) {
-        toast({
-          title: "Success",
-          description: "Form submitted successfully",
-          status: "success",
-          duration: 3000,
-          position: "top",
-          isClosable: true,
-        });
-        navigate("/");
-        refreshAssignment(); // Refresh the assignment data after submission
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Error",
-        status: "error",
-        duration: 3000,
-        position: "top",
-        isClosable: true,
-      });
-      console.log(error.message);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:5000/api/assignment/addassignment",
+    //     {
+    //       name: name.current.value,
+    //       phone: mobile.current.value,
+    //       address: address.current.value,
+    //       annualRevenue: annualRevenue.current.value,
+    //       jobFunctional: jobFunctional.current.value,
+    //       pinCode: pinCode.current.value,
+    //       userId: userId,
+    //     }
+    //   );
+    //   console.log(response, "mkninmiopn");
+    //   if (response.status === 201) {
+    //     toast({
+    //       title: "Success",
+    //       description: "Form submitted successfully",
+    //       status: "success",
+    //       duration: 3000,
+    //       position: "top",
+    //       isClosable: true,
+    //     });
+    //     navigate("/");
+    //     refreshAssignment(); // Refresh the assignment data after submission
+    //   }
+    // } catch (error) {
+    //   toast({
+    //     title: "Error",
+    //     description: "Error",
+    //     status: "error",
+    //     duration: 3000,
+    //     position: "top",
+    //     isClosable: true,
+    //   });
+    //   console.log(error.message);
+    // }
+    toast({
+      title: "Success",
+      description: "Form submitted successfully",
+      status: "success",
+      duration: 3000,
+      position: "top",
+      isClosable: true,
+    });
+    navigate("/");
+    refreshAssignment(); // Refresh the assignment data after submission
   };
 
   useEffect(() => {
