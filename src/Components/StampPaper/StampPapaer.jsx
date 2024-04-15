@@ -85,487 +85,269 @@ const StampPaper = () => {
 
   return (
     <>
-      <Box m={["1rem", "7rem"]}>
-        {/* <Box textAlign="center">
-          <Image
-            mx="auto" // Center the image horizontally
-            boxSize={{ base: "100%" }}
-            objectFit="contain"
-            src={image}
-            alt="Description of the image"
-            mb={{ base: "2", lg: "0" }}
-          />
-
-          <Heading as="h2" mb={{ base: "2", lg: "4" }}>
-            Legal Employment Contract 2023
-          </Heading>
-
-          <Text>
-            THIS DIGITAL EMPLOYMENT CONTRACT (this "Agreement") Valid Till
-            Eleven Months From 2023-11-30 BETWEEN:
-          </Text>
-
-          <Text fontSize={"1.5rem"}>
-            <strong>Zemex Service of </strong>
-          </Text>
-          <Text>
-            KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR, RAJASTHAN (RJ),
-            INDIA(IN), 302031 of
-          </Text>
-
-          <Text fontSize={"1.5rem"}>
-            <strong>(The "Employer")</strong>
-          </Text>
-
-          <Text ml={{ base: "0", lg: "40em" }}>OF THE FIRST PARTY </Text>
-
-          <Text>-AND-</Text>
-          <Text>
-            S/O &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;...
-            <strong>(The "Employee")</strong>
-          </Text>
-          <Text ml={{ base: "0", lg: "43em" }}>OF THE SECOND PARTY</Text>
-        </Box> */}
+      <Box>
         <Box display="flex" flexDirection="column" textAlign="center">
           <Box
             mx="auto"
-            boxSize={{ base: "100%" }}
+            boxSize={{ base: "100%", md: "auto" }} // Adjusted to "auto" for non-base screen sizes
             objectFit="contain"
             mb={{ base: "2", lg: "0" }}
+            maxWidth="100%" // Added maxWidth property
           >
             <Image src={""} alt="Description of the image" />
           </Box>
         </Box>
 
-        <Box display="flex" justifyContent="space-evenly">
-          <Box mb={{ base: "2", lg: "0" }}>
-            <Image
-              w={{ base: "100%", lg: "150px" }}
-              h={{ base: "auto", lg: "350px" }}
-              src={""}
-              alt="Dan Abramov"
-            />
-          </Box>
-          <Box textAlign="center">
-            <Heading
-              fontSize={{ base: "1rem", md: "2rem" }}
-              mb={{ base: "2", lg: "4" }}
-            >
-              Legal Employment Contract 2023
-            </Heading>
-
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              THIS DIGITAL EMPLOYMENT CONTRACT (this "Agreement") Valid Till
-              Eleven Months From 2023-11-30 BETWEEN:
-            </Text>
-
-            <Text>
-              <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-                Zemix Services
-              </Heading>
-            </Text>
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR, RAJASTHAN
-              (RJ), INDIA(IN), 302031 of
-            </Text>
-
-            {/* <Text fontSize={"1.5rem"}>
-              <strong>(The "Employer")</strong>
-            </Text> */}
-            <Text>
-              <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-                The "Employer"
-              </Heading>
-            </Text>
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              OF THE FIRST PARTY{" "}
-            </Text>
-
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>-AND-</Text>
-            <Text>
-              S/O &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;... &nbsp;...
-              <strong>(The "Employee")</strong>
-            </Text>
-            <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-              OF THE SECOND PARTY
-            </Text>
-          </Box>
-        </Box>
-
         <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>Background</Heading>
           <Text>
-            A. The Employer Is Of The Opinion That The Employee Has The
-            Necessary Qualifications, Experience, And Abilities To Assist And
-            Benefit The Employer In Requisiting Skills And Infrastructure For
-            Successful Execution Of Form Filling Projects.
+            Presently we are providing the business for form filling more
+            meaningfully described in the column Scope of Work, through their
+            principals. AND WHEREAS the Business Associate is engaged inter
+            alias, in the business of providing a wide Spectrum of online form
+            filling & services. The Business Associate has acquired the
+            necessary expertise and developed the requisite skill base and
+            infrastructure for successful execution of Form Filling Projects.
+            This Agreement represents the business Agreement and operational
+            understandings between the parties and shall remain in effect for a
+            period of ELEVEN MONTHS from the date of execution hereof or from
+            the date of providing the first data whichever is later & can be
+            extended for the period as mutually agreed upon, for the purpose
             <br />
             <br />
-            B. The Employer Desires To Employ The Employee, And The Employee Has
-            Agreed To Accept And Enter Such Employment Upon The Terms And
-            Conditions Set Out In This Agreement.
+            <p fontSize={{ base: "1rem", md: "1rem" }}>
+              NOW THIS AGREEMENT WITNESSETH AS FOLLOWS: BOTH PARTIES ARE
+              MUTUALLY AGREE FOR THE FOLLOWING POINTS.
+            </p>
+            <br />
+            1. Main Purpose: The Original data will be available online on
+            website provided by Tricom Enterprise at the time of signup. You are
+            required to feed the provided data field wise online as per the
+            guidelines. Data supply and preservation of the output file is done
+            online on real time basis.
+            <br />
+            <br /> 2. Compensation: For the Form Filling services rendered by
+            the Business Associate, they shall be entitled for payment of price
+            38 RS (INR) per form (if you achieved cut-off above 486) The
+            Business Associate shall raise invoice after completion of work with
+            the data. The Invoice can be raised through email. Q.C. report will
+            be provided in 72 Hrs. International Working Days from the date of
+            submission.
+            <br />
+            <br />
+            3. Payouts: Client will provide workload of 540 FORMS 5 Days. This
+            MOU has been signed for 1 system.
+            <br />
+            <br />
+            4. SERVICES: - Business Associate will get single id to work on and
+            business associate can work 24X7 on this id.
+            <br />
+            <br />
+            5. Time Period for work completion: you have 5 days (include
+            holidays) to complete the New work and Second Party has to send it
+            to First Party. The First Party shall give an accuracy report within
+            72 hrs. For the New Work, after submissions as per technical
+            specifications which are included in this agreement with accuracy
+            parameters
+            <br />
+            <br /> 6. Client agrees to provide formats and other information for
+            processing the job to Business Associate at the time of providing
+            the data.
+            <br />
+            <br />
+            7. Telecommunication cost applicable at each end shall be borne by
+            the respective parties. 8. Business Associate will execute the data
+            processing work provided by Client through experienced persons in
+            such manner so as to carry out the work efficiently at minimum of
+            90% accuracy for out files.
+            <br />
+            <br />
+            <p
+              style={{
+                color: "red",
+              }}
+            >
+              If you want Extra days to complete the project than you need to
+              pay extension charges to the company.
+            </p>
             {/* ... (rest of the Background section) */}
           </Text>
           <Text>
             <br />
-            Presently It Is In A Position To Procure The Business For Form
-            Filling More Meaningfully Described In The Column Scope Of Work,
-            Through Their Principals. The Current Project Is Carried Out Under
-            The Cost Of Client And Not An Assignment As Such Acquired By
-            Employee. and where as The Employee Is Engaged Inter Alias, In The
-            Business Of Providing A Wide Spectrum Of Software Solutions &
-            Services.
+            9. This agreement represents the business Agreement and operational
+            understandings between the parties and shall remain in effect for a
+            period of Eleven months from the date of execution hereof. The
+            clients' specifications in terms of quality and other parameters
+            that shall be issued by the Client/their principals from time to
+            time and acknowledged by the Business Associate shall be read with
+            this agreement.
             <br />
             <br />
-            IN CONSIDERATION OF The Matters Described Above and of The Mutual
-            Benefits and Obligations Set Forth In This Agreement, The Receipt
-            And Sufficiency of Which Consideration Is Hereby Acknowledged, The
-            Parties To This Agreement Agree As Follows:
+            10. Termination Clauses: - If you fail to submit data on time or, If
+            fails to give accuracy in output files. Company reserves the right
+            to terminate the agreement with immediate effect. And PEXIV will not
+            be responsible for any further data and payment to the Business
+            Associate.
+            <br />
+            <br />- If company found that there are multiple logins of a single
+            I.D., The company will not be responsible for the corruption of the
+            data in both online and offline modules. And your I.D. will get
+            terminated without any intimation. If we find any 2 login/ logout
+            together, 2 IP address without login/ logout, browser upgrade/
+            degrade without login / logout then ID will be terminate without any
+            prior intimation.
+            <br />
+            <br />- If any kind of malfunctioning found in the work then company
+            reserved right to take trail of your work for a day.
+            <br />
+            <br />- If you break the company rules & regulations means your id
+            is get terminate, company will not do any financial transaction with
+            you.
+            <br />
+            <br />
+            11. No modification of the terms of this AGREEMENT shall be valid
+            unless it is in writing and signed by all the parties.
+            <br />
+            <br />
+            12. Force Majeure: If the rendition of the Form Filling Services is
+            hampered due to earthquake, flood, tempest, civil riotsor Act of God
+            then the Business Associate shall be absolved of its obligations
+            hereunder till normalcy is restored after the cessation of the
+            aforementioned contingencies. The Business Associate shall likewise
+            be absolved if rendition of the services is hampered due to a strike
+            called by the date entry operators engaged by the Business
+            Associate, violence or political turbulence or for any other reason
+            of a similar nature, which is beyond the control of the Business
+            Associate.
+            <br />
+            <br />
+            13. Severability: Unenforceability of any provision of this
+            Agreement shall not affect any other provisions herein contained;
+            instead, this Agreement shall be construed as if such unenforceable
+            provision had not been contained herein.
+            <br />
+            <br />
+            14. Variation: Except as otherwise expressly provided in this
+            Agreement, this Agreement may not be changed or modified in any way
+            after it has been signed, except in writing signed by or on behalf
+            of both of the parties.
+            <br />
+            <br />
+            15. Dispute Resolution & Jurisdiction: In the event of any dispute
+            or difference arising between the parties hereto relating to or
+            arising out of this Agreement, including the implementation,
+            execution, interpretation, rectification, validity, enforceability,
+            termination or rescission thereof, including the rights, obligations
+            or liabilities of the parties hereto, the same will be adjudicated
+            and determined by arbitration. The Indian Arbitration & Conciliation
+            Act, 1996 or any statutory amendment or re-enactment thereof in
+            force in India, shall govern the reference. Both parties shall
+            appoint their respective arbitrator, and both arbitrators thus
+            appointed should appoint the third Arbitrator who shall function as
+            the presiding Arbitrator. The venue of arbitration shall be Udaipur,
+            Rajasthan. The Courts in the city of Rajasthan shall have exclusive
+            jurisdiction to entertain try and determine the same.
+            <br />
+            <br /> 16. Both the parties hereby agree neither to Circumvent or
+            nor to disclose the identities, Information as well as the essence
+            of the project etc of each other's/Principals, clients etc. to any
+            other Third party and neither of us will approach each otherâ€™s
+            contracts as identified from time to time.
+            <br />
+            <br />
           </Text>
         </Box>
 
         {/* Commencement Date and Term Section */}
         <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
+          <Heading as="h3" mb={4}>
             <br />
-            Commencement Date and Term
+            PRIMARY NOTE
           </Heading>
           <Text>
-            Scope Of Work: The Employee Will Commence Employment With The
-            Employer On 2023-11-30 (the "Commencement Date") Extending Till
-            2023-12-04 (End Of "Term Date").
             <br />
             <br />
-            Subject To The Probationary Period And Subject To Termination As
-            Provided In This Agreement, The Employee Is Required To Feed The
-            Provided Data In The Provided Portal As Per The Guidelines Within 5
-            Days From The Date Of Commencement. The Parties Acknowledge That
-            Various Provisions Of This Agreement Survive Past Termination Of
-            Employment.
+            (A) In the matter of fact failure, not submitted or succeed company
+            is entitled to receive amount by any cost. If you achieve the
+            accuracy which mentioned above, then Utility charges will be deduct
+            from your work payment and if you fail to achieve accuracy in given
+            timeline, then also you have to pay as a liability which describe
+            above.
+            <br />
+            <br />
+            (B) This charges related to service, development and maintenance
+            cost of the platform where you working online.
+            <br />
+            <br /> (c) If you deny paying the said amount then company will take
+            this matter legally & all the legal expenses will be clear by your
+            side, company is not liable for the same.
           </Text>
         </Box>
 
-        {/* Job Title and Description Section */}
         <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
+          <Heading as="h3" mb={4}>
             <br />
-            1. Job Title and Description
+            Required Accuracy by the company:
           </Heading>
           <Text>
-            1.1. The Initial Job Duties The Employee Will Be Expected To Perform
-            Will Be Consisted Of Filling Of The Forms (Data Entry) As Per The
-            Information And Data Given The Online Portal.
+            You must have to provide 90% accuracy in form filling work (540
+            Forms) in 5 Days. if you are fail to provide 90% accuracy, you must
+            have to pay registration amount
+            <br />
+            <br /> Registration Amount : 5700 (Per Month Basis) INR. Reg. Amount
+            Will Deduct From Your Salary per month Salary (Weekly) : 20520.00
+            INR
             <br />
             <br />
-            1.2. The Employee Agrees To Be Employed On The Terms And Conditions
-            Set Out In This Agreement. The Employee Agrees To Be Subject To The
-            General Supervision Of And Act Pursuant To The Orders, Advice, And
-            Direction Of The Employer.
-            <br /> <br />
-            1.3.The Employee Will Perform Any And All Duties As Requested By The
-            Employer That Are Reasonable And That Are Customarily Performed By A
-            Person Holding A Similar Position In The Industry Or Business Of The
-            Employer.
+            <p style={{ color: "red" }}>
+              Below cut off - you are not qualified for payment & id will be
+              terminating by server side.
+            </p>
             <br />
             <br />
-            1.4.The Employer May Make Changes To The Job Title Or Duties Of The
-            Employee Where The Changes Would Be Considered Reasonable For A
-            Similar Position In The Industry Or Business Of The Employer.
             <br />
-            <br />
-            1.5.The Employee Agrees To Abide By The Employers Rules,
-            Regulations, Policies And Practices, Including Those Concerning Work
-            Schedules, Annual Leave And Sick Leave, As They May From Time To
-            Time Be Adopted Or Modified.
-            <br />
-            {/* ... (rest of the Job Title and Description section) */}
           </Text>
         </Box>
 
-        {/* Employee Remuneration Section */}
         <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-            <br />
-            2. Employee Remuneration
-          </Heading>
-          <Text>
-            2.1. Remuneration: - For The Form Filling Services Rendered By The
-            Employee, The Employee Shall Be Entitled For Payment Of Price 40Rs.
-            (INR) Max Per Form For The Salary May Vary From 20800/- INR To
-            20130/- INR Depends Upon The Accuracy.
-            <br /> <br />
-            2.2.Billing :- Employer Will Provide Workload Of 520 FORMS Which The
-            Employee Shall Complete The Work Within 5 DAYS Under The Given
-            Criteria Of This Agreement. This Agreement Has Been Signed For One
-            System. The Employer Will Make The Payment For The Billing Within 3
-            INTERNATIONAL WORKING Days From Date Of Raising The Project Subject
-            To The Quality Check Report.
-            <br />
-            <br />
-            2.3.Accuracy :- Employer Will Provide Adequate Feedback Within 15
-            Working Days For All Data And On Completion Of Quality Check Shall
-            Issue A Quality Report. Both Parties Agree To Assure Highest Quality
-            Of End Service. Following Cycle For Accuracy Will Be Followed. Cut
-            Off Forms - 468/520 (In Total) - Above 90% @ 40/- INR Per Form. If
-            Below Cut Off Or ID Is Terminated Then The Employee Is Supposed To
-            Clear Registration Amount.
-            <br /> <br />
-            The Q.C. Department Will Check The Forms Randomly. Until The
-            Submitted Slot Is Rejected Above The Cut-Off Criteria If Employee
-            Makes Any Mistake, (Which Includes But Not Limited To Spelling,
-            Punctuation, Extra/Missing Space, Extra/Missing Word, Extra/Missing
-            Line Etc.) In A Form That Form Will Be Rejected, Likewise Employee
-            Have To Maintain Cut Off Or Accuracy.
-            <br />
-            <br />
-            If All The Forms Are Submitted Or In Submit Mode, Then Only The Q.C.
-            Report Will Be Generated Else Not. If Forms Are In Save Mode Then
-            Q.C. Report Will Not Be Generated And That Thing Will Be Considered
-            As Incomplete Submission Only.
-            <br />
-            <br />
-            You Can Save The Forms, Saved Forms Are Editable/Changeable For 48
-            Hours Only, Then After All Those Forms Will Automatically Submitted
-            And Becomes Non-Editable.
-            <br />
-            <br />
-            To Generate The Q.C. Report, All The Forms Should Be Submitted. If
-            All The Forms Are Not Submitted Then It Will Be Considered As
-            Incomplete Submission Only.
-            <br />
-            <br />
-            <br />
-            {/* ... (rest of the Employee Remuneration section) */}
-          </Text>
-        </Box>
-
-        {/* Conflict of Interest Section */}
-        <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-            3. Conflict of Interest
-          </Heading>
-          <Text>
-            3.1Application Fee(s): A registration amount of 6800/- INR will be
-            deducted from the salary if generated. However, if the salary is not
-            generated, meaning the employee fails to complete the work, then you
-            are required to work for 5 days. If you fail to commence your work
-            after accepting it or choose to cancel it, you will be obligated to
-            pay the registration amount.
-            <br />
-            <br />
-            He/She Is Liable Pay The Same Registration Amount On Their Own. The
-            Employee Must Start & Complete His/her Work Of Form-Filling Assigned
-            To Them By The Employer From The Date Of Starting The Project
-            (Selected By The Employee As Per His/her Own Convenience). In Case
-            Of Failure In Starting Of The Work From Employee's End Or "0" Number
-            Of Forms Detected Or Incomplete Submission Of Work Is Defined By The
-            Employer Then Application Fee(s) + NOC Invoice Needs To Be Cleared
-            By The Employee. <br /> <br />
-            As The Employer Will Have To Face The Economic Crisis In The
-            Business In Case Of Failure Of This Project In Any Of The Criteria
-            As Per This Agreement. <br /> <br />
-            The Employee Understands And Agrees That Any Attempt On The Part Of
-            The Employee To Induce Other Employees Or Contractors To Leave The
-            Employers Employ, Or Any Effort By The Employee To Interfere With
-            The Employers Relationship With Its Other Employees And Contractors
-            Would Be Harmful And Damaging To The Employer.
-            <br /> <br />
-            During The Term Of The Employees Active Employment With The
-            Employer, The Employee Will Not, Directly Or Indirectly, Engage Or
-            Participate In Any Other Business Activities That The Employer, In
-            Its Reasonable Discretion, Determines To Be In Conflict With The
-            Best Interests Of The Employer Without The Written Consent Of The
-            Employer.
-            <br /> <br />
-            3.2.ID Allocation :- Employee Will Get A Single ID To Work On And
-            Employee Can Work 24X7 On This ID. If The Software Portal Or The
-            Server Of The Company Detects That There Are Multiple Login
-            Attempts/Multiple IP Addresses Login Of The User Account Or I.D, The
-            Company Will Not Be Responsible For The Corruption Of The Data In
-            Both Online And Offline Modules. And The Employee€™s I.D. Will Get
-            Terminated Without Any Intimation And The Employee Needs To Clear
-            The Server Maintenance Charge Up to 7999/- INR.(Refundable Amount)
-            For That Particular Project As Per This Agreement.
-            <br /> <br />
-            3.3.TAT (Turn Around Time): The Second Party Has 5 Days(Including
-            Holidays) To Complete The New Work And Second Party Has To Send It
-            To First Party. The First Party Shall Give An Accuracy Report Within
-            2-3 Working Days For The New Work, After Submissions As Per
-            Technical Specifications Which Are Included In This Agreement With
-            Accuracy Parameters.
-            <br /> <br />
-            3.4.Employer Agrees To Provide Formats And Other Information For
-            Processing The Job To Employee At The Time Of Providing The Data And
-            The Employee Agrees With The Format And Other Information Which Is
-            Being Processed To The Particular. <br /> <br />
-            3.5.Employee Will Execute The Data Processing Work Provided By
-            Employer Through Experienced Persons In Such Manner So As To Carry
-            Out The Work Efficiently At Minimum Of 90% Accuracy For Out Files.
-            <br /> <br />
-            3.6.This Agreement Represents The Business Agreement And Operational
-            Understandings Between The Parties And Shall Remain In Effect For A
-            Period Of Eleven Months From The Date Of Execution Hereof. The
-            Employers Specifications In Terms Of Quality And Other Parameters
-            That Shall Be Issued By TheEmployer/Their Principals From Time To
-            Time And Acknowledged By The Employer Shall Be Read With This
-            Agreement. <br /> <br />
-            Employer/Their Principals From Time To Time And Acknowledged By The
-            Employer Shall Be Read With This Agreement.
-            {/* ... (rest of the Conflict of Interest section) */}
-          </Text>
-        </Box>
-
-        {/* Termination of Employment Section */}
-        <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-            <br />
-            4. Termination of Employment
-          </Heading>
-          <Text>
-            4.1. Termination: - If Employee Fails To Submit Data On Time Or, If
-            Employee Fails To Give Accuracy In Output Files.
-            <br />
-            Client Reserves The Right To Terminate The Agreement With Immediate
-            Effect. And Zemex Services Will Not Be Responsible For Any Further
-            Data And Payment To The Employee. And Employee Will Be Liable To Pay
-            The Maintenance Amount To The Client As Mentioned In Clause-4 In
-            This Agreement And Employee Will Also Be Liable To Pay Expenses Of
-            The Employer For Legal Proceedings. Where There Is Just Cause For
-            Termination, The Employer May Terminate The Employee Employment
-            Without Notice, As Permitted By Law.
-            <br /> <br />
-            4.2.No Modification Of The Terms Of This AGREEMENT Shall Be Valid
-            Unless It Is In Writing And Signed By Both The Parties.
-            <br />
-            4.3.Force Majeure: If The Rendition Of The Form Filling Services Is
-            Hampered Due To Earthquake, Flood, Tempest, Civil Riots Or Act Of
-            God Then The Business Associate Shall Be Absolved Of Its Obligations
-            Hereunder Till Normalcy Is Restored After The Cessation Of The
-            Aforementioned Contingencies. The Employee Shall Likewise Be
-            Absolved If Rendition Of The Services Is Hampered Due To A Strike
-            Called By The Data Entry Operators Engaged By The Employee, Violence
-            Or Political Turbulence Or For Any Other Reason Of A Similar Nature,
-            Which Is Beyond The Control Of The Employee.
-            <br /> <br />
-            {/* ... (rest of the Termination of Employment section) */}
-          </Text>
-        </Box>
-
-        {/* Non-Solicitation Section */}
-        <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-            5. Non-Solicitation
-          </Heading>
-          <Text>
-            5.1. The Employee Understands And Agrees That Any Attempt On The
-            Part Of The Employee To Induce Other Employees Or Contractors To
-            Leave The Employers Employ Would Be Harmful And Damaging To The
-            Employer.
-            <br />
-            <br />
-            5.2.The Employee Will Not In Any Way, Directly Or Indirectly :-{" "}
-            <br />
-            <br />
-            <Text ml={"1rem"}>
-              5.2.1.Induce Or Attempt To Induce Any Employee Or Contractor Of
-              The Employer To Quit Employment O Retainer With The Employer.{" "}
-              <br /> <br />
-              5.2.2.Discuss Employment Opportunities Or Provide Information
-              About Competitive Employment To Any O The Employers Employees Or
-              Contractors.
-            </Text>
-            <br />
-            This Non-solicitation Obligation As Described In This Section Will
-            Be Limited To Employees Or Contractors Who Were Employees Or
-            Contractors Of The Employer During The Period That The Employee Was
-            Employed By The Employer.
-            <br /> <br />
-            {/* ... (rest of the Non-Solicitation section) */}
-          </Text>
-        </Box>
-
-        {/* Confidential Information Section */}
-        <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-            6. Confidential Information
-          </Heading>
-          <Text>
-            6.1. The Employee Acknowledges That, In Any Position The Employee
-            May Hold, In And As A Result Of The Employees Employment By The
-            Employer, The Employee Will, Or May, Be Making Use Of, Acquiring Or
-            Adding To Information Which Is Confidential To The Employer (the
-            "Confidential Information").
-            <br />
-            <br />
-            6.2.The Employee Agrees And Acknowledges That The Confidential
-            Information Is Of A Proprietary And Confidential Nature And That Any
-            Disclosure Of The Confidential Information To A Third Party In
-            Breach Of This Agreement Cannot Be Reasonably Or Adequately
-            Compensated For In Money Damages, Would Cause Irreparable Injury To
-            Employer, Would Gravely Affect The Effective And Successful Conduct
-            Of The Employers Business And Goodwill, And Would Be A Material
-            Breach Of This Agreement.
-            <br /> <br />
-            {/* ... (rest of the Confidential Information section) */}
-          </Text>
-        </Box>
-
-        {/* Severability Section */}
-        <Box>
-          <Heading fontSize={{ base: "1rem", md: "2rem" }}>
-            7. Severability
-          </Heading>
-          <Text>
-            7.1.The Employer And The Employee Acknowledge That This Agreement Is
-            Reasonable, Valid And Enforceable. However, If Any Term, Covenant,
-            Condition Or Provision Of This Agreement Is Held By A Court Of
-            Competent Jurisdiction To Be Invalid, Void Or Unenforceable, It Is
-            The Parties Intent That Such Provision Be Changed In Scope By The
-            Court Only To The Extent Deemed Necessary By That Court To Render
-            The Provision Reasonable And Enforceable And The Remainder Of The
-            Provisions Of This Agreement Will In No Way Be Affected, Impaired Or
-            Invalidated As A Result.
-            <br />
-            <br />
-            7.2.Variation: Except As Otherwise Expressly Provided In This
-            Agreement, This Agreement May Not Be Changed Or Modified In Any Way
-            After It Has Been Signed, Except In Writing Signed By Or On Behalf
-            Of Both Of The Parties.
-            <br /> <br />
-            7.3.Dispute Resolution & Jurisdiction: In The Event Of Any Dispute
-            Or Difference Arising Between The Parties Hereto Relating To Or
-            Arising Out Of This Agreement, Including The Implementation,
-            Execution, Interpretation, Rectification, Validity, Enforceability,
-            Termination Or Rescission Thereof, Including The Rights, Obligations
-            Or Liabilities Of The Parties Hereto, The Same Will Be Adjudicated
-            And Determined By Arbitration. The Indian Arbitration & Conciliation
-            Act, 1996 Or Any Statutory Amendment Or Re-enactment Thereof In
-            Force In India, Shall Govern The Reference. Both Parties Shall
-            Appoint Their Respective Arbitrator, And Both Arbitrators Thus
-            Appointed Should Appoint The Third Arbitrator Who Shall Function As
-            The Presiding Arbitrator. The Venue Of Arbitration Shall Be Nashik
-            (Maharashtra). The Courts In The City Of Rajkot Shall Have Exclusive
-            Jurisdiction To Entertain Try And Determine The Same
-            <br /> <br />
-            7.4.Both The Parties Hereby Agree Neither To Circumvent Or Nor To
-            Disclose The Identities, Information As Well As The Essence Of The
-            Project Etc. Of Each Others/Principles, Clients Etc. To Any Other
-            Third Party And Neither Of Us Will Approach Each Contracts Of Each
-            Other As Identified From Time To Time.
-            <br />
-            <br />
-            {/* ... (rest of the Severability section) */}
-          </Text>
-        </Box>
-        <Box>
-          <Text fontSize={"1.3rem"} fontWeight="bold">
+          <Text
+            style={{
+              fontWeight: "bold", // Add this line to make the text more bold
+            }}
+          >
             IN WITNESS WHEREOF
           </Text>
           <Text>
-            The Parties Hereto Have Executed These Presents On the Date Herein
-            Before Written :-
+            the parties hereto have executed these presents on the date
+            hereinbefore written:
           </Text>
+          <Text
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            testing I hereby affirm by my signature that I have read this Work
+            from Home Agreement, and understand and agree to all of its
+            provisions. The Work from Home Agreement itself is not a contract of
+            employment and may not be construed as one. I understand that I am
+            accountable to all previous confidentiality agreements, policies and
+            procedures of the company. I have read a copy of the Work from Home
+            Policy. I understand all the rules & regulations which are mentioned
+            in agreement and I am ready to do work with Tricom Enterprise.
+          </Text>
+        </Box>
 
+        <Box>
+          <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
+            Employer : -
+          </Text>
+          <Text>
+            Name : Cropton Service <br />
+            Email : helplinezxservicewww@gmail.com <br />
+            Address : KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR,
+            RAJASTHAN(RJ), INDIA(IN) 302031
+          </Text>
+        </Box>
+        <Box m={["1rem", "7rem"]}>
           <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
             A. Employer : -
           </Text>
