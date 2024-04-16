@@ -13,6 +13,7 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
+import frontpage from "../../assets/frontpage.jpg";
 import sign from "../../assets/cropto stamp.svg";
 // import image from "./SVG STAM.svg";
 
@@ -95,7 +96,7 @@ const StampPaper = () => {
             mb={{ base: "2", lg: "0" }}
             maxWidth="100%" // Added maxWidth property
           >
-            <Image src={""} alt="Description of the image" />
+            <Image src={frontpage} alt="Description of the image" />
           </Box>
         </Box>
 
