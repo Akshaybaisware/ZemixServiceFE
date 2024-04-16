@@ -43,10 +43,13 @@ const StampPaperView = () => {
   const [photoPreview, setPhotoPreview] = useState(null);
   const [signaturePreview, setSignaturePreview] = useState(null);
   console.log(photoPreview);
+  const userId = localStorage.getItem("userId");
 
   const [loader, setLoader] = useState(false);
 
   const downlodePDF = async (photoPreview, signaturePreview) => {
+    console.log(photoPreview, "photoPreview");
+    console.log(signaturePreview, "signaturePreview");
     const capture = document.querySelector(".downLodeBox");
     setLoader(true);
 
@@ -532,7 +535,16 @@ const StampPaperView = () => {
           </Table>
         </Box>
 
-        {/* Ensure all other sections are closed properly */}
+        <Box>
+          <Button
+            onClick={() => downlodePDF(photoPreview, signaturePreview)}
+            colorScheme="teal"
+            variant="solid"
+            mt="4"
+          >
+            Download
+          </Button>
+        </Box>
       </Box>
     </>
   );

@@ -122,7 +122,19 @@ function AddClient() {
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="mobile">Mobile No</FormLabel>
-            <Input isRequired type="tel" id="mobile" {...register("mobile")} />
+            <Input
+              isRequired
+              type="text"
+              maxlength="10"
+              id="mobile"
+              {...register("mobile", {
+                pattern: {
+                  value: /^[0-9]{10}$/,
+                  maxlength: 10,
+                  message: "Invalid Mobile Number",
+                },
+              })}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="plan">Plan</FormLabel>

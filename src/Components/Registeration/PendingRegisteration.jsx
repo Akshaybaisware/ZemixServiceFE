@@ -17,6 +17,7 @@ function PendingRegisteration() {
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
+  const [dependancy, setDependeancy] = useState();
 
   const iconsarray = [BiSolidPhoneCall, TbReload, IoIosClose];
   const [pendinglist, setPendinglist] = useState();
@@ -77,6 +78,7 @@ function PendingRegisteration() {
       try {
         const res = await deleteclientinfo(id);
         console.log(res, "response after deletion");
+        setDependeancy(res);
         if (res.status === 200) {
           await emailsendingpassword(id);
           console.log("email sucess");
@@ -174,7 +176,7 @@ function PendingRegisteration() {
   };
   useEffect(() => {
     pendingdata();
-  }, []);
+  }, [dependancy]);
   return (
     <>
       <Flex alignItems="center" justify="space-between">
