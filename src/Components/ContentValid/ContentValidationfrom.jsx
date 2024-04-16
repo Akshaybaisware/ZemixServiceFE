@@ -31,6 +31,9 @@ function ContentValidationfrom() {
     try {
       const response = await axios.get(
         "http://localhost:5000/api/assignment/getassignments"
+        // {
+        //   userId: userId,
+        // }
       );
       setapidata(response.data.assignments);
       setRandomIndex(Math.floor(Math.random() * 480)); // Set random index on initial load
