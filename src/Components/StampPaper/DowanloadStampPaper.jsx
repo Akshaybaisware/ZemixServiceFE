@@ -476,30 +476,7 @@ const StampPaperView = () => {
           </Text>
         </Box>
 
-        <Box>
-          <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
-            Employer : -
-          </Text>
-          <Text>
-            Name : Zemex Service <br />
-            Email : helplinezxservicewww@gmail.com <br />
-            Address : KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR,
-            RAJASTHAN(RJ), INDIA(IN) 302031
-          </Text>
-        </Box>
         {/* Additional content here ... */}
-
-        <Box>
-          <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
-            Employer : -
-          </Text>
-          <Text>
-            Name : Zemex Service <br />
-            Email : helplinezxservicewww@gmail.com <br />
-            Address : KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR,
-            RAJASTHAN(RJ), INDIA(IN) 302031
-          </Text>
-        </Box>
 
         <Box>
           <FormControl w="400px">
