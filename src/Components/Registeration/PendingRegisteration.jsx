@@ -110,7 +110,7 @@ function PendingRegisteration() {
     },
     {
       name: "Registration Date",
-      selector: (row) => row.startDate,
+      selector: (row) => row?.createdAt.slice(0, 10),
       sortable: true,
     },
     {

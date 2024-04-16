@@ -65,12 +65,10 @@ function Registeraion() {
 
   const deleteclientinfo = async (id) => {
     try {
-      const response = await axios.delete(
+      const response = await axios.post(
         "http://localhost:5000/api/user/deleteclient",
         {
-          data: {
-            id: id,
-          },
+          id: id,
         }
       );
       console.log(response, "deleted response");
