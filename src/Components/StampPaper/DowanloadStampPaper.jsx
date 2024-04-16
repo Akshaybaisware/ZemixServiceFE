@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 // import image from "./SVG STAM.svg";
-
+import frontpage from "../../assets/frontpage.jpg";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
@@ -234,7 +234,7 @@ const StampPaperView = () => {
             mb={{ base: "2", lg: "0" }}
             maxWidth="100%" // Added maxWidth property
           >
-            <Image src={""} alt="Description of the image" />
+            <Image src={frontpage} alt="Description of the image" />
           </Box>
         </Box>
 
