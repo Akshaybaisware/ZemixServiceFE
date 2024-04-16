@@ -338,6 +338,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const role = localStorage.getItem("role");
 
   const handleMenuHover = () => setIsOpen(!isOpen);
   const toast = useToast();
@@ -403,6 +404,10 @@ function Navbar() {
       );
 
       console.log(response, "response");
+
+      if (role === "admin") {
+        Navigate("/login");
+      }
 
       toast({
         title: "Password changed successfully",

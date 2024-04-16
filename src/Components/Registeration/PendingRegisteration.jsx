@@ -18,6 +18,7 @@ function PendingRegisteration() {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const [dependancy, setDependeancy] = useState();
+  const [deletedependency, setDeletedependance] = useState();
 
   const iconsarray = [BiSolidPhoneCall, TbReload, IoIosClose];
   const [pendinglist, setPendinglist] = useState();
@@ -37,25 +38,24 @@ function PendingRegisteration() {
   };
   const deleteclientinfo = async (id) => {
     try {
-      const response = await axios.delete(
+      const response = await axios.post(
         "http://localhost:5000/api/user/deleteclient",
         {
-          data: {
-            id: id,
-          },
+          id: id,
         }
       );
       console.log(response, "deleted response");
       // setFilter(filter.filter((item) => item._id !== id));
       if (response.status === 200) {
         toast({
-          title: "Email Sent",
-          description: "Email  Successfully",
+          title: "Deleted Sucessfullty ",
+          description: "Deleted  Successfully",
           status: "success",
           duration: 3000,
           position: "top",
           isClosable: true,
         });
+        setDeletedependance(response);
         return response;
       }
     } catch (error) {
@@ -161,7 +161,7 @@ function PendingRegisteration() {
       const response = await axios.get(
         "http://localhost:5000/api/user/getallpending"
       );
-      console.log(response.data.users);
+      console.log(response.data.users, "pending list ");
       setPendinglist(response.data.users);
     } catch (error) {
       toast({
@@ -176,7 +176,7 @@ function PendingRegisteration() {
   };
   useEffect(() => {
     pendingdata();
-  }, [dependancy]);
+  }, [dependancy, deletedependency]);
   return (
     <>
       <Flex alignItems="center" justify="space-between">
