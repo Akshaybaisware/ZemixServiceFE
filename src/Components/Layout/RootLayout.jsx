@@ -9,18 +9,17 @@ function RootLayout() {
   const role = localStorage.getItem("role");
   return (
     <Flex direction="column" height="100vh">
-      {role === "admin" ? <Navbar /> : <UserNavbar />}
-      <Flex flexGrow={1}>
-        <Box
-          mt={["13%", "10rem"]}
-          bg="white"
-          flexBasis={{ base: "100%", md: "100%" }}
-        >
-          <Outlet />
-        </Box>
-      </Flex>
+    {role === "admin" ? <Navbar /> : <UserNavbar />}
+    <Flex flexGrow={1} position="relative">
+      <Box bg="lightgray" flexBasis={{ base: "100%", md: "100%" }} overflowY="auto">
+        <Outlet />
+      </Box>
     </Flex>
+  </Flex>
   );
 }
 
+
 export default RootLayout;
+
+
