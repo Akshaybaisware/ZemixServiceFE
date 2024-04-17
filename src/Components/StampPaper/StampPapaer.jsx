@@ -441,7 +441,7 @@ const StampPaper = () => {
             </Td>
           </Tr>
         </Table>
-        {/* <Button
+        <Button
           onClick={handleSubmit}
           mt={"1rem"}
           ml={"1.6rem"}
@@ -449,10 +449,10 @@ const StampPaper = () => {
           _hover={{ background: "gray", color: "white" }}
         >
           Submit
-        </Button> */}
-        {loading && <Spinner size="xl" color="blue.500" thickness="4px" />}
+        </Button>
+        {/* {loading && <Spinner size="xl" color="blue.500" thickness="4px" />}
         {/* Your form and other page content */}
-        <Button
+        {/* <Button
             onClick={handleSubmit}
             mt={"1rem"}
             ml={"1.6rem"}
@@ -461,7 +461,7 @@ const StampPaper = () => {
             disabled={loading} // Disable button while submitting
         >
             {loading ? "Submitting..." : "Submit"}
-        </Button>
+        </Button> */} 
       </Box>
     </>
   );

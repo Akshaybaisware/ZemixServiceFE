@@ -47,6 +47,8 @@ const router = createBrowserRouter(
     <>
       <Route>
       <Route path="/noc" element={<NOC />} />
+      <Route path="/downloadreport" Component={DownloadStampPaper} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/userlogin" element={<UserLogin />} />
         <Route path="/pdflogin" element={<PdfPhotoAdding />} />
@@ -130,7 +132,7 @@ const router = createBrowserRouter(
               />
               {/* <Route path="/writecontent" Component={ContentValidationfrom} /> */}
               <Route path="/userreport" Component={GetReportofUser} />
-              <Route path="/downloadreport" Component={DownloadStampPaper} />
+              {/* <Route path="/downloadreport" Component={DownloadStampPaper} /> */}
               <Route
                 path="/recovery"
                 element={<ProtectedRoute Component={Recovery} />}
