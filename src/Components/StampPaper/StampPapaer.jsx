@@ -349,21 +349,6 @@ const StampPaper = () => {
             RAJASTHAN(RJ), INDIA(IN) 302031
           </Text>
         </Box>
-        <Box m={["1rem", "7rem"]}>
-          <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
-            A. Employer : -
-          </Text>
-          <Text>
-            Name : Zemex Service <br />
-            Email : helplinezxservicewww@gmail.com <br />
-            Address : KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR,
-            RAJASTHAN(RJ), INDIA(IN) 302031
-          </Text>
-
-          <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
-            B. Employee : -
-          </Text>
-        </Box>
 
         <Box mt={"-10rem"} boxSize="sm">
           <Image src={sign} alt="Stamp" />
