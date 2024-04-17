@@ -235,7 +235,6 @@ function AddClient() {
             </Select>
           </FormControl>
         </VStack>
-      </form>
           <Button
         _hover={{ bg: " #ff6699" }}
           height={"3rem"}
@@ -246,6 +245,7 @@ function AddClient() {
           justifyContent={"center"}
           textAlign={"center"}
           width={"50%"} type="submit">Submit</Button>
+      </form>
     </VStack>
   </div>
   );
