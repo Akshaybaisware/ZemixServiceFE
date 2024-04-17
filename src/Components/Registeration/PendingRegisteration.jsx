@@ -32,8 +32,24 @@ function PendingRegisteration() {
         }
       );
       console.log(reponse, "email response");
+      toast({
+        title: "Email Sent Sucessfullty ",
+        description: "Email  Successfully",
+        status: "success",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
     } catch (error) {
       console.log(error.messgae);
+      toast({
+        title: "Error",
+        description: "Error Occured ",
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      });
     }
   };
   const deleteclientinfo = async (id) => {
@@ -45,23 +61,16 @@ function PendingRegisteration() {
         }
       );
       console.log(response, "deleted response");
+
       // setFilter(filter.filter((item) => item._id !== id));
       if (response.status === 200) {
-        toast({
-          title: "Deleted Sucessfullty ",
-          description: "Deleted  Successfully",
-          status: "success",
-          duration: 3000,
-          position: "top",
-          isClosable: true,
-        });
         setDeletedependance(response);
         return response;
       }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Client Not Deleted",
+        description: "Error Occured ",
         status: "error",
         duration: 3000,
         position: "top",
@@ -75,17 +84,10 @@ function PendingRegisteration() {
     if (index === 0) {
       console.log(row);
       const id = row._id;
-      try {
-        const res = await deleteclientinfo(id);
-        console.log(res, "response after deletion");
-        setDependeancy(res);
-        if (res.status === 200) {
-          await emailsendingpassword(id);
-          console.log("email sucess");
-        }
-      } catch (error) {
-        console.error("Failed to delete the user or send email:", error);
-      }
+      console.log(id, "id");
+      await emailsendingpassword(id);
+
+      deleteclientinfo(id);
     } else if (index === 1) {
       console.log("Reload");
     } else if (index === 2) {
@@ -100,27 +102,27 @@ function PendingRegisteration() {
     },
     {
       name: "Mobile No",
-      selector: (row) => row.mobile,
+      selector: (row) => row?.mobile,
       sortable: true,
     },
     {
       name: "Email",
-      selector: (row) => row.email,
+      selector: (row) => row?.email,
       sortable: true,
     },
     {
       name: "Registration Date",
-      selector: (row) => row?.createdAt.slice(0, 10),
+      selector: (row) => row?.createdAt?.slice(0, 10),
       sortable: true,
     },
     {
       name: "Start Date",
-      selector: (row) => row.startDate,
+      selector: (row) => row.startDate?.slice(0, 10),
       sortable: true,
     },
     {
       name: "Caller",
-      selector: (row) => row.caller,
+      selector: (row) => row?.caller,
       sortable: true,
     },
 

@@ -35,11 +35,11 @@ function ContentValidationfrom() {
         //   userId: userId,
         // }
       );
-      setapidata(response.data.assignments);
-      setRandomIndex(Math.floor(Math.random() * 480)); // Set random index on initial load
+      setapidata(response?.data?.assignments);
+      setRandomIndex(Math.floor(Math.random() * 480));
     } catch (error) {
       toast({
-        title: "Error",
+        title: "Error ",
         description: "Error",
         status: "error",
         duration: 3000,
@@ -51,53 +51,38 @@ function ContentValidationfrom() {
   };
 
   const submitForm = async () => {
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:5000/api/assignment/addassignment",
-    //     {
-    //       name: name.current.value,
-    //       phone: mobile.current.value,
-    //       address: address.current.value,
-    //       annualRevenue: annualRevenue.current.value,
-    //       jobFunctional: jobFunctional.current.value,
-    //       pinCode: pinCode.current.value,
-    //       userId: userId,
-    //     }
-    //   );
-    //   console.log(response, "mkninmiopn");
-    //   if (response.status === 201) {
-    //     toast({
-    //       title: "Success",
-    //       description: "Form submitted successfully",
-    //       status: "success",
-    //       duration: 3000,
-    //       position: "top",
-    //       isClosable: true,
-    //     });
-    //     navigate("/");
-    //     refreshAssignment(); // Refresh the assignment data after submission
-    //   }
-    // } catch (error) {
-    //   toast({
-    //     title: "Error",
-    //     description: "Error",
-    //     status: "error",
-    //     duration: 3000,
-    //     position: "top",
-    //     isClosable: true,
-    //   });
-    //   console.log(error.message);
-    // }
-    toast({
-      title: "Success",
-      description: "Form submitted successfully",
-      status: "success",
-      duration: 3000,
-      position: "top",
-      isClosable: true,
-    });
-    navigate("/");
-    refreshAssignment(); // Refresh the assignment data after submission
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/assignment/addassignment"
+      );
+      console.log(response, "mkninmiopn");
+      if (response.status === 201) {
+        toast({
+          title: "Success",
+          description: "Form submitted successfully",
+          status: "success",
+          duration: 3000,
+          position: "top",
+          isClosable: true,
+        });
+        refreshAssignment();
+        navigate("/");
+        // Refresh the assignment data after submission
+      }
+    } catch (error) {
+      toast({
+        title: "Error ",
+        description: `error: ${error.message}`,
+        status: "error",
+        duration: 10000,
+        position: "top",
+        isClosable: true,
+      });
+      console.log(error.message);
+    }
+
+    //navigate("/");
+    //refreshAssignment(); // Refresh the assignment data after submission
   };
 
   useEffect(() => {

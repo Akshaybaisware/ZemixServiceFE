@@ -10,6 +10,7 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function ForgetPassword() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ function ForgetPassword() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +53,7 @@ function ForgetPassword() {
         isClosable: true,
         position: "top",
       });
+      navigate("/login");
     } catch (error) {
       console.error(error);
       toast({
@@ -67,10 +70,10 @@ function ForgetPassword() {
     <Box p={4} maxWidth="500px" mx="auto">
       <form onSubmit={handleSubmit}>
         <FormControl isRequired mb={3}>
-          <FormLabel htmlFor="email">Email</FormLabel>
+          <FormLabel htmlFor="text">Email</FormLabel>
           <Input
             id="email"
-            type="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

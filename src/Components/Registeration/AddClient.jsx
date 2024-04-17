@@ -139,14 +139,12 @@ function AddClient() {
           <FormControl isRequired>
             <FormLabel htmlFor="plan">Plan</FormLabel>
             <Select id="plan" {...register("plan")}>
-              <option value="-">Plan</option>
               <option value="480">480</option>
             </Select>
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="selectPlan">Caller</FormLabel>
             <Select id="selectPlan" {...register("selectPlan")}>
-              <option value="-">Caller</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
