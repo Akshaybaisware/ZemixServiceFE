@@ -28,7 +28,7 @@ import EditClientComponent from "./Components/ClientActivity/EditClient";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import UserLogin from "./Components/Login/UserLogin";
 import Recovery from "./Components/Recovery/Recovery";
-
+import NOC from "./Components/Recovery/NOC";
 import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
 import ContentValidationfrom from "./Components/ContentValid/ContentValidationfrom";
@@ -46,6 +46,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route>
+      <Route path="/noc" element={<NOC />} />
         <Route path="/login" element={<Login />} />
         <Route path="/userlogin" element={<UserLogin />} />
         <Route path="/pdflogin" element={<PdfPhotoAdding />} />

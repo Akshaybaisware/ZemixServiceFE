@@ -13,6 +13,8 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
+import {  Spinner } from "@chakra-ui/react";
+
 import frontpage from "../../assets/frontpage.jpg";
 import sign from "../../assets/cropto stamp.svg";
 // import image from "./SVG STAM.svg";
@@ -104,7 +106,7 @@ const StampPaper = () => {
         </Box>
 
         <Box>
-          <Text>
+          <Text  mt={["-3rem"]}  padding={["1rem" , "3rem"]} fontWeight={"500"}>
             Presently we are providing the business for form filling more
             meaningfully described in the column Scope of Work, through their
             principals. AND WHEREAS the Business Associate is engaged inter
@@ -125,21 +127,21 @@ const StampPaper = () => {
             </p>
             <br />
             1. Main Purpose: The Original data will be available online on
-            website provided by Tricom Enterprise at the time of signup. You are
+            website provided by Cropton Enterprise at the time of signup. You are
             required to feed the provided data field wise online as per the
             guidelines. Data supply and preservation of the output file is done
             online on real time basis.
             <br />
             <br /> 2. Compensation: For the Form Filling services rendered by
             the Business Associate, they shall be entitled for payment of price
-            38 RS (INR) per form (if you achieved cut-off above 486) The
+            38 RS (INR) per form (if you achieved cut-off above 450) The
             Business Associate shall raise invoice after completion of work with
             the data. The Invoice can be raised through email. Q.C. report will
             be provided in 72 Hrs. International Working Days from the date of
             submission.
             <br />
             <br />
-            3. Payouts: Client will provide workload of 540 FORMS 5 Days. This
+            3. Payouts: Client will provide workload of 480 FORMS 5 Days. This
             MOU has been signed for 1 system.
             <br />
             <br />
@@ -176,7 +178,7 @@ const StampPaper = () => {
             </p>
             {/* ... (rest of the Background section) */}
           </Text>
-          <Text>
+          <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
             <br />
             9. This agreement represents the business Agreement and operational
             understandings between the parties and shall remain in effect for a
@@ -257,20 +259,20 @@ const StampPaper = () => {
             of the project etc of each other's/Principals, clients etc. to any
             other Third party and neither of us will approach each otherâ€™s
             contracts as identified from time to time.
-            <br />
-            <br />
+        
+           
           </Text>
         </Box>
 
         {/* Commencement Date and Term Section */}
         <Box>
-          <Heading as="h3" mb={4}>
-            <br />
+          <Heading  padding={["1rem" , "3rem"]} as="h2" mb={4}>
+         
             PRIMARY NOTE
           </Heading>
-          <Text>
-            <br />
-            <br />
+           <Text  fontWeight={"500"} padding={["1rem" , "3rem"]}>
+           
+         
             (A) In the matter of fact failure, not submitted or succeed company
             is entitled to receive amount by any cost. If you achieve the
             accuracy which mentioned above, then Utility charges will be deduct
@@ -289,17 +291,17 @@ const StampPaper = () => {
         </Box>
 
         <Box>
-          <Heading as="h3" mb={4}>
-            <br />
+           <Heading  padding={["1rem" , "3rem"]} as="h2" mb={4}>
+           
             Required Accuracy by the company:
           </Heading>
-          <Text>
-            You must have to provide 90% accuracy in form filling work (540
+            <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
+            You must have to provide 90% accuracy in form filling work (480
             Forms) in 5 Days. if you are fail to provide 90% accuracy, you must
             have to pay registration amount
             <br />
-            <br /> Registration Amount : 5700 (Per Month Basis) INR. Reg. Amount
-            Will Deduct From Your Salary per month Salary (Weekly) : 20520.00
+            <br /> Registration Amount :  5500 (Per Month Basis) INR. Reg. Amount
+            Will Deduct From Your Salary per month Salary (Weekly) : 18240
             INR
             <br />
             <br />
@@ -307,25 +309,24 @@ const StampPaper = () => {
               Below cut off - you are not qualified for payment & id will be
               terminating by server side.
             </p>
-            <br />
-            <br />
-            <br />
+           
+       
           </Text>
         </Box>
 
         <Box>
-          <Text
+   <Text  fontWeight={"500"} padding={["1rem" , "3rem"]}
             style={{
               fontWeight: "bold", // Add this line to make the text more bold
             }}
           >
             IN WITNESS WHEREOF
           </Text>
-          <Text>
+        <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
             the parties hereto have executed these presents on the date
             hereinbefore written:
           </Text>
-          <Text
+           <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}
             style={{
               fontWeight: "bold",
             }}
@@ -337,23 +338,22 @@ const StampPaper = () => {
             accountable to all previous confidentiality agreements, policies and
             procedures of the company. I have read a copy of the Work from Home
             Policy. I understand all the rules & regulations which are mentioned
-            in agreement and I am ready to do work with Tricom Enterprise.
+            in agreement and I am ready to do work with Cropton Enterprise.
           </Text>
         </Box>
 
         <Box>
-          <Text fontWeight={"500"} fontSize={"1.5rem"} mt="4">
+          <Text padding={["1rem" , "3rem"]} fontWeight={"800"} fontSize={"1.5rem"} mt="4">
             Employer : -
           </Text>
-          <Text>
+          <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
             Name : Cropton Service <br />
-            Email : helplinezxservicewww@gmail.com <br />
-            Address : KASTURI WADI INDRA BAZAR GHANSHAM APARTMENT JAIPUR,
-            RAJASTHAN(RJ), INDIA(IN) 302031
+            Email : helplinezxservicewww@gmail.comhelplinessrvice156@gmail.com <br />
+            Address :  block number: 23 Hanuman Nagar Ajmer Road S.O, Jaipur, 302006
           </Text>
         </Box>
 
-        <Box mt={"-10rem"} boxSize="sm">
+        <Box width={["200px", "400px"]}>
           <Image src={sign} alt="Stamp" />
         </Box>
         {/* <FormControl w={["350px", "400px"]}>
@@ -402,25 +402,9 @@ const StampPaper = () => {
     </FormControl> */}
 
         {/* Upload Signature and Photo Section */}
-        <Table w={["300px", "700px"]} style={{ marginTop: "20px" }}>
+        <Table mt={"1rem"}   w={["330px", "700px"]} >
           <Tr>
             <Td>Upload Signature</Td>
-            {/* <Td>
-              <Input
-                onChange={(e) => setSignature(e.target.files[0])}
-                type="file"
-              />
-            </Td> */}
-            <Td></Td>
-          </Tr>
-          <Tr>
-            <Td>Upload Your Photo</Td>
-            {/* <Td>
-              <Input
-                onChange={(e) => setPhoto(e.target.files[0])}
-                type="file"
-              />
-            </Td> */}
             <Input onChange={handleSignatureChange} type="file" />
             {signaturePreview && (
               <Image
@@ -430,6 +414,20 @@ const StampPaper = () => {
                 alt="Photo Preview"
               />
             )}
+           
+          </Tr>
+          <Tr>
+            <Td>Upload Your Photo</Td>
+         
+            {/* <Input onChange={handleSignatureChange} type="file" />
+            {signaturePreview && (
+              <Image
+                width={"10rem"}
+                height={"4rem"}
+                src={signaturePreview}
+                alt="Photo Preview"
+              />
+            )} */}
             <Td>
               <Input onChange={handlePhotoChange} type="file" />
               {photoPreview && (
@@ -443,7 +441,7 @@ const StampPaper = () => {
             </Td>
           </Tr>
         </Table>
-        <Button
+        {/* <Button
           onClick={handleSubmit}
           mt={"1rem"}
           ml={"1.6rem"}
@@ -451,6 +449,18 @@ const StampPaper = () => {
           _hover={{ background: "gray", color: "white" }}
         >
           Submit
+        </Button> */}
+        {loading && <Spinner size="xl" color="blue.500" thickness="4px" />}
+        {/* Your form and other page content */}
+        <Button
+            onClick={handleSubmit}
+            mt={"1rem"}
+            ml={"1.6rem"}
+            bg={"#DD372D"}
+            _hover={{ background: "gray", color: "white" }}
+            disabled={loading} // Disable button while submitting
+        >
+            {loading ? "Submitting..." : "Submit"}
         </Button>
       </Box>
     </>

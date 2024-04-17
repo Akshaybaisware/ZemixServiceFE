@@ -403,7 +403,7 @@ function Registeraion() {
               table: {
                 style: {
                   borderCollapse: "collapse", // Collapse table borders
-                  border: "2px solid gray", // Adjust the border thickness and color of the table
+                  // border: "2px solid gray", // Adjust the border thickness and color of the table
                 },
               },
             }}

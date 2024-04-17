@@ -3,6 +3,9 @@ import { Text, Box, Input, Button, Center } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
 import axios from "axios";
 import jsPDF from "jspdf";
+import sign from "../../assets/cropto stamp.svg";
+import html2canvas from "html2canvas";
+
 
 function Recovery() {
   const [allUsersData, setAllUsersData] = useState([]);
@@ -64,15 +67,17 @@ function Recovery() {
   const generatePDF = (name, address, date) => {
     const doc = new jsPDF();
 
+
     const content = `Date: ${date}
+    
+    To,
+   
+  Client Namer: ${name}
+  Address : ${address}
 
-  To,
-  Name of the Borrower: ${name}
-  Address of the Borrower: ${address}
+Ref.: Your Loan Agreement Number - 139224722
 
-  Ref.: Your Loan Agreement Number - 139224722
-
-  Dear Customer,
+  Dear Client,
 
   We would like to thank you for your patronage and we do hope that your experience with us has been a rewarding one. We are pleased to confirm that there are no outstanding dues towards the captioned loan, and the referred loan is fully repaid/adjusted.
 
@@ -100,8 +105,12 @@ function Recovery() {
     // Use splitTextToSize to wrap text within the desired width
     const lines = doc.splitTextToSize(content, 180); // Adjust width to fit your content as needed
     doc.text(lines, 10, 10); // Adjust x, y positions as needed
-    doc.save("LoanClosureConfirmation.pdf");
+    doc.save("Cropton-NOC");
   };
+
+ 
+  
+
 
   const columns = [
     {
@@ -181,3 +190,5 @@ function Recovery() {
 }
 
 export default Recovery;
+
+
