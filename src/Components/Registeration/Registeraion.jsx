@@ -245,7 +245,7 @@ function Registeraion() {
     },
     {
       name: "Registeration Date",
-      selector: (row) => row.registeratonDate?.slice(0, 10),
+      selector: (row) => row.registrationDate?.slice(0, 10),
       sortable: true,
     },
     {

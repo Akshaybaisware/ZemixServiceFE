@@ -31,6 +31,7 @@ const StampPaper = () => {
   const [signature, setSignature] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [signaturePreview, setSignaturePreview] = useState(null);
+  const [loading, setLoading] = useState();
 
   const handlePhotoChange = (e) => {
     const selectedPhoto = e.target.files[0];
@@ -54,6 +55,7 @@ const StampPaper = () => {
 
   const toast = useToast();
   const navigate = useNavigate();
+
   const handleSubmit = async () => {
     try {
       const formData = new FormData();
@@ -62,7 +64,7 @@ const StampPaper = () => {
       formData.append("signature", signature);
       formData.append("photo", photo);
       formData.append("startdate", date);
-      console.log(formData, "formdata");
+      console.log(formData.values, "formdata");
 
       const config = {
         method: "post",
@@ -70,6 +72,7 @@ const StampPaper = () => {
         data: formData,
       };
 
+      setLoading(true);
       const response = await axios(config);
       console.log(response, "resp");
       toast({

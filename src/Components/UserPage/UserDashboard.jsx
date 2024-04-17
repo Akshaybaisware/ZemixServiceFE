@@ -315,7 +315,7 @@ function UserDashboard() {
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
               >
-                {dates}
+                {dates?.slice(0, 10)}
               </Text>
             </Card>
           </Link>

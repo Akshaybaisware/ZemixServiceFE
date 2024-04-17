@@ -40,7 +40,6 @@ import StampPapaer from "./Components/StampPaper/StampPapaer";
 import UserRegisteration from "./Components/Froms/UserRegisteration";
 import StampPaperSubmission from "./Components/StampPaper/StampPaperSucess";
 
-const isAuthenticated = localStorage.getItem("token");
 const role = localStorage.getItem("role");
 
 const router = createBrowserRouter(
@@ -51,7 +50,10 @@ const router = createBrowserRouter(
         <Route path="/userlogin" element={<UserLogin />} />
         <Route path="/pdflogin" element={<PdfPhotoAdding />} />
         <Route path="/stamppaper" element={<StampPapaer />} />
-        <Route path="/stamppaperdonwload" element={<DownloadStampPaper />} />
+        <Route
+          path="/stamppaperdonwload/:id"
+          element={<DownloadStampPaper />}
+        />
         <Route path="/usrnavbar" element={<UserNavbar />} />
         <Route path="/stampapersucess" Component={StampPaperSubmission} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
