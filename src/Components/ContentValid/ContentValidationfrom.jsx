@@ -53,7 +53,10 @@ function ContentValidationfrom() {
   const submitForm = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/assignment/addassignment"
+        "http://localhost:5000/api/assignment/addassignment",
+        {
+          userId: userId,
+        }
       );
       console.log(response, "mkninmiopn");
       if (response.status === 201) {

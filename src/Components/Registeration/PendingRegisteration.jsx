@@ -19,6 +19,7 @@ function PendingRegisteration() {
   const toast = useToast();
   const [dependancy, setDependeancy] = useState();
   const [deletedependency, setDeletedependance] = useState();
+  const [reload, setReload] = useState(false);
 
   const iconsarray = [BiSolidPhoneCall, TbReload, IoIosClose];
   const [pendinglist, setPendinglist] = useState();
@@ -80,18 +81,31 @@ function PendingRegisteration() {
     }
   };
 
+  const filterdata = (id) => {
+    console.log(id, "functions");
+    const filtereddata = pendinglist.filter(
+      (item) => item.id && item.id.includes(id)
+    );
+
+    console.log(filtereddata, "filtereddata");
+  };
+
   const handleAction = async (row, index) => {
     if (index === 0) {
       console.log(row);
       const id = row._id;
       console.log(id, "id");
       await emailsendingpassword(id);
+      // filterdata(row._id);
+      setReload(true);
 
-      deleteclientinfo(id);
+      //deleteclientinfo(id);
     } else if (index === 1) {
       console.log("Reload");
     } else if (index === 2) {
-      deleteclientinfo(row._id);
+      filterdata(row._id);
+      setReload(true);
+      //deleteclientinfo(row._id);
     }
   };
   const columns = [
@@ -178,19 +192,21 @@ function PendingRegisteration() {
   };
   useEffect(() => {
     pendingdata();
-  }, [dependancy, deletedependency]);
+  }, [dependancy, deletedependency, reload]);
   return (
     <>
-      <Flex alignItems="center" justify="space-between">
-       
-      </Flex>
+      <Flex alignItems="center" justify="space-between"></Flex>
       <Center>
         <Box width={{ base: "100vw", md: "90vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
-          <Text fontSize="2xl" fontWeight={"800"}color="orange" textShadow="1px 2px 5px red">
-  Pending Registrations
-</Text>
-
+            <Text
+              fontSize="2xl"
+              fontWeight={"800"}
+              color="orange"
+              textShadow="1px 2px 5px red"
+            >
+              Pending Registrations
+            </Text>
           </Center>
           {loading ? (
             <Spinner
