@@ -195,15 +195,15 @@ function PendingRegisteration() {
   }, [dependancy, deletedependency, reload]);
   return (
     <>
-      <Flex alignItems="center" justify="space-between"></Flex>
-      <Center>
+    
+      <Center mt={["2rem" , "1rem"] }>
         <Box width={{ base: "100vw", md: "90vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
             <Text
               fontSize="2xl"
               fontWeight={"800"}
-              color="orange"
-              textShadow="1px 2px 5px red"
+              color="red"
+              
             >
               Pending Registrations
             </Text>

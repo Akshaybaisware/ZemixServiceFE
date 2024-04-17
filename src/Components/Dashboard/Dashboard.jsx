@@ -452,6 +452,7 @@ function Dashboard() {
    
 
 <Box
+
   width="100%"
   direction={{ base: "column", md: "column" }}
   justifyContent="center"

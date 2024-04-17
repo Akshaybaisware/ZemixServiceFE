@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { VStack ,Text } from "@chakra-ui/layout";
+import { VStack ,Text , Box ,Center} from "@chakra-ui/layout";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Select } from "@chakra-ui/select";
@@ -140,12 +140,16 @@ function AddClient() {
     //     </VStack>
     //   </form>
     // </VStack>
+    <Box
+    m={"1rem"}
+    mt={["8%" , "0rem"]}>
     <div
     style={{
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       height: "100vh",
+
     }}
   >
     <VStack
@@ -235,7 +239,9 @@ function AddClient() {
             </Select>
           </FormControl>
         </VStack>
+        <Center>
           <Button
+          mt={"1rem"}
         _hover={{ bg: " #ff6699" }}
           height={"3rem"}
            borderRadius={"10%"}
@@ -244,10 +250,12 @@ function AddClient() {
           display={"flex"}
           justifyContent={"center"}
           textAlign={"center"}
-          width={"50%"} type="submit">Submit</Button>
+          width={"30%"} type="submit">Submit</Button>
+          </Center>
       </form>
     </VStack>
   </div>
+  </Box>
   );
 }
 

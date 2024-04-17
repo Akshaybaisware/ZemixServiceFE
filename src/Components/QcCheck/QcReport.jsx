@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { Text, Box, Input, Button, Flex } from "@chakra-ui/react";
+import { Text, Box, Input, Button, Flex, Center } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
 import { useState, useEffect } from "react";
 import { FaPencilAlt } from "react-icons/fa";
@@ -11,7 +11,8 @@ import { BiLinkExternal } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { FaRupeeSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+import { useToast, Icon } from "@chakra-ui/react";
+import { DownloadIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import jsPDF from "jspdf";
 
@@ -323,6 +324,9 @@ function QcReport() {
       name: "Action",
       cell: (row) => (
         <Button
+          width={"22rem"}
+          p={"1.2rem"}
+          bg={"green"}
           onClick={() => {
             if (row.submittedAssignmentCount === 480) {
               downloadReport(row);
@@ -346,7 +350,8 @@ function QcReport() {
             }
           }}
         >
-          Download Pdf
+          <Icon as={DownloadIcon} mr="2" />
+          Download
         </Button>
       ),
     },
@@ -392,29 +397,63 @@ function QcReport() {
 
   return (
     <>
-      <Box>
-        <Text>QC Report</Text>
-      </Box>
-      <Box display="flex" gap="2">
-        <Input type="date" onChange={(e) => setStartDate(e.target.value)} />
+      <Box mt={["2rem", "0rem"]}>
+        <Box>
+          <Center color={"gray"} fontWeight={800} fontSize={["1.5rem", "2rem"]}>
+            QC Report
+          </Center>
+        </Box>
+        {/* <Box display="flex" gap="2">
+        <Input type="date" onChange={(e)=> setStartDate(e.target.value)} />
         <Input type="date" onChange={(e) => setEndDate(e.target.value)} />
         <Button onClick={handleSearch}>Search Dates</Button>
-      </Box>
-      <Box display="flex" gap="2">
-        <Input
-          type="text"
-          placeholder="Search"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+      </Box> */}
+        <Box
+          m={"1rem"}
+          // w={["rem", "400px"]}
+          display={{ base: "block", md: "flex" }}
+          flexWrap="wrap"
+          gap="2"
+        >
+          <Box>
+            <Input
+              mb={"1rem"}
+              type="date"
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </Box>
+          <Box>
+            <Input
+              mb={"1rem"}
+              type="date"
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </Box>
+          <Box>
+            <Button color="white" bg={"#5c5c8a"} onClick={handleSearch}>
+              Search Dates
+            </Button>
+          </Box>
+        </Box>
+
+        <Box display="flex" gap="2">
+          <Input
+            border={"1px solid brown"}
+            m={"1rem"}
+            type="text"
+            placeholder="Search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </Box>
+        <DataTable
+          // title="QC Reports"
+          columns={columns}
+          data={tableData}
+          pagination
+          paginationPerPage={10}
         />
       </Box>
-      <DataTable
-        title="QC Reports"
-        columns={columns}
-        data={tableData}
-        pagination
-        paginationPerPage={10}
-      />
     </>
   );
 }

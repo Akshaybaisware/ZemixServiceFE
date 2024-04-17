@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, Box, Input, Button } from "@chakra-ui/react";
+import { Text, Box, Input, Button, Center } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
 import axios from "axios";
 import jsPDF from "jspdf";
@@ -133,6 +133,8 @@ function Recovery() {
       name: "Action",
       cell: (row) => (
         <Button
+        color={"white"}
+        bg={"green"}
           onClick={() =>
             generatePDF(
               row.name,
@@ -141,7 +143,7 @@ function Recovery() {
             )
           }
         >
-          Download PDF
+          Download NOC
         </Button>
       ),
     },
@@ -149,11 +151,18 @@ function Recovery() {
 
   return (
     <>
-      <Box>
-        <Text fontSize="2xl">Recovery</Text>
+      <Box mt={["2rem" , "0rem"]}>
+        <Center color={"#336600"} fontWeight={800} fontSize="3xl">NOC-Certificate</Center>
       </Box>
-      <Box display="flex" gap="2">
+      <Box 
+      display="flex"
+      justifyContent={"center"} 
+      textAlign={"center"}
+      alignItems={"center"}
+      gap="2">
         <Input
+        border={"1px solid gray"}
+        w={["200px" , "400px"]}
           type="text"
           placeholder="Search"
           value={searchText}
@@ -161,7 +170,7 @@ function Recovery() {
         />
       </Box>
       <DataTable
-        title="Recovery Table"
+     
         columns={columns}
         data={tableData}
         pagination

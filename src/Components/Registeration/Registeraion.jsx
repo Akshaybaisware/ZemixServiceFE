@@ -335,7 +335,7 @@ function Registeraion() {
   return (
     <>
      <Flex
-     mt={"1rem"}
+     mt={["3rem" ,"1rem"]}
      direction="column" alignItems="center" justifyContent={"center"} textAlign={"center"}>
   <Text fontWeight={700} fontSize={["md" , "xl" ]} marginBottom="4" >
     All Users 2024-04-04 10:14:54pm 

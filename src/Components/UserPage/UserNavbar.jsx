@@ -32,6 +32,9 @@ function UserNavbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleMenuHover = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen); // Toggle isOpen state
+  };
   const toast = useToast();
 
   const handleLogout = () => {
@@ -133,6 +136,7 @@ function UserNavbar() {
 
   return (
     <>
+     <div style={{ position: "fixed", top: 0, width: "100%", zIndex: 999 }}>
       {isMobileView ? (
         <Flex
           align="center"
@@ -263,7 +267,7 @@ function UserNavbar() {
               </Box>
             </Link>
 
-            <Menu paddingX="30px">
+            {/* <Menu paddingX="30px">
               <MenuButton
                 paddingX="30px"
                 as={Box}
@@ -288,9 +292,32 @@ function UserNavbar() {
                   <MenuItem>Submit Forms</MenuItem>
                 </MenuList>
               )}
-            </Menu>
+            </Menu> */}
 
-            <Box fontSize={["1.5rem"]}>Report</Box>
+<Menu isOpen={isOpen} onOpen={toggleMenu} onClose={toggleMenu}>
+      <MenuButton
+        as={Box}
+        cursor="pointer"
+        fontSize={["1.5rem"]}
+      >
+        Work Load
+        <ChevronDownIcon height={8} width={8} />
+      </MenuButton>
+      <MenuList>
+      <MenuItem as={Link} to="/workload">
+                    Current Work Load
+                  </MenuItem>
+                  <MenuItem as={Link} to="/">
+                    All Forms
+                  </MenuItem>
+                  <MenuItem as={Link} to="/">
+                    Saved Forms
+                  </MenuItem>
+                  <MenuItem>Submit Forms</MenuItem>
+      </MenuList>
+    </Menu>
+
+          
           </Flex>
 
           <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
@@ -318,6 +345,7 @@ function UserNavbar() {
           </Modal>
         </Box>
       )}
+      </div>
     </>
   );
 }

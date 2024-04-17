@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useToast, Box, Flex, Text, Input, Button } from "@chakra-ui/react";
+import { BiRefresh } from "react-icons/bi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -98,27 +99,35 @@ function ContentValidationfrom() {
         @import
         url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Whisper&display=swap')
       </style>
+      <Flex 
+    mt={["2rem" , "0rem"]}
+      justifyContent={"center"}
+      gap={"2rem"}
+
+      flexDirection={["column" , "row"]}>
       <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
         <Flex direction="column" fontFamily="'Dancing Script', cursive">
-          <Text fontSize={"2rem"}>Name: {apidata?.[randomIndex]?.name}</Text>
-          <Text fontSize={"2rem"}>Mobile: {apidata?.[randomIndex]?.phone}</Text>
-          <Text fontSize={"2rem"}>
+          <Text fontSize={["1.5rem" , "2.3rem"]}>Name: {apidata?.[randomIndex]?.name}</Text>
+          <Text fontSize={["1.5rem" , "2.3rem"]}>Mobile: {apidata?.[randomIndex]?.phone}</Text>
+          <Text fontSize={["1.5rem" , "2.3rem"]}>
             Address: {apidata?.[randomIndex]?.address}
           </Text>
-          <Text fontSize={"2rem"}>
+          <Text fontSize={["1.5rem" , "2.3rem"]}>
             Annual Revenue: {apidata?.[randomIndex]?.annualRevenue}
           </Text>
-          <Text fontSize={"2rem"}>
+          <Text fontSize={["1.5rem" , "2.3rem"]}>
             Job Functional: {apidata?.[randomIndex]?.jobFunctional}
           </Text>
-          <Text fontSize={"2rem"}>
+          <Text fontSize={["1.5rem" , "2.3rem"]}>
             Pin Code: {apidata?.[randomIndex]?.pinCode}
           </Text>
         </Flex>
       </Box>
 
-      <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
-        <Flex direction="column">
+      <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="1000px">
+        <Flex
+        width={[ "330px", "400px"]}
+        direction="column">
           <Text>Name:</Text>
           <Input ref={name} />
           <Text>Mobile:</Text>
@@ -132,10 +141,28 @@ function ContentValidationfrom() {
           <Text>Pin Code:</Text>
           <Input ref={pinCode} />
 
-          <Button onClick={submitForm}>Submit</Button>
+          {/* <Button
+          mt={"1rem"}
+          mb={"1rem"}
+          onClick={submitForm}>Submit</Button>
+
+      <Button onClick={refreshAssignment}>Refresh</Button> */}
+      <Button
+  mt={"1rem"}
+  mb={"1rem"}
+  onClick={submitForm}
+  color={"white"}
+  bg="green" // Change to the desired color scheme
+>
+  Submit
+</Button>
+
+<Button onClick={refreshAssignment} bg={"#ff4d94"}  leftIcon={<BiRefresh />}> {/* Change to the desired color scheme */}
+  Reload the Data
+</Button>
         </Flex>
       </Box>
-      <Button onClick={refreshAssignment}>Refresh</Button>
+      </Flex>
     </>
   );
 }

@@ -343,6 +343,11 @@ function Navbar() {
   const handleMenuHover = () => setIsOpen(!isOpen);
   const toast = useToast();
 
+
+  const toggleMenu = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen); // Toggle isOpen state
+  };
+
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/login";
@@ -449,8 +454,7 @@ function Navbar() {
       <div style={{ position: "fixed", top: 0, width: "100%", zIndex: 999 }}>
       {isMobileView ? (
         <Flex
-        
-          align="center"
+         align="center"
           justify="space-between"
           p="1rem"
           bg="#E19898"
@@ -578,7 +582,7 @@ function Navbar() {
             <Link to="/">
               <Box fontSize={["1.5rem"]}>Dashboard</Box>
             </Link>
-            <Menu>
+            {/* <Menu>
               <MenuButton
                 as={Box}
                 cursor="pointer"
@@ -604,8 +608,32 @@ function Navbar() {
                   </MenuItem>
                 </MenuList>
               )}
-            </Menu>
+            </Menu> */}
 
+<Menu isOpen={isOpen} onOpen={toggleMenu} onClose={toggleMenu}>
+      <MenuButton
+        as={Box}
+        cursor="pointer"
+        fontSize={["1.5rem"]}
+      >
+        User Actions
+        <ChevronDownIcon height={8} width={8} />
+      </MenuButton>
+      <MenuList>
+        <MenuItem as={RouterLink} to="/registeration">
+          Registration
+        </MenuItem>
+        <MenuItem as={RouterLink} to="/pendingregisteration">
+          Pending Registration
+        </MenuItem>
+        <MenuItem as={RouterLink} to="/cancelregisteration">
+          Cancel Registration
+        </MenuItem>
+        <MenuItem as={RouterLink} to="/addpackage">
+          Package
+        </MenuItem>
+      </MenuList>
+    </Menu>
             <Link to="/blockusersss">
               <Box fontSize={["1.5rem"]}>Deactivate User</Box>
             </Link>
