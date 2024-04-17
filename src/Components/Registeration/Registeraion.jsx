@@ -257,6 +257,12 @@ function Registeraion() {
       name: "Status",
       selector: (row) => row.status,
       sortable: true,
+      cell: (row) => (
+        <Text color={row.status === "Success" ? "green" : row.status === "Pending" ? "red" : "inherit"}>
+          {row.status}
+        </Text>
+      ),
+
     },
     {
       name: "Action",
@@ -269,8 +275,9 @@ function Registeraion() {
                 <Icon
                   key={index}
                   style={{
+                
                     fontSize: "20px",
-                    color: "blue",
+                    color: row.status === "Success" ? "green" : "inherit", // Change color based on status
                     cursor: "pointer",
                     margin: "0 5px",
                   
@@ -287,11 +294,13 @@ function Registeraion() {
                     cursor: "pointer",
                     margin: "0 5px",
                     // backgroundColor:"red"
+                    
                   }}
                   onClick={() => handleIconClick(row, index)} // Pass row data and icon index to handleIconClick function
                 />
               ))}
         </Flex>
+     
       ),
     },
   ];
@@ -328,21 +337,21 @@ function Registeraion() {
      <Flex
      mt={"1rem"}
      direction="column" alignItems="center" justifyContent={"center"} textAlign={"center"}>
-  <Text fontWeight={700} fontSize="md" marginBottom="4" >
+  <Text fontWeight={700} fontSize={["md" , "xl" ]} marginBottom="4" >
     All Users 2024-04-04 10:14:54pm 
   </Text>
-  <Text fontWeight={700} fontSize="md" marginBottom="4" >
+  <Text fontWeight={700} fontSize={["md" , "xl" ]}marginBottom="4" >
   Today Total{" "}
     {`${todaysassignmentcount}`} | Today Done {`${todaysassignment}`}
   </Text>
 
   <Link to="/addclient">
-    <Button bg={"#33ff99"}>+Add Registration</Button>
+    <Button fontSize={["md" , "xl" ]} bg={"#33ff99"}>+Add Registration</Button>
   </Link>
 </Flex>
 
       <Center>
-        <Box width={{ base: "90vw", md: "70vw" }} overflowX="auto" p={4}>
+        <Box width={{ base: "100%", md: "90vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
             <Text fontSize="2xl" fontWeight="bold">
               Registrations

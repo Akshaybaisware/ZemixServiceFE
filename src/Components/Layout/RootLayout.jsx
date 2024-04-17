@@ -11,7 +11,9 @@ function RootLayout() {
     <Flex direction="column" height="100vh">
     {role === "admin" ? <Navbar /> : <UserNavbar />}
     <Flex flexGrow={1} position="relative">
-      <Box bg="lightgray" flexBasis={{ base: "100%", md: "100%" }} overflowY="auto">
+      <Box
+      mt={["16%" , "10%"]}
+      bg="lightgray" flexBasis={{ base: "100%", md: "100%" }} overflowY="auto">
         <Outlet />
       </Box>
     </Flex>

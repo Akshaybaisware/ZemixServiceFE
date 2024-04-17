@@ -446,8 +446,10 @@ function Navbar() {
 
   return (
     <>
+      <div style={{ position: "fixed", top: 0, width: "100%", zIndex: 999 }}>
       {isMobileView ? (
         <Flex
+        
           align="center"
           justify="space-between"
           p="1rem"
@@ -650,6 +652,7 @@ function Navbar() {
           </Modal>
         </Box>
       )}
+      </div>
     </>
   );
 }

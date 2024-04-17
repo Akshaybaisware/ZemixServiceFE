@@ -1,26 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { VStack } from "@chakra-ui/layout";
+import { VStack ,Text } from "@chakra-ui/layout";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Select } from "@chakra-ui/select";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
-// import { useHistory } from "react-router";
 import { useNavigate } from "react-router-dom";
-
-function useCustomHistory() {
-  // const history = useHistory();
-
-  function redirectTo(path) {
-    history.push(path);
-  }
-
-  return {
-    redirectTo,
-  };
-}
 
 function AddClient() {
   const {
@@ -30,7 +17,6 @@ function AddClient() {
   } = useForm();
 
   const toast = useToast();
-  const { redirectTo } = useCustomHistory();
   const navigate = useNavigate();
 
   const emailafterregisteration = async (email, id) => {
@@ -40,7 +26,6 @@ function AddClient() {
         "http://localhost:5000/api/user/sendconfirmmail",
         {
           email: email,
-          //userID: id,
         }
       );
       console.log(response, "dassdwedaewd");
@@ -76,13 +61,10 @@ function AddClient() {
           position: "top",
           status: "success",
           duration: 3000,
-
           isClosable: true,
         });
         emailafterregisteration(responseData.client.email);
-        // Redirect to "/"
         navigate("/registeration");
-        // redirectTo("/registeration");
       } else {
         toast({
           title: "Error",
@@ -99,17 +81,101 @@ function AddClient() {
   };
 
   return (
-    <VStack spacing={4} align="stretch">
-      <h1>Add Client</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <VStack spacing={4} align="stretch">
+    // <VStack
+    // display={"flex"}
+    // justifyContent={"center"}
+    // textAlign={"center"}
+    // alignItems={"center"}
+    // width={["100%" , "50%"]}
+    // spacing={4} align="stretch">
+    //   <h1>Add Client</h1>
+    //   <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
+    //     <VStack spacing={4} align="stretch" w="100%">
+    //       <FormControl isRequired>
+    //         <FormLabel htmlFor="name">Name</FormLabel>
+    //         <Input isRequired type="text" id="name" {...register("name")} />
+    //       </FormControl>
+    //       <FormControl isRequired>
+    //         <FormLabel htmlFor="address">Address</FormLabel>
+    //         <Input isRequired type="text" id="address" {...register("address")} />
+    //       </FormControl>
+    //       <FormControl isRequired>
+    //         <FormLabel htmlFor="email">Email</FormLabel>
+    //         <Input isRequired type="email" id="email" {...register("email")} />
+    //       </FormControl>
+    //       <FormControl isRequired>
+    //         <FormLabel htmlFor="mobile">Mobile No</FormLabel>
+    //         <Input
+    //           isRequired
+    //           type="text"
+    //           maxLength="10"
+    //           id="mobile"
+    //           {...register("mobile", {
+    //             pattern: {
+    //               value: /^[0-9]{10}$/,
+    //               message: "Invalid Mobile Number",
+    //             },
+    //           })}
+    //         />
+    //       </FormControl>
+    //       <FormControl isRequired>
+    //         <FormLabel htmlFor="plan">Plan</FormLabel>
+    //         <Select id="plan" {...register("plan")}>
+    //           <option value="-">Plan</option>
+    //           <option value="480">480</option>
+    //         </Select>
+    //       </FormControl>
+    //       <FormControl isRequired>
+    //         <FormLabel htmlFor="selectPlan">Caller</FormLabel>
+    //         <Select id="selectPlan" {...register("selectPlan")}>
+    //           <option value="-">Caller</option>
+    //           {[1, 2, 3, 4, 5, 6].map((num) => (
+    //             <option key={num} value={num}>
+    //               {num}
+    //             </option>
+    //           ))}
+    //         </Select>
+    //       </FormControl>
+    //       <Button type="submit">Submit</Button>
+    //     </VStack>
+    //   </form>
+    // </VStack>
+    <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+    }}
+  >
+    <VStack
+      display={"flex"}
+      justifyContent={"center"}
+      textAlign={"center"}
+      alignItems={"center"}
+      width={["100%", "50%"]}
+      spacing={4}
+      align="stretch"
+    >
+      <Text  
+      p={"0.6rem"}
+      borderRadius={"20%"}
+      fontWeight={"800"}
+      bg={"#b2b266"} color={"#ffffff"}>Add Client</Text>
+      <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
+        <VStack spacing={4} align="stretch" >
           <FormControl isRequired>
             <FormLabel htmlFor="name">Name</FormLabel>
-            <Input isRequired type="text" id="name" {...register("name")} />
+            <Input
+            _hover={{ borderColor: "red" }}
+            border={"1px solid green"}
+            isRequired type="text" id="name" {...register("name")} />
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="address">Address</FormLabel>
             <Input
+            _hover={{ borderColor: "red" }}
+                border={"1px solid green"}
               isRequired
               type="text"
               id="address"
@@ -118,19 +184,27 @@ function AddClient() {
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Input isRequired type="email" id="email" {...register("email")} />
+            <Input
+            _hover={{ borderColor: "red" }}
+                border={"1px solid green"}
+              isRequired
+              type="email"
+              id="email"
+              {...register("email")}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="mobile">Mobile No</FormLabel>
             <Input
+            _hover={{ borderColor: "red" }}
+                border={"1px solid green"}
               isRequired
               type="text"
-              maxlength="10"
+              maxLength="10"
               id="mobile"
               {...register("mobile", {
                 pattern: {
                   value: /^[0-9]{10}$/,
-                  maxlength: 10,
                   message: "Invalid Mobile Number",
                 },
               })}
@@ -138,27 +212,42 @@ function AddClient() {
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="plan">Plan</FormLabel>
-            <Select id="plan" {...register("plan")}>
-              <option value="-">Plan</option>
+            <Select 
+            _hover={{ borderColor: "red" }}
+                border={"1px solid green"}
+            d="plan" {...register("plan")}>
+            
               <option value="480">480</option>
             </Select>
           </FormControl>
           <FormControl isRequired>
             <FormLabel htmlFor="selectPlan">Caller</FormLabel>
-            <Select id="selectPlan" {...register("selectPlan")}>
-              <option value="-">Caller</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
+            <Select 
+            _hover={{ borderColor: "red" }}
+                border={"1px solid green"}
+            id="selectPlan" {...register("selectPlan")}>
+             
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
             </Select>
           </FormControl>
-          <Button type="submit">Submit</Button>
         </VStack>
       </form>
+          <Button
+        _hover={{ bg: " #ff6699" }}
+          height={"3rem"}
+           borderRadius={"10%"}
+           fontWeight={"800"}
+           bg={"#b2b266"} color={"#ffffff"}
+          display={"flex"}
+          justifyContent={"center"}
+          textAlign={"center"}
+          width={"50%"} type="submit">Submit</Button>
     </VStack>
+  </div>
   );
 }
 

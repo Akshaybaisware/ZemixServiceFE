@@ -180,14 +180,15 @@ function PendingRegisteration() {
   return (
     <>
       <Flex alignItems="center" justify="space-between">
-        <Text fontSize="md">Registation Panding</Text>
+       
       </Flex>
       <Center>
-        <Box width={{ base: "90vw", md: "70vw" }} overflowX="auto" p={4}>
+        <Box width={{ base: "100vw", md: "90vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
-            <Text fontSize="2xl" fontWeight="bold">
-              Pending Registrations
-            </Text>
+          <Text fontSize="2xl" fontWeight={"800"}color="orange" textShadow="1px 2px 5px red">
+  Pending Registrations
+</Text>
+
           </Center>
           {loading ? (
             <Spinner
