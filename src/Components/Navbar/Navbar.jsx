@@ -482,7 +482,7 @@ function Navbar() {
             </Menu>
           </Box>
           <Box height={"100%"}>
-            <Menu bg={"red"}>
+            <Menu >
               <MenuButton
                 as={Button}
                 bg="#E19898"
@@ -492,7 +492,7 @@ function Navbar() {
               >
                 <HamburgerIcon height={6} width={6} />
               </MenuButton>
-              <MenuList height={"300%"} bg={"red"}>
+              <MenuList height={"300%"} >
                 ``
                 <MenuItem as={RouterLink} to="/">
                   Dashboard
@@ -503,15 +503,9 @@ function Navbar() {
                 <MenuItem as={RouterLink} to="/pendingregisteration">
                   Pending Registration
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/cancelregisteration">
-                  Cancel Registration
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/addpackage">
-                  Package
-                </MenuItem>
-                <MenuItem as={RouterLink} to="/blockusersss">
-                  Deactivate User
-                </MenuItem>
+                
+              
+              
                 <MenuItem as={RouterLink} to="/qccheck">
                   QC Report
                 </MenuItem>
@@ -521,9 +515,8 @@ function Navbar() {
                 <MenuItem as={RouterLink} to="/employees">
                   Employee
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/systemusers">
-                  System Users
-                </MenuItem>
+            
+             
               </MenuList>
             </Menu>
           </Box>
@@ -531,6 +524,7 @@ function Navbar() {
       ) : (
         <Box width="100%" height="5rem" bg="#E19898">
           <Box
+       padding={"0.7rem"}
             display="flex"
             alignItems="center"
             textAlign="center"
@@ -548,6 +542,7 @@ function Navbar() {
                 rightIcon={<ChevronDownIcon height={8} width={8} />}
               >
                 <Avatar
+               
                   border="4px solid white"
                   bg="black"
                   borderRadius="50%"
