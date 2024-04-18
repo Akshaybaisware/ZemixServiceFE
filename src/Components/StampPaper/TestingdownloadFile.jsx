@@ -16,15 +16,15 @@
 //   // import image from "./SVG STAM.svg";
 //   import frontpage from "../../assets/frontpage.jpg";
 //   import { useEffect, useState,useRef  } from "react";
-  
+
 //   import axios from "axios";
 //   import { useParams } from "react-router-dom";
-  
+
 //   import jsPDF from "jspdf";
 //   import html2canvas from "html2canvas";
 //   import { usePDF } from "react-to-pdf";
 //   import sign from "../../assets/cropto stamp.svg";
-  
+
 //   const StampPaperViewTesting = () => {
 //     const { toPDF, targetRef } = usePDF({ filename: "Legal-Agreement.pdf" });
 //     const pdfRef = useRef();
@@ -41,20 +41,19 @@
 //       photo: "",
 //       signature: "",
 //     });
-  
+
 //     const [photoPreview, setPhotoPreview] = useState(null);
 //     const [signaturePreview, setSignaturePreview] = useState(null);
 //     console.log(photoPreview);
 //     const userId = localStorage.getItem("userId");
-  
+
 //     const [loader, setLoader] = useState(false);
-  
-    
+
 //     const downlodePDF = async (photoPreview, signaturePreview) => {
 //       console.log(downlodePDF, "downlodePD");
 //       const capture = document.querySelector(".downLodeBox");
 //       setLoader(true);
-    
+
 //       html2canvas(capture).then((canvas) => {
 //         const imgData = canvas.toDataURL("img/png");
 //         const doc = new jsPDF({
@@ -64,65 +63,64 @@
 //           marginLeft: 0,
 //           marginRight: 0,
 //         });
-    
+
 //         const marginLeft = 0;
 //         const marginTop = 0;
 //         const contentWidth = doc.internal.pageSize.getWidth() - 2 * marginLeft;
 //         const contentHeight = doc.internal.pageSize.getHeight() - 2 * marginTop;
-    
+
 //         const aspectRatio = canvas.width / canvas.height;
-    
+
 //         let imgWidth = contentWidth; // Set the initial image width to content width
-    
+
 //         // Adjust the image width based on the viewport width
 //         const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 //         if (viewportWidth < contentWidth) {
 //           imgWidth = viewportWidth; // Set the image width to the viewport width
 //         }
-    
+
 //         let imgHeight = imgWidth / aspectRatio;
-    
+
 //         if (imgHeight > contentHeight) {
 //           imgHeight = contentHeight;
 //           imgWidth = contentHeight * aspectRatio;
 //         }
-    
+
 //         const imgX = marginLeft + (contentWidth - imgWidth) / 2; // Center the image horizontally
 //         const imgY = marginTop + (contentHeight - imgHeight) / 2;
-    
+
 //         doc.addImage(imgData, "PNG", imgX, imgY, imgWidth, imgHeight);
-    
+
 //         // Adjust positions for photoPreview and signaturePreview
 //         const photoX = marginLeft + 520;
 //         const photoY = doc.internal.pageSize.getHeight() - 580;
 //         const signatureX = marginLeft + 850;
 //         const signatureY = doc.internal.pageSize.getHeight() - 580;
-    
+
 //         if (photoPreview) {
 //           doc.addImage(photoPreview, "JPEG", photoX, photoY, 270, 345);
 //         }
 //         if (signaturePreview) {
 //           doc.addImage(signaturePreview, "PNG", signatureX, signatureY, 270, 345);
 //         }
-    
+
 //         setLoader(false);
 //         doc.save("Agreement.pdf");
 //       });
 //     };
-    
-    
+
 //     const handlePhotoChange = (e) => {
 //       const selectedPhoto = e.target.files[0];
 //       setPhoto(selectedPhoto);
 //       setPhotoPreview(URL.createObjectURL(selectedPhoto));
 //     };
-  
+
 //     const handleSignatureChange = (e) => {
 //       const selectedSignature = e.target.files[0];
 //       setSignature(selectedSignature);
 //       setSignaturePreview(URL.createObjectURL(selectedSignature));
 //     };
-  
+
 //     // useEffect to call
 //     useEffect(() => {
 //       const fetchUserDetails = async () => {
@@ -153,30 +151,30 @@
 //           console.log(inputField, "inputField");
 //           setPhotoPreview(response.data.data.photo);
 //           setSignaturePreview(response.data.data?.signature);
-  
+
 //           console.log(photoPreview, "photoPreview");
 //           console.log(signaturePreview, "signaturePreview");
 //         } catch (error) {
 //           console.error("Error fetching user details:", error);
 //         }
 //       };
-  
+
 //       fetchUserDetails();
 //     }, [id]);
-  
+
 //     const onChangeHandler = (e) => {
 //       const { name, value } = e.target;
-  
+
 //       setInputField({
 //         ...prevValue,
 //         [name]: value,
 //       });
 //     };
 //     console.log("onChangeHandler", onChangeHandler);
-  
+
 //     const handleFileChange = (e, field) => {
 //       const file = e.target.files[0];
-  
+
 //       // Check if a file is selected
 //       if (file) {
 //         // Read the file as a data URL
@@ -190,18 +188,16 @@
 //         reader.readAsDataURL(file);
 //       }
 //     };
-  
+
 //     return (
 //       <>
 //         <div  className="downLodeBox">
-//           <div 
-        
-          
+//           <div
+
 //         //   ref={targetRef}
-        
+
 //           >
-        
-  
+
 //           <div>
 //         <p>
 
@@ -360,20 +356,18 @@
 //               of the project etc of each other's/Principals, clients etc. to any
 //               other Third party and neither of us will approach each otherâ€™s
 //               contracts as identified from time to time.
-          
-             
+
 //             </p>
 //           </div>
-  
+
 //           {/* Commencement Date and Term Section */}
 //           <div>
 //             <h1>
-           
+
 //               PRIMARY NOTE
 //             </h1>
 //             <p>
-             
-           
+
 //               (A) In the matter of fact failure, not submitted or succeed company
 //               is entitled to receive amount by any cost. If you achieve the
 //               accuracy which mentioned above, then Utility charges will be deduct
@@ -390,10 +384,10 @@
 //               side, company is not liable for the same.
 //             </p>
 //           </div>
-  
+
 //           <div>
 //              <h1>
-             
+
 //               Required Accuracy by the company:
 //             </h1>
 //             <p>
@@ -410,11 +404,10 @@
 //                 Below cut off - you are not qualified for payment & id will be
 //                 terminating by server side.
 //               </p>
-             
-         
+
 //             </p>
 //           </div>
-  
+
 //           <div>
 //           <p
 //               style={{
@@ -442,7 +435,7 @@
 //               in agreement and I am ready to do work with Cropton Enterprise.
 //             </p>
 //           </div>
-  
+
 //           <div>
 //           <p>
 //               Employer : -
@@ -455,23 +448,20 @@
 //           </div>
 //           <div
 //              >
-              
+
 //                 <p fontSize="md">Email: {inputField.email}</p>
-             
-            
+
 //                 <p fontSize="md">Start-Date: {inputField.startdate}</p>
-             
+
 //               </div>
-  
+
 //           {/* <Box width={["200px", "400px"]}>
 //             <Image src={sign} alt="Stamp" />
 //           </Box>
-         
-  
+
 //             <Box>
-          
-  
-//               <Table 
+
+//               <Table
 //               bg="red"
 //               mt={"1rem"}   w={["350px", "700px"]} >
 //                 <Tr>
@@ -500,7 +490,7 @@
 //             </Box> */}
 //             <div >
 //                   <div
-                 
+
 //                  >
 //                       {/* <Image src={sign} alt="Stamp" /> */}
 //                   </div>
@@ -514,7 +504,7 @@
 //                       </div>
 //                       <div  onChange={handlePhotoChange}>
 //                           <p mb={"10px"}>Photo</p>
-                         
+
 //                           {photoPreview && (
 //                               <Image src={photoPreview} alt="Photo Preview"/>
 //                           )}
@@ -524,8 +514,7 @@
 //           </div>
 //           <div>
 //             {/* <Button
-  
-                          
+
 //             //    onClick={() => downloadPDF()}
 //             // onClick={() => toPDF()}
 //             onClick={downloadPDF}
@@ -557,16 +546,14 @@
 //       </>
 //     );
 //   };
-  
-//   export default StampPaperViewTesting;
 
+//   export default StampPaperViewTesting;
 
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { useParams } from "react-router-dom";
-
 
 const StampPaperViewTesting = () => {
   const { id } = useParams();
@@ -617,7 +604,10 @@ const StampPaperViewTesting = () => {
 
       let imgWidth = contentWidth;
 
-      const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const viewportWidth = Math.max(
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0
+      );
       if (viewportWidth < contentWidth) {
         imgWidth = viewportWidth;
       }
@@ -654,11 +644,16 @@ const StampPaperViewTesting = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await axios.post(`http://localhost:5000/api/aggriment/getaggrimentdetails`, {
-          email: id,
-        });
+        const response = await axios.post(
+          `https://zemixbe.onrender.com/api/aggriment/getaggrimentdetails`,
+          {
+            email: id,
+          }
+        );
         const data = response.data;
-        const startDate = response.data.data?.startdate ? new Date(response.data.data.startdate).toLocaleDateString() : '';
+        const startDate = response.data.data?.startdate
+          ? new Date(response.data.data.startdate).toLocaleDateString()
+          : "";
         setInputField({
           name: response.data.data?.name,
           email: response.data.data?.email,
@@ -680,9 +675,7 @@ const StampPaperViewTesting = () => {
   return (
     <>
       <div className="downLodeBox">
-        <div>
-          {/* Content goes here */}
-        </div>
+        <div>{/* Content goes here */}</div>
 
         <div>
           <div>
@@ -691,18 +684,23 @@ const StampPaperViewTesting = () => {
               <div>
                 <label htmlFor="signature">Signature</label>
                 <input id="signature" onChange={handleSignatureChange} />
-                {signaturePreview && <img src={signaturePreview} alt="Signature Preview" />}
+                {signaturePreview && (
+                  <img src={signaturePreview} alt="Signature Preview" />
+                )}
               </div>
               <div>
                 <label htmlFor="photo">Photo</label>
-                <input  id="photo" onChange={handlePhotoChange} />
+                <input id="photo" onChange={handlePhotoChange} />
                 {photoPreview && <img src={photoPreview} alt="Photo Preview" />}
               </div>
             </div>
           </div>
 
           <div>
-            <button onClick={() => downlodePDF(photoPreview, signaturePreview)} disabled={loader}>
+            <button
+              onClick={() => downlodePDF(photoPreview, signaturePreview)}
+              disabled={loader}
+            >
               {loader ? "Downloading" : "Download Your Agreement"}
             </button>
           </div>
@@ -713,5 +711,3 @@ const StampPaperViewTesting = () => {
 };
 
 export default StampPaperViewTesting;
-
-  

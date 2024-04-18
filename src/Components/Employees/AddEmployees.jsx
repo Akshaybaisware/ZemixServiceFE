@@ -38,7 +38,7 @@ function AddEmployees() {
   const handleSubmitemployee = async (e) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/employee/addemployee",
+        "https://zemixbe.onrender.com/api/employee/addemployee",
         {
           method: "POST",
           headers: {

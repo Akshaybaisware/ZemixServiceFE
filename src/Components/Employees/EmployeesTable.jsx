@@ -112,7 +112,7 @@ function EmployeesTable() {
   const getEmployees = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/employee/getallemployee",
+        "https://zemixbe.onrender.com/api/employee/getallemployee",
         {
           method: "GET",
           headers: {

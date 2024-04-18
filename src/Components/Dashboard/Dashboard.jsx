@@ -34,7 +34,7 @@ function Dashboard() {
   const getallcancel = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallcancel`
+        `https://zemixbe.onrender.com/api/user/getallcancel`
       );
       console.log(response, "cancel");
       setCancelUsers(response.data.users.length);
@@ -46,7 +46,7 @@ function Dashboard() {
   const totalragisterations = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallregistered`
+        `https://zemixbe.onrender.com/api/user/getallregistered`
       );
       console.log(response, "registerations");
       setRegisterUsers(response.data.users.length);
@@ -58,7 +58,7 @@ function Dashboard() {
   const totlalActiveUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallactive`
+        `https://zemixbe.onrender.com/api/user/getallactive`
       );
 
       console.log(response, "active");
@@ -71,7 +71,7 @@ function Dashboard() {
   const totlalPendingUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallpending`
+        `https://zemixbe.onrender.com/api/user/getallpending`
       );
       console.log(response, "pending");
       setPendingUsers(response.data.users.length);
@@ -83,7 +83,7 @@ function Dashboard() {
   const gettodaysregisterations = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/gettodaysregisterations`
+        `https://zemixbe.onrender.com/api/user/gettodaysregisterations`
       );
       console.log(response, "todays");
     } catch (error) {
@@ -94,7 +94,7 @@ function Dashboard() {
   const totlalFrezzUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallfreez`
+        `https://zemixbe.onrender.com/api/user/getallfreez`
       );
 
       console.log(response, "frezz");
@@ -106,7 +106,7 @@ function Dashboard() {
 
   return (
     <>
-      {/* <Flex 
+      {/* <Flex
        ml={["2rem"]}
       //  justifyContent={"center"}
       width={"100%"} direction={{ base: "column", md: "row" }}>
@@ -114,7 +114,7 @@ function Dashboard() {
         justifyContent={["flex-startr","space-around"]}
           width={["100%", "50%"]}
           direction={{ md: "column" }}
-       
+
           // justifyContent="center"
           marginTop="30px"
           align="center"
@@ -163,7 +163,7 @@ function Dashboard() {
           <Link to={{ pathname: "/" }}>
             <Card
             ml={["-1rem" , ""]}
-            
+
               as="flex"
               minWidth={["400%","170%"]}
               maxWidth="150%"
@@ -198,15 +198,15 @@ function Dashboard() {
         </Flex>
       </Flex>
 
-      <Flex 
+      <Flex
        // justifyContent={"space-around"}
-    
-       width={"100%"} 
+
+       width={"100%"}
       direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          width={["100%", "50%"]} 
+          width={["100%", "50%"]}
           justifyContent={["flex-start","space-around"]}
           marginTop="30px"
           align="center"
@@ -289,17 +289,17 @@ function Dashboard() {
       </Flex>
 
       <Flex
-         width={"100%"} 
+         width={"100%"}
       direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
           direction={{ md: "column" }}
           gap="25px"
-          width={["100%", "50%"]} 
+          width={["100%", "50%"]}
           justifyContent={["flex-startr","space-around"]}
           marginTop="30px"
           align="center"
         >
-          <Link to={{ pathname: "/" }}> 
+          <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth={["520%","210%"]}
@@ -371,10 +371,10 @@ function Dashboard() {
       </Flex>
 
       <Flex
-         width={"100%"} 
+         width={"100%"}
       direction={{ base: "column", md: "row" }} gap="25px">
         <Flex
-            width={["100%", "50%"]} 
+            width={["100%", "50%"]}
           direction={{ md: "column" }}
           gap="25px"
           justifyContent={["flex-start","center"]}
@@ -446,221 +446,221 @@ function Dashboard() {
         </Flex>
       </Flex> */}
 
-    
-
-
-   
-
-<Box
-
-  width="100%"
-  direction={{ base: "column", md: "column" }}
-  justifyContent="center"
->
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="white"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
+      <Box
+        width="100%"
+        direction={{ base: "column", md: "column" }}
+        justifyContent="center"
       >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-          Total Registration
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-          {registerUsers}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        ml={["0", ""]}
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="#65D088"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="white"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Total Registration
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {registerUsers}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              ml={["0", ""]}
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="#65D088"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Pending Registration
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {pendingUsers}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+      </Box>
+
+      <Box
+        width="100%"
+        direction={{ base: "column", md: "column" }}
+        justifyContent="center"
       >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-          Pending Registration
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-          {pendingUsers}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-</Box>
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="white"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Active User
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {activeUsers}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              ml={["0", ""]}
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="#65D088"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Cancel User
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {cancelUsers}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+      </Box>
 
-<Box
-  width="100%"
-  direction={{ base: "column", md: "column" }}
-  justifyContent="center"
->
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="white"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
+      <Box
+        width="100%"
+        direction={{ base: "column", md: "column" }}
+        justifyContent="center"
       >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        Active User
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {activeUsers}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        ml={["0", ""]}
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="#65D088"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
-      >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        Cancel User
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {cancelUsers}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-</Box>
-
-<Box
-  width="100%"
-  direction={{ base: "column", md: "column" }}
-  justifyContent="center"
->
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="white"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
-      >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        Inactive User
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {FrezzUsers}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        ml={["0", ""]}
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="#65D088"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
-      >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        Today's Recovery
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {cancelUsers}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-</Box>
-
-
-
-
-
-
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="white"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Inactive User
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {FrezzUsers}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              ml={["0", ""]}
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="#65D088"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Today's Recovery
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {cancelUsers}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+      </Box>
     </>
   );
 }

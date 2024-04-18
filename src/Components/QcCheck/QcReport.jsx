@@ -82,7 +82,7 @@ function QcReport() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/assignment/getassignments",
+        "https://zemixbe.onrender.com/api/assignment/getassignments",
         { userId: data._id }
       );
       console.log(response.data, "Assignments data");
@@ -200,7 +200,7 @@ function QcReport() {
   const qcdata = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/user/getallclient"
+        "https://zemixbe.onrender.com/api/user/getallclient"
       );
       console.log(response, "response");
 
@@ -224,7 +224,7 @@ function QcReport() {
   const qcreportdata = async () => {
     try {
       const reposne = await axios.post(
-        "http://localhost:5000/api/assignment/getassignments",
+        "https://zemixbe.onrender.com/api/assignment/getassignments",
         { userId: userId }
       );
       console.log(reposne, "jasdbasjkdbaksjb");
@@ -237,7 +237,7 @@ function QcReport() {
     try {
       console.log(userId, "incorreet");
       const response = await axios.post(
-        "http://localhost:5000/api/user/getreportbyid",
+        "https://zemixbe.onrender.com/api/user/getreportbyid",
         {
           id: userId,
         }

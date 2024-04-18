@@ -168,7 +168,7 @@ const StampPaperView = () => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.post(
-          `http://localhost:5000/api/aggriment/getaggrimentdetails`,
+          `https://zemixbe.onrender.com/api/aggriment/getaggrimentdetails`,
           {
             email: id,
           }

@@ -55,16 +55,13 @@ const EditClientComponent = () => {
 
     // Send PUT request to update user details
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/user/edituser/${userId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+      const response = await fetch(`https://zemixbe.onrender.com/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
       if (response.ok) {
         // Handle success
         toast({

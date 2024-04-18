@@ -19,7 +19,7 @@ function Recovery() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/user/getallclient"
+          "https://zemixbe.onrender.com/api/user/getallclient"
         );
         // Initialize each user data with a selectedDate property
         const usersWithDate = response?.data?.data.map((user) => ({

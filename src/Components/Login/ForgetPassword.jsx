@@ -36,7 +36,7 @@ function ForgetPassword() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/adminforgetpassword",
+        "https://zemixbe.onrender.com/api/auth/adminforgetpassword",
         {
           newPassword: password,
           confirmPassword: confirmPassword,

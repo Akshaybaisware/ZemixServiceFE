@@ -27,7 +27,7 @@ function PendingRegisteration() {
     try {
       console.log(id, "asdasdasd");
       const reponse = await axios.post(
-        "http://localhost:5000/api/user/senduserinfo",
+        "https://zemixbe.onrender.com/api/user/senduserinfo",
         {
           userID: id,
         }
@@ -56,7 +56,7 @@ function PendingRegisteration() {
   const deleteclientinfo = async (id) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/deleteclient",
+        "https://zemixbe.onrender.com/api/user/deleteclient",
         {
           id: id,
         }
@@ -175,7 +175,7 @@ function PendingRegisteration() {
   const pendingdata = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/user/getallpending"
+        "https://zemixbe.onrender.com/api/user/getallpending"
       );
       console.log(response.data.users, "pending list ");
       setPendinglist(response.data.users);
@@ -195,16 +195,10 @@ function PendingRegisteration() {
   }, [dependancy, deletedependency, reload]);
   return (
     <>
-    
-      <Center mt={["2rem" , "1rem"] }>
+      <Center mt={["2rem", "1rem"]}>
         <Box width={{ base: "100vw", md: "90vw" }} overflowX="auto" p={4}>
           <Center mb={4}>
-            <Text
-              fontSize="2xl"
-              fontWeight={"800"}
-              color="red"
-              
-            >
+            <Text fontSize="2xl" fontWeight={"800"} color="red">
               Pending Registrations
             </Text>
           </Center>

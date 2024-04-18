@@ -31,7 +31,7 @@ function ContentValidationfrom() {
   const getdatafrom = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/assignment/getassignments"
+        "https://zemixbe.onrender.com/assignment/getassignments"
         // {
         //   userId: userId,
         // }
@@ -54,7 +54,7 @@ function ContentValidationfrom() {
   const submitForm = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/assignment/addassignment",
+        "https://zemixbe.onrender.com/api/assignment/addassignment",
         {
           userId: userId,
         }
@@ -99,69 +99,77 @@ function ContentValidationfrom() {
         @import
         url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Whisper&display=swap')
       </style>
-      <Flex 
-    mt={["2rem" , "0rem"]}
-      justifyContent={"center"}
-      gap={"2rem"}
+      <Flex
+        mt={["2rem", "0rem"]}
+        justifyContent={"center"}
+        gap={"2rem"}
+        flexDirection={["column", "row"]}
+      >
+        <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
+          <Flex direction="column" fontFamily="'Dancing Script', cursive">
+            <Text fontSize={["1.5rem", "2.3rem"]}>
+              Name: {apidata?.[randomIndex]?.name}
+            </Text>
+            <Text fontSize={["1.5rem", "2.3rem"]}>
+              Mobile: {apidata?.[randomIndex]?.phone}
+            </Text>
+            <Text fontSize={["1.5rem", "2.3rem"]}>
+              Address: {apidata?.[randomIndex]?.address}
+            </Text>
+            <Text fontSize={["1.5rem", "2.3rem"]}>
+              Annual Revenue: {apidata?.[randomIndex]?.annualRevenue}
+            </Text>
+            <Text fontSize={["1.5rem", "2.3rem"]}>
+              Job Functional: {apidata?.[randomIndex]?.jobFunctional}
+            </Text>
+            <Text fontSize={["1.5rem", "2.3rem"]}>
+              Pin Code: {apidata?.[randomIndex]?.pinCode}
+            </Text>
+          </Flex>
+        </Box>
 
-      flexDirection={["column" , "row"]}>
-      <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
-        <Flex direction="column" fontFamily="'Dancing Script', cursive">
-          <Text fontSize={["1.5rem" , "2.3rem"]}>Name: {apidata?.[randomIndex]?.name}</Text>
-          <Text fontSize={["1.5rem" , "2.3rem"]}>Mobile: {apidata?.[randomIndex]?.phone}</Text>
-          <Text fontSize={["1.5rem" , "2.3rem"]}>
-            Address: {apidata?.[randomIndex]?.address}
-          </Text>
-          <Text fontSize={["1.5rem" , "2.3rem"]}>
-            Annual Revenue: {apidata?.[randomIndex]?.annualRevenue}
-          </Text>
-          <Text fontSize={["1.5rem" , "2.3rem"]}>
-            Job Functional: {apidata?.[randomIndex]?.jobFunctional}
-          </Text>
-          <Text fontSize={["1.5rem" , "2.3rem"]}>
-            Pin Code: {apidata?.[randomIndex]?.pinCode}
-          </Text>
-        </Flex>
-      </Box>
+        <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="1000px">
+          <Flex width={["330px", "400px"]} direction="column">
+            <Text>Name:</Text>
+            <Input ref={name} />
+            <Text>Mobile:</Text>
+            <Input ref={mobile} />
+            <Text>Address:</Text>
+            <Input ref={address} />
+            <Text>Annual Revenue:</Text>
+            <Input ref={annualRevenue} />
+            <Text>Job Functional:</Text>
+            <Input ref={jobFunctional} />
+            <Text>Pin Code:</Text>
+            <Input ref={pinCode} />
 
-      <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="1000px">
-        <Flex
-        width={[ "330px", "400px"]}
-        direction="column">
-          <Text>Name:</Text>
-          <Input ref={name} />
-          <Text>Mobile:</Text>
-          <Input ref={mobile} />
-          <Text>Address:</Text>
-          <Input ref={address} />
-          <Text>Annual Revenue:</Text>
-          <Input ref={annualRevenue} />
-          <Text>Job Functional:</Text>
-          <Input ref={jobFunctional} />
-          <Text>Pin Code:</Text>
-          <Input ref={pinCode} />
-
-          {/* <Button
+            {/* <Button
           mt={"1rem"}
           mb={"1rem"}
           onClick={submitForm}>Submit</Button>
 
       <Button onClick={refreshAssignment}>Refresh</Button> */}
-      <Button
-  mt={"1rem"}
-  mb={"1rem"}
-  onClick={submitForm}
-  color={"white"}
-  bg="green" // Change to the desired color scheme
->
-  Submit
-</Button>
+            <Button
+              mt={"1rem"}
+              mb={"1rem"}
+              onClick={submitForm}
+              color={"white"}
+              bg="green" // Change to the desired color scheme
+            >
+              Submit
+            </Button>
 
-<Button onClick={refreshAssignment} bg={"#ff4d94"}  leftIcon={<BiRefresh />}> {/* Change to the desired color scheme */}
-  Reload the Data
-</Button>
-        </Flex>
-      </Box>
+            <Button
+              onClick={refreshAssignment}
+              bg={"#ff4d94"}
+              leftIcon={<BiRefresh />}
+            >
+              {" "}
+              {/* Change to the desired color scheme */}
+              Reload the Data
+            </Button>
+          </Flex>
+        </Box>
       </Flex>
     </>
   );

@@ -13,7 +13,7 @@ import {
   useToast,
   Select,
 } from "@chakra-ui/react";
-import {  Spinner } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 
 import frontpage from "../../assets/frontpage.jpg";
 import sign from "../../assets/cropto stamp.svg";
@@ -70,7 +70,7 @@ const StampPaper = () => {
 
       const config = {
         method: "post",
-        url: `http://localhost:5000/api/user/add_terms`,
+        url: `https://zemixbe.onrender.com/api/user/add_terms`,
         data: formData,
       };
 
@@ -106,7 +106,7 @@ const StampPaper = () => {
         </Box>
 
         <Box>
-          <Text  mt={["-3rem"]}  padding={["1rem" , "3rem"]} fontWeight={"500"}>
+          <Text mt={["-3rem"]} padding={["1rem", "3rem"]} fontWeight={"500"}>
             Presently we are providing the business for form filling more
             meaningfully described in the column Scope of Work, through their
             principals. AND WHEREAS the Business Associate is engaged inter
@@ -127,8 +127,8 @@ const StampPaper = () => {
             </p>
             <br />
             1. Main Purpose: The Original data will be available online on
-            website provided by Cropton Enterprise at the time of signup. You are
-            required to feed the provided data field wise online as per the
+            website provided by Cropton Enterprise at the time of signup. You
+            are required to feed the provided data field wise online as per the
             guidelines. Data supply and preservation of the output file is done
             online on real time basis.
             <br />
@@ -178,7 +178,7 @@ const StampPaper = () => {
             </p>
             {/* ... (rest of the Background section) */}
           </Text>
-          <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
+          <Text fontWeight={"500"} padding={["1rem", "3rem"]}>
             <br />
             9. This agreement represents the business Agreement and operational
             understandings between the parties and shall remain in effect for a
@@ -259,20 +259,15 @@ const StampPaper = () => {
             of the project etc of each other's/Principals, clients etc. to any
             other Third party and neither of us will approach each otherâ€™s
             contracts as identified from time to time.
-        
-           
           </Text>
         </Box>
 
         {/* Commencement Date and Term Section */}
         <Box>
-          <Heading  padding={["1rem" , "3rem"]} as="h2" mb={4}>
-         
+          <Heading padding={["1rem", "3rem"]} as="h2" mb={4}>
             PRIMARY NOTE
           </Heading>
-           <Text  fontWeight={"500"} padding={["1rem" , "3rem"]}>
-           
-         
+          <Text fontWeight={"500"} padding={["1rem", "3rem"]}>
             (A) In the matter of fact failure, not submitted or succeed company
             is entitled to receive amount by any cost. If you achieve the
             accuracy which mentioned above, then Utility charges will be deduct
@@ -291,42 +286,42 @@ const StampPaper = () => {
         </Box>
 
         <Box>
-           <Heading  padding={["1rem" , "3rem"]} as="h2" mb={4}>
-           
+          <Heading padding={["1rem", "3rem"]} as="h2" mb={4}>
             Required Accuracy by the company:
           </Heading>
-            <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
+          <Text fontWeight={"500"} padding={["1rem", "3rem"]}>
             You must have to provide 90% accuracy in form filling work (480
             Forms) in 5 Days. if you are fail to provide 90% accuracy, you must
             have to pay registration amount
             <br />
-            <br /> Registration Amount :  5500 (Per Month Basis) INR. Reg. Amount
-            Will Deduct From Your Salary per month Salary (Weekly) : 18240
-            INR
+            <br /> Registration Amount : 5500 (Per Month Basis) INR. Reg. Amount
+            Will Deduct From Your Salary per month Salary (Weekly) : 18240 INR
             <br />
             <br />
             <p style={{ color: "red" }}>
               Below cut off - you are not qualified for payment & id will be
               terminating by server side.
             </p>
-           
-       
           </Text>
         </Box>
 
         <Box>
-   <Text  fontWeight={"500"} padding={["1rem" , "3rem"]}
+          <Text
+            fontWeight={"500"}
+            padding={["1rem", "3rem"]}
             style={{
               fontWeight: "bold", // Add this line to make the text more bold
             }}
           >
             IN WITNESS WHEREOF
           </Text>
-        <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
+          <Text fontWeight={"500"} padding={["1rem", "3rem"]}>
             the parties hereto have executed these presents on the date
             hereinbefore written:
           </Text>
-           <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}
+          <Text
+            fontWeight={"500"}
+            padding={["1rem", "3rem"]}
             style={{
               fontWeight: "bold",
             }}
@@ -343,13 +338,20 @@ const StampPaper = () => {
         </Box>
 
         <Box>
-          <Text padding={["1rem" , "3rem"]} fontWeight={"800"} fontSize={"1.5rem"} mt="4">
+          <Text
+            padding={["1rem", "3rem"]}
+            fontWeight={"800"}
+            fontSize={"1.5rem"}
+            mt="4"
+          >
             Employer : -
           </Text>
-          <Text fontWeight={"500"}  padding={["1rem" , "3rem"]}>
+          <Text fontWeight={"500"} padding={["1rem", "3rem"]}>
             Name : Cropton Service <br />
-            Email : helplinezxservicewww@gmail.comhelplinessrvice156@gmail.com <br />
-            Address :  block number: 23 Hanuman Nagar Ajmer Road S.O, Jaipur, 302006
+            Email : helplinezxservicewww@gmail.comhelplinessrvice156@gmail.com{" "}
+            <br />
+            Address : block number: 23 Hanuman Nagar Ajmer Road
+            S.O, Jaipur, 302006
           </Text>
         </Box>
 
@@ -402,7 +404,7 @@ const StampPaper = () => {
     </FormControl> */}
 
         {/* Upload Signature and Photo Section */}
-        <Table mt={"1rem"}   w={["330px", "700px"]} >
+        <Table mt={"1rem"} w={["330px", "700px"]}>
           <Tr>
             <Td>Upload Signature</Td>
             <Input onChange={handleSignatureChange} type="file" />
@@ -414,11 +416,10 @@ const StampPaper = () => {
                 alt="Photo Preview"
               />
             )}
-           
           </Tr>
           <Tr>
             <Td>Upload Your Photo</Td>
-         
+
             {/* <Input onChange={handleSignatureChange} type="file" />
             {signaturePreview && (
               <Image
@@ -461,7 +462,7 @@ const StampPaper = () => {
             disabled={loading} // Disable button while submitting
         >
             {loading ? "Submitting..." : "Submit"}
-        </Button> */} 
+        </Button> */}
       </Box>
     </>
   );

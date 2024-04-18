@@ -41,7 +41,7 @@ function UserDashboard() {
   const getallcancel = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallcancel`
+        `https://zemixbe.onrender.com/api/user/getallcancel`
       );
       console.log(response, "cancel");
       setCancelUsers(response.data.users.length);
@@ -53,7 +53,7 @@ function UserDashboard() {
   const totalragisterations = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallregistered`
+        `https://zemixbe.onrender.com/api/user/getallregistered`
       );
       console.log(response, "registerations");
       setRegisterUsers(response.data.users.length);
@@ -65,7 +65,7 @@ function UserDashboard() {
   const getuserdeeatilsbyid = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/getuserbyid",
+        "https://zemixbe.onrender.com/api/user/getuserbyid",
         {
           userId: userId,
         }
@@ -90,7 +90,7 @@ function UserDashboard() {
   const totlalActiveUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallactive`
+        `https://zemixbe.onrender.com/api/user/getallactive`
       );
 
       console.log(response, "active");
@@ -103,7 +103,7 @@ function UserDashboard() {
   const totlalPendingUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallpending`
+        `https://zemixbe.onrender.com/api/user/getallpending`
       );
       console.log(response, "pending");
       setPendingUsers(response.data.users.length);
@@ -115,7 +115,7 @@ function UserDashboard() {
   const gettodaysregisterations = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/gettodaysregisterations`
+        `https://zemixbe.onrender.com/api/user/gettodaysregisterations`
       );
       console.log(response, "todays");
     } catch (error) {
@@ -126,7 +126,7 @@ function UserDashboard() {
   const totlalFrezzUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/getallfreez`
+        `https://zemixbe.onrender.com/api/user/getallfreez`
       );
 
       console.log(response, "frezz");
@@ -322,145 +322,149 @@ function UserDashboard() {
         </Flex>
       </Flex> */}
 
-<Box
-
-
-  width="100%"
-  direction={{ base: "column", md: "column" }}
-  justifyContent="center"
->
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="white"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
+      <Box
+        width="100%"
+        direction={{ base: "column", md: "column" }}
+        justifyContent="center"
       >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        Total Number Form
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {toatalasignment}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        ml={["0", ""]}
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="#65D088"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
-      >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        Saved Form
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {submitedassignment}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-</Box>
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="white"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Total Number Form
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {toatalasignment}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              ml={["0", ""]}
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="#65D088"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Saved Form
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {submitedassignment}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+      </Box>
 
-<Box
-  width="100%"
-  direction={{ base: "column", md: "column" }}
-  justifyContent="center"
->
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="white"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
+      <Box
+        width="100%"
+        direction={{ base: "column", md: "column" }}
+        justifyContent="center"
       >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        Submit Form
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {submitedassignment}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-  <Box
-    width="100%"
-    marginY={{ base: "30px", md: "30px" }}
-    align="center"
-  >
-    <Link to={{ pathname: "/" }}>
-      <Card
-        ml={["0", ""]}
-        as="flex"
-        minWidth="100%"
-        minHeight="10rem"
-        textAlign="center"
-        bg="#65D088"
-        borderRadius="12px"
-        boxShadow="md"
-        p="2"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-        gap="20px"
-      >
-        <img src={TotalCumstmer} alt="Total Customers" />
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        End Date
-        </Text>
-        <Text fontSize={{ base: "0.7rem", md: "1.2rem" }} fontWeight="bold">
-        {dates?.slice(0, 10)}
-        </Text>
-      </Card>
-    </Link>
-  </Box>
-</Box>
-
-
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="white"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                Submit Form
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {submitedassignment}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+          <Link to={{ pathname: "/" }}>
+            <Card
+              ml={["0", ""]}
+              as="flex"
+              minWidth="100%"
+              minHeight="10rem"
+              textAlign="center"
+              bg="#65D088"
+              borderRadius="12px"
+              boxShadow="md"
+              p="2"
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+              gap="20px"
+            >
+              <img src={TotalCumstmer} alt="Total Customers" />
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                End Date
+              </Text>
+              <Text
+                fontSize={{ base: "0.7rem", md: "1.2rem" }}
+                fontWeight="bold"
+              >
+                {dates?.slice(0, 10)}
+              </Text>
+            </Card>
+          </Link>
+        </Box>
+      </Box>
     </>
   );
 }

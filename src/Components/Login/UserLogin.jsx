@@ -21,7 +21,7 @@ function UserLogin() {
         password: password.current.value,
       };
       const response = await axios.post(
-        "http://localhost:5000/api/user/login",
+        "https://zemixbe.onrender.com/api/user/login",
         user
       );
       console.log(response.data);

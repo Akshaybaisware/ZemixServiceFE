@@ -140,7 +140,7 @@ function Login() {
     console.log(user);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/adminsignin",
+        "https://zemixbe.onrender.com/api/auth/adminsignin",
         user
       );
       console.log(response);
