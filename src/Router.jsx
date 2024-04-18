@@ -31,6 +31,8 @@ import Recovery from "./Components/Recovery/Recovery";
 import NOC from "./Components/Recovery/NOC";
 import PdfPhotoAdding from "./Components/PDfPhoto/PdfPhotoAdding";
 import DownloadStampPaper from "./Components/StampPaper/DowanloadStampPaper";
+import TestingdownloadFile from "./Components/StampPaper/TestingdownloadFile";
+import Testing from "./Components/StampPaper/Testing";
 import ContentValidationfrom from "./Components/ContentValid/ContentValidationfrom";
 import GetReportofUser from "./Components/Report/GetReportofUser";
 import QcReport from "./Components/QcCheck/QcReport";
@@ -47,6 +49,7 @@ const router = createBrowserRouter(
     <>
       <Route>
       <Route path="/noc" element={<NOC />} />
+      <Route path="/testing" element={<Testing />} />
       <Route path="/downloadreport" Component={DownloadStampPaper} />
 
         <Route path="/login" element={<Login />} />
@@ -57,6 +60,10 @@ const router = createBrowserRouter(
           path="/stamppaperdonwload/:id"
           element={<DownloadStampPaper />}
         />
+           {/* <Route
+          path="/stamppaperdonwload/:id"
+          element={<TestingdownloadFile />}
+        /> */}
         <Route path="/usrnavbar" element={<UserNavbar />} />
         <Route path="/stampapersucess" Component={StampPaperSubmission} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
