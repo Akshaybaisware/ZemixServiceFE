@@ -57,7 +57,8 @@ const StampPaperView = () => {
       const doc = new jsPDF({
         orientation: "portrait",
         unit: "mm",
-        format: [canvas.width, canvas.height],
+        // format: [canvas.width, canvas.height],
+        format: window.innerWidth > 600 ? [canvas.width, canvas.height] : "a4",
       });
 
       // const marginLeft = 0;
@@ -237,11 +238,12 @@ const StampPaperView = () => {
 
   return (
     <>
-      <Box>
+      <Box  >
         <Box 
-     
+         width="100vw"
+  
         ref={targetRef}>
-        <Box display="flex" flexDirection="column" textAlign="center">
+        <Box display="flex" flexDirection="column" textAlign="center"  maxWidth="100%">
           <Box
             mx="auto"
             boxSize={{ base: "100%", md: "auto" }} // Adjusted to "auto" for non-base screen sizes
@@ -255,7 +257,7 @@ const StampPaperView = () => {
 
         <Box>
           <Text  mt={["-3rem", "-10rem"]}  padding={["1rem" , "3rem"]} fontWeight={"500"}>
-            Presently we are providing the business for form filling more
+            Present we are providing the business for form filling more
             meaningfully described in the column Scope of Work, through their
             principals. AND WHEREAS the Business Associate is engaged inter
             alias, in the business of providing a wide Spectrum of online form
@@ -513,6 +515,7 @@ const StampPaperView = () => {
             Employer : -
           </Text>
           <Text 
+          w={["200px","500px"]}
             mt={["-1rem", "-5rem"]} 
           fontWeight={"500"}  padding={["1rem" , "3rem"]}>
             Name : Cropton Service <br />
@@ -523,10 +526,10 @@ const StampPaperView = () => {
         <Box
            mt={["-1rem", "-5rem"]} 
         padding={["1rem" , "3rem"]}>
-            <FormControl   w={["200px","500px"]}>
+            <FormControl   w={["200px","300px"]}>
               <Text fontSize="md">Email: {inputField.email}</Text>
             </FormControl>
-            <FormControl w={["200px","500px"]}>
+            <FormControl w={["200px","300px"]}>
               <Text fontSize="md">Start-Date: {inputField.startdate}</Text>
             </FormControl>
             </Box>
