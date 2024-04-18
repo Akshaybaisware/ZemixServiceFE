@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Text, Box, Input, Button, Center } from "@chakra-ui/react";
+import { Text, Box, Input, Button, Center, Image } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
 import axios from "axios";
 import jsPDF from "jspdf";
 import sign from "../../assets/cropto stamp.svg";
 import html2canvas from "html2canvas";
-
+import { useNavigate } from "react-router-dom";
 
 function Recovery() {
   const [allUsersData, setAllUsersData] = useState([]);
@@ -13,6 +13,7 @@ function Recovery() {
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,6 +54,7 @@ function Recovery() {
 
     setTableData(filteredData);
   };
+
   useEffect(() => {
     handleSearch(); // Call this function every time searchText, startDate, or endDate changes
   }, [searchText, startDate, endDate, allUsersData]);
@@ -64,53 +66,67 @@ function Recovery() {
     setAllUsersData(newData);
   };
 
-  const generatePDF = (name, address, date) => {
+  const generatePDF = async (name, address, date) => {
     const doc = new jsPDF();
 
+    // NOC content
+    const nocContent = `
+    <div id="noc-content" style="text-align: justify; padding: 0 2rem;">
+  <div style="text-align: center;">
+    <h2 style="font-size: 24px; font-weight: bold; color: black;">NOC(NO-OBJECTION-CERTIFICATE)</h2>
+    <h2 style="font-size: 24px; font-weight: bold; color: red; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Cropton Services</h2>
+    <hr style="background-color: brown; height: 1px; width: 50%; margin: 0 auto;"/>
+  </div>
+  <p style="padding: 1rem 0;">Date: ${date}</p>
+  <div style="padding: 1rem 0;">
+    <p>
+      This is to certify that <span style="font-weight: bold;">Cropton Services</span>, located at block number: 23 Hanuman Nagar Ajmer Road S.O, Jaipur, 302006, has been engaged in data processing services with Cropton Services.
+    </p>
+    <br />
+    <p>
+      <span style="font-weight: bold;">Cropton Services</span> is responsible for inputting provided data field-wise online, adhering to guidelines provided by <span style="font-weight: bold;">Cropton Service</span>, with data supply and preservation of the output file conducted in real-time. Compensation for form-filling services rendered is INR 38 per form, contingent upon achieving a cutoff above 450, with invoices raised by
+    </p>
+    <br />
+    <p>
+      Cropton Services and QC reports provided within 72 hours. Cropton Services provides a workload of 480 forms over 5 days,
+    </p>
+    <br />
+    <p>
+      Cropton Services has 5 days, including holidays, to complete the workload and submit it, with Cropton Enterprise furnishing an accuracy report within 72 hours. Data formats and necessary information are provided by Cropton Services at the time of data provision. Any applicable telecommunication costs are to be borne by the respective parties.
+    </p>
+  </div>
+  <hr style="background-color: brown; height: 1px; width: 50%; margin: 0 auto;"/>
+  <div style="text-align: left; padding: 1rem 0;">
+    <p>Sincerely,</p>
+    <img src="${sign}" alt="Signature" width="200" style="display: block; margin: 0 auto;"/>
+  </div>
+</div>
 
-    const content = `Date: ${date}
-    
-    To,
-   
-  Client Namer: ${name}
-  Address : ${address}
+    `;
 
-Ref.: Your Loan Agreement Number - 139224722
+    // Convert HTML to canvas
+    const div = document.createElement("div");
+    div.innerHTML = nocContent;
+    document.body.appendChild(div);
 
-  Dear Client,
+    // Use html2canvas to capture the NOC content as an image
+    const canvas = await html2canvas(document.querySelector("#noc-content"));
 
-  We would like to thank you for your patronage and we do hope that your experience with us has been a rewarding one. We are pleased to confirm that there are no outstanding dues towards the captioned loan, and the referred loan is fully repaid/adjusted.
+    // Remove the NOC content from the DOM
+    document.body.removeChild(div);
 
-  In case your loan has been closed through the process of Pre-payment, the upcoming installment is likely to be presented on the originally scheduled date. This has been also advised in our offer of Foreclosure, requesting you to mark a “Stop Payment”. In the event that installment getting realized upon presentation, the amount thereof will be refunded within 15 working days.
+    // Add canvas to PDF
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    const imgData = canvas.toDataURL("image/png");
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = (canvasHeight * pdfWidth) / canvasWidth;
 
-  We will be happy to welcome you back! IDFC FIRST Bank is now one stop solution for all banking needs, be it loans, savings or banking products. Please feel free to call us on 1800-10-888.
+    doc.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-  Thank you once again for selecting IDFC FIRST Bank as your preferred partner in helping you accomplish your financial goals.
-
-  Sincerely,
-  IDFC FIRST Bank Ltd
-
-  Please note:
-  1. Any overwriting/alter would make this document invalid.
-  2. Nothing contained herein above shall operate to prejudice the rights and remedies of IDFC FIRST Bank Ltd in respect of any other obligations you may have with IDFC FIRST Bank.
-
-  This is a computer generated letter and does not require signature(s).
-
-  Any unbanked/unused cheques of the Borrower(s) as issued in favour of IDFC FIRST Bank Ltd with regard to the loan and presently in custody of IDFC FIRST Bank Ltd will be cancelled and/or destroyed immediately after closure of the loan either by way of maturity or prepayment of loan and/or otherwise without any further notice.
-
-  IDFC FIRST Bank Limited (formerly IDFC Bank Limited)
-  Registered Office: KRM Towers, 7th Floor, No. 1, Harrington Road, Chetpet, Chennai 600031.Tel.: +91 44 4571 6400,
-  CIN: L65110TN2014PLC097792, bank.info@idfcfirstbank.com, www.idfcfirstbank.com`;
-
-    // Use splitTextToSize to wrap text within the desired width
-    const lines = doc.splitTextToSize(content, 180); // Adjust width to fit your content as needed
-    doc.text(lines, 10, 10); // Adjust x, y positions as needed
-    doc.save("Cropton-NOC");
+    // Save PDF
+    doc.save("Cropton-NOC.pdf");
   };
-
- 
-  
-
 
   const columns = [
     {
@@ -141,18 +157,29 @@ Ref.: Your Loan Agreement Number - 139224722
     {
       name: "Action",
       cell: (row) => (
+        // <Button
+        //   color={"white"}
+        //   bg={"green"}
+        //   onClick={() =>
+        //     generatePDF(
+        //       row.name,
+        //       row.address,
+        //       row.selectedDate || new Date().toLocaleDateString()
+        //     )
+        //   }
+        // >
+        //   Download NOC
+        // </Button>
         <Button
-        color={"white"}
-        bg={"green"}
+          color={"white"}
+          bg={"green"}
           onClick={() =>
-            generatePDF(
-              row.name,
-              row.address,
-              row.selectedDate || new Date().toLocaleDateString()
-            )
+            navigate("/noc", {
+              state: { row },
+            })
           }
         >
-          Download NOC
+          View Deatils
         </Button>
       ),
     },
@@ -160,18 +187,21 @@ Ref.: Your Loan Agreement Number - 139224722
 
   return (
     <>
-      <Box mt={["2rem" , "0rem"]}>
-        <Center color={"#336600"} fontWeight={800} fontSize="3xl">NOC-Certificate</Center>
+      <Box mt={["2rem", "0rem"]}>
+        <Center color={"#336600"} fontWeight={800} fontSize="3xl">
+          NOC-Certificate
+        </Center>
       </Box>
-      <Box 
-      display="flex"
-      justifyContent={"center"} 
-      textAlign={"center"}
-      alignItems={"center"}
-      gap="2">
+      <Box
+        display="flex"
+        justifyContent={"center"}
+        textAlign={"center"}
+        alignItems={"center"}
+        gap="2"
+      >
         <Input
-        border={"1px solid gray"}
-        w={["200px" , "400px"]}
+          border={"1px solid gray"}
+          w={["200px", "400px"]}
           type="text"
           placeholder="Search"
           value={searchText}
@@ -179,7 +209,6 @@ Ref.: Your Loan Agreement Number - 139224722
         />
       </Box>
       <DataTable
-     
         columns={columns}
         data={tableData}
         pagination
@@ -190,5 +219,3 @@ Ref.: Your Loan Agreement Number - 139224722
 }
 
 export default Recovery;
-
-

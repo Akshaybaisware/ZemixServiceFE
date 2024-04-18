@@ -1,11 +1,116 @@
-import React from "react";
-import { Box, Text, Center, Image } from "@chakra-ui/react";
+import React, { useState, useEffect, useRef } from "react";
+import { Box, Text, Center, Image, Button } from "@chakra-ui/react";
 import sign from "../../assets/cropto stamp.svg";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import _ from "lodash";
 
 const NOC = () => {
+  const [allUsersData, setAllUsersData] = useState([]);
+  const [tableData, setTableData] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const datafromrecovery = useLocation();
+  console.log(datafromrecovery, "location data");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/user/getallclient"
+        );
+        // Initialize each user data with a selectedDate property
+        const usersWithDate = response?.data?.data.map((user) => ({
+          ...user,
+          selectedDate: "",
+        }));
+        setAllUsersData(usersWithDate);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const generatePDF = async () => {
+    const input = document.getElementById("noc-content");
+    input.scrollIntoView(false);
+
+    // Adjust styles for mobile view
+    const isMobile = window.matchMedia(
+      "only screen and (max-width: 430px)"
+    ).matches;
+    if (isMobile) {
+      const style = document.createElement("style");
+      style.innerHTML = `
+        .noc-content {
+          font-size: 10px;
+        }
+        .noc-content h2 {
+          font-size: 10px;
+        }
+        .noc-content .heading {
+          font-size: 11px;
+        }
+        .noc-content .sincerely {
+          font-size: 10px;
+          position: relative;
+          top: -10px;
+        }
+        .noc-content .signature {
+          position: relative;
+          top: -50px;
+          left: 0;
+          width: 100%;
+          text-align: center;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Debounce the function to prevent multiple calls
+    const debouncedGeneratePDF = _.debounce(async () => {
+      const canvas = await html2canvas(input);
+      const imgData = canvas.toDataURL("image/png");
+
+      const doc = new jsPDF();
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      doc.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+      // Adjust layout for mobile view
+      if (isMobile) {
+        const pageHeight = doc.internal.pageSize.getHeight();
+        if (pdfHeight > pageHeight) {
+          const scaleFactor = pageHeight / pdfHeight;
+          const newPdfWidth = pdfWidth * scaleFactor;
+          const newPdfHeight = pdfHeight * scaleFactor;
+          doc.addPage();
+          doc.addImage(
+            imgData,
+            "PNG",
+            0,
+            -(pdfHeight - pageHeight),
+            newPdfWidth,
+            newPdfHeight
+          );
+        }
+      }
+
+      doc.save("noc.pdf");
+    }, 500);
+
+    debouncedGeneratePDF();
+  };
+
   return (
     <Box>
-      <Box position="relative">
+      <Box id="noc-content" position="relative">
         <Center>
           <Text
             fontSize="xl"
@@ -28,9 +133,18 @@ const NOC = () => {
           </Text>
         </Center>
         <Box bg="brown">.</Box>
-        <Text padding={"1rem"} mt={4}>
-          Date: [Date]
+        <Text padding={"2px"} mt={4}>
+          Name: {datafromrecovery.state.row.name}
         </Text>
+        <Text padding={"2px"} mt={4}>
+          Address: {datafromrecovery.state.row.address}
+        </Text>
+        <Text padding={"2px"} mt={4}>
+          Date:{" "}
+          {datafromrecovery.state.row.selectedDate ||
+            new Date().toLocaleDateString()}
+        </Text>
+
         <Text mt={4}></Text>
         <Box padding={"1rem"}>
           This is to certify that{" "}
@@ -77,6 +191,7 @@ const NOC = () => {
         boxShadow="inset 0 0 10px rgba(0, 0, 0, 0.5)" // Apply shadow effect to the entire content
       >
         <Text
+          id="cropton-logo"
           fontSize={["10rem", "8rem"]}
           fontWeight="bold"
           color="#ccffe6"
@@ -90,162 +205,9 @@ const NOC = () => {
           Cropton
         </Text>
       </Box>
+      <Button onClick={generatePDF}>Download</Button>
     </Box>
   );
 };
 
 export default NOC;
-
-// import React, { useState, useEffect } from "react";
-// import { Box, Text, Center, Image, Input, Button } from "@chakra-ui/react";
-// import jsPDF from "jspdf";
-// import DataTable from "react-data-table-component";
-// import axios from "axios";
-// import html2canvas from "html2canvas";
-// import sign from "../../assets/cropto stamp.svg";
-
-// function NOC() {
-//   const [allUsersData, setAllUsersData] = useState([]);
-//   const [tableData, setTableData] = useState([]);
-//   const [searchText, setSearchText] = useState("");
-//   const [startDate, setStartDate] = useState("");
-//   const [endDate, setEndDate] = useState("");
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(
-//           "http://localhost:5000/api/user/getallclient"
-//         );
-//         const usersWithDate = response?.data?.data.map((user) => ({
-//           ...user,
-//           selectedDate: "",
-//         }));
-//         setAllUsersData(usersWithDate);
-//       } catch (error) {
-//         console.log(error.message);
-//       }
-//     };
-//     fetchData();
-//   }, []);
-
-//   useEffect(() => {
-//     const handleSearch = () => {
-//       let filteredData = allUsersData.filter((item) => {
-//         return (
-//           (!searchText ||
-//             Object.values(item).some(
-//               (value) =>
-//                 typeof value === "string" &&
-//                 value.toLowerCase().includes(searchText.toLowerCase())
-//             )) &&
-//           (!startDate || new Date(item.selectedDate) >= new Date(startDate)) &&
-//           (!endDate || new Date(item.selectedDate) <= new Date(endDate))
-//         );
-//       });
-//       setTableData(filteredData);
-//     };
-
-//     handleSearch();
-//   }, [searchText, startDate, endDate, allUsersData]);
-
-//   const handleDateChange = (date, id) => {
-//     const newData = allUsersData.map((item) =>
-//       item.id === id ? { ...item, selectedDate: date } : item
-//     );
-//     setAllUsersData(newData);
-//   };
-
-//   const generatePDF = (name, address, date) => {
-//     const doc = new jsPDF();
-//     const content = `
-// Date: ${date}
-
-// To Whom It May Concern,
-
-// This document certifies that ${name}, located at ${address}, has no objections regarding the ongoing and past business transactions and interactions up to the date mentioned above. This certificate is issued upon the request of the aforementioned party for whatever purpose it may serve them.
-
-// Details of Engagement:
-// - ${name} has been actively participating and complying with all the relevant standards and regulations required by our operations.
-// - There has been no record of any regulatory violations or breaches of contract.
-// - All financial obligations and dealings have been conducted in a timely and transparent manner.
-
-// Please note that this NOC does not automatically renew and only covers the activities up to the date specified above. It is issued by Cropton Services without any liability on our part regarding future operations of ${name}.
-
-// This is a computer-generated document and does not require a signature.
-
-// Sincerely,
-
-// [Digital Signature Image]
-
-// Cropton Services
-// 23 Hanuman Nagar Ajmer Road S.O, Jaipur, 302006
-// `;
-
-//     // Use splitTextToSize to ensure the text fits within the PDF
-//     const lines = doc.splitTextToSize(content, 180); // Adjust width according to your content needs
-//     doc.text(lines, 10, 10); // Adjust the x, y coordinates as necessary
-//     doc.addImage(sign, "JPEG", 10, 250, 50, 30); // Adjust signature image placement and size
-//     doc.save("Cropton-NOC.pdf");
-//   };
-
-//   const columns = [
-//     {
-//       name: "Name",
-//       selector: (row) => row.name,
-//       sortable: true,
-//     },
-//     {
-//       name: "Date",
-//       cell: (row) => (
-//         <Input
-//           type="date"
-//           value={row.selectedDate}
-//           onChange={(e) => handleDateChange(e.target.value, row.id)}
-//         />
-//       ),
-//     },
-//     {
-//       name: "Action",
-//       cell: (row) => (
-//         <Button
-//           onClick={() =>
-//             generatePDF(
-//               row.name,
-//               row.address,
-//               row.selectedDate || new Date().toLocaleDateString()
-//             )
-//           }
-//         >
-//           Download NOC
-//         </Button>
-//       ),
-//     },
-//   ];
-
-//   return (
-//     <Box>
-//       <Center>
-//         <Text fontSize="xl" fontWeight="bold" color="black">
-//           NOC (No-Objection-Certificate)
-//         </Text>
-//       </Center>
-//       <Center>
-//         <Input
-//           type="text"
-//           placeholder="Search"
-//           value={searchText}
-//           onChange={(e) => setSearchText(e.target.value)}
-//         />
-//         <DataTable
-//           columns={columns}
-//           data={tableData}
-//           pagination
-//           paginationPerPage={10}
-//         />
-//       </Center>
-//     </Box>
-//   );
-// }
-
-// export default NOC;
