@@ -46,10 +46,12 @@ function Dashboard() {
   const totalragisterations = async () => {
     try {
       const response = await axios.get(
-        `https://zemixbe.onrender.com/api/user/getallregistered`
+        `https://zemixbe.onrender.com/api/user/getallclient`
+        //getallregistered`
       );
       console.log(response, "registerations");
-      setRegisterUsers(response.data.users.length);
+      setRegisterUsers(response.data.data.length);
+      console.log(registerUsers, "register");
     } catch (error) {
       console.error(error);
     }
