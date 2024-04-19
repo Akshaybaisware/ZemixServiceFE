@@ -26,6 +26,8 @@ import sign from "../../assets/cropto stamp.svg";
 const StampPaperView = () => {
   const { toPDF, targetRef } = usePDF({ filename: "Legal-Agreement.pdf" });
   const locationdata = useLocation();
+
+  console.log(locationdata.state.data, "location date ");
   const { id } = useParams();
   const appUrl = import.meta.env.VITE_APP_API_URL;
   const [doc, setDoc] = useState(null);
@@ -167,11 +169,15 @@ const StampPaperView = () => {
 
   useEffect(() => {
     const fetchUserDetails = async () => {
+      const locationid = locationdata.state.data.email;
+      const otherid = id;
+      const emailid = locationid ? locationid : otherid;
+      console.log(emailid, "id");
       try {
         const response = await axios.post(
           `https://zemixbe.onrender.com/api/aggriment/getaggrimentdetails`,
           {
-            email: id,
+            email: emailid,
           }
         );
         const data = response.data;
@@ -246,24 +252,24 @@ const StampPaperView = () => {
 
           <Box>
             <Text
-            fontSize={["0.8rem","1.5rem"]}
+              fontSize={["0.8rem", "1.5rem"]}
               mt={["-3rem", "-10rem"]}
               padding={["1rem", "3rem"]}
               fontWeight={"500"}
             >
               Present we are providing the business for form filling more
               meaningfully described in the column Scope of Work, through their
-              principals. 
-              
+              principals.
               <br />
               <br />
-              AND WHEREAS the Business Associate is engaged inter
-              alias, in the business of providing a wide Spectrum of online form
-              filling & services. 
+              AND WHEREAS the Business Associate is engaged inter alias, in the
+              business of providing a wide Spectrum of online form filling &
+              services.
               <br />
-              <br />The Business Associate has acquired the
-              necessary expertise and developed the requisite skill base and
-              infrastructure for successful execution of Form Filling Projects.
+              <br />
+              The Business Associate has acquired the necessary expertise and
+              developed the requisite skill base and infrastructure for
+              successful execution of Form Filling Projects.
               <br />
               <br />
               This Agreement represents the business Agreement and operational
@@ -278,7 +284,7 @@ const StampPaperView = () => {
       NOW THIS AGREEMENT WITNESSETH AS FOLLOWS: BOTH PARTIES ARE
       MUTUALLY AGREE FOR THE FOLLOWING POINTS.
     </p> */}
-              <Text    fontSize={["0.8rem","1.5rem"]} color="red">
+              <Text fontSize={["0.8rem", "1.5rem"]} color="red">
                 NOW THIS AGREEMENT WITNESSETH AS FOLLOWS: BOTH PARTIES ARE
                 MUTUALLY AGREE FOR THE FOLLOWING POINTS.
               </Text>
@@ -336,7 +342,7 @@ const StampPaperView = () => {
               {/* ... (rest of the Background section) */}
             </Text>
             <Text
-               fontSize={["0.8rem","1.5rem"]}
+              fontSize={["0.8rem", "1.5rem"]}
               mt={["-3rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -431,7 +437,7 @@ const StampPaperView = () => {
               PRIMARY NOTE
             </Heading>
             <Text
-               fontSize={["0.8rem","1.5rem"]}
+              fontSize={["0.8rem", "1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -458,7 +464,7 @@ const StampPaperView = () => {
               Required Accuracy by the company:
             </Heading>
             <Text
-               fontSize={["0.8rem","1.5rem"]}
+              fontSize={["0.8rem", "1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -481,7 +487,7 @@ const StampPaperView = () => {
 
           <Box mt={["-1rem", "-5rem"]}>
             <Text
-               fontSize={["0.8rem","1.5rem"]}
+              fontSize={["0.8rem", "1.5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
               style={{
@@ -491,7 +497,7 @@ const StampPaperView = () => {
               IN WITNESS WHEREOF
             </Text>
             <Text
-               fontSize={["0.8rem","1.5rem"]}
+              fontSize={["0.8rem", "1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -500,7 +506,7 @@ const StampPaperView = () => {
               hereinbefore written:
             </Text>
             <Text
-               fontSize={["0.8rem","1.5rem"]}
+              fontSize={["0.8rem", "1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -543,13 +549,13 @@ const StampPaperView = () => {
             </Text>
           </Box>
           <Text
-              mt={["-1rem", "-5rem"]}
-              padding={["1rem", "3rem"]}
-              fontWeight={"800"}
-              fontSize={"1.5rem"}
-            >
-              Employee : -
-            </Text>
+            mt={["-1rem", "-5rem"]}
+            padding={["1rem", "3rem"]}
+            fontWeight={"800"}
+            fontSize={"1.5rem"}
+          >
+            Employee : -
+          </Text>
           <Box mt={["-1rem", "-5rem"]} padding={["1rem", "3rem"]}>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">Email: {inputField.email}</Text>
@@ -632,7 +638,7 @@ const StampPaperView = () => {
           >
             Download
           </Button>
-        </Box>  
+        </Box>
       </Box>
     </>
   );
