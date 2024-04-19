@@ -31,7 +31,7 @@ function ContentValidationfrom() {
   const getdatafrom = async () => {
     try {
       const response = await axios.get(
-        "https://zemixbe.onrender.com/assignment/getassignments"
+        "https://zemixbe.onrender.com/api/assignment/getassignments"
         // {
         //   userId: userId,
         // }
