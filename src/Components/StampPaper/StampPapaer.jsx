@@ -12,6 +12,7 @@ import {
   FormLabel,
   useToast,
   Select,
+  Center,
 } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 
@@ -33,7 +34,7 @@ const StampPaper = () => {
   const [signature, setSignature] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [signaturePreview, setSignaturePreview] = useState(null);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handlePhotoChange = (e) => {
     const selectedPhoto = e.target.files[0];
@@ -74,8 +75,10 @@ const StampPaper = () => {
         data: formData,
       };
 
-      setLoading(true);
       const response = await axios(config);
+      if (response.status === 200) {
+        setLoading(false);
+      }
       console.log(response, "resp");
       toast({
         position: "top",
@@ -87,10 +90,21 @@ const StampPaper = () => {
       navigate("/stampapersucess");
     } catch (err) {
       alert("Complete all the feild");
+      setLoading(false);
     }
   };
 
-  return (
+  return loading ? (
+    <Center>
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    </Center>
+  ) : (
     <>
       <Box>
         <Box display="flex" flexDirection="column" textAlign="center">

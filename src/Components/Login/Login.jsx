@@ -123,7 +123,15 @@ import React, { useState, useRef, useEffect } from "react";
 
 import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
-import { Box, Button, Center, Image, Input, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Image,
+  Input,
+  Spinner,
+  useToast,
+} from "@chakra-ui/react";
 
 import axios from "axios";
 
@@ -144,13 +152,14 @@ function Login() {
         "https://zemixbe.onrender.com/api/auth/adminsignin",
         user
       );
-
+      setLoader(true);
       console.log(response);
       if (response.status === 200) {
         localStorage.setItem("user", JSON.stringify(response.data));
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("role", response.data.role);
         window.location.replace("/");
+        setLoader(false);
 
         toast({
           title: "Login Success",
@@ -170,6 +179,7 @@ function Login() {
         position: "top",
         isClosable: true,
       });
+      setLoader(false);
       console.log(error);
     }
   };
@@ -182,7 +192,17 @@ function Login() {
       password.current.type = "text";
     }
   };
-  return (
+  return loader ? (
+    <Center>
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="teal"
+        size="xl"
+      />
+    </Center>
+  ) : (
     <>
       <Box
         bg={"whitesmoke"}
