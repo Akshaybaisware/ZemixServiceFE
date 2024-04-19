@@ -35,82 +35,135 @@ const NOC = () => {
     fetchData();
   }, []);
 
+  // const generatePDF = async () => {
+  //   const input = document.getElementById("noc-content");
+  //   input.scrollIntoView(false);
+
+  //   // Adjust styles for mobile view
+  //   const isMobile = window.matchMedia(
+  //     "only screen and (max-width: 430px)"
+  //   ).matches;
+  //   if (isMobile) {
+  //     const style = document.createElement("style");
+  //     style.innerHTML = `
+  //       .noc-content {
+  //         font-size: 10px;
+  //       }
+  //       .noc-content h2 {
+  //         font-size: 10px;
+  //       }
+  //       .noc-content .heading {
+  //         font-size: 11px;
+  //       }
+  //       .noc-content .sincerely {
+  //         font-size: 10px;
+  //         position: relative;
+  //         top: -10px;
+  //       }
+  //       .noc-content .signature {
+  //         position: relative;
+  //         top: -50px;
+  //         left: 0;
+  //         width: 100%;
+  //         text-align: center;
+  //       }
+  //     `;
+  //     document.head.appendChild(style);
+  //   }
+
+  //   // Debounce the function to prevent multiple calls
+  //   const debouncedGeneratePDF = _.debounce(async () => {
+  //     const canvas = await html2canvas(input);
+  //     const imgData = canvas.toDataURL("image/png");
+
+  //     const doc = new jsPDF();
+  //     const imgProps = doc.getImageProperties(imgData);
+  //     const pdfWidth = doc.internal.pageSize.getWidth();
+  //     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+  //     doc.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+  //     // Adjust layout for mobile view
+  //     if (isMobile) {
+  //       const pageHeight = doc.internal.pageSize.getHeight();
+  //       if (pdfHeight > pageHeight) {
+  //         const scaleFactor = pageHeight / pdfHeight;
+  //         const newPdfWidth = pdfWidth * scaleFactor;
+  //         const newPdfHeight = pdfHeight * scaleFactor;
+  //         doc.addPage();
+  //         doc.addImage(
+  //           imgData,
+  //           "PNG",
+  //           0,
+  //           -(pdfHeight - pageHeight),
+  //           newPdfWidth,
+  //           newPdfHeight
+  //         );
+  //       }
+  //     }
+
+  //     doc.save("noc.pdf");
+  //   }, 500);
+
+  //   debouncedGeneratePDF();
+  // };
   const generatePDF = async () => {
     const input = document.getElementById("noc-content");
     input.scrollIntoView(false);
-
-    // Adjust styles for mobile view
-    const isMobile = window.matchMedia(
-      "only screen and (max-width: 430px)"
-    ).matches;
-    if (isMobile) {
-      const style = document.createElement("style");
-      style.innerHTML = `
-        .noc-content {
-          font-size: 10px;
-        }
-        .noc-content h2 {
-          font-size: 10px;
-        }
-        .noc-content .heading {
-          font-size: 11px;
-        }
-        .noc-content .sincerely {
-          font-size: 10px;
-          position: relative;
-          top: -10px;
-        }
-        .noc-content .signature {
-          position: relative;
-          top: -50px;
-          left: 0;
-          width: 100%;
-          text-align: center;
-        }
-      `;
-      document.head.appendChild(style);
-    }
-
+  
     // Debounce the function to prevent multiple calls
     const debouncedGeneratePDF = _.debounce(async () => {
-      const canvas = await html2canvas(input);
-      const imgData = canvas.toDataURL("image/png");
-
-      const doc = new jsPDF();
-      const imgProps = doc.getImageProperties(imgData);
-      const pdfWidth = doc.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-      doc.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-
-      // Adjust layout for mobile view
-      if (isMobile) {
-        const pageHeight = doc.internal.pageSize.getHeight();
-        if (pdfHeight > pageHeight) {
-          const scaleFactor = pageHeight / pdfHeight;
-          const newPdfWidth = pdfWidth * scaleFactor;
-          const newPdfHeight = pdfHeight * scaleFactor;
-          doc.addPage();
-          doc.addImage(
-            imgData,
-            "PNG",
-            0,
-            -(pdfHeight - pageHeight),
-            newPdfWidth,
-            newPdfHeight
-          );
+        // Capture the full page using html2canvas
+        const canvas = await html2canvas(input, { scale: 1 });
+        const imgData = canvas.toDataURL("image/png");
+  
+        // Create a new jsPDF instance
+        const doc = new jsPDF();
+  
+        // Get image properties
+        const imgProps = doc.getImageProperties(imgData);
+  
+        // Calculate PDF width and height
+        const pdfWidth = doc.internal.pageSize.getWidth();
+        const pdfHeight = doc.internal.pageSize.getHeight();
+        const imgAspectRatio = imgProps.width / imgProps.height;
+  
+        // Calculate required image height based on aspect ratio
+        const imgHeight = pdfWidth / imgAspectRatio;
+  
+        // Calculate number of pages based on content height
+        const numPages = Math.ceil(imgHeight / pdfHeight);
+  
+        // Add image data to each page
+        for (let pageIndex = 0; pageIndex < numPages; pageIndex++) {
+            // Calculate y-coordinate for each page
+            const yOffset = -pageIndex * pdfHeight;
+  
+            // Calculate new image width and height
+            const newImgWidth = pdfWidth;
+            const newImgHeight = imgHeight;
+  
+            // Add image to the document at the appropriate position
+            doc.addImage(imgData, "PNG", 0, yOffset, newImgWidth, newImgHeight);
+  
+            // If not the last page, add a new page
+            if (pageIndex < numPages - 1) {
+                doc.addPage();
+            }
         }
-      }
-
-      doc.save("noc.pdf");
+  
+        // Save the PDF
+        doc.save("noc.pdf");
     }, 500);
-
+  
     debouncedGeneratePDF();
-  };
+};
+
 
   return (
     <>
       <Box id="noc-content" position="relative">
+      
         <Center>
           <Text
             marginTop={"10rem"}
@@ -256,7 +309,11 @@ const NOC = () => {
           Cropton
         </Text> */}
       </Box>
-      <Button onClick={generatePDF}>Download</Button>
+      <Button 
+      m="2rem"
+      color={"white"}
+      bg={"green"}
+      onClick={generatePDF}>Download</Button>
     </>
   );
 };
