@@ -128,6 +128,7 @@ import { Box, Button, Center, Image, Input, useToast } from "@chakra-ui/react";
 import axios from "axios";
 
 function Login() {
+  const [loader, setLoader] = useState(false);
   const username = useRef();
   const password = useRef();
   const toast = useToast();
@@ -143,12 +144,14 @@ function Login() {
         "https://zemixbe.onrender.com/api/auth/adminsignin",
         user
       );
+
       console.log(response);
       if (response.status === 200) {
         localStorage.setItem("user", JSON.stringify(response.data));
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("role", response.data.role);
         window.location.replace("/");
+
         toast({
           title: "Login Success",
           description: "Welcome to Zemix Service",
