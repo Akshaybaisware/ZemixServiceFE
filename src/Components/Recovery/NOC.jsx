@@ -109,11 +109,12 @@ const NOC = () => {
   };
 
   return (
-    <Box>
+    <>
       <Box id="noc-content" position="relative">
         <Center>
           <Text
-            fontSize="xl"
+            marginTop={"10rem"}
+            fontSize="4xl"
             fontWeight="bold"
             color="Black"
             // textShadow="2px 2px 4px rgba(0, 0, 0, 0.5)"
@@ -124,7 +125,8 @@ const NOC = () => {
 
         <Center>
           <Text
-            fontSize="xl"
+            mb={"3rem"}
+            fontSize="5xl"
             fontWeight="bold"
             color="red.500"
             textShadow="2px 2px 4px rgba(0, 0, 0, 0.5)"
@@ -132,21 +134,33 @@ const NOC = () => {
             Cropton Services
           </Text>
         </Center>
-        <Box bg="brown">.</Box>
-        <Text padding={"2px"} mt={4}>
+        <Box ml="1rem" bg="brown">
+          .
+        </Box>
+        <Text fontWeight={700} ml="1rem" fontSize="2xl" padding={"2px"} mt={4}>
           Name: {datafromrecovery.state.row.name}
         </Text>
-        <Text padding={"2px"} mt={4}>
+        <Text ml="1rem" fontSize="2xl" padding={"2px"} mt={4}>
           Address: {datafromrecovery.state.row.address}
         </Text>
-        <Text padding={"2px"} mt={4}>
+        <Text ml="1rem" fontSize="2xl" padding={"2px"} mt={4}>
           Date:{" "}
           {datafromrecovery.state.row.selectedDate ||
             new Date().toLocaleDateString()}
         </Text>
-
+        <Text ml="1rem">_________________________________________</Text>
+        <Text ml="1rem">_________________________________________</Text>
+        <Text
+          fontWeight={600}
+          color="blue"
+          fontSize="2xl"
+          mt={"2rem"}
+          ml="1rem"
+        >
+          Respected Sir/Maam
+        </Text>
         <Text mt={4}></Text>
-        <Box padding={"1rem"}>
+        <Box fontSize="2xl" padding={"1rem"}>
           This is to certify that{" "}
           <span style={{ fontWeight: "bold" }}>Cropton Services</span>, located
           at block number: 23 Hanuman Nagar Ajmer Road S.O, Jaipur, 302006, has
@@ -172,13 +186,50 @@ const NOC = () => {
           parties.
         </Box>
 
+        <Text ml={"1rem"} fontSize="2xl" fontWeight={"500"}>
+          (A) In the matter of fact failure, not submitted or succeed company is
+          entitled to receive amount by any cost. If you achieve the accuracy
+          which mentioned above, then Utility charges will be deduct from your
+          work payment and if you fail to achieve accuracy in given timeline,
+          then also you have to pay as a liability which describe above.
+          <br />
+          <br />
+          (B) This charges related to service, development and maintenance cost
+          of the platform where you working online.
+          <br />
+          <br /> (c) If you deny paying the said amount then company will take
+          this matter legally & all the legal expenses will be clear by your
+          side, company is not liable for the same.
+        </Text>
         <br />
-        <Box bg="brown">.</Box>
-        <Text p={"1rem"} mt={4}>
+        <Box ml="1rem" bg="brown">
+          .
+        </Box>
+        <Text fontSize="2xl" padding={"1rem"}>
+          I understand that obtaining the NOC may involve certain formalities
+          and procedures, and I am prepared to fulfill any requirements or
+          provide any documentation necessary to expedite the process. I kindly
+          request your assistance in processing this request at your earliest
+          convenience. <br />
+          <br />
+          If there are any forms or documents that I need to fill out or
+          provide, please let me know, and I will ensure their prompt
+          submission. Thank you for your attention to this matter. I look
+          forward to your positive response and cooperation in facilitating this
+          request.
+          <br />
+          Please let me know if you require any further information from my end.
+          <br />
+          <br />
+        
+          <br />
           Sincerely,
           <br />
+          <br />
+          Thanking You
+          <br />
         </Text>
-        <Image width={["50%", "20%"]} src={sign} />
+        <Image width={["50%", "35%"]} src={sign} />
       </Box>
       <Box
         position="absolute"
@@ -190,7 +241,7 @@ const NOC = () => {
         opacity="0.5"
         boxShadow="inset 0 0 10px rgba(0, 0, 0, 0.5)" // Apply shadow effect to the entire content
       >
-        <Text
+        {/* <Text
           id="cropton-logo"
           fontSize={["10rem", "8rem"]}
           fontWeight="bold"
@@ -203,10 +254,10 @@ const NOC = () => {
           zIndex="1000" // Ensure text is below other content
         >
           Cropton
-        </Text>
+        </Text> */}
       </Box>
       <Button onClick={generatePDF}>Download</Button>
-    </Box>
+    </>
   );
 };
 

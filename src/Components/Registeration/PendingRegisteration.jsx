@@ -11,6 +11,7 @@ import axios from "axios";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { TbReload } from "react-icons/tb";
 import { IoIosClose } from "react-icons/io";
+import { FaCheckCircle, FaClock, FaTimesCircle } from "react-icons/fa";
 
 function PendingRegisteration() {
   const [search, setSearch] = useState("");
@@ -136,38 +137,87 @@ function PendingRegisteration() {
     },
     {
       name: "Caller",
-      selector: (row) => row?.caller,
+      selector: (row) => `1`, // Prepend static number 1 to the caller value
       sortable: true,
-    },
+  },
 
+    // {
+    //   name: "Status",
+    //   selector: (row) => row.submittedAssignmentCount,
+    //   sortable: true,
+    // },
     {
       name: "Status",
-      selector: (row) => row.submittedAssignmentCount,
+      selector: (row) => {
+          // Determine which icon to display based on submittedAssignmentCount
+          if (row.submittedAssignmentCount > 10) {
+              return (
+                  <div style={{ color: 'green' }}>
+                      <FaCheckCircle />
+                  </div>
+              );
+          } else if (row.submittedAssignmentCount < 0) {
+              return (
+                  <div style={{ color: 'orange' }}>
+                      <FaClock />
+                  </div>
+              );
+          } else {
+              return (
+                  <div style={{ color: 'red' }}>
+                      <FaTimesCircle />
+                  </div>
+              );
+          }
+      },
       sortable: true,
-    },
+  },
 
-    {
-      name: "Registration Status",
-      selector: (row) => row.submitdAssingment,
-      sortable: true,
-    },
+  
     {
       name: "Action",
       cell: (row) => (
+        // <Flex>
+        //   {iconsarray.map((Icon, index) => (
+        //     <Button
+        //       key={index}
+        //       colorScheme="green"
+        //       size="sm"
+        //       variant="outline"
+        //       onClick={() => handleAction(row, index)}
+        //       leftIcon={<Icon />}
+        //       mr={2}
+        //       mb={2}
+        //     />
+        //   ))}
+        // </Flex>
         <Flex>
-          {iconsarray.map((Icon, index) => (
+    {iconsarray.map((Icon, index) => {
+        // Determine the appropriate background color based on the icon index
+        let colorScheme;
+        if (index === 0) {
+            colorScheme = "green"; // Green background for FaCheckCircle
+        } else if (index === 1) {
+            colorScheme = "blue"; // Orange background for FaClock
+        } else if (index === 2) {
+            colorScheme = "red"; // Red background for FaTimesCircle
+        }
+
+        return (
             <Button
-              key={index}
-              colorScheme="green"
-              size="sm"
-              variant="outline"
-              onClick={() => handleAction(row, index)}
-              leftIcon={<Icon />}
-              mr={2}
-              mb={2}
+                key={index}
+                colorScheme={colorScheme} // Apply the determined color scheme
+                size="sm"
+                variant="outline"
+                onClick={() => handleAction(row, index)}
+                leftIcon={<Icon />}
+                mr={2}
+                mb={2}
             />
-          ))}
-        </Flex>
+        );
+    })}
+</Flex>
+
       ),
     },
   ];

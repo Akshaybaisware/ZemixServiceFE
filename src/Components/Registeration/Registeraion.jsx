@@ -283,9 +283,17 @@ function Registeraion() {
                 <Icon
                   key={index}
                   style={{
-                    fontSize: "20px",
-                    // color: row.status === "Success" ? "green" : "inherit", // Change color based on status
-                    background: index === 3 ? "red" : "green",
+                    fontSize: "35px",
+                    padding: "3px", 
+                    // color: index === 0 ? 'white' : 'inherit',
+                    color: row.status === "Success" ? "green" : "inherit", // Change color based on status
+                    // background: index === 3 ? "green" : "green",
+                    backgroundColor: index === 4 ? "lightgray" : // Red for delete, gray for other
+                    index === 1 ? " #99ebff" : // Yellow for refresh
+                    index === 0 ? "#ffb3ff" : // Blue for edit
+                    index === 2 ? " #c6ffb3":
+                    "white", // White for other
+                    color: index === 4 ? "red" : row.status === "Success" ? "green" : "inherit",
                     cursor: "pointer",
                     margin: "0 5px",
                   }}
@@ -297,11 +305,20 @@ function Registeraion() {
                 <Icon
                   key={index}
                   style={{
-                    fontSize: "20px",
+                    fontSize: "35px",
                     color: "red",
                     cursor: "pointer",
+                    padding: "3px", 
                     margin: "0 5px",
+                    // color: index === 0 ? 'white' : 'inherit',
                     // backgroundColor:"red"
+                       // background: index === 3 ? "green" : "green",
+                    backgroundColor: index === 4 ? "lightgray" : // Red for delete, gray for other
+                    index === 1 ? " #99ebff" : // Yellow for refresh
+                    index === 0 ? "#ffb3ff" : 
+                    index === 2 ? " #c6ffb3":// Blue for edit
+                    "white", // White for other
+                      // color : index === 3 ? "red" : "red", // Delete icon is red
                   }}
                   onClick={() => handleIconClick(row, index)} // Pass row data and icon index to handleIconClick function
                 />

@@ -125,6 +125,7 @@ function UserNavbar() {
       setIsMobileView(window.innerWidth < 768);
     };
     window.addEventListener("resize", handleResize);
+    handleResize();
     return () => {
       window.removeEventListener("resize", handleResize);
     };

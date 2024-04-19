@@ -244,6 +244,7 @@ const StampPaperView = () => {
 
           <Box>
             <Text
+            fontSize={["0.8rem","1.5rem"]}
               mt={["-3rem", "-10rem"]}
               padding={["1rem", "3rem"]}
               fontWeight={"500"}
@@ -267,7 +268,7 @@ const StampPaperView = () => {
       NOW THIS AGREEMENT WITNESSETH AS FOLLOWS: BOTH PARTIES ARE
       MUTUALLY AGREE FOR THE FOLLOWING POINTS.
     </p> */}
-              <Text color="red" fontSize={{ base: "1rem", md: "1rem" }}>
+              <Text    fontSize={["0.8rem","1.5rem"]} color="red">
                 NOW THIS AGREEMENT WITNESSETH AS FOLLOWS: BOTH PARTIES ARE
                 MUTUALLY AGREE FOR THE FOLLOWING POINTS.
               </Text>
@@ -325,6 +326,7 @@ const StampPaperView = () => {
               {/* ... (rest of the Background section) */}
             </Text>
             <Text
+               fontSize={["0.8rem","1.5rem"]}
               mt={["-3rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -419,6 +421,7 @@ const StampPaperView = () => {
               PRIMARY NOTE
             </Heading>
             <Text
+               fontSize={["0.8rem","1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -440,11 +443,12 @@ const StampPaperView = () => {
             </Text>
           </Box>
 
-          <Box mt={["-1rem", "-5rem"]}>
+          <Box mt={["-1rem", "1rem"]}>
             <Heading padding={["1rem", "3rem"]} as="h2" mb={4}>
               Required Accuracy by the company:
             </Heading>
             <Text
+               fontSize={["0.8rem","1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -467,6 +471,7 @@ const StampPaperView = () => {
 
           <Box mt={["-1rem", "-5rem"]}>
             <Text
+               fontSize={["0.8rem","1.5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
               style={{
@@ -476,6 +481,7 @@ const StampPaperView = () => {
               IN WITNESS WHEREOF
             </Text>
             <Text
+               fontSize={["0.8rem","1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -484,6 +490,7 @@ const StampPaperView = () => {
               hereinbefore written:
             </Text>
             <Text
+               fontSize={["0.8rem","1.5rem"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -513,7 +520,7 @@ const StampPaperView = () => {
               Employer : -
             </Text>
             <Text
-              w={["200px", "500px"]}
+              w={["200px", "700px"]}
               mt={["-1rem", "-5rem"]}
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
@@ -525,6 +532,14 @@ const StampPaperView = () => {
               S.O, Jaipur, 302006
             </Text>
           </Box>
+          <Text
+              mt={["-1rem", "-5rem"]}
+              padding={["1rem", "3rem"]}
+              fontWeight={"800"}
+              fontSize={"1.5rem"}
+            >
+              Employee : -
+            </Text>
           <Box mt={["-1rem", "-5rem"]} padding={["1rem", "3rem"]}>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">Email: {inputField.email}</Text>

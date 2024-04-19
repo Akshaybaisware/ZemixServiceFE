@@ -439,6 +439,7 @@ function Navbar() {
       setIsMobileView(window.innerWidth < 768);
     };
     window.addEventListener("resize", handleResize);
+    handleResize();
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -575,33 +576,7 @@ function Navbar() {
               <Link to="/">
                 <Box fontSize={["1.5rem"]}>Dashboard</Box>
               </Link>
-              {/* <Menu>
-              <MenuButton
-                as={Box}
-                cursor="pointer"
-                onMouseOver={handleMenuHover}
-                fontSize={["1.5rem"]}
-              >
-                User Actions
-                <ChevronDownIcon height={8} width={8} />
-              </MenuButton>
-              {isOpen && (
-                <MenuList>
-                  <MenuItem as={RouterLink} to="/registeration">
-                    Registration
-                  </MenuItem>
-                  <MenuItem as={RouterLink} to="/pendingregisteration">
-                    Pending Registration
-                  </MenuItem>
-                  <MenuItem as={RouterLink} to="/cancelregisteration">
-                    Cancel Registration
-                  </MenuItem>
-                  <MenuItem as={RouterLink} to="/addpackage">
-                    Package
-                  </MenuItem>
-                </MenuList>
-              )}
-            </Menu> */}
+           
 
               <Menu isOpen={isOpen} onOpen={toggleMenu} onClose={toggleMenu}>
                 <MenuButton as={Box} cursor="pointer" fontSize={["1.5rem"]}>
