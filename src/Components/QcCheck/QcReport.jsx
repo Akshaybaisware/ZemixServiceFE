@@ -397,7 +397,7 @@ function QcReport() {
 
   return (
     <>
-      <Box mt={["2rem", "0rem"]}>
+      <Box mt={["3rem", "1rem"]}>
         <Box>
           <Center color={"gray"} fontWeight={800} fontSize={["1.5rem", "2rem"]}>
             QC Report

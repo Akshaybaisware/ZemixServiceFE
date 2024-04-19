@@ -185,7 +185,9 @@ const StampPaperView = () => {
           address: response.data.data?.address,
           signature: response.data.data?.signature,
           photo: response.data.data?.photo,
+          
         });
+        console.log(inputField ,"inputField")
         setPhotoPreview(response.data.data.photo);
         setSignaturePreview(response.data.data?.signature);
       } catch (error) {

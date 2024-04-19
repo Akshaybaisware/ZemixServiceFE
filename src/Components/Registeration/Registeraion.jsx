@@ -15,6 +15,8 @@ import { FaDownload } from "react-icons/fa6";
 import { FaFile } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiLinkExternal } from "react-icons/bi";
+import * as xlsx from 'xlsx';
+import { saveAs } from 'file-saver';
 
 function Registeraion() {
   const [search, setSearch] = useState("");
@@ -94,7 +96,26 @@ function Registeraion() {
       });
       console.log(error);
     }
-  };
+  };const exportToExcel = () => {
+    // Convert data to worksheet format
+    const worksheet = xlsx.utils.json_to_sheet(filteredData);
+
+    // Create a new workbook and add the worksheet
+    const workbook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(workbook, worksheet, 'Registrations');
+
+    // Write the workbook to a binary format
+    const excelBuffer = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+    // Convert the binary data to a Blob
+    const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+
+    // Save the Excel file using FileSaver
+    saveAs(blob, 'registrations.xlsx');
+};
+
+
+
 
   const emailsending = async (email) => {
     try {
@@ -249,8 +270,8 @@ function Registeraion() {
       sortable: true,
     },
     {
-      name: "Plan",
-      selector: (row) => row.plan,
+      name: "coller",
+      selector: (row) =>1,
       sortable: true,
     },
     {
@@ -357,6 +378,16 @@ function Registeraion() {
   }, []);
   return (
     <>
+    <Flex mt={"1rem"} justifyContent="flex-end">
+    <Button
+        colorScheme="blue"
+        leftIcon={<FaDownload />}
+        onClick={exportToExcel}
+    >
+        Export to Excel
+    </Button>
+</Flex>
+
       <Flex
         mt={["3rem", "1rem"]}
         direction="column"

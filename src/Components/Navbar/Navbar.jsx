@@ -509,7 +509,7 @@ function Navbar() {
                   <MenuItem as={RouterLink} to="/pendingregisteration">
                     Pending Registration
                   </MenuItem>
-                  <MenuItem as={RouterLink} to="/qccheck">
+                  <MenuItem as={RouterLink} to="/qcreport">
                     QC Report
                   </MenuItem>
                   <MenuItem as={RouterLink} to="/recovery">

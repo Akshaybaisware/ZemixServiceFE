@@ -159,15 +159,15 @@ function ContentValidationfrom() {
               Submit
             </Button>
 
-            <Button
+            {/* <Button
               onClick={refreshAssignment}
               bg={"#ff4d94"}
               leftIcon={<BiRefresh />}
             >
               {" "}
-              {/* Change to the desired color scheme */}
+             
               Reload the Data
-            </Button>
+            </Button> */}
           </Flex>
         </Box>
       </Flex>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
+import { format } from 'date-fns';
 import {
   Input,
   Center,
@@ -10,6 +11,7 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
+import { color } from "framer-motion";
 
 const EditClientComponent = () => {
   const location = useLocation();
@@ -26,6 +28,7 @@ const EditClientComponent = () => {
     endDate: "",
     caller: "",
   });
+  console.log(userData,"userData")
 
   // Extracting data from location.state if available
   const rowData = location.state?.data;
@@ -50,7 +53,7 @@ const EditClientComponent = () => {
 
     // Extract user ID from the URL parameter
     // console.log(rawData, "asdasds");
-    console.log(userData, "asdas");
+    console.log(userData, "userdata");
     const userId = userData._id;
 
     // Send PUT request to update user details
@@ -61,7 +64,9 @@ const EditClientComponent = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
+       
       });
+      console.log(response , "responsee")
       if (response.ok) {
         // Handle success
         toast({
@@ -90,15 +95,20 @@ const EditClientComponent = () => {
 
   return (
     <>
-      <Center>Edit Client</Center>
-      <Box maxW="600px" mx="auto" mt="4">
-        <form onSubmit={handleSubmit}>
+    <Box mt={"3rem"}>
+      <Center fontWeight={800}  color={"red"}>Client Details</Center>
+      <Box
+     p={"1rem"}
+      maxW="600px" mx="auto" mt="4">
+        <form
+        
+        onSubmit={handleSubmit}>
           <FormControl mb="4">
             <FormLabel>User Name</FormLabel>
             <Input
-              type="text"
+           
               name="userName"
-              value={userData.userName}
+              value={userData.email}
               onChange={handleChange}
               placeholder="User Name"
             />
@@ -107,7 +117,7 @@ const EditClientComponent = () => {
           <FormControl mb="4">
             <FormLabel>Password</FormLabel>
             <Input
-              type="password"
+           
               name="password"
               value={userData.password}
               onChange={handleChange}
@@ -115,16 +125,7 @@ const EditClientComponent = () => {
             />
           </FormControl>
 
-          <FormControl mb="4">
-            <FormLabel>OTP</FormLabel>
-            <Input
-              type="text"
-              name="otp"
-              value={userData.otp}
-              onChange={handleChange}
-              placeholder="OTP"
-            />
-          </FormControl>
+
 
           <FormControl mb="4">
             <FormLabel>Name</FormLabel>
@@ -163,47 +164,61 @@ const EditClientComponent = () => {
             <Input
               type="tel"
               name="mobileNo"
-              value={userData.mobileNo}
+              value={userData.mobile}
               onChange={handleChange}
               placeholder="Mobile No"
             />
           </FormControl>
 
-          <FormControl mb="4">
+          {/* <FormControl mb="4">
             <FormLabel>Start Date</FormLabel>
             <Input
-              type="date"
+           
               name="startDate"
               value={userData.startDate}
               onChange={handleChange}
             />
-          </FormControl>
+          </FormControl> */}
+       <FormControl mb="4">
+    <FormLabel>Start Date</FormLabel>
+    <Input
+        name="startDate"
+        value={userData.startDate}
+        onChange={(event) => {
+            // Get the input value from the event
+            const inputValue = event.target.value;
+
+            // Parse the input value as a date
+            const date = new Date(inputValue);
+
+            // Format the date to 'yyyy-MM-dd' format to remove time
+            const formattedDate = format(date, 'yyyy-MM-dd');
+
+            // Call handleChange with the formatted date
+            handleChange({ target: { name: event.target.name, value: formattedDate } });
+        }}
+    />
+</FormControl>
 
           <FormControl mb="4">
             <FormLabel>End Date</FormLabel>
             <Input
-              type="date"
+            
               name="endDate"
               value={userData.endDate}
               onChange={handleChange}
             />
           </FormControl>
 
-          <FormControl mb="4">
-            <FormLabel>Caller</FormLabel>
-            <Input
-              type="text"
-              name="caller"
-              value={userData.caller}
-              onChange={handleChange}
-              placeholder="Caller"
-            />
-          </FormControl>
+      
 
-          <Button type="submit" colorScheme="blue">
+          <Button type="submit"
+          color={"white"}
+          bg={"red"}>
             Submit
           </Button>
         </form>
+      </Box>
       </Box>
     </>
   );
