@@ -520,7 +520,7 @@ const StampPaperView = () => {
 
           <Box>
             <Text
-              mt={["-1rem", "-5rem"]}
+              mt={["-1rem", "1rem"]}
               padding={["1rem", "3rem"]}
               fontWeight={"800"}
               fontSize={"1.5rem"}
