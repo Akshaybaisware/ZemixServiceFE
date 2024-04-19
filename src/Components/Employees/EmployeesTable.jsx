@@ -133,7 +133,9 @@ function EmployeesTable() {
 
   return (
     <Center>
-      <Box w="80%" p="4">
+      <Box
+      mt="1.5rem"
+      w="80%" p="4">
         <Flex justifyContent="space-between" alignItems="center" mb="4">
           <Text fontSize="2rem" fontWeight="700">
             Employees

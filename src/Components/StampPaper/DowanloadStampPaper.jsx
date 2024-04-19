@@ -251,11 +251,19 @@ const StampPaperView = () => {
             >
               Present we are providing the business for form filling more
               meaningfully described in the column Scope of Work, through their
-              principals. AND WHEREAS the Business Associate is engaged inter
+              principals. 
+              
+              <br />
+              <br />
+              AND WHEREAS the Business Associate is engaged inter
               alias, in the business of providing a wide Spectrum of online form
-              filling & services. The Business Associate has acquired the
+              filling & services. 
+              <br />
+              <br />The Business Associate has acquired the
               necessary expertise and developed the requisite skill base and
               infrastructure for successful execution of Form Filling Projects.
+              <br />
+              <br />
               This Agreement represents the business Agreement and operational
               understandings between the parties and shall remain in effect for
               a period of ELEVEN MONTHS from the date of execution hereof or
