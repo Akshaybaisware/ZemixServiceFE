@@ -17,6 +17,7 @@ import {
 import { useLocation } from "react-router-dom";
 import frontpage from "../../assets/frontpage.jpg";
 import { useEffect, useState } from "react";
+import { usePDF } from "react-to-pdf";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -223,7 +224,7 @@ const StampPaperView = () => {
   return (
     <>
       <Box>
-        <Box width="100vw" ref={targetRef}>
+        <Box minWidth="100%" ref={targetRef}>
           <Box
             display="flex"
             flexDirection="column"
@@ -606,7 +607,7 @@ const StampPaperView = () => {
           >
             Download
           </Button>
-        </Box>
+        </Box>  
       </Box>
     </>
   );
