@@ -194,7 +194,7 @@ function Login() {
     }
   };
   return loader ? (
-    <Center>
+    <Center height={"100vh"}>
       <Spinner
         thickness="4px"
         speed="0.65s"

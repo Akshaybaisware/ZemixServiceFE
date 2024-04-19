@@ -199,7 +199,7 @@ function PendingRegisteration() {
     pendingdata();
   }, [dependancy, deletedependency, reload]);
   return loading ? (
-    <Center>
+    <Center height={"100vh"}>
       <Spinner
         thickness="4px"
         speed="0.65s"

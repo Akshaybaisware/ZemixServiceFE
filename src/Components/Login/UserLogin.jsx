@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
-import { Box, Button, Center, Image, Input } from "@chakra-ui/react";
+import { Box, Button, Center, Image, Input, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -11,9 +11,11 @@ function UserLogin() {
   const username = useRef();
   const password = useRef();
   const toast = useToast();
+  const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
 
   const handleloginuser = async () => {
+    setLoader(true);
     try {
       console.log("asd");
       const user = {
@@ -31,6 +33,7 @@ function UserLogin() {
         localStorage.setItem("role", response.data.role);
         localStorage.setItem("email", response.data.email);
         localStorage.setItem("userId", response.data.userId);
+
         toast({
           title: "Login",
           description: "Login Successfully",
@@ -50,10 +53,22 @@ function UserLogin() {
         position: "top",
         isClosable: true,
       });
+    } finally {
+      setLoader(false);
     }
   };
 
-  return (
+  return loader ? (
+    <Center height={"100vh"}>
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    </Center>
+  ) : (
     <>
       <Box
         bg={"lightgray"}
