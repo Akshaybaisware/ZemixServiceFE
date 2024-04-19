@@ -173,11 +173,14 @@ function PendingRegisteration() {
   ];
 
   const pendingdata = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(
         "https://zemixbe.onrender.com/api/user/getallpending"
       );
+
       console.log(response.data.users, "pending list ");
+
       setPendinglist(response.data.users);
     } catch (error) {
       toast({
@@ -188,12 +191,24 @@ function PendingRegisteration() {
         isClosable: true,
         position: "top",
       });
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
     pendingdata();
   }, [dependancy, deletedependency, reload]);
-  return (
+  return loading ? (
+    <Center>
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    </Center>
+  ) : (
     <>
       <Center mt={["2rem", "1rem"]}>
         <Box width={{ base: "100vw", md: "90vw" }} overflowX="auto" p={4}>
@@ -202,40 +217,29 @@ function PendingRegisteration() {
               Pending Registrations
             </Text>
           </Center>
-          {loading ? (
-            <Center>
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
+
+          <DataTable
+            columns={columns}
+            data={pendinglist}
+            pagination
+            responsive
+            subHeader
+            subHeaderComponent={
+              <input
+                type="text"
+                placeholder="Search..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{
+                  border: "1px solid gray",
+                  borderRadius: "15px",
+                  padding: "10px",
+                  paddingLeft: "15px",
+                  width: "100%",
+                }}
               />
-            </Center>
-          ) : (
-            <DataTable
-              columns={columns}
-              data={pendinglist}
-              pagination
-              responsive
-              subHeader
-              subHeaderComponent={
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  style={{
-                    border: "1px solid gray",
-                    borderRadius: "15px",
-                    padding: "10px",
-                    paddingLeft: "15px",
-                    width: "100%",
-                  }}
-                />
-              }
-            />
-          )}
+            }
+          />
         </Box>
       </Center>
     </>

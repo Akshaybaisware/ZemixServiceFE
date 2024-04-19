@@ -147,19 +147,18 @@ function Login() {
       password: password.current.value,
     };
     console.log(user);
+    setLoader(true);
     try {
       const response = await axios.post(
         "https://zemixbe.onrender.com/api/auth/adminsignin",
         user
       );
-      setLoader(true);
+
       console.log(response);
       if (response.status === 200) {
         localStorage.setItem("user", JSON.stringify(response.data));
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("role", response.data.role);
-        window.location.replace("/");
-        setLoader(false);
 
         toast({
           title: "Login Success",
@@ -169,6 +168,8 @@ function Login() {
           position: "top",
           isClosable: true,
         });
+        setLoader(false);
+        window.location.replace("/");
       }
     } catch (error) {
       toast({
@@ -198,7 +199,7 @@ function Login() {
         thickness="4px"
         speed="0.65s"
         emptyColor="gray.200"
-        color="teal"
+        color="blue.500"
         size="xl"
       />
     </Center>

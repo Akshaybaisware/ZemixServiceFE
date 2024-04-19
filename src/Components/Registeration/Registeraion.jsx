@@ -275,6 +275,7 @@ function Registeraion() {
       name: "Action",
       cell: (row) => (
         <Flex>
+          {/* sucess icons chnages here  */}
           {row.status === "Active" ||
           row.status === "Registered" ||
           row.status === "Success"
@@ -283,7 +284,8 @@ function Registeraion() {
                   key={index}
                   style={{
                     fontSize: "20px",
-                    color: row.status === "Success" ? "green" : "inherit", // Change color based on status
+                    // color: row.status === "Success" ? "green" : "inherit", // Change color based on status
+                    background: index === 3 ? "red" : "green",
                     cursor: "pointer",
                     margin: "0 5px",
                   }}
@@ -291,11 +293,12 @@ function Registeraion() {
                 />
               ))
             : iconspending.map((Icon, index) => (
+                // pending icon chnages here
                 <Icon
                   key={index}
                   style={{
                     fontSize: "20px",
-                    color: "green",
+                    color: "red",
                     cursor: "pointer",
                     margin: "0 5px",
                     // backgroundColor:"red"
