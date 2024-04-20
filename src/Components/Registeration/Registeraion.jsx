@@ -68,7 +68,7 @@ function Registeraion() {
   const deletaggrimet = async (email) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/aggriment/deleteaggriment",
+        "https://zemixbe.onrender.com/api/aggriment/deleteaggriment",
         {
           email: email,
         }
