@@ -61,12 +61,21 @@ const StampPaper = () => {
 
   const handleSubmit = async () => {
     try {
+      const parts = date.split("/"); // Split the date string by '/'
+      const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearrange the date parts to YYYY-MM-DD format
+
+      const startDateObj = new Date(formattedDate); // Parse the string into a Date object
+      startDateObj.setDate(startDateObj.getDate() + 5); // Add 5 days to the date
+      const endDate = startDateObj.toISOString().slice(0, 10);
+
       const formData = new FormData();
+      console.log(date, "startdate");
 
       formData.append("email", email);
       formData.append("signature", signature);
       formData.append("photo", photo);
       formData.append("startdate", date);
+      formData.append("enddate", endDate);
       console.log(formData.values, "formdata");
 
       const config = {
@@ -89,7 +98,7 @@ const StampPaper = () => {
       });
       navigate("/stampapersucess");
     } catch (err) {
-      alert("Complete all the feild");
+      alert("Email Aredy Exist");
       setLoading(false);
     }
   };

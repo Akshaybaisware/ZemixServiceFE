@@ -15,8 +15,8 @@ import { FaDownload } from "react-icons/fa6";
 import { FaFile } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiLinkExternal } from "react-icons/bi";
-import * as xlsx from 'xlsx';
-import { saveAs } from 'file-saver';
+import * as xlsx from "xlsx";
+import { saveAs } from "file-saver";
 
 function Registeraion() {
   const [search, setSearch] = useState("");
@@ -65,6 +65,20 @@ function Registeraion() {
     )
   );
 
+  const deletaggrimet = async (email) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/aggriment/deleteaggriment",
+        {
+          email: email,
+        }
+      );
+      console.log(res, "deleted aggriment");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deleteclientinfo = async (id) => {
     try {
       const response = await axios.post(
@@ -73,6 +87,7 @@ function Registeraion() {
           id: id,
         }
       );
+      // await deletaggrimet(id);
       console.log(response, "deleted response");
       setFilter(filter.filter((item) => item._id !== id));
       if (response.status) {
@@ -104,20 +119,20 @@ function Registeraion() {
 
     // Create a new workbook and add the worksheet
     const workbook = xlsx.utils.book_new();
-    xlsx.utils.book_append_sheet(workbook, worksheet, 'Registrations');
+    xlsx.utils.book_append_sheet(workbook, worksheet, "Registrations");
 
     // Write the workbook to a binary format
-    const excelBuffer = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const excelBuffer = xlsx.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
 
     // Convert the binary data to a Blob
-    const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
 
     // Save the Excel file using FileSaver
-    saveAs(blob, 'registrations.xlsx');
-};
-
-
-
+    saveAs(blob, "registrations.xlsx");
+  };
 
   const emailsending = async (email) => {
     try {
@@ -212,6 +227,7 @@ function Registeraion() {
           break;
         case 4:
           deleteclientinfo(rowData._id);
+          deletaggrimet(rowData.email);
           break;
         default:
           // Handle default case
@@ -272,8 +288,20 @@ function Registeraion() {
       sortable: true,
     },
     {
+      name: "start Date",
+      selector: (row) =>
+        row.startDate?.slice(0, 10) ? row.startDate?.slice(0, 10) : "N/A",
+      sortable: true,
+    },
+    {
+      name: "End Date",
+      selector: (row) =>
+        row.endDate?.slice(0, 10) ? row.endDate?.slice(0, 10) : "N/A",
+      sortable: true,
+    },
+    {
       name: "coller",
-      selector: (row) =>1,
+      selector: (row) => 1,
       sortable: true,
     },
     {
@@ -395,15 +423,15 @@ function Registeraion() {
   }, []);
   return (
     <>
-    <Flex mt={"1rem"} justifyContent="flex-end">
-    <Button
-        colorScheme="blue"
-        leftIcon={<FaDownload />}
-        onClick={exportToExcel}
-    >
-        Export to Excel
-    </Button>
-</Flex>
+      <Flex mt={"1rem"} justifyContent="flex-end">
+        <Button
+          colorScheme="blue"
+          leftIcon={<FaDownload />}
+          onClick={exportToExcel}
+        >
+          Export to Excel
+        </Button>
+      </Flex>
 
       <Flex
         mt={["3rem", "1rem"]}

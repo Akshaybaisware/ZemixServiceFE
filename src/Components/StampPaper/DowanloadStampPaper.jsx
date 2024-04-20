@@ -38,6 +38,7 @@ const StampPaperView = () => {
     address: "",
     photo: "",
     signature: "",
+    enddate: "",
   });
 
   const [photoPreview, setPhotoPreview] = useState(null);
@@ -191,6 +192,7 @@ const StampPaperView = () => {
           address: response.data.data?.address,
           signature: response.data.data?.signature,
           photo: response.data.data?.photo,
+          enddate: response.data.data?.endDate,
         });
         console.log(inputField, "inputField");
         setPhotoPreview(response.data.data.photo);
@@ -560,6 +562,9 @@ const StampPaperView = () => {
             </FormControl>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">Start-Date: {inputField.startdate}</Text>
+            </FormControl>
+            <FormControl w={["200px", "300px"]}>
+              <Text fontSize="md">End-Date: {inputField.startdate + 5}</Text>
             </FormControl>
           </Box>
 
