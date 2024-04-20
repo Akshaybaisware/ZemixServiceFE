@@ -62,12 +62,12 @@ const StampPaper = () => {
   const handleSubmit = async () => {
     try {
       console.log("in try 1");
-      const parts = date.split("/"); // Split the date string by '/'
-      const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearrange the date parts to YYYY-MM-DD format
+      // const parts = date.split("/"); // Split the date string by '/'
+      // const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearrange the date parts to YYYY-MM-DD format
 
-      const startDateObj = new Date(formattedDate); // Parse the string into a Date object
-      startDateObj.setDate(startDateObj.getDate() + 5); // Add 5 days to the date
-      const endDate = startDateObj.toISOString().slice(0, 10);
+      // const startDateObj = new Date(formattedDate); // Parse the string into a Date object
+      // startDateObj.setDate(startDateObj.getDate() + 5); // Add 5 days to the date
+      // const endDate = startDateObj.toISOString().slice(0, 10);
 
       const formData = new FormData();
       console.log(date, "startdate");

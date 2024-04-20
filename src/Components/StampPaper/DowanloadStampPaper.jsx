@@ -1,5 +1,6 @@
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import moment from "moment";
 import {
   Box,
   Heading,
@@ -27,7 +28,7 @@ const StampPaperView = () => {
   const { toPDF, targetRef } = usePDF({ filename: "Legal-Agreement.pdf" });
   const locationdata = useLocation();
 
-  console.log(locationdata.state.data, "location date ");
+  console.log(locationdata?.state?.data, "location date ");
   const { id } = useParams();
   const appUrl = import.meta.env.VITE_APP_API_URL;
   const [doc, setDoc] = useState(null);
@@ -170,9 +171,10 @@ const StampPaperView = () => {
 
   useEffect(() => {
     const fetchUserDetails = async () => {
-      const locationid = locationdata.state.data.email;
+      const locationid = locationdata?.state?.data?.email;
       const otherid = id;
       const emailid = locationid ? locationid : otherid;
+
       console.log(emailid, "id");
       try {
         const response = await axios.post(
@@ -561,10 +563,17 @@ const StampPaperView = () => {
               <Text fontSize="md">Email: {inputField.email}</Text>
             </FormControl>
             <FormControl w={["200px", "300px"]}>
-              <Text fontSize="md">Start-Date: {inputField.startdate}</Text>
+              <Text fontSize="md">
+                Start-Date: {moment(inputField.startdate).format("MM/DD/YYYY")}
+              </Text>
             </FormControl>
             <FormControl w={["200px", "300px"]}>
-              <Text fontSize="md">End-Date: {inputField.startdate + 5}</Text>
+              <Text fontSize="md">
+                End-Date:{" "}
+                {moment(inputField?.startdate)
+                  .add(5, "days")
+                  .format("MM/DD/YYYY")}
+              </Text>
             </FormControl>
           </Box>
 
