@@ -61,6 +61,7 @@ const StampPaper = () => {
 
   const handleSubmit = async () => {
     try {
+      console.log("in try 1");
       const parts = date.split("/"); // Split the date string by '/'
       const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearrange the date parts to YYYY-MM-DD format
 
@@ -75,6 +76,7 @@ const StampPaper = () => {
       formData.append("signature", signature);
       formData.append("photo", photo);
       formData.append("startdate", date);
+      console.log("in try 2");
       // formData.append("enddate", endDate);
       console.log(formData.values, "formdata");
 
@@ -97,8 +99,8 @@ const StampPaper = () => {
         isClosable: true,
       });
       navigate("/stampapersucess");
-    } catch (err) {
-      alert("Email Aredy Exist");
+    } catch (error) {
+      alert("Email Aredy Exist", error.message);
       setLoading(false);
     }
   };
