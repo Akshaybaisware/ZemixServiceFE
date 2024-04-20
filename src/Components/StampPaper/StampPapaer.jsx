@@ -75,7 +75,7 @@ const StampPaper = () => {
       formData.append("signature", signature);
       formData.append("photo", photo);
       formData.append("startdate", date);
-      formData.append("enddate", endDate);
+      // formData.append("enddate", endDate);
       console.log(formData.values, "formdata");
 
       const config = {
