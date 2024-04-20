@@ -96,7 +96,9 @@ function Registeraion() {
       });
       console.log(error);
     }
-  };const exportToExcel = () => {
+  };
+
+  const exportToExcel = () => {
     // Convert data to worksheet format
     const worksheet = xlsx.utils.json_to_sheet(filteredData);
 
