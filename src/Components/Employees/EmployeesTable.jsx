@@ -98,7 +98,7 @@ function EmployeesTable() {
   const handeleEmployee = async (id) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/employee/deleteemployee",
+        "https://zemixbe.onrender.com/api/employee/deleteemployee",
         {
           employeeId: id,
         }
