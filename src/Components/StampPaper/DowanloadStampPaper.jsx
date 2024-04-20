@@ -191,9 +191,8 @@ const StampPaperView = () => {
           address: response.data.data?.address,
           signature: response.data.data?.signature,
           photo: response.data.data?.photo,
-          
         });
-        console.log(inputField ,"inputField")
+        console.log(inputField, "inputField");
         setPhotoPreview(response.data.data.photo);
         setSignaturePreview(response.data.data?.signature);
       } catch (error) {
@@ -542,8 +541,7 @@ const StampPaperView = () => {
               padding={["1rem", "3rem"]}
             >
               Name : Cropton Service <br />
-              Email : helplinezxservicewww@gmail.comhelplinessrvice156@gmail.com{" "}
-              <br />
+              Email : helplinewwwtricom54@gmail.com <br />
               Address : block number: 23 Hanuman Nagar Ajmer Road
               S.O, Jaipur, 302006
             </Text>
