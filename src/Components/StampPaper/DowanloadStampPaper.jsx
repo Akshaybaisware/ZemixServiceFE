@@ -545,7 +545,7 @@ const StampPaperView = () => {
               padding={["1rem", "3rem"]}
             >
               Name : Cropton Service <br />
-              Email : helplinewwwtricom54@gmail.com <br />
+              Email : helplinessrvice156@gmail.com <br />
               Address : block number: 23 Hanuman Nagar Ajmer Road
               S.O, Jaipur, 302006
             </Text>
