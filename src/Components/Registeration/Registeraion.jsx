@@ -227,7 +227,7 @@ function Registeraion() {
           break;
         case 4:
           deleteclientinfo(rowData._id);
-          deletaggrimet(rowData.email);
+          // deletaggrimet(rowData.email);
           break;
         default:
           // Handle default case

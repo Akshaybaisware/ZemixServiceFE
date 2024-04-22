@@ -375,6 +375,19 @@ function QcReport() {
       );
     }
 
+    // start and end date filter
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      end.setHours(23, 59, 59, 999); // Include the entire end day
+
+      filteredData = filteredData.filter((item) => {
+        const itemStartDate = new Date(item.startDate);
+        const itemEndDate = new Date(item.endDate);
+        return itemStartDate >= start && itemEndDate <= end;
+      });
+    }
+
     // Filter by date range
     if (startDate && endDate) {
       const start = new Date(startDate);
