@@ -131,8 +131,8 @@ function Recovery() {
     try {
       const id = row._id;
       const res = await axios.post(
-        // "https://zemixbe.onrender.com/api/user/deleteclient",
-        "http://localhost:5000/api/user/deleteuser",
+        "https://zemixbe.onrender.com/api/user/deleteuser",
+        // "http://localhost:5000/api/user/deleteuser",
         {
           userId: id,
         }
