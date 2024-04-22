@@ -213,7 +213,7 @@ function Recovery() {
 
   return (
     <>
-      <Box mt={["2rem", "0rem"]}>
+      <Box mt={["3rem", "3rem"]}>
         <Center color={"#336600"} fontWeight={800} fontSize="3xl">
           NOC-Certificate
         </Center>
