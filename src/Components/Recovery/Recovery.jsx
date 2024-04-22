@@ -13,26 +13,26 @@ function Recovery() {
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [deletestate, setDeleetestate] = useState();
   const navigate = useNavigate();
-
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://zemixbe.onrender.com/api/user/getallclient"
+      );
+      // Initialize each user data with a selectedDate property
+      const usersWithDate = response?.data?.data.map((user) => ({
+        ...user,
+        selectedDate: "",
+      }));
+      setAllUsersData(usersWithDate);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://zemixbe.onrender.com/api/user/getallclient"
-        );
-        // Initialize each user data with a selectedDate property
-        const usersWithDate = response?.data?.data.map((user) => ({
-          ...user,
-          selectedDate: "",
-        }));
-        setAllUsersData(usersWithDate);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchData();
-  }, []);
+  }, [deletestate]);
 
   useEffect(() => {
     setTableData(allUsersData);
@@ -127,6 +127,23 @@ function Recovery() {
     // Save PDF
     doc.save("Cropton-NOC.pdf");
   };
+  const handleDelete = async (row) => {
+    try {
+      const id = row._id;
+      const res = await axios.post(
+        // "https://zemixbe.onrender.com/api/user/deleteclient",
+        "http://localhost:5000/api/user/deleteuser",
+        {
+          userId: id,
+        }
+      );
+      console.log(res);
+      setDeleetestate(res);
+    } catch (error) {
+      console.log(error.message);
+    }
+    // fetchData();
+  };
 
   const columns = [
     {
@@ -182,6 +199,15 @@ function Recovery() {
           View Deatils
         </Button>
       ),
+    },
+    {
+      name: "Delete",
+      cell: (row) => (
+        <Button color={"white"} bg={"red"} onClick={() => handleDelete(row)}>
+          Delete
+        </Button>
+      ),
+      sortable: true,
     },
   ];
 

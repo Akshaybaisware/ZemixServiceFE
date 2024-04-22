@@ -83,7 +83,11 @@ function QcReport() {
     try {
       const response = await axios.post(
         "https://zemixbe.onrender.com/api/assignment/getassignments",
+        // "http://localhost:5000/api/assignment/getassignments",
         { userId: data._id }
+        // {
+        //   email: data.email,
+        // }
       );
       console.log(response.data, "Assignments data");
 
@@ -184,7 +188,7 @@ function QcReport() {
 
       pdf.save(`Report_${data?.name}.pdf`);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
