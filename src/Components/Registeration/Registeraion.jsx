@@ -423,7 +423,7 @@ function Registeraion() {
   }, []);
   return (
     <>
-      <Flex mt={"1rem"} justifyContent="flex-end">
+      <Flex mt={"2rem"} justifyContent="flex-end">
         <Button
           colorScheme="blue"
           leftIcon={<FaDownload />}
@@ -434,7 +434,7 @@ function Registeraion() {
       </Flex>
 
       <Flex
-        mt={["3rem", "1rem"]}
+        mt={["2rem", "0rem"]}
         direction="column"
         alignItems="center"
         justifyContent={"center"}
