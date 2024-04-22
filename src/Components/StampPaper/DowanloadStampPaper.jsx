@@ -32,6 +32,8 @@ const StampPaperView = () => {
   const { id } = useParams();
   const appUrl = import.meta.env.VITE_APP_API_URL;
   const [doc, setDoc] = useState(null);
+  const [username, setusername] = useState("");
+  const [useraddress, setuseraddress] = useState("");
   const [inputField, setInputField] = useState({
     name: "",
     email: "",
@@ -169,6 +171,28 @@ const StampPaperView = () => {
     setSignaturePreview(URL.createObjectURL(selectedSignature));
   };
 
+  const getuserdetails = async () => {
+    const locationid = locationdata?.state?.data?.email;
+    const otherid = id;
+    const emailid = locationid ? locationid : otherid;
+    try {
+      const response = await axios.post(
+        // "http://localhost:5000/api/user/getuserdetailsbymail",
+        `https://zemixbe.onrender.com/api/user/getuserdetailsbymail`,
+
+        {
+          email: emailid,
+        }
+      );
+      console.log(response.data.response, "email data ");
+
+      setusername(response.data.response?.name);
+      setuseraddress(response.data.response?.address);
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchUserDetails = async () => {
       const locationid = locationdata?.state?.data?.email;
@@ -188,10 +212,10 @@ const StampPaperView = () => {
           ? new Date(response.data.data.startdate).toLocaleDateString()
           : "";
         setInputField({
-          name: response.data.data?.name,
+          // name: response.data.data?.name,
           email: response.data.data?.email,
           startdate: startDate,
-          address: response.data.data?.address,
+          // address: response.data.data?.address,
           signature: response.data.data?.signature,
           photo: response.data.data?.photo,
           enddate: response.data.data?.endDate,
@@ -205,6 +229,9 @@ const StampPaperView = () => {
     };
 
     fetchUserDetails();
+  }, [id]);
+  useEffect(() => {
+    getuserdetails();
   }, [id]);
 
   const onChangeHandler = (e) => {
@@ -560,7 +587,14 @@ const StampPaperView = () => {
           </Text>
           <Box mt={["-1rem", "-5rem"]} padding={["1rem", "3rem"]}>
             <FormControl w={["200px", "300px"]}>
+              <Text fontSize="md">Name: {username}</Text>
+            </FormControl>
+
+            <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">Email: {inputField.email}</Text>
+            </FormControl>
+            <FormControl w={["200px", "300px"]}>
+              <Text fontSize="md">Address: {useraddress}</Text>
             </FormControl>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">
