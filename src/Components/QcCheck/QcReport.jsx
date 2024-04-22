@@ -198,6 +198,7 @@ function QcReport() {
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [deletestate, setDeleetestate] = useState();
 
   const userId = localStorage.getItem("userId");
 
@@ -266,8 +267,24 @@ function QcReport() {
   useLayoutEffect(() => {
     qcdata();
     qcreportdata();
-  }, []);
-
+  }, [deletestate]);
+  const handleDelete = async (row) => {
+    try {
+      const id = row._id;
+      const res = await axios.post(
+        "https://zemixbe.onrender.com/api/user/deleteuser",
+        // "http://localhost:5000/api/user/deleteuser",
+        {
+          userId: id,
+        }
+      );
+      console.log(res);
+      setDeleetestate(res);
+    } catch (error) {
+      console.log(error.message);
+    }
+    // fetchData();
+  };
   //useEffect(() => {
   //getincorrectassignments();
   //}, []);
@@ -358,6 +375,15 @@ function QcReport() {
           Download
         </Button>
       ),
+    },
+    {
+      name: "Delete",
+      cell: (row) => (
+        <Button color={"white"} bg={"red"} onClick={() => handleDelete(row)}>
+          Delete
+        </Button>
+      ),
+      sortable: true,
     },
   ];
 
