@@ -301,7 +301,7 @@ function Registeraion() {
     },
     {
       name: "coller",
-      selector: (row) => 1,
+      selector: (row) => row?.selectPlan,
       sortable: true,
     },
     {
