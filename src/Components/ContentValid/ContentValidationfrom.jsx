@@ -31,13 +31,15 @@ function ContentValidationfrom() {
   const getdatafrom = async () => {
     try {
       const response = await axios.get(
-        "https://zemixbe.onrender.com/api/assignment/getassignments"
-        // {
-        //   userId: userId,
-        // }
+        "https://zemixbe.onrender.com/api/assignment/getassignments",
+        {
+          userId: userId,
+        }
       );
+      console.log(response , "res")
       setapidata(response?.data?.assignments);
       setRandomIndex(Math.floor(Math.random() * 480));
+      console.log(randomIndex , "randomIndex")
     } catch (error) {
       toast({
         title: "Error ",

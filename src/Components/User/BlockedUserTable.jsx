@@ -89,14 +89,44 @@ function BlockedUserTable() {
     },
   ];
 
+  // return (
+  //   <Box>
+  //     <Flex>
+  //       <Input
+  //         type="date"
+  //         placeholder="From Date (dd-mm-yyyy)"
+  //         value={fromDate}
+  //         onChange={(e) => setFromDate(e.target.value)}
+  //       />
+  //       <Spacer />
+  //       <Input
+  //         type="date"
+  //         placeholder="To Date (dd-mm-yyyy)"
+  //         value={toDate}
+  //         onChange={(e) => setToDate(e.target.value)}
+  //       />
+  //       <Spacer />
+  //       <Button onClick={handleDateSearch}>Search By Date</Button>
+  //     </Flex>
+
+  //     <Input
+  //       placeholder="Search"
+  //       value={searchQuery}
+  //       onChange={(e) => setSearchQuery(e.target.value)}
+  //     />
+  //     <Button onClick={handleSearch}>Search</Button>
+  //     <DataTable columns={columns} data={filteredData} pagination />
+  //   </Box>
+  // );
   return (
-    <Box>
-      <Flex>
+    <Box style={{ padding: '16px' }}>
+      <Flex style={flexContainerStyle}>
         <Input
           type="date"
           placeholder="From Date (dd-mm-yyyy)"
           value={fromDate}
           onChange={(e) => setFromDate(e.target.value)}
+          style={inputRedStyle}
         />
         <Spacer />
         <Input
@@ -104,17 +134,25 @@ function BlockedUserTable() {
           placeholder="To Date (dd-mm-yyyy)"
           value={toDate}
           onChange={(e) => setToDate(e.target.value)}
+          style={inputBlueStyle}
         />
         <Spacer />
-        <Button onClick={handleDateSearch}>Search By Date</Button>
+        <Button onClick={handleDateSearch} style={buttonRedStyle}>
+          Search By Date
+        </Button>
       </Flex>
 
-      <Input
-        placeholder="Search"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <Button onClick={handleSearch}>Search</Button>
+      <Flex style={flexContainerStyle}>
+        <Input
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={inputRedStyle}
+        />
+        <Button onClick={handleSearch} style={buttonBlueStyle}>
+          Search
+        </Button>
+      </Flex>
       <DataTable columns={columns} data={filteredData} pagination />
     </Box>
   );
