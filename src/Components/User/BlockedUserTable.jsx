@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box , Text, Center } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { Spacer } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
@@ -89,70 +89,42 @@ function BlockedUserTable() {
     },
   ];
 
-  // return (
-  //   <Box>
-  //     <Flex>
-  //       <Input
-  //         type="date"
-  //         placeholder="From Date (dd-mm-yyyy)"
-  //         value={fromDate}
-  //         onChange={(e) => setFromDate(e.target.value)}
-  //       />
-  //       <Spacer />
-  //       <Input
-  //         type="date"
-  //         placeholder="To Date (dd-mm-yyyy)"
-  //         value={toDate}
-  //         onChange={(e) => setToDate(e.target.value)}
-  //       />
-  //       <Spacer />
-  //       <Button onClick={handleDateSearch}>Search By Date</Button>
-  //     </Flex>
-
-  //     <Input
-  //       placeholder="Search"
-  //       value={searchQuery}
-  //       onChange={(e) => setSearchQuery(e.target.value)}
-  //     />
-  //     <Button onClick={handleSearch}>Search</Button>
-  //     <DataTable columns={columns} data={filteredData} pagination />
-  //   </Box>
-  // );
   return (
-    <Box style={{ padding: '16px' }}>
-      <Flex style={flexContainerStyle}>
+    <Box 
+
+    m={"1rem"}
+    mt={"3rem"}>
+      <Center fontSize={"1.5rem"} fontWeight={600}  color={"red"}>
+        Blocked User
+      </Center>
+      <Flex gap={["1rem", "5rem"]}>
         <Input
+           width={["300px" , "400px"]}
           type="date"
           placeholder="From Date (dd-mm-yyyy)"
           value={fromDate}
           onChange={(e) => setFromDate(e.target.value)}
-          style={inputRedStyle}
         />
         <Spacer />
         <Input
+           width={["300px" , "400px"]}
           type="date"
           placeholder="To Date (dd-mm-yyyy)"
           value={toDate}
           onChange={(e) => setToDate(e.target.value)}
-          style={inputBlueStyle}
         />
         <Spacer />
-        <Button onClick={handleDateSearch} style={buttonRedStyle}>
-          Search By Date
-        </Button>
       </Flex>
+        <Button  mb={"1rem"} bg={"lightgray"} mt={"1rem"} onClick={handleDateSearch}>Search By Date</Button>
 
-      <Flex style={flexContainerStyle}>
-        <Input
-          placeholder="Search"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          style={inputRedStyle}
-        />
-        <Button onClick={handleSearch} style={buttonBlueStyle}>
-          Search
-        </Button>
-      </Flex>
+      <Input
+      marginLeft={"1rem"}
+      width={["200px" , "400px"]}
+        placeholder="Search"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <Button  ml={"1rem"}   color={"white "} bg={"blue"} onClick={handleSearch}>Search</Button>
       <DataTable columns={columns} data={filteredData} pagination />
     </Box>
   );
