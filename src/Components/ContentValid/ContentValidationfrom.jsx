@@ -31,10 +31,10 @@ function ContentValidationfrom() {
   const getdatafrom = async () => {
     try {
       const response = await axios.get(
-        "https://zemixbe.onrender.com/api/assignment/getassignments",
-        {
-          userId: userId,
-        }
+        "https://zemixbe.onrender.com/api/assignment/getallassignments"
+        // {
+        //   userId: userId,
+        // }
       );
       console.log(response , "res")
       setapidata(response?.data?.assignments);
@@ -167,7 +167,7 @@ function ContentValidationfrom() {
               leftIcon={<BiRefresh />}
             >
               {" "}
-             
+
               Reload the Data
             </Button> */}
           </Flex>
