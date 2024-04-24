@@ -39,7 +39,7 @@ function UserNavbar() {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = "/login";
+    window.location.href = "/userlogin";
   };
 
   const confirmpass = useRef(null);
