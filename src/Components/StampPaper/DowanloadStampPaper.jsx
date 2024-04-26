@@ -605,7 +605,7 @@ const StampPaperView = () => {
               <Text fontSize="md">
                 End-Date:{" "}
                 {moment(inputField?.startdate)
-                  .add(4, "days")
+                  .add(5, "days")
                   .format("MM/DD/YYYY")}
               </Text>
             </FormControl>
