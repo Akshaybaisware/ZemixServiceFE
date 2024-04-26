@@ -381,7 +381,7 @@ const StampPaperView = () => {
               9. This agreement represents the business Agreement and
               operational understandings between the parties and shall remain in
               effect for a period of Eleven months from the date of execution
-              hereof. The clients' specifications in terms of quality and other
+              hereof. The client specifications in terms of quality and other
               parameters that shall be issued by the Client/their principals
               from time to time and acknowledged by the Business Associate shall
               be read with this agreement.
@@ -455,7 +455,7 @@ const StampPaperView = () => {
               <br />
               <br /> 16. Both the parties hereby agree neither to Circumvent or
               nor to disclose the identities, Information as well as the essence
-              of the project etc of each other's/Principals, clients etc. to any
+              of the project etc of each otherPrincipals, clients etc. to any
               other Third party and neither of us will approach each otherâ€™s
               contracts as identified from time to time.
             </Text>
@@ -574,7 +574,7 @@ const StampPaperView = () => {
               Name : Cropton Service <br />
               Email : helplinessrvice156@gmail.com <br />
               Address : block number: 23 Hanuman Nagar Ajmer Road
-              S.O, Jaipur, 302006
+              S.O, Jaipur, 302006
             </Text>
           </Box>
           <Text
@@ -605,7 +605,7 @@ const StampPaperView = () => {
               <Text fontSize="md">
                 End-Date:{" "}
                 {moment(inputField?.startdate)
-                  .add(5, "days")
+                  .add(4, "days")
                   .format("MM/DD/YYYY")}
               </Text>
             </FormControl>
