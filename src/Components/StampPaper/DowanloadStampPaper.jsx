@@ -598,14 +598,15 @@ const StampPaperView = () => {
             </FormControl>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">
-                Start-Date: {moment(inputField.startdate).format("MM/DD/YYYY")}
+                Start-Date: {moment(inputField.startDate).format("MM/DD/YYYY")}
               </Text>
+            
             </FormControl>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">
                 End-Date:{" "}
-                {moment(inputField?.startdate)
-                  .add(5, "days")
+                {moment(inputField?.startDate)
+                  .add(4, "days")
                   .format("MM/DD/YYYY")}
               </Text>
             </FormControl>
