@@ -74,6 +74,126 @@ function QcReport() {
     };
   }
 
+  // const downloadReport = async (data) => {
+  //   console.log(data, "data received for report");
+  //   const pdf = new jsPDF({
+  //     orientation: "landscape",
+  //   });
+
+  //   try {
+  //     const response = await axios.post(
+  //       // "https://zemixbe.onrender.com/api/assignment/getassignments",
+  //       `http://localhost:5000/api/user/getreportbyid`,
+  //       // `http://localhost:5000/api/assignment/getassignments`,
+
+  //       { id : data._id }
+  //       // {
+  //       //   email: data.email,
+  //       // }
+  //     );
+  //     console.log(response.data, "Assignments data");
+
+  //     let startX = 20;
+  //     let startY = 30;
+  //     const rowHeight = 20;
+  //     const colWidth = 90;
+  //     const pageHeight = pdf.internal.pageSize.height; // Get the page height
+
+  //     pdf.setFontSize(16);
+  //     pdf.text("User Details Report", startX, 20);
+
+  //     // Function to add row with automatic new page handling
+  //     const addRow = (label, value, x, y) => {
+  //       if (y > pageHeight - 40) {
+  //         // Check if y exceeds the page height minus some margin
+  //         pdf.addPage(); // Add a new page
+  //         y = 30; // Reset y position to the top of the new page
+  //       }
+  //       pdf.setFontSize(12);
+  //       pdf.text(`${label}: ${value || "Not provided"}`, x, y);
+  //       return y + rowHeight; // Increment y for the next row
+  //     };
+
+  //     let column1X = startX;
+  //     let column2X = startX + colWidth + 40;
+
+  //     startY = addRow("Name", data?.name, column1X, startY);
+  //     startY = addRow("Mobile", data?.mobile, column2X, startY - rowHeight); // Adjust y for column continuity
+  //     startY = addRow("Email", data?.email, column1X, startY);
+  //     startY = addRow(
+  //       "Start Date",
+  //       data?.startDate?.slice(0, 10),
+  //       column2X,
+  //       startY - rowHeight
+  //     );
+  //     startY = addRow(
+  //       "End Date",
+  //       data?.endDate?.slice(0, 10),
+  //       column1X,
+  //       startY
+  //     );
+  //     startY = addRow(
+  //       "Total Forms",
+  //       data?.totalAssignmentLimit,
+  //       column2X,
+  //       startY - rowHeight
+  //     );
+  //     startY = addRow(
+  //       "Filled Forms",
+  //       data?.submittedAssignmentCount,
+  //       column1X,
+  //       startY
+  //     );
+  //     startY = addRow(
+  //       "Correct Forms",
+  //       data?.rightForms,
+  //       column2X,
+  //       startY - rowHeight
+  //     );
+  //     startY = addRow(
+  //       "Incorrect Forms",
+  //       data?.wrongForms || "0",
+  //       column1X,
+  //       startY
+  //     );
+
+  //     if (startY > pageHeight - 40) {
+  //       pdf.addPage();
+  //       startY = 30;
+  //     }
+  //     pdf.setFontSize(16);
+  //     pdf.text("Assignments:", startX, startY);
+  //     startY += rowHeight;
+
+  //     response.data.assignments.forEach((assignment, index) => {
+  //       if (startY > pageHeight - 40) {
+  //         pdf.addPage();
+  //         startY = 30;
+  //       }
+  //       startY = addRow(`Name`, assignment.name, startX, startY);
+  //       startY = addRow(`Address`, assignment.address, startX, startY);
+  //       startY = addRow(`Pin Code`, assignment.pinCode, startX, startY);
+  //       startY = addRow(
+  //         `Job Functional`,
+  //         assignment.jobFunctional,
+  //         startX,
+  //         startY
+  //       );
+  //       startY = addRow(`Phone`, assignment.phone, startX, startY);
+  //       startY = addRow(
+  //         `Annual Revenue`,
+  //         assignment.annualRevenue,
+  //         startX,
+  //         startY
+  //       );
+  //     });
+
+  //     pdf.save(`Report_${data?.name}.pdf`);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
   const downloadReport = async (data) => {
     console.log(data, "data received for report");
     const pdf = new jsPDF({
@@ -82,14 +202,20 @@ function QcReport() {
 
     try {
       const response = await axios.post(
-        "https://zemixbe.onrender.com/api/assignment/getassignments",
-        // "http://localhost:5000/api/assignment/getassignments",
-        { userId: data._id }
-        // {
-        //   email: data.email,
-        // }
+        `https://zemixbe.onrender.com/api/user/getreportbyid`,
+        { id : data._id }
       );
-      console.log(response.data, "Assignments data");
+      console.log(response.data, "Report data");
+
+      const allAssignmentsResponse = await axios.get(
+        "https://zemixbe.onrender.com/api/assignment/getallassignments"
+      );
+      console.log(allAssignmentsResponse.data, "All Assignments data");
+
+      // Filter assignments based on correctAssignmentCount
+      const correctAssignments = allAssignmentsResponse.data.assignments.filter(
+        assignment => assignment.correctAssignmentCount === response.data.correctAssignmentCount
+      );
 
       let startX = 20;
       let startY = 30;
@@ -163,7 +289,7 @@ function QcReport() {
       pdf.text("Assignments:", startX, startY);
       startY += rowHeight;
 
-      response.data.assignments.forEach((assignment, index) => {
+      correctAssignments.forEach((assignment, index) => {
         if (startY > pageHeight - 40) {
           pdf.addPage();
           startY = 30;
@@ -192,6 +318,7 @@ function QcReport() {
     }
   };
 
+
   // Assuming you have startDate and endDate states as well
 
   const [tableData, setTableData] = useState(allusersdata);
@@ -206,6 +333,9 @@ function QcReport() {
     try {
       const response = await axios.get(
         "https://zemixbe.onrender.com/api/user/getallclient"
+        // `http://localhost:5000/user/getreportbyid`,{
+          //  userId: userId
+        // }
       );
       console.log(response, "response");
 
@@ -229,8 +359,9 @@ function QcReport() {
   const qcreportdata = async () => {
     try {
       const reposne = await axios.post(
-        "https://zemixbe.onrender.com/api/assignment/getassignments",
-        { userId: userId }
+        // "https://zemixbe.onrender.com/api/assignment/getassignments",
+        `https://zemixbe.onrender.com/api/user/getreportbyid`,
+        { id : userId }
       );
       console.log(reposne, "jasdbasjkdbaksjb");
     } catch (error) {
@@ -238,31 +369,7 @@ function QcReport() {
     }
   };
 
-  const getincorrectassignments = async (userId) => {
-    try {
-      console.log(userId, "incorreet");
-      const response = await axios.post(
-        "https://zemixbe.onrender.com/api/user/getreportbyid",
-        {
-          id: userId,
-        }
-      );
-      console.log(response);
-      //setIncorrectAssignments((prevState) => ({
-      //  ...prevState,
-      //  [userId]: response.data.incorrectAssignments,
-      //}));
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Please Submit All Forms ",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-        position: "top",
-      });
-    }
-  };
+
 
   useLayoutEffect(() => {
     qcdata();
