@@ -194,129 +194,143 @@ function QcReport() {
   //   }
   // };
 
-  const downloadReport = async (data) => {
-    console.log(data, "data received for report");
-    const pdf = new jsPDF({
-      orientation: "landscape",
-    });
+const downloadReport = async (data) => {
+  console.log(data, "data received for report");
+  const pdf = new jsPDF({
+    orientation: "landscape",
+  });
 
-    try {
-      const response = await axios.post(
-        `https://zemixbe.onrender.com/api/user/getreportbyid`,
-        { id : data._id }
-      );
-      console.log(response.data, "Report data");
+  try {
+    const userResponse = await axios.post(
+      `https://zemixbe.onrender.com/api/user/getreportbyid`,
+      { id: data._id }
+    );
+    console.log(userResponse.data, "User Report data");
 
-      const allAssignmentsResponse = await axios.get(
-        "https://zemixbe.onrender.com/api/assignment/getallassignments"
-      );
-      console.log(allAssignmentsResponse.data, "All Assignments data");
+    const allAssignmentsResponse = await axios.get(
+      "https://zemixbe.onrender.com/api/assignment/getallassignments"
+    );
+    console.log(allAssignmentsResponse.data, "All Assignments data");
 
-      // Filter assignments based on correctAssignmentCount
-      const correctAssignments = allAssignmentsResponse.data.assignments.filter(
-        assignment => assignment.correctAssignmentCount === response.data.correctAssignmentCount
-      );
+    const user = userResponse.data.user;
+    const incorrectAssignmentCount = user.incorrectAssignmentCount;
 
-      let startX = 20;
-      let startY = 30;
-      const rowHeight = 20;
-      const colWidth = 90;
-      const pageHeight = pdf.internal.pageSize.height; // Get the page height
+    let startX = 20;
+    let startY = 30;
+    const rowHeight = 20;
+    const colWidth = 90;
+    const pageHeight = pdf.internal.pageSize.height; // Get the page height
 
-      pdf.setFontSize(16);
-      pdf.text("User Details Report", startX, 20);
+    pdf.setFontSize(16);
+    pdf.text("User Details Report", startX, 20);
 
-      // Function to add row with automatic new page handling
-      const addRow = (label, value, x, y) => {
-        if (y > pageHeight - 40) {
-          // Check if y exceeds the page height minus some margin
-          pdf.addPage(); // Add a new page
-          y = 30; // Reset y position to the top of the new page
-        }
-        pdf.setFontSize(12);
-        pdf.text(`${label}: ${value || "Not provided"}`, x, y);
-        return y + rowHeight; // Increment y for the next row
-      };
+    // Function to add row with automatic new page handling
+    const addRow = (label, value, x, y) => {
+      if (y > pageHeight - 40) {
+        // Check if y exceeds the page height minus some margin
+        pdf.addPage(); // Add a new page
+        y = 30; // Reset y position to the top of the new page
+      }
+      pdf.setFontSize(12);
+      pdf.text(`${label}: ${value || "Not provided"}`, x, y);
+      return y + rowHeight; // Increment y for the next row
+    };
 
-      let column1X = startX;
-      let column2X = startX + colWidth + 40;
+    let column1X = startX;
+    let column2X = startX + colWidth + 40;
 
-      startY = addRow("Name", data?.name, column1X, startY);
-      startY = addRow("Mobile", data?.mobile, column2X, startY - rowHeight); // Adjust y for column continuity
-      startY = addRow("Email", data?.email, column1X, startY);
-      startY = addRow(
-        "Start Date",
-        data?.startDate?.slice(0, 10),
-        column2X,
-        startY - rowHeight
-      );
-      startY = addRow(
-        "End Date",
-        data?.endDate?.slice(0, 10),
-        column1X,
-        startY
-      );
-      startY = addRow(
-        "Total Forms",
-        data?.totalAssignmentLimit,
-        column2X,
-        startY - rowHeight
-      );
-      startY = addRow(
-        "Filled Forms",
-        data?.submittedAssignmentCount,
-        column1X,
-        startY
-      );
-      startY = addRow(
-        "Correct Forms",
-        data?.rightForms,
-        column2X,
-        startY - rowHeight
-      );
-      startY = addRow(
-        "Incorrect Forms",
-        data?.wrongForms || "0",
-        column1X,
-        startY
-      );
+    startY = addRow("Name", user?.name, column1X, startY);
+    startY = addRow("Mobile", user?.mobile, column2X, startY - rowHeight); // Adjust y for column continuity
+    startY = addRow("Email", user?.email, column1X, startY);
+    startY = addRow(
+      "Start Date",
+      user?.startDate?.slice(0, 10),
+      column2X,
+      startY - rowHeight
+    );
+    startY = addRow(
+      "End Date",
+      user?.endDate?.slice(0, 10),
+      column1X,
+      startY
+    );
+    startY = addRow(
+      "Total Forms",
+      user?.totalAssignmentLimit,
+      column2X,
+      startY - rowHeight
+    );
+    startY = addRow(
+      "Filled Forms",
+      user?.submittedAssignmentCount,
+      column1X,
+      startY
+    );
+    startY = addRow(
+      "Correct Forms",
+      user?.correctAssignmentCount,
+      column2X,
+      startY - rowHeight
+    );
+    startY = addRow(
+      "Incorrect Forms",
+      user?.incorrectAssignmentCount || "0",
+      column1X,
+      startY
+    );
 
+    if (startY > pageHeight - 40) {
+      pdf.addPage();
+      startY = 30;
+    }
+    pdf.setFontSize(16);
+    pdf.text("Incorrect Assignments:", startX, startY);
+    startY += rowHeight;
+
+    const incorrectAssignments = allAssignmentsResponse.data.assignments.filter(
+      (assignment) =>
+        assignment.correctAssignmentCount !== user.correctAssignmentCount
+    );
+
+    // Randomly select incorrect assignments
+    const selectedIncorrectAssignments = [];
+    for (let i = 0; i < incorrectAssignmentCount; i++) {
+      const randomIndex = Math.floor(
+        Math.random() * incorrectAssignments.length
+      );
+      selectedIncorrectAssignments.push(incorrectAssignments[randomIndex]);
+      incorrectAssignments.splice(randomIndex, 1);
+    }
+
+    selectedIncorrectAssignments.forEach((assignment) => {
       if (startY > pageHeight - 40) {
         pdf.addPage();
         startY = 30;
       }
-      pdf.setFontSize(16);
-      pdf.text("Assignments:", startX, startY);
-      startY += rowHeight;
+      startY = addRow(`Name`, assignment.name, startX, startY);
+      startY = addRow(`Address`, assignment.address, startX, startY);
+      startY = addRow(`Pin Code`, assignment.pinCode, startX, startY);
+      startY = addRow(
+        `Job Functional`,
+        assignment.jobFunctional,
+        startX,
+        startY
+      );
+      startY = addRow(`Phone`, assignment.phone, startX, startY);
+      startY = addRow(
+        `Annual Revenue`,
+        assignment.annualRevenue,
+        startX,
+        startY
+      );
+    });
 
-      correctAssignments.forEach((assignment, index) => {
-        if (startY > pageHeight - 40) {
-          pdf.addPage();
-          startY = 30;
-        }
-        startY = addRow(`Name`, assignment.name, startX, startY);
-        startY = addRow(`Address`, assignment.address, startX, startY);
-        startY = addRow(`Pin Code`, assignment.pinCode, startX, startY);
-        startY = addRow(
-          `Job Functional`,
-          assignment.jobFunctional,
-          startX,
-          startY
-        );
-        startY = addRow(`Phone`, assignment.phone, startX, startY);
-        startY = addRow(
-          `Annual Revenue`,
-          assignment.annualRevenue,
-          startX,
-          startY
-        );
-      });
+    pdf.save(`Report_${user?.name}.pdf`);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
-      pdf.save(`Report_${data?.name}.pdf`);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
 
   // Assuming you have startDate and endDate states as well
