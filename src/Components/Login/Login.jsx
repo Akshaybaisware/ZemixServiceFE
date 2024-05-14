@@ -162,7 +162,7 @@ function Login() {
 
         toast({
           title: "Login Success",
-          description: "Welcome to Croptonservice Service",
+          description: "Welcome to Cropton Service",
           status: "success",
           duration: 3000,
           position: "top",
