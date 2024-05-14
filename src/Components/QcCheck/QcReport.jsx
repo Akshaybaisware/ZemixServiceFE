@@ -470,7 +470,7 @@ const downloadReport = async (data) => {
           p={"1.2rem"}
           bg={"green"}
           onClick={() => {
-            if (row.submittedAssignmentCount === 480) {
+            if (row.submittedAssignmentCount >= 480) {
               downloadReport(row);
               toast({
                 title: "Success",
