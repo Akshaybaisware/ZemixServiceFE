@@ -211,10 +211,11 @@ const StampPaperView = () => {
         const startDate = response.data.data?.startdate
           ? new Date(response.data.data.startdate).toLocaleDateString()
           : "";
+          console.log("$$$$" , response.data.data);
         setInputField({
           // name: response.data.data?.name,
           email: response.data.data?.email,
-          startdate: startDate,
+          startdate: response.data.data?.startdate,
           // address: response.data.data?.address,
           signature: response.data.data?.signature,
           photo: response.data.data?.photo,
@@ -598,14 +599,14 @@ const StampPaperView = () => {
             </FormControl>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">
-                Start-Date: {moment(inputField.startDate).format("MM/DD/YYYY")}
+                Start-Date: {moment(inputField.startdate).format("MM/DD/YYYY")}
               </Text>
-            
+
             </FormControl>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">
                 End-Date:{" "}
-                {moment(inputField?.startDate)
+                {moment(inputField?.startdate)
                   .add(4, "days")
                   .format("MM/DD/YYYY")}
               </Text>
