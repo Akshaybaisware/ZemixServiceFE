@@ -60,6 +60,10 @@ const router = createBrowserRouter(
           path="/stamppaperdonwload/:id"
           element={<DownloadStampPaper />}
         />
+        <Route
+                path="/qccheck"
+                element={ <QcCheck />}
+              />
            {/* <Route
           path="/stamppaperdonwload/:id"
           element={<TestingdownloadFile />}
@@ -81,10 +85,7 @@ const router = createBrowserRouter(
                 element={<ProtectedRoute Component={UserNavbar} />}
               />
 
-              <Route
-                path="/qccheck"
-                element={<ProtectedRoute Component={QcCheck} />}
-              />
+
               <Route
                 path="/blockuser"
                 element={<ProtectedRoute Component={BlockedUser} />}
