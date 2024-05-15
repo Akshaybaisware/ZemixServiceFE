@@ -24,9 +24,31 @@ function UserLogin() {
       };
       const response = await axios.post(
         "https://zemixbe.onrender.com/api/user/login",
+        // "http://localhost:5000/api/user/login",
         user
       );
-      console.log(response.data);
+      console.log(response.data , "Userlogin response");
+      console.log(response)
+
+      const endDate = new Date(response.data.user.endDate);
+      const currentDate = new Date();
+      console.log(endDate.getTime() , currentDate.getTime() , "dates");
+     if(endDate.getDate() < currentDate.getDate()){
+      console.log("in the rediext ")
+         navigate("/qccheck" ,
+          {
+            state : response.data
+          }
+         );
+         return;
+
+        }
+      // if(response.data.message === "QUC Failed"){
+      //   navigate("/qccheck");
+      // }
+      // if(response.data.user.status === "Freeze" ){
+      //     navigate("/qccheck");
+      // }
 
       if (response.data.message == "Login success..") {
         localStorage.setItem("token", response.data.token);
