@@ -31,18 +31,15 @@ function UserLogin() {
       console.log(response)
 
       const endDate = new Date(response.data.user.endDate);
-      const currentDate = new Date();
-      console.log(endDate.getTime() , currentDate.getTime() , "dates");
-     if(endDate.getDate() < currentDate.getDate()){
-      console.log("in the rediext ")
-         navigate("/qccheck" ,
-          {
-            state : response.data
-          }
-         );
-         return;
-
-        }
+const currentDate = new Date();
+console.log(endDate.getTime(), currentDate.getTime(), "dates");
+if (endDate.getTime() < currentDate.getTime()) {
+  console.log("in the redirect");
+  navigate("/qccheck", {
+    state: response.data
+  });
+  return;
+}
       // if(response.data.message === "QUC Failed"){
       //   navigate("/qccheck");
       // }
