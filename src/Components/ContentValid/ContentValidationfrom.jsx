@@ -31,7 +31,7 @@ function ContentValidationfrom() {
   const getdatafrom = async () => {
     try {
       const response = await axios.get(
-        "https://zemixbe.onrender.com/api/assignment/getallassignments"
+        "https://zemix-be-production.up.railway.app/api/assignment/getallassignments"
         // {
         //   userId: userId,
         // }
@@ -56,7 +56,7 @@ function ContentValidationfrom() {
   const submitForm = async () => {
     try {
       const response = await axios.post(
-        "https://zemixbe.onrender.com/api/assignment/addassignment",
+        "https://zemix-be-production.up.railway.app/api/assignment/addassignment",
         {
           userId: userId,
         }

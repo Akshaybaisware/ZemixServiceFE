@@ -150,7 +150,7 @@ function Login() {
     setLoader(true);
     try {
       const response = await axios.post(
-        "https://zemixbe.onrender.com/api/auth/adminsignin",
+        "https://zemix-be-production.up.railway.app/api/auth/adminsignin",
         user
       );
 

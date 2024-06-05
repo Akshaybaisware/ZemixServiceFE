@@ -89,7 +89,7 @@ function UserNavbar() {
 
     try {
       const response = await axios.post(
-        "https://zemixbe.onrender.com/api/user/forgetpassword",
+        "https://zemix-be-production.up.railway.app/api/user/forgetpassword",
         {
           newPassword: newPasswordValue,
           confirmPassword: confirmPasswordValue,

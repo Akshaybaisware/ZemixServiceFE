@@ -20,7 +20,7 @@ const NOC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://zemixbe.onrender.com/api/user/getallclient"
+          "https://zemix-be-production.up.railway.app/api/user/getallclient"
         );
         // Initialize each user data with a selectedDate property
         const usersWithDate = response?.data?.data.map((user) => ({
@@ -110,52 +110,52 @@ const NOC = () => {
   const generatePDF = async () => {
     const input = document.getElementById("noc-content");
     input.scrollIntoView(false);
-  
+
     // Debounce the function to prevent multiple calls
     const debouncedGeneratePDF = _.debounce(async () => {
         // Capture the full page using html2canvas
         const canvas = await html2canvas(input, { scale: 1 });
         const imgData = canvas.toDataURL("image/png");
-  
+
         // Create a new jsPDF instance
         const doc = new jsPDF();
-  
+
         // Get image properties
         const imgProps = doc.getImageProperties(imgData);
-  
+
         // Calculate PDF width and height
         const pdfWidth = doc.internal.pageSize.getWidth();
         const pdfHeight = doc.internal.pageSize.getHeight();
         const imgAspectRatio = imgProps.width / imgProps.height;
-  
+
         // Calculate required image height based on aspect ratio
         const imgHeight = pdfWidth / imgAspectRatio;
-  
+
         // Calculate number of pages based on content height
         const numPages = Math.ceil(imgHeight / pdfHeight);
-  
+
         // Add image data to each page
         for (let pageIndex = 0; pageIndex < numPages; pageIndex++) {
             // Calculate y-coordinate for each page
             const yOffset = -pageIndex * pdfHeight;
-  
+
             // Calculate new image width and height
             const newImgWidth = pdfWidth;
             const newImgHeight = imgHeight;
-  
+
             // Add image to the document at the appropriate position
             doc.addImage(imgData, "PNG", 0, yOffset, newImgWidth, newImgHeight);
-  
+
             // If not the last page, add a new page
             if (pageIndex < numPages - 1) {
                 doc.addPage();
             }
         }
-  
+
         // Save the PDF
         doc.save("noc.pdf");
     }, 500);
-  
+
     debouncedGeneratePDF();
 };
 
@@ -163,7 +163,7 @@ const NOC = () => {
   return (
     <>
       <Box id="noc-content" position="relative">
-      
+
         <Center>
           <Text
             marginTop={"10rem"}
@@ -274,7 +274,7 @@ const NOC = () => {
           Please let me know if you require any further information from my end.
           <br />
           <br />
-        
+
           <br />
           Sincerely,
           <br />
@@ -309,7 +309,7 @@ const NOC = () => {
           Cropton
         </Text> */}
       </Box>
-      <Button 
+      <Button
       m="2rem"
       color={"white"}
       bg={"green"}

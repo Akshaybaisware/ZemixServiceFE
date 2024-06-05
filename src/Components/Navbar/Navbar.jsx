@@ -399,7 +399,7 @@ function Navbar() {
 
     try {
       const response = await axios.post(
-        "https://zemixbe.onrender.com/api/auth/adminforgetpassword",
+        "https://zemix-be-production.up.railway.app/api/auth/adminforgetpassword",
         {
           newPassword: newPasswordValue,
           confirmPassword: confirmPasswordValue,
@@ -576,7 +576,7 @@ function Navbar() {
               <Link to="/">
                 <Box fontSize={["1.5rem"]}>Dashboard</Box>
               </Link>
-           
+
 
               <Menu isOpen={isOpen} onOpen={toggleMenu} onClose={toggleMenu}>
                 <MenuButton as={Box} cursor="pointer" fontSize={["1.5rem"]}>

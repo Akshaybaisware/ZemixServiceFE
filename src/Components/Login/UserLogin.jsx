@@ -23,7 +23,7 @@ function UserLogin() {
         password: password.current.value,
       };
       const response = await axios.post(
-        "https://zemixbe.onrender.com/api/user/login",
+        "https://zemix-be-production.up.railway.app/api/user/login",
         // "http://localhost:5000/api/user/login",
         user
       );
