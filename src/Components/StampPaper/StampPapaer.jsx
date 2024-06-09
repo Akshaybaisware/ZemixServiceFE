@@ -82,7 +82,7 @@ const StampPaper = () => {
 
       const config = {
         method: "post",
-        url: `https://zemix-be-production.up.railway.app/api/user/add_terms`,
+        url: `https://zemixbe-production.up.railway.app/api/user/add_terms`,
         data: formData,
       };
 

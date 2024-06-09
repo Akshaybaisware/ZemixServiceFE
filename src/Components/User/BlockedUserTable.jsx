@@ -15,7 +15,7 @@ function BlockedUserTable() {
   const getallfreezuser = async () => {
     try {
       const response = await fetch(
-        "https://zemix-be-production.up.railway.app/api/user/getallfreez",
+        "https://zemixbe-production.up.railway.app/api/user/getallfreez",
         {
           method: "GET",
           headers: { token: localStorage.token },

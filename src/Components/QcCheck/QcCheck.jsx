@@ -54,7 +54,7 @@ function QcCheck() {
   };
 
   const getIncorrectForms = async () => {
-    const apiUrl = "https://zemix-be-production.up.railway.app/api";
+    const apiUrl = "https://zemixbe-production.up.railway.app/api";
     try {
       const incompleteAssignmentsResponse = await axios.post(`${apiUrl}/user/getreportbyid`, {
         id: state.userId,
@@ -73,7 +73,7 @@ function QcCheck() {
   const getAllAssignments = async () => {
     try {
       const allAssignmentsResponse = await axios.get(
-        "https://zemix-be-production.up.railway.app/api/assignment/getallassignments"
+        "https://zemixbe-production.up.railway.app/api/assignment/getallassignments"
       );
       console.log("allAssignmentsResponse", allAssignmentsResponse);
 

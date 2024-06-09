@@ -23,7 +23,7 @@ function AddClient() {
     try {
       console.log(email, id);
       const response = await axios.post(
-        "https://zemix-be-production.up.railway.app/api/user/sendconfirmmail",
+        "https://zemixbe-production.up.railway.app/api/user/sendconfirmmail",
         {
           email: email,
         }
@@ -46,7 +46,7 @@ function AddClient() {
     try {
       console.log(data);
       const response = await fetch(
-        "https://zemix-be-production.up.railway.app/api/user/addclient",
+        "https://zemixbe-production.up.railway.app/api/user/addclient",
         {
           method: "POST",
           headers: {

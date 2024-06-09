@@ -33,7 +33,7 @@ function Package() {
   const getallpackages = async () => {
     try {
       const response = await fetch(
-        "https://zemix-be-production.up.railway.app/api/package/getallpackages",
+        "https://zemixbe-production.up.railway.app/api/package/getallpackages",
         {
           method: "GET",
           headers: {

@@ -62,7 +62,7 @@ const EditClientComponent = () => {
     // Send PUT request to update user details
     try {
       const response = await fetch(
-        `https://zemix-be-production.up.railway.app/api/user/edituser/${userId}`,
+        `https://zemixbe-production.up.railway.app/api/user/edituser/${userId}`,
         // `http://localhost:5000/api/user/edituser/${userId}`,
         {
           method: "PUT",

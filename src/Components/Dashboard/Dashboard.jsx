@@ -34,7 +34,7 @@ function Dashboard() {
   const getallcancel = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallcancel`
+        `https://zemixbe-production.up.railway.app/api/user/getallcancel`
       );
       console.log(response, "cancel");
       setCancelUsers(response.data.users.length);
@@ -46,7 +46,7 @@ function Dashboard() {
   const totalragisterations = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallclient`
+        `https://zemixbe-production.up.railway.app/api/user/getallclient`
         //getallregistered`
       );
       console.log(response, "registerations");
@@ -60,7 +60,7 @@ function Dashboard() {
   const totlalActiveUser = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallactive`
+        `https://zemixbe-production.up.railway.app/api/user/getallactive`
       );
 
       console.log(response, "active");
@@ -73,7 +73,7 @@ function Dashboard() {
   const totlalPendingUser = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallpending`
+        `https://zemixbe-production.up.railway.app/api/user/getallpending`
       );
       console.log(response, "pending");
       setPendingUsers(response.data.users.length);
@@ -85,7 +85,7 @@ function Dashboard() {
   const gettodaysregisterations = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/gettodaysregisterations`
+        `https://zemixbe-production.up.railway.app/api/user/gettodaysregisterations`
       );
       console.log(response, "todays");
     } catch (error) {
@@ -96,7 +96,7 @@ function Dashboard() {
   const totlalFrezzUser = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallfreez`
+        `https://zemixbe-production.up.railway.app/api/user/getallfreez`
       );
 
       console.log(response, "frezz");

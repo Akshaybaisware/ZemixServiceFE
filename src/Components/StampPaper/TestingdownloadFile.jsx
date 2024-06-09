@@ -645,7 +645,7 @@ const StampPaperViewTesting = () => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.post(
-          `https://zemix-be-production.up.railway.app/api/aggriment/getaggrimentdetails`,
+          `https://zemixbe-production.up.railway.app/api/aggriment/getaggrimentdetails`,
           {
             email: id,
           }

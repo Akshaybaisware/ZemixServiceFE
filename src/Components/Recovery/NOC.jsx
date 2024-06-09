@@ -20,7 +20,7 @@ const NOC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://zemix-be-production.up.railway.app/api/user/getallclient"
+          "https://zemixbe-production.up.railway.app/api/user/getallclient"
         );
         // Initialize each user data with a selectedDate property
         const usersWithDate = response?.data?.data.map((user) => ({

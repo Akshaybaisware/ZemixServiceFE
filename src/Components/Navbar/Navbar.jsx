@@ -399,7 +399,7 @@ function Navbar() {
 
     try {
       const response = await axios.post(
-        "https://zemix-be-production.up.railway.app/api/auth/adminforgetpassword",
+        "https://zemixbe-production.up.railway.app/api/auth/adminforgetpassword",
         {
           newPassword: newPasswordValue,
           confirmPassword: confirmPasswordValue,

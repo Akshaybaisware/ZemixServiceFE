@@ -41,7 +41,7 @@ function UserDashboard() {
   const getallcancel = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallcancel`
+        `https://zemixbe-production.up.railway.app/api/user/getallcancel`
       );
       console.log(response, "cancel");
       setCancelUsers(response.data.users.length);
@@ -53,7 +53,7 @@ function UserDashboard() {
   const totalragisterations = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallregistered`
+        `https://zemixbe-production.up.railway.app/api/user/getallregistered`
       );
       console.log(response, "registerations");
       setRegisterUsers(response.data.users.length);
@@ -65,7 +65,7 @@ function UserDashboard() {
   const getuserdeeatilsbyid = async () => {
     try {
       const response = await axios.post(
-        "https://zemix-be-production.up.railway.app/api/user/getuserbyid",
+        "https://zemixbe-production.up.railway.app/api/user/getuserbyid",
         {
           userId: userId,
         }
@@ -90,7 +90,7 @@ function UserDashboard() {
   const totlalActiveUser = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallactive`
+        `https://zemixbe-production.up.railway.app/api/user/getallactive`
       );
 
       console.log(response, "active");
@@ -103,7 +103,7 @@ function UserDashboard() {
   const totlalPendingUser = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallpending`
+        `https://zemixbe-production.up.railway.app/api/user/getallpending`
       );
       console.log(response, "pending");
       setPendingUsers(response.data.users.length);
@@ -115,7 +115,7 @@ function UserDashboard() {
   const gettodaysregisterations = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/gettodaysregisterations`
+        `https://zemixbe-production.up.railway.app/api/user/gettodaysregisterations`
       );
       console.log(response, "todays");
     } catch (error) {
@@ -126,7 +126,7 @@ function UserDashboard() {
   const totlalFrezzUser = async () => {
     try {
       const response = await axios.get(
-        `https://zemix-be-production.up.railway.app/api/user/getallfreez`
+        `https://zemixbe-production.up.railway.app/api/user/getallfreez`
       );
 
       console.log(response, "frezz");
