@@ -3,6 +3,7 @@ import { useToast, Box, Flex, Text, Input, Button } from "@chakra-ui/react";
 import { BiRefresh } from "react-icons/bi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./contentvalidation.css"
 
 function ContentValidationfrom() {
   const toast = useToast();
@@ -101,11 +102,13 @@ function ContentValidationfrom() {
         @import
         url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Whisper&display=swap')
       </style>
+
       <Flex
         mt={["2rem", "0rem"]}
         justifyContent={"center"}
         gap={"2rem"}
         flexDirection={["column", "row"]}
+        className= "content"
       >
         <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="600px">
           <Flex direction="column" fontFamily="'Dancing Script', cursive">
