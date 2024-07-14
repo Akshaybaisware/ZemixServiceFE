@@ -230,7 +230,7 @@ function AddClient() {
                   d="plan"
                   {...register("plan")}
                 >
-                  <option value="480">480</option>
+                  <option value="530">530</option>
                 </Select>
               </FormControl>
               <FormControl isRequired>

@@ -14,6 +14,7 @@ import nextDay from "../../../public/nextDay.svg";
 import filter from "../../../public/filter.svg";
 import upcomingImage from "../../../public/upcoming.svg";
 import lostLeadsIcon from "../../../public/lostLeads.svg";
+import { useNavigate } from "react-router-dom";
 
 function UserDashboard() {
   const [data, setData] = useState(0);
@@ -27,6 +28,7 @@ function UserDashboard() {
   const [submitedassignment, setsubmittedassignment] = useState();
   const [dates, setdates] = useState();
   const toast = useToast();
+  const navigate = useNavigate();
 
   const userId = localStorage.getItem("userId");
   useEffect(() => {
@@ -70,7 +72,16 @@ function UserDashboard() {
           userId: userId,
         }
       );
-      console.log(response, "user details");
+      console.log(response.data.User.submittedAssignmentCount, "user details");
+
+      if(response.data.User.submittedAssignmentCount === "530" || response.data.User.submittedAssignmentCount === 530){
+        console.log("in the userdashboardd");
+        navigate("/qcprogress");
+        return;
+
+      }
+
+
       setTotalAssignment(response.data.User.totalAssignmentLimit);
       setsubmittedassignment(response.data.User.submittedAssignmentCount);
       setdates(response?.data?.User?.endDate);

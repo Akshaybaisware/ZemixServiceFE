@@ -41,6 +41,7 @@ import StampPaperView from "./Components/StampPaper/StampPapaer";
 import StampPapaer from "./Components/StampPaper/StampPapaer";
 import UserRegisteration from "./Components/Froms/UserRegisteration";
 import StampPaperSubmission from "./Components/StampPaper/StampPaperSucess";
+import QcProgressPage from "./Components/QcCheck/QcProgressPage";
 
 const role = localStorage.getItem("role");
 
@@ -56,6 +57,8 @@ const router = createBrowserRouter(
         <Route path="/userlogin" element={<UserLogin />} />
         <Route path="/pdflogin" element={<PdfPhotoAdding />} />
         <Route path="/stamppaper" element={<StampPapaer />} />
+        <Route path="/qcprogress" element={<QcProgressPage/>}/>
+
         <Route
           path="/stamppaperdonwload/:id"
           element={<DownloadStampPaper />}

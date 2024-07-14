@@ -88,7 +88,7 @@ function Recovery() {
     </p>
     <br />
     <p>
-      Cropton Services and QC reports provided within 72 hours. Cropton Services provides a workload of 480 forms over 5 days,
+      Cropton Services and QC reports provided within 72 hours. Cropton Services provides a workload of 530 forms over 5 days,
     </p>
     <br />
     <p>

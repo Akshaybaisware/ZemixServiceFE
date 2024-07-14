@@ -19,16 +19,23 @@ function UserLogin() {
     try {
       console.log("asd");
       const user = {
-        email: username.current.value,
-        password: password.current.value,
+        email: username.current.value.trim(),
+        password: password.current.value.trim(),
       };
       const response = await axios.post(
         "https://zemixbe-production.up.railway.app/api/user/login",
         // "http://localhost:5000/api/user/login",
         user
       );
-      console.log(response.data , "Userlogin response");
+      console.log(response.data.user.submittedAssignmentCount , "Userlogin response");
       console.log(response)
+
+      if(response.data.user.submittedAssignmentCount === "530" || response.data.user.submittedAssignmentCount === 530 ){
+        console.log("in qc check consditon");
+        navigate("/qcprogress");
+        return;
+
+      }
 
       const endDate = new Date(response.data.user.endDate);
 const currentDate = new Date();

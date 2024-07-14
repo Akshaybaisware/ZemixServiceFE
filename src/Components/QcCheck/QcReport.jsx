@@ -410,6 +410,16 @@ const downloadReport = async (data) => {
   //getincorrectassignments();
   //}, []);
 
+
+
+  const handleIconClickedit = (rowData) => {
+
+    navigate("/editclient", {
+            state: { data: rowData },
+          });
+
+};
+
   const columns = [
     {
       name: "Name",
@@ -463,6 +473,13 @@ const downloadReport = async (data) => {
       sortable: true,
     },
     {
+      name: "Edit",
+      selector: (row) => <FaPencilAlt
+
+      onClick={()=>handleIconClickedit(row)} />,
+      sortable: true,
+    },
+    {
       name: "Action",
       cell: (row) => (
         <Button
@@ -470,7 +487,7 @@ const downloadReport = async (data) => {
           p={"1.2rem"}
           bg={"green"}
           onClick={() => {
-            if (row.submittedAssignmentCount >= 480) {
+            if (row.submittedAssignmentCount >= 530) {
               downloadReport(row);
               toast({
                 title: "Success",

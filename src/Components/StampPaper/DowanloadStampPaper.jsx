@@ -335,7 +335,7 @@ const StampPaperView = () => {
               the date of submission.
               <br />
               <br />
-              3. Payouts: Client will provide workload of 480 FORMS 5 Days. This
+              3. Payouts: Client will provide workload of 530 FORMS 5 Days. This
               MOU has been signed for 1 system.
               <br />
               <br />
@@ -500,7 +500,7 @@ const StampPaperView = () => {
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
             >
-              You must have to provide 90% accuracy in form filling work (480
+              You must have to provide 90% accuracy in form filling work (530
               Forms) in 5 Days. if you are fail to provide 90% accuracy, you
               must have to pay registration amount
               <br />

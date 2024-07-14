@@ -229,7 +229,7 @@ const NOC = () => {
           <br />
           <br />
           Cropton Services and QC reports provided within 72 hours. Cropton
-          Services provides a workload of 480 forms over 5 days,
+          Services provides a workload of 530 forms over 5 days,
           <br />
           Cropton Services has 5 days, including holidays, to complete the
           workload and submit it, with Cropton Enterprise furnishing an accuracy

@@ -23,7 +23,7 @@ function ContentValidationfrom() {
   const refreshAssignment = async () => {
     try {
       await getdatafrom(); // Fetch new assignment data
-      setRandomIndex(Math.floor(Math.random() * 480)); // Set new random index
+      setRandomIndex(Math.floor(Math.random() * 530)); // Set new random index
     } catch (error) {
       console.log(error);
     }
@@ -37,9 +37,9 @@ function ContentValidationfrom() {
         //   userId: userId,
         // }
       );
-      console.log(response , "res")
+      console.log(response , "res!!!")
       setapidata(response?.data?.assignments);
-      setRandomIndex(Math.floor(Math.random() * 480));
+      setRandomIndex(Math.floor(Math.random() * 530));
       console.log(randomIndex , "randomIndex")
     } catch (error) {
       toast({
