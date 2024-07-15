@@ -16,14 +16,16 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
-import frontpage from "../../assets/frontpage.jpg";
+import frontpage from "../../assets/Neutron-front.jpg";
 import { useEffect, useState } from "react";
 import { usePDF } from "react-to-pdf";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import sign from "../../assets/cropto stamp.svg";
-
+// import sign from "../../assets/cropto stamp.svg";
+// import sign from "../../assets/Neutron-stamp.jpg";
+import sign from "../../assets/neutronservicelogo.svg";
+import LOGO from "../../assets/Neutron_Stamp.svg";
 const StampPaperView = () => {
   const { toPDF, targetRef } = usePDF({ filename: "Legal-Agreement.pdf" });
   const locationdata = useLocation();
@@ -321,14 +323,14 @@ const StampPaperView = () => {
               </Text>
               <br />
               1. Main Purpose: The Original data will be available online on
-              website provided by Cropton Enterprise at the time of signup. You
+              website provided by Neutron Enterprise at the time of signup. You
               are required to feed the provided data field wise online as per
               the guidelines. Data supply and preservation of the output file is
               done online on real time basis.
               <br />
               <br /> 2. Compensation: For the Form Filling services rendered by
               the Business Associate, they shall be entitled for payment of
-              price 38 RS (INR) per form (if you achieved cut-off above 450) The
+              price 42 RS (INR) per form (if you achieved cut-off above 477) The
               Business Associate shall raise invoice after completion of work
               with the data. The Invoice can be raised through email. Q.C.
               report will be provided in 72 Hrs. International Working Days from
@@ -504,10 +506,11 @@ const StampPaperView = () => {
               Forms) in 5 Days. if you are fail to provide 90% accuracy, you
               must have to pay registration amount
               <br />
-              <br /> Registration Amount : 5500 (Per Month Basis) INR. Reg.
+              <br /> Registration Amount : 6300 (Per Month Basis) INR. Reg.
               Amount Will Deduct From Your Salary per month Salary (Weekly) :
-              18240 INR
+              22260 INR  If you want to terminate your agreement after your first work, you need to pay 6300*11  as per company policies.
               <br />
+             
               <br />
               <p style={{ color: "red" }}>
                 Below cut off - you are not qualified for payment & id will be
@@ -553,13 +556,13 @@ const StampPaperView = () => {
               policies and procedures of the company. I have read a copy of the
               Work from Home Policy. I understand all the rules & regulations
               which are mentioned in agreement and I am ready to do work with
-              Cropton Enterprise.
+              Neutron Enterprise.
             </Text>
           </Box>
 
           <Box>
             <Text
-              mt={["-1rem", "1rem"]}
+              mt={["-1rem", "-5rem"]}
               padding={["1rem", "3rem"]}
               fontWeight={"800"}
               fontSize={"1.5rem"}
@@ -572,10 +575,10 @@ const StampPaperView = () => {
               fontWeight={"500"}
               padding={["1rem", "3rem"]}
             >
-              Name : Cropton Service <br />
-              Email : helplinessrvice156@gmail.com <br />
-              Address : block number: 23 Hanuman Nagar Ajmer Road
-              S.O, Jaipur, 302006
+              Name : Neutron Service <br />
+              Email : helplineservicewww38@gmail.com <br />
+              Address :  Navratan Complex  1st  Floor Block Number 51 C, Udaipur, 
+              Durga Mata Mandir Road, Udaipur City, Udaipur-Rajasthan - 313001 
             </Text>
           </Box>
           <Text
@@ -586,7 +589,7 @@ const StampPaperView = () => {
           >
             Employee : -
           </Text>
-          <Box mt={["-1rem", "-5rem"]} padding={["1rem", "3rem"]}>
+          {/* <Box mt={["-1rem", "-5rem"]} padding={["1rem", "3rem"]}>
             <FormControl w={["200px", "300px"]}>
               <Text fontSize="md">Name: {username}</Text>
             </FormControl>
@@ -611,7 +614,40 @@ const StampPaperView = () => {
                   .format("MM/DD/YYYY")}
               </Text>
             </FormControl>
-          </Box>
+          </Box> */}
+          <Box
+       
+       display={"flex"} >
+       <Box mt={["-1rem", "-5rem"]} padding={["1rem", "3rem"]}>
+         <FormControl w={["200px", "300px"]}>
+           <Text fontSize="md">Name: {username}</Text>
+         </FormControl>
+
+         <FormControl w={["260px", "300px"]}>
+           <Text fontSize="md">Email: {inputField.email}</Text>
+         </FormControl>
+         <FormControl w={["200px", "300px"]}>
+           <Text fontSize="md">Address: {useraddress}</Text>
+         </FormControl>
+         <FormControl w={["200px", "300px"]}>
+           <Text fontSize="md">
+             Start-Date: {moment(inputField.startdate).format("MM/DD/YYYY")}
+           </Text>
+
+         </FormControl>
+         <FormControl w={["200px", "300px"]}>
+           <Text fontSize="md">
+             End-Date:{" "}
+             {moment(inputField?.startdate)
+               .add(4, "days")
+               .format("MM/DD/YYYY")}
+           </Text>
+         </FormControl>
+       </Box>
+       <Box   marginTop={["0rem" , "-5rem"]} marginLeft={["0rem","9rem"]} width={["30%" ,"15%"]}>
+       <Image src={LOGO} alt="Description of the image" />
+       </Box>
+       </Box>
 
           {/* <Box width={["200px", "400px"]}>
   <Image src={sign} alt="Stamp" />
@@ -649,7 +685,7 @@ const StampPaperView = () => {
             </Table>
           </Box> */}
           <Box display="flex" justifyContent="center" mt="1rem">
-            <Box ml="2rem" w={["255%", "105%"]} h={["0%", "20%"]} mr="1rem">
+            <Box ml="2rem" w={["255%", "30%"]} h={["0%", "20%"]} mr="1rem">
               <Image src={sign} alt="Stamp" />
             </Box>
             <Box display="flex" flexDirection="row">

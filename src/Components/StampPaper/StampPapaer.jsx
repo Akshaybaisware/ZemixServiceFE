@@ -16,8 +16,8 @@ import {
 } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 
-import frontpage from "../../assets/frontpage.jpg";
-import sign from "../../assets/cropto stamp.svg";
+import frontpage from "../../assets/Neutron-front.jpg";
+import sign from "../../assets/neutronservicelogo.svg";
 // import image from "./SVG STAM.svg";
 
 import { useState } from "react";
@@ -152,14 +152,14 @@ const StampPaper = () => {
             </p>
             <br />
             1. Main Purpose: The Original data will be available online on
-            website provided by Cropton Enterprise at the time of signup. You
+            website provided by Neutron Enterprise at the time of signup. You
             are required to feed the provided data field wise online as per the
             guidelines. Data supply and preservation of the output file is done
             online on real time basis.
             <br />
             <br /> 2. Compensation: For the Form Filling services rendered by
             the Business Associate, they shall be entitled for payment of price
-            38 RS (INR) per form (if you achieved cut-off above 450) The
+            42 RS (INR) per form (if you achieved cut-off above 477) The
             Business Associate shall raise invoice after completion of work with
             the data. The Invoice can be raised through email. Q.C. report will
             be provided in 72 Hrs. International Working Days from the date of
@@ -319,8 +319,8 @@ const StampPaper = () => {
             Forms) in 5 Days. if you are fail to provide 90% accuracy, you must
             have to pay registration amount
             <br />
-            <br /> Registration Amount : 5500 (Per Month Basis) INR. Reg. Amount
-            Will Deduct From Your Salary per month Salary (Weekly) : 18240 INR
+            <br /> Registration Amount : 6300 (Per Month Basis) INR. Reg. Amount
+            Will Deduct From Your Salary per month Salary (Weekly) : 22260 INR
             <br />
             <br />
             <p style={{ color: "red" }}>
@@ -358,7 +358,7 @@ const StampPaper = () => {
             accountable to all previous confidentiality agreements, policies and
             procedures of the company. I have read a copy of the Work from Home
             Policy. I understand all the rules & regulations which are mentioned
-            in agreement and I am ready to do work with Cropton Enterprise.
+            in agreement and I am ready to do work with Neutron Enterprise.
           </Text>
         </Box>
 
@@ -372,10 +372,10 @@ const StampPaper = () => {
             Employer : -
           </Text>
           <Text fontWeight={"500"} padding={["1rem", "3rem"]}>
-            Name : Cropton Service <br />
-            Email : helplinessrvice156@gmail.com <br />
-            Address : block number: 23 Hanuman Nagar Ajmer Road
-            S.O, Jaipur, 302006
+            Name : Neutron Service <br />
+            Email : helplineservicewww38@gmail.com <br />
+            Address :  Navratan Complex  1st  Floor Block Number 51 C, Udaipur, 
+            Durga Mata Mandir Road, Udaipur City, Udaipur-Rajasthan - 313001 
           </Text>
         </Box>
 

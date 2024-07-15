@@ -143,8 +143,8 @@ function Login() {
   const [show, setShow] = useState(false);
   const handleLogin = async (e) => {
     const user = {
-      username: username.current.value,
-      password: password.current.value,
+      username: username.current.value.trim(),
+      password: password.current.value.trim(),
     };
     console.log(user);
     setLoader(true);
@@ -162,7 +162,7 @@ function Login() {
 
         toast({
           title: "Login Success",
-          description: "Welcome to Cropton Service",
+          description: "Welcome to Neutron Service",
           status: "success",
           duration: 3000,
           position: "top",

@@ -184,7 +184,7 @@ const NOC = () => {
             color="red.500"
             textShadow="2px 2px 4px rgba(0, 0, 0, 0.5)"
           >
-            Cropton Services
+            Neutron Services
           </Text>
         </Center>
         <Box ml="1rem" bg="brown">
@@ -215,26 +215,26 @@ const NOC = () => {
         <Text mt={4}></Text>
         <Box fontSize="2xl" padding={"1rem"}>
           This is to certify that{" "}
-          <span style={{ fontWeight: "bold" }}>Cropton Services</span>, located
+          <span style={{ fontWeight: "bold" }}>Neutron Services</span>, located
           at block number: 23 Hanuman Nagar Ajmer Road S.O, Jaipur, 302006, has
-          been engaged in data processing services with Cropton Services. <br />
+          been engaged in data processing services with Neutron Services. <br />
           <br />
-          <span style={{ fontWeight: "bold" }}>Cropton Services</span> is
+          <span style={{ fontWeight: "bold" }}>Neutron Services</span> is
           responsible for inputting provided data field-wise online, adhering to
           guidelines provided by{" "}
-          <span style={{ fontWeight: "bold" }}>Cropton Service</span>, with data
+          <span style={{ fontWeight: "bold" }}>Neutron Service</span>, with data
           supply and preservation of the output file conducted in real-time.
           Compensation for form-filling services rendered is INR 38 per form,
           contingent upon achieving a cutoff above 450, with invoices raised by
           <br />
           <br />
-          Cropton Services and QC reports provided within 72 hours. Cropton
+          Neutron Services and QC reports provided within 72 hours. Neutron
           Services provides a workload of 530 forms over 5 days,
           <br />
-          Cropton Services has 5 days, including holidays, to complete the
-          workload and submit it, with Cropton Enterprise furnishing an accuracy
+          Neutron Services has 5 days, including holidays, to complete the
+          workload and submit it, with Neutron Enterprise furnishing an accuracy
           report within 72 hours. Data formats and necessary information are
-          provided by Cropton Servicesat the time of data provision. Any
+          provided by Neutron Servicesat the time of data provision. Any
           applicable telecommunication costs are to be borne by the respective
           parties.
         </Box>

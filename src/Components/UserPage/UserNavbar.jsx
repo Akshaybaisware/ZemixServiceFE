@@ -224,7 +224,7 @@ function UserNavbar() {
                 fontSize={["3rem"]}
                 color={"white"}
               >
-                Cropton Services
+                Neutron Services
               </Box>
               <Box>
                 <Menu>
