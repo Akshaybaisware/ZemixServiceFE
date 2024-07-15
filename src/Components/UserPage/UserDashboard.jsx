@@ -351,7 +351,7 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-ruvim-1807011-3560044.jpg')" 
+              bgImage="url('./src/assets/pexels-ruvim-1807011-3560044.webp')" 
               backgroundSize="cover" // Ensures the image covers the entire area
               backgroundPosition="center" // Centers the image
               backgroundRepeat="no-repeat" // Prevents the image from repeating
@@ -387,7 +387,7 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-martinpechy-2078271.jpg')" 
+              bgImage="url('./src/assets/pexels-martinpechy-2078271.webp')" 
               backgroundSize="cover" // Ensures the image covers the entire area
               backgroundPosition="center" // Centers the image
               backgroundRepeat="no-repeat" // Prevents the image from repeating
@@ -429,7 +429,7 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-roman-odintsov-4871011.jpg')" 
+              bgImage="url('./src/assets/pexels-roman-odintsov-4871011.webp')" 
               backgroundSize="cover" // Ensures the image covers the entire area
               backgroundPosition="center" // Centers the image
               backgroundRepeat="no-repeat" // Prevents the image from repeating
@@ -465,7 +465,7 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-anniroenkae-2318068.jpg')" 
+              bgImage="url('./src/assets/pexels-anniroenkae-2318068.webp')" 
               backgroundSize="cover" // Ensures the image covers the entire area
               backgroundPosition="center" // Centers the image
               backgroundRepeat="no-repeat" // Prevents the image from repeating
