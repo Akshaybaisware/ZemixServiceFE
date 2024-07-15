@@ -351,10 +351,9 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-ruvim-1807011-3560044.webp')" 
-              backgroundSize="cover" // Ensures the image covers the entire area
-              backgroundPosition="center" // Centers the image
-              backgroundRepeat="no-repeat" // Prevents the image from repeating
+            //  bgGradient="linear(to-r, #ff4e50, #f9d423, #ffcb6b, #34e89e, #00d2ff, #7f7fd5, #c33764)"
+               bgGradient="linear(to-br, #c7332c,  #e78b8b, #36af6c, #0a4935)"
+      
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -387,10 +386,7 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-martinpechy-2078271.webp')" 
-              backgroundSize="cover" // Ensures the image covers the entire area
-              backgroundPosition="center" // Centers the image
-              backgroundRepeat="no-repeat" // Prevents the image from repeating
+                 bgGradient="linear(to-r, #ff7e5f, #feb47b, #86e3ce, #5d9cec, #3b8d99)"
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -429,10 +425,7 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-roman-odintsov-4871011.webp')" 
-              backgroundSize="cover" // Ensures the image covers the entire area
-              backgroundPosition="center" // Centers the image
-              backgroundRepeat="no-repeat" // Prevents the image from repeating
+              bgGradient="linear(to-br, #89c5a1,  #24d47c, #f2c739, #e2e1da)"
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -465,10 +458,7 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bgImage="url('./src/assets/pexels-anniroenkae-2318068.webp')" 
-              backgroundSize="cover" // Ensures the image covers the entire area
-              backgroundPosition="center" // Centers the image
-              backgroundRepeat="no-repeat" // Prevents the image from repeating
+            bgGradient="linear(to-br, #d9e7de,  #8a7bc5, #4bbc6d, #e2deda)"
               borderRadius="12px"
               boxShadow="md"
               p="2"

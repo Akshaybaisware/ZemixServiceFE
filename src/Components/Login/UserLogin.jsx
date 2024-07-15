@@ -241,7 +241,8 @@ function UserLogin() {
     </Center>
   ) : (
     <Box
-      bgImage="url('./src/assets/userloginbg.jpg')" // Replace with your background image path
+      // bgImage="url('./src/assets/userloginbg.jpg')" // Replace with your background image path
+      bgGradient="linear(to-r, #ff7e5f, #ffb88c, #86e3ce, #5d9cec, #3b8d99)"
       bgSize="cover"
       bgPosition="center"
       display="flex"
@@ -281,6 +282,7 @@ function UserLogin() {
           >
             <FaUser color="white" style={{ marginRight: '0.5rem' }} />
             <Input
+            p={"1rem"}
               ref={username}
               placeholder="Enter your Email"
               variant="unstyled"
@@ -299,6 +301,7 @@ function UserLogin() {
           >
             <FaLock color="white" style={{ marginRight: '0.5rem' }} />
             <Input
+            p={"1rem"}
               ref={password}
               placeholder="Enter Password"
               variant="unstyled"
