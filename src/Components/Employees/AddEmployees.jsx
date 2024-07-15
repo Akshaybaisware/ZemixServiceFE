@@ -321,7 +321,7 @@ function AddEmployees() {
 
   return (
     <>
-      <Center mt={10} mb={4}>
+      <Center mt={20} mb={4}>
         <Heading size="lg">Add Employees</Heading>
       </Center>
       <Box

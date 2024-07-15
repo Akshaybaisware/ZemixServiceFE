@@ -578,7 +578,7 @@ const downloadReport = async (data) => {
 
   return (
     <>
-      <Box mt={["3rem", "1rem"]}>
+      <Box mt={["3rem", "4rem"]}>
         <Box>
         <Center
       color="purple"

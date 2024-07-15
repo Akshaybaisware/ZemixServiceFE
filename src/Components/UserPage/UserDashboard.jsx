@@ -344,7 +344,7 @@ function UserDashboard() {
         direction={{ base: "column", md: "column" }}
         justifyContent="center"
       >
-        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+        <Box width="100%" marginY={{ base: "30px", md: "60px" }} align="center">
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"

@@ -143,7 +143,7 @@ function AddClient() {
     //     </VStack>
     //   </form>
     // </VStack>
-    <Box m={"1rem"} mt={["8%", "3rem"]}>
+    <Box m={"1rem"} mt={["8%", "2rem"]}>
       <div
         style={{
           display: "flex",

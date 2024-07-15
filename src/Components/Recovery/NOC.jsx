@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Text, Center, Image, Button } from "@chakra-ui/react";
-import sign from "../../assets/cropto stamp.svg";
+import sign from "../../assets/neutron-stamp-corrrected.svg";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { useLocation } from "react-router-dom";

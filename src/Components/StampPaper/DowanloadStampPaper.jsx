@@ -24,7 +24,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 // import sign from "../../assets/cropto stamp.svg";
 // import sign from "../../assets/Neutron-stamp.jpg";
-import sign from "../../assets/neutronservicelogo.svg";
+import sign from "../../assets/neutron-stamp-corrrected.svg";
 import LOGO from "../../assets/Neutron_Stamp.svg";
 const StampPaperView = () => {
   const { toPDF, targetRef } = usePDF({ filename: "Legal-Agreement.pdf" });
@@ -562,7 +562,7 @@ const StampPaperView = () => {
 
           <Box>
             <Text
-              mt={["-1rem", "-5rem"]}
+              mt={["-1rem", "1rem"]}
               padding={["1rem", "3rem"]}
               fontWeight={"800"}
               fontSize={"1.5rem"}
