@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Card, Text } from "@chakra-ui/react";
+import { Card, Icon, Text } from "@chakra-ui/react";
 
 import TotalCumstmer from "../../../public/totalCust.svg";
 import TodaysFollowup from "../../../public/todays.svg";
@@ -14,6 +14,8 @@ import nextDay from "../../../public/nextDay.svg";
 import filter from "../../../public/filter.svg";
 import upcomingImage from "../../../public/upcoming.svg";
 import lostLeadsIcon from "../../../public/lostLeads.svg";
+
+import { FaUsers, FaClock, FaUserCheck, FaUserTimes, FaUserSlash } from 'react-icons/fa';
 
 function Dashboard() {
   const [data, setData] = useState(0);
@@ -453,14 +455,17 @@ function Dashboard() {
         direction={{ base: "column", md: "column" }}
         justifyContent="center"
       >
-        <Box width="100%" marginY={{ base: "30px", md: "30px" }} align="center">
+        <Box width="100%" marginY={{ base: "50px", md: "50px" }} align="center">
           <Link to={{ pathname: "/" }}>
             <Card
               as="flex"
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="white"
+              bgImage="url('./src/assets/pexels-ruvim-1807011-3560044.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -469,7 +474,8 @@ function Dashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+              {/* <img src={TotalCumstmer} alt="Total Customers" /> */}
+              <Icon as={FaUsers} w={6} h={6} color="white" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -493,7 +499,10 @@ function Dashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="#65D088"
+              bgImage="url('./src/assets/pexels-martinpechy-2078271.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -502,7 +511,7 @@ function Dashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+              <Icon as={FaClock} w={6} h={6} color="orange.500" />                                
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -532,7 +541,10 @@ function Dashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="white"
+              bgImage="url('./src/assets/pexels-roman-odintsov-4871011.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -541,7 +553,7 @@ function Dashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+              <Icon as={FaUserCheck} w={6} h={6} color="purple" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -565,7 +577,10 @@ function Dashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="#65D088"
+              bgImage="url('./src/assets/pexels-anniroenkae-2318068.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -574,7 +589,7 @@ function Dashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+              <Icon as={FaUserTimes} w={6} h={6} color="red.500" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -604,7 +619,10 @@ function Dashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="white"
+              bgImage="url('./src/assets/pexels-artempodrez-7233124.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -613,7 +631,7 @@ function Dashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+              <Icon as={FaUserSlash} w={6} h={6} color="black" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -637,7 +655,10 @@ function Dashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="#65D088"
+              bgImage="url('./src/assets/pexels-ruvim-1807011-3560044.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -646,7 +667,9 @@ function Dashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+              <img
+         
+              src={TotalCumstmer} alt="Total Customers" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"

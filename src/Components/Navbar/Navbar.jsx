@@ -457,15 +457,16 @@ function Navbar() {
             align="center"
             justify="space-between"
             p="1rem"
-            bg="#E19898"
+            // bg="#E19898"
+               bgGradient="linear(to-r, #003311, #1aff66, #99ffff, #008080)"
             boxShadow="md"
             height={"100%"}
           >
             <Box>
               <Menu>
                 <MenuButton
-                  as={Button}
-                  bg="#E19898"
+                  // as={Button}
+                  // bgGradient="linear(to-r, #003311, #1aff66, #99ffff, #008080)"
                   size="sm"
                   cursor="pointer"
                   paddingRight="2rem"
@@ -491,7 +492,8 @@ function Navbar() {
               <Menu>
                 <MenuButton
                   as={Button}
-                  bg="#E19898"
+                  // bg="#E19898"
+                  
                   size="sm"
                   cursor="pointer"
                   borderRadius={"30%"}
@@ -499,23 +501,23 @@ function Navbar() {
                   <HamburgerIcon height={6} width={6} />
                 </MenuButton>
                 <MenuList height={"300%"}>
-                  ``
-                  <MenuItem as={RouterLink} to="/">
+                
+                  <MenuItem fontWeight={700} as={RouterLink} to="/">
                     Dashboard
                   </MenuItem>
-                  <MenuItem as={RouterLink} to="/registeration">
+                  <MenuItem fontWeight={700} as={RouterLink} to="/registeration">
                     Registration
                   </MenuItem>
-                  <MenuItem as={RouterLink} to="/pendingregisteration">
+                  <MenuItem fontWeight={700} as={RouterLink} to="/pendingregisteration">
                     Pending Registration
                   </MenuItem>
-                  <MenuItem as={RouterLink} to="/qcreport">
+                  <MenuItem fontWeight={700} as={RouterLink} to="/qcreport">
                     QC Report
                   </MenuItem>
-                  <MenuItem as={RouterLink} to="/recovery">
+                  <MenuItem  fontWeight={700}as={RouterLink} to="/recovery">
                     Recovery
                   </MenuItem>
-                  <MenuItem as={RouterLink} to="/employees">
+                  <MenuItem fontWeight={700} as={RouterLink} to="/employees">
                     Employee
                   </MenuItem>
                 </MenuList>
@@ -523,7 +525,9 @@ function Navbar() {
             </Box>
           </Flex>
         ) : (
-          <Box width="100%" height="5rem" bg="#E19898">
+          <Box width="100%" height="5rem"
+     bgGradient="linear(to-r, #003311, #1aff66, #99ffff, #008080)"
+           >
             <Box
               padding={"0.7rem"}
               display="flex"
@@ -536,7 +540,7 @@ function Navbar() {
             >
               <Menu>
                 <MenuButton
-                  bg="#E19898"
+        // bgGradient="linear(to-r, #003311, #1aff66, #99ffff, #008080)"
                   size="sm"
                   cursor="pointer"
                   paddingRight="2rem"
@@ -564,7 +568,7 @@ function Navbar() {
         {!isMobileView && (
           <Box
             p="0.5rem"
-            bg="#A2678A"
+          bgGradient="linear(to-r, #c992c9, #990099, #753caf, #68349c)"
             boxShadow="0 14px 60px rgba(0,10, 10, 0.1)"
           >
             <Flex

@@ -26,13 +26,17 @@ function Registeraion() {
 
   const [todaysassignment, settodaysassignment] = useState(0);
 
+  // const icons = [FaPencilAlt, TfiReload, FaDownload, FaFile, RiDeleteBin5Fill];
+  // const iconspending = [
+  //   FaPencilAlt,
+  //   TfiReload,
+  //   BiLinkExternal,
+  //   RiDeleteBin5Fill,
+  // ];
   const icons = [FaPencilAlt, TfiReload, FaDownload, FaFile, RiDeleteBin5Fill];
-  const iconspending = [
-    FaPencilAlt,
-    TfiReload,
-    BiLinkExternal,
-    RiDeleteBin5Fill,
-  ];
+
+// Define the second set of icons
+const iconspending = [FaPencilAlt, TfiReload, BiLinkExternal, RiDeleteBin5Fill];
   const navigate = useNavigate();
 
   const toast = useToast();
@@ -343,17 +347,17 @@ function Registeraion() {
                       index === 4
                         ? "lightgray" // Red for delete, gray for other
                         : index === 1
-                        ? " #99ebff" // Yellow for refresh
+                        ? " hsl(200, 33.30%, 98.20%)" // Yellow for refresh
                         : index === 0
-                        ? "#ffb3ff" // Blue for edit
+                        ? "#f6f9f9" // Blue for edit
                         : index === 2
-                        ? " #c6ffb3"
+                        ? " #f6f7f8"
                         : "white", // White for other
                     color:
                       index === 4
                         ? "red"
                         : row.status === "Success"
-                        ? "green"
+                        ? "purple"
                         : "inherit",
                     cursor: "pointer",
                     margin: "0 5px",
@@ -378,11 +382,11 @@ function Registeraion() {
                       index === 4
                         ? "lightgray" // Red for delete, gray for other
                         : index === 1
-                        ? " #99ebff" // Yellow for refresh
+                        ? " #faf9f7" // Yellow for refresh
                         : index === 0
-                        ? "#ffb3ff"
+                        ? "#eff4f1"
                         : index === 2
-                        ? " #c6ffb3" // Blue for edit
+                        ? " #f5f4fc" // Blue for edit
                         : "white", // White for other
                     // color : index === 3 ? "red" : "red", // Delete icon is red
                   }}
@@ -423,11 +427,13 @@ function Registeraion() {
   }, []);
   return (
     <>
-      <Flex mt={"2rem"} justifyContent="flex-end">
+      <Flex mt={["4rem","2rem"]} justifyContent="flex-end">
         <Button
-          colorScheme="blue"
+         bgGradient="linear(to-r, #003311, #008080)"
           leftIcon={<FaDownload />}
           onClick={exportToExcel}
+          color={"white"}
+          _hover={{ bg: "red" }} // Apply red background on hover
         >
           Export to Excel
         </Button>
@@ -449,7 +455,9 @@ function Registeraion() {
         </Text>
 
         <Link to="/addclient">
-          <Button fontSize={["md", "xl"]} bg={"#33ff99"}>
+          <Button
+                 _hover={{ bg: "red" }} // Apply red background on hover
+          fontSize={["md", "xl"]} bg={"#21f43d"}>
             +Add Registration
           </Button>
         </Link>

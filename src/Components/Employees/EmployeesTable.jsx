@@ -192,7 +192,7 @@ function EmployeesTable() {
         thickness="4px"
         speed="0.65s"
         emptyColor="gray.200"
-        color="blue.500"
+        color="green"
         size="xl"
       />
     </Center>
@@ -200,11 +200,11 @@ function EmployeesTable() {
     <Center>
       <Box mt="1.5rem" w="80%" p="4">
         <Flex justifyContent="space-between" alignItems="center" mb="4">
-          <Text fontSize="2rem" fontWeight="700">
+          <Text fontSize="2rem" fontWeight="700" color={"orange"}>
             Employees
           </Text>
           <Link to="/addemployees">
-            <Button color={"white"} bg="blue">
+            <Button color={"white"} bg="green">
               + Add Employees
             </Button>
           </Link>

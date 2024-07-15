@@ -143,7 +143,7 @@ function AddClient() {
     //     </VStack>
     //   </form>
     // </VStack>
-    <Box m={"1rem"} mt={["8%", "0rem"]}>
+    <Box m={"1rem"} mt={["8%", "3rem"]}>
       <div
         style={{
           display: "flex",
@@ -165,8 +165,8 @@ function AddClient() {
             p={"0.6rem"}
             borderRadius={"20%"}
             fontWeight={"800"}
-            bg={"#b2b266"}
-            color={"#ffffff"}
+            bg={"#1b7236"}
+            color={"#cfcccc"}
           >
             Add Client
           </Text>
@@ -175,8 +175,8 @@ function AddClient() {
               <FormControl isRequired>
                 <FormLabel htmlFor="name">Name</FormLabel>
                 <Input
-                  _hover={{ borderColor: "red" }}
-                  border={"1px solid green"}
+                  _hover={{ borderColor: "purple" }}
+                  border={"1px solid purple"}
                   isRequired
                   type="text"
                   id="name"
@@ -187,7 +187,7 @@ function AddClient() {
                 <FormLabel htmlFor="address">Address</FormLabel>
                 <Input
                   _hover={{ borderColor: "red" }}
-                  border={"1px solid green"}
+                  border={"1px solid purple"}
                   isRequired
                   type="text"
                   id="address"
@@ -198,7 +198,7 @@ function AddClient() {
                 <FormLabel htmlFor="email">Email</FormLabel>
                 <Input
                   _hover={{ borderColor: "red" }}
-                  border={"1px solid green"}
+                  border={"1px solid purple"}
                   isRequired
                   type="email"
                   id="email"
@@ -209,7 +209,7 @@ function AddClient() {
                 <FormLabel htmlFor="mobile">Mobile No</FormLabel>
                 <Input
                   _hover={{ borderColor: "red" }}
-                  border={"1px solid green"}
+                  border={"1px solid purple"}
                   isRequired
                   type="text"
                   maxLength="10"
@@ -226,7 +226,7 @@ function AddClient() {
                 <FormLabel htmlFor="plan">Plan</FormLabel>
                 <Select
                   _hover={{ borderColor: "red" }}
-                  border={"1px solid green"}
+                  border={"1px solid purple"}
                   d="plan"
                   {...register("plan")}
                 >
@@ -237,7 +237,7 @@ function AddClient() {
                 <FormLabel htmlFor="selectPlan">Caller</FormLabel>
                 <Select
                   _hover={{ borderColor: "red" }}
-                  border={"1px solid green"}
+                  border={"1px solid purple"}
                   id="selectPlan"
                   {...register("selectPlan")}
                 >
@@ -252,11 +252,11 @@ function AddClient() {
             <Center>
               <Button
                 mt={"1rem"}
-                _hover={{ bg: " #ff6699" }}
+                _hover={{ bg: " #61b11b" }}
                 height={"3rem"}
                 borderRadius={"10%"}
                 fontWeight={"800"}
-                bg={"#b2b266"}
+                bg={"#3b16b4"}
                 color={"#ffffff"}
                 display={"flex"}
                 justifyContent={"center"}

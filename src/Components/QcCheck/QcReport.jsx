@@ -485,7 +485,7 @@ const downloadReport = async (data) => {
         <Button
           width={"22rem"}
           p={"1.2rem"}
-          bg={"green"}
+          bg={"orange"}
           onClick={() => {
             if (row.submittedAssignmentCount >= 530) {
               downloadReport(row);
@@ -580,9 +580,18 @@ const downloadReport = async (data) => {
     <>
       <Box mt={["3rem", "1rem"]}>
         <Box>
-          <Center color={"gray"} fontWeight={800} fontSize={["1.5rem", "2rem"]}>
-            QC Report
-          </Center>
+        <Center
+      color="purple"
+      fontWeight={800}
+      fontSize={["1.5rem", "2rem"]}
+      bgImage="url('path_to_texture_image')"
+      boxShadow="0 4px 8px rgba(207, 21, 21, 0.1)" // Adjust box shadow as needed
+      bgSize="cover" // Ensures the texture covers the background
+      bgPosition="center" // Center the texture
+      p={4} // Adds padding for better visibility
+    >
+      QC Report
+    </Center>
         </Box>
         {/* <Box display="flex" gap="2">
         <Input type="date" onChange={(e)=> setStartDate(e.target.value)} />
@@ -611,7 +620,7 @@ const downloadReport = async (data) => {
             />
           </Box>
           <Box>
-            <Button color="white" bg={"#5c5c8a"} onClick={handleSearch}>
+            <Button color="white" bg={"#5d20a8"} onClick={handleSearch}>
               Search Dates
             </Button>
           </Box>

@@ -136,17 +136,19 @@ function ContentValidationfrom() {
         <Box p="4" border="1px solid #ccc" borderRadius="md" maxW="1000px">
           <Flex width={["330px", "400px"]} direction="column">
             <Text>Name:</Text>
-            <Input ref={name} />
+            <Input ref={name}
+              fontFamily="'Dancing Script', cursive" // Set the input font family
+            />
             <Text>Mobile:</Text>
-            <Input ref={mobile} />
+            <Input  fontFamily="'Dancing Script', cursive"   ref={mobile} />
             <Text>Address:</Text>
-            <Input ref={address} />
+            <Input   fontFamily="'Dancing Script', cursive" ref={address} />
             <Text>Annual Revenue:</Text>
-            <Input ref={annualRevenue} />
+            <Input  fontFamily="'Dancing Script', cursive"  ref={annualRevenue} />
             <Text>Job Functional:</Text>
-            <Input ref={jobFunctional} />
+            <Input  fontFamily="'Dancing Script', cursive"  ref={jobFunctional} />
             <Text>Pin Code:</Text>
-            <Input ref={pinCode} />
+            <Input  fontFamily="'Dancing Script', cursive"  ref={pinCode} />
 
             {/* <Button
           mt={"1rem"}
@@ -159,7 +161,8 @@ function ContentValidationfrom() {
               mb={"1rem"}
               onClick={submitForm}
               color={"white"}
-              bg="green" // Change to the desired color scheme
+              bg="red" // Change to the desired color scheme
+              _hover={{ bg: "darkred" }} // Darker shade of red for hover
             >
               Submit
             </Button>

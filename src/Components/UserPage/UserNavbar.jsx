@@ -143,7 +143,7 @@ function UserNavbar() {
             align="center"
             justify="space-between"
             p="1rem"
-            bg="#183D3D"
+           bgGradient="linear(to-r, #0fbe0f, #009900, #ff66ff, #4d004d)"
             boxShadow="md"
             height={"100%"}
           >
@@ -151,7 +151,7 @@ function UserNavbar() {
               <Menu>
                 <MenuButton
                   // as={Button}
-                  bg="#183D3D"
+               
                   size="sm"
                   cursor="pointer"
                   paddingRight="2rem"
@@ -185,20 +185,20 @@ function UserNavbar() {
                   <HamburgerIcon height={6} width={6} />
                 </MenuButton>
                 <MenuList height={"300%"}>
-                  ``
-                  <MenuItem as={Link} to="/">
+                  
+                  <MenuItem fontWeight={700}  as={Link} to="/">
                     Dashboard
                   </MenuItem>
-                  <MenuItem as={Link} to="/workload">
+                  <MenuItem fontWeight={700}   as={Link} to="/workload">
                     Current Work Load
                   </MenuItem>
-                  <MenuItem as={Link} to="/">
+                  <MenuItem fontWeight={700}  as={Link} to="/">
                     All Forms
                   </MenuItem>
-                  <MenuItem as={Link} to="/">
+                  <MenuItem fontWeight={700}  as={Link} to="/">
                     Saved Form
                   </MenuItem>
-                  <MenuItem as={RouterLink} to="/">
+                  <MenuItem fontWeight={700}  as={RouterLink} to="/">
                     {" "}
                     Submit Form
                   </MenuItem>
@@ -207,7 +207,7 @@ function UserNavbar() {
             </Box>
           </Flex>
         ) : (
-          <Box width="100%" height="5rem" bg="#183D3D">
+          <Box width="100%" height="5rem"   bgGradient="linear(to-r, #0fbe0f, #009900, #ff66ff, #4d004d)">
             <Box
               display="flex"
               alignItems="center"
@@ -229,7 +229,7 @@ function UserNavbar() {
               <Box>
                 <Menu>
                   <MenuButton
-                    bg="#183D3D"
+                    // bg="#cc730d"
                     size="sm"
                     cursor="pointer"
                     paddingRight="2rem"
@@ -256,14 +256,16 @@ function UserNavbar() {
         )}
 
         {!isMobileView && (
-          <Box p="0.5rem" bg="#5C8374">
+          <Box p="0.5rem"
+         bgGradient="linear(to-r, #17110b, #0b1912, #0c0b17, #0e0506)"
+           >
             <Flex
               direction={{ base: "row", md: "row" }}
               paddingX="30px"
               paddingY="10px"
             >
               <Link to="/">
-                <Box paddingX="30px" fontSize={["1.5rem"]}>
+                <Box color={"white"} paddingX="30px" fontSize={["1.5rem"]}>
                   Dashboard
                 </Box>
               </Link>
@@ -295,8 +297,8 @@ function UserNavbar() {
               )}
             </Menu> */}
 
-              <Menu isOpen={isOpen} onOpen={toggleMenu} onClose={toggleMenu}>
-                <MenuButton as={Box} cursor="pointer" fontSize={["1.5rem"]}>
+              <Menu  color={"white"} isOpen={isOpen} onOpen={toggleMenu} onClose={toggleMenu}>
+                <MenuButton   color={"white"}as={Box} cursor="pointer" fontSize={["1.5rem"]}>
                   Work Load
                   <ChevronDownIcon height={8} width={8} />
                 </MenuButton>

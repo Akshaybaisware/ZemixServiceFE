@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Card, Text, useToast } from "@chakra-ui/react";
+import { Card, Icon, Text, useToast } from "@chakra-ui/react";
 
 import TotalCumstmer from "../../../public/totalCust.svg";
 import TodaysFollowup from "../../../public/todays.svg";
@@ -15,6 +15,11 @@ import filter from "../../../public/filter.svg";
 import upcomingImage from "../../../public/upcoming.svg";
 import lostLeadsIcon from "../../../public/lostLeads.svg";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineNumber, AiOutlineCalendar } from 'react-icons/ai';
+import { BsBookmarkCheck } from 'react-icons/bs';
+import { FaPaperPlane } from 'react-icons/fa';
+
+
 
 function UserDashboard() {
   const [data, setData] = useState(0);
@@ -29,6 +34,7 @@ function UserDashboard() {
   const [dates, setdates] = useState();
   const toast = useToast();
   const navigate = useNavigate();
+  
 
   const userId = localStorage.getItem("userId");
   useEffect(() => {
@@ -345,7 +351,10 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="white"
+              bgImage="url('./src/assets/pexels-ruvim-1807011-3560044.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -354,7 +363,7 @@ function UserDashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+               <Icon as={AiOutlineNumber} w={6} h={6} color="white" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -378,7 +387,10 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="#65D088"
+              bgImage="url('./src/assets/pexels-martinpechy-2078271.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -387,7 +399,7 @@ function UserDashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+             <Icon as={BsBookmarkCheck} w={6} h={6} color="green.500" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -417,7 +429,10 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="white"
+              bgImage="url('./src/assets/pexels-roman-odintsov-4871011.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -426,7 +441,7 @@ function UserDashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+              <Icon as={FaPaperPlane} w={6} h={6} color="orange.500" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
@@ -450,7 +465,10 @@ function UserDashboard() {
               minWidth="100%"
               minHeight="10rem"
               textAlign="center"
-              bg="#65D088"
+              bgImage="url('./src/assets/pexels-anniroenkae-2318068.jpg')" 
+              backgroundSize="cover" // Ensures the image covers the entire area
+              backgroundPosition="center" // Centers the image
+              backgroundRepeat="no-repeat" // Prevents the image from repeating
               borderRadius="12px"
               boxShadow="md"
               p="2"
@@ -459,7 +477,7 @@ function UserDashboard() {
               alignItems="center"
               gap="20px"
             >
-              <img src={TotalCumstmer} alt="Total Customers" />
+           <Icon as={AiOutlineCalendar} w={6} h={6} color="green" />
               <Text
                 fontSize={{ base: "0.7rem", md: "1.2rem" }}
                 fontWeight="bold"
