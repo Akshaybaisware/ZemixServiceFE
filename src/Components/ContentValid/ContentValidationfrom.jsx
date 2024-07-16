@@ -104,7 +104,7 @@ function ContentValidationfrom() {
       </style>
 
       <Flex
-        mt={["2rem", "0rem"]}
+        mt={["2rem", "4rem"]}
         justifyContent={"center"}
         gap={"2rem"}
         flexDirection={["column", "row"]}

@@ -42,13 +42,14 @@ import StampPapaer from "./Components/StampPaper/StampPapaer";
 import UserRegisteration from "./Components/Froms/UserRegisteration";
 import StampPaperSubmission from "./Components/StampPaper/StampPaperSucess";
 import QcProgressPage from "./Components/QcCheck/QcProgressPage";
-
+import ChatBotComponent from "./Components/chatbot.";
 const role = localStorage.getItem("role");
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route>
+      <Route path="/chatbot" element={<ChatBotComponent />} />
       <Route path="/noc" element={<NOC />} />
       <Route path="/testing" element={<Testing />} />
       <Route path="/downloadreport" Component={DownloadStampPaper} />
