@@ -37,7 +37,7 @@
     "recharts": "^2.12.7",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5",
-    "styled-components": "^4.4.1",
+    "styled-components": "^5.2.1",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
