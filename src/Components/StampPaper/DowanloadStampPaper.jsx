@@ -685,7 +685,7 @@ const StampPaperView = () => {
             </Table>
           </Box> */}
           <Box display="flex" justifyContent="center" mt="1rem">
-            <Box ml="2rem" w={["255%", "30%"]} h={["0%", "20%"]} mr="1rem">
+            <Box ml="2rem" w={["555%", "80%"]} h={["0%", "20%"]} mr="1rem">
               <Image src={sign} alt="Stamp" />
             </Box>
             <Box display="flex" flexDirection="row">
