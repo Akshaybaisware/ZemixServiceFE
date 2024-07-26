@@ -547,6 +547,7 @@ const downloadReport = async (data) => {
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
+      end.setDate(end.getDate() + 1); // Include the entire end date
       end.setHours(23, 59, 59, 999); // Include the entire end day
 
       filteredData = filteredData.filter((item) => {
@@ -557,24 +558,25 @@ const downloadReport = async (data) => {
     }
 
     // Filter by date range
-    if (startDate && endDate) {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      end.setHours(23, 59, 59, 999); // Include the entire end day
+    // if (startDate && endDate) {
+    //   const start = new Date(startDate);
+    //   const end = new Date(endDate);
+    //   end.setDate(end.getDate() + 1); // Include the entire end date
+    //   end.setHours(23, 59, 59, 999); // Include the entire end day
 
-      filteredData = filteredData.filter((item) => {
-        const itemStartDate = new Date(item.startDate);
-        const itemEndDate = new Date(item.endDate);
-        return itemStartDate >= start && itemEndDate <= end;
-      });
-    }
+    //   filteredData = filteredData.filter((item) => {
+    //     const itemStartDate = new Date(item.startDate);
+    //     const itemEndDate = new Date(item.endDate);
+    //     return itemStartDate >= start && itemEndDate <= end;
+    //   });
+    // }
 
     setTableData(filteredData);
   };
 
   useEffect(() => {
     handleSearch(); // Call handleSearch to apply initial filters on component mount
-  }, [searchText, startDate, endDate, allusersdata]);
+  }, [searchText, startDate, endDate, allusersdata,  window.location.pathname]);
 
   return (
     <>
